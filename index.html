@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="description" content="求人原稿と企業情報から、Gemini向けの求人原稿魅力度評価プロンプトを作成するブラウザツールです。">
+<title>求人原稿 魅力度評価プロンプトメーカー</title>
+<style>
+:root{--bg:#f4f6f8;--card:#fff;--line:#d8e0e7;--text:#20303d;--muted:#687887;--blue:#315f7d;--blue2:#244a63;--purple:#695b8d;--soft:#eaf1f5;--shadow:0 12px 34px rgba(34,52,67,.08)}
+*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 10% 0,rgba(49,95,125,.1),transparent 30rem),radial-gradient(circle at 92% 3%,rgba(105,91,141,.08),transparent 28rem),var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;line-height:1.7}button,input,textarea{font:inherit}a{color:var(--blue)}.wrap{width:min(1180px,calc(100% - 32px));margin:auto;padding:28px 0 56px}.hero{display:flex;justify-content:space-between;gap:22px;padding:26px 28px;margin-bottom:20px;color:#fff;background:linear-gradient(125deg,#294f68,#48738c 56%,#685a88);border-radius:22px;box-shadow:var(--shadow)}.brand{display:flex;gap:16px}.mark{display:grid;place-items:center;width:54px;height:54px;flex:none;border:1px solid rgba(255,255,255,.3);border-radius:16px;background:rgba(255,255,255,.13);font-weight:900;font-size:23px}.eyebrow{margin:0 0 2px;color:rgba(255,255,255,.75);font-size:12px;font-weight:800;letter-spacing:.09em}h1{margin:0;font-size:clamp(24px,4vw,36px);line-height:1.25}h2{margin:0;font-size:19px}.desc{margin:8px 0 0;max-width:760px;color:rgba(255,255,255,.88);font-size:14px}.heroBtns{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}.pill{padding:8px 13px;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:800;text-decoration:none;cursor:pointer}.pill:hover{background:rgba(255,255,255,.2)}.notice{display:flex;gap:10px;padding:13px 16px;margin-bottom:18px;border:1px solid #d5e0e8;border-radius:14px;background:rgba(255,255,255,.84);font-size:13px}.grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px;align-items:start}.main,.side{display:grid;gap:18px}.side{position:sticky;top:16px}.card{padding:22px;border:1px solid var(--line);border-radius:21px;background:var(--card);box-shadow:var(--shadow)}.head{margin-bottom:16px}.sub{margin:5px 0 0;color:var(--muted);font-size:13px}.num{display:inline-grid;place-items:center;width:28px;height:28px;margin-right:9px;color:var(--blue);border-radius:9px;background:var(--soft);font-size:13px;font-weight:900;vertical-align:2px}.fields{display:grid;gap:16px}.field{display:grid;gap:7px}.labelrow{display:flex;justify-content:space-between;gap:12px}label{font-size:14px;font-weight:800}.hint,.count{color:var(--muted);font-size:11px}.note{margin:0;color:var(--muted);font-size:12px}input,textarea{width:100%;border:1px solid #b9c6d2;border-radius:10px;background:#fff;color:var(--text);outline:none}input{min-height:46px;padding:10px 12px}textarea{min-height:128px;padding:12px 13px;resize:vertical;line-height:1.65}#jobText{min-height:290px}#promptPreview{min-height:440px;background:#fbfcfd;font:12.5px/1.62 "Cascadia Code",Consolas,"Yu Gothic UI",monospace}input:focus,textarea:focus{border-color:#688aa0;box-shadow:0 0 0 4px rgba(49,95,125,.1)}.set{display:grid;grid-template-columns:100px 1fr;gap:9px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.set:last-child{border-bottom:0}.set span:first-child{color:var(--muted);font-weight:700}.set span:last-child{font-weight:800}.criteria{display:inline-block;margin-top:12px;padding:9px 11px;border:1px solid #cfdae3;border-radius:10px;background:#f8fafc;font-size:12px;font-weight:800;text-decoration:none}.summary{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.summary:last-child{border-bottom:0}.summary span{color:var(--muted)}details.card{padding:0;overflow:hidden}summary{display:flex;justify-content:space-between;padding:20px 22px;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary:after{content:"＋";display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:var(--soft);color:var(--blue);font-size:19px}details[open] summary:after{content:"－"}.promptbody{padding:0 22px 22px;border-top:1px solid var(--line)}.promptnote{margin:13px 0;color:var(--muted);font-size:12px}.actions{position:sticky;bottom:10px;z-index:5;display:flex;gap:9px;flex-wrap:wrap;padding:14px;margin-top:18px;border:1px solid rgba(188,202,213,.9);border-radius:17px;background:rgba(255,255,255,.93);box-shadow:0 14px 38px rgba(29,47,62,.15);backdrop-filter:blur(10px)}.btn{min-height:45px;padding:10px 16px;border:1px solid transparent;border-radius:11px;font-weight:850;cursor:pointer}.primary{color:#fff;background:var(--blue)}.primary:hover{background:var(--blue2)}.accent{color:#fff;background:var(--purple)}.secondary{border-color:#b9c6d2;background:#fff;color:#334a5b}.danger{margin-left:auto;border-color:#e5c6c6;background:#fff;color:#a34444}.status{display:none;padding:12px 14px;margin-bottom:17px;border-radius:12px;font-size:13px;font-weight:750}.status.show{display:block}.status.success{color:#285d48;border:1px solid #bcdac9;background:#e7f3ec}.status.warning{color:#76531b;border:1px solid #ead6a7;background:#fff4da}.status.error{color:#883737;border:1px solid #e4bcbc;background:#faeaea}.modalbg{display:none;position:fixed;inset:0;z-index:100;padding:22px;background:rgba(20,32,43,.56);backdrop-filter:blur(4px)}.modalbg.open{display:grid;place-items:center}.modal{width:min(760px,100%);max-height:calc(100vh - 44px);overflow:auto;border-radius:22px;background:#fff;box-shadow:0 24px 70px rgba(9,21,31,.3)}.modalhead{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.96)}.close{width:38px;height:38px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:21px;cursor:pointer}.modalbody{padding:21px 23px}.help+ .help{padding-top:18px;margin-top:18px;border-top:1px solid var(--line)}.help h3{margin:0 0 7px;font-size:16px}.help p,.help li{color:#4c5f6d;font-size:13px}.helpnote{padding:13px 15px;border-left:4px solid var(--purple);border-radius:8px;background:#f0edf7;font-size:13px}.footer{padding-top:25px;color:var(--muted);font-size:11px;text-align:center}@media(max-width:900px){.grid{grid-template-columns:1fr}.side{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.wrap{width:calc(100% - 20px);padding-top:10px}.hero{display:grid;padding:20px 18px;border-radius:18px}.heroBtns{justify-content:flex-start}.card{padding:18px;border-radius:17px}.side{grid-template-columns:1fr}summary{padding:18px}.promptbody{padding:0 18px 18px}.btn{flex:1 1 calc(50% - 8px)}.danger{margin-left:0}.modalbg{padding:10px}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<header class="hero">
+<div class="brand"><div class="mark">原+</div><div><p class="eyebrow">JOB APPEAL EVALUATION</p><h1>求人原稿 魅力度評価<br>プロンプトメーカー</h1><p class="desc">求人原稿と企業情報を入力し、初回商談準備用のExcel評価資料をGeminiに作成してもらうためのプロンプトを生成します。</p></div></div>
+<div class="heroBtns"><button class="pill" id="helpBtn">？ 使い方</button><a class="pill" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">評価基準を確認</a></div>
+</header>
+<div class="notice"><span>ℹ</span><div><strong>入力内容はサーバーへ送信しません。</strong> このページ内でプロンプトを作成し、ブラウザ内へ一時保存します。Geminiへの送信は、Gemini画面で利用者が実行します。</div></div>
+<div id="status" class="status" role="status" aria-live="polite"></div>
+<div class="grid">
+<section class="main">
+<article class="card"><div class="head"><h2><span class="num">1</span>求人原稿</h2><p class="sub">求人原稿URLまたは全文のどちらかを入力してください。両方ある場合は、貼り付けた全文が評価の正本です。</p></div><div class="fields">
+<div class="field"><div class="labelrow"><label for="jobUrl">求人原稿URL</label><span class="hint">URLまたは全文のどちらか必須</span></div><input id="jobUrl" type="url" placeholder="https://example.com/job/..."><p class="note">取得制限のある求人サイトでは、原稿全文も貼り付けることを推奨します。</p></div>
+<div class="field"><div class="labelrow"><label for="jobText">求人原稿全文</label><span id="jobCount" class="count">0文字</span></div><textarea id="jobText" placeholder="求人原稿のタイトル、会社名、給与、勤務時間、仕事内容、待遇、応募資格などを全文貼り付けてください。"></textarea></div>
+</div></article>
+<article class="card"><div class="head"><h2><span class="num">2</span>企業・競合情報</h2><p class="sub">参考ページは1行につき1URLで入力してください。未入力でも一般Web検索で補完する指示が含まれます。</p></div><div class="fields">
+<div class="field"><div class="labelrow"><label for="companyUrls">対象企業の参考ページ</label><span class="hint">任意・複数可</span></div><textarea id="companyUrls" placeholder="https://example.com/&#10;https://example.com/recruit/&#10;https://example.com/interview/"></textarea><p class="note">コーポレートサイト、採用ページ、職種紹介、社員インタビュー、福利厚生ページなど。</p></div>
+<div class="field"><div class="labelrow"><label for="competitorUrls">競合企業の参考ページ</label><span class="hint">任意・複数可</span></div><textarea id="competitorUrls" placeholder="https://competitor.example.com/recruit/&#10;https://job.example.com/competitor/"></textarea><p class="note">競合URLがある場合、「競合他社との比較・自社の強み」の強制選定ルールが適用されます。</p></div>
+</div></article>
+<article class="card"><div class="head"><h2><span class="num">3</span>ターゲット・文面の方向性</h2><p class="sub">文面提案へ反映する求職者像や訴求方針を入力します。</p></div><div class="field"><div class="labelrow"><label for="target">想定ターゲット・文面の方向性</label><span id="targetCount" class="count">0文字</span></div><textarea id="target" placeholder="例：50代・60代の未経験者。地元で長く働ける安心感と、作業の覚えやすさを重視して訴求する。"></textarea></div></article>
+<details class="card" open><summary><div><h2><span class="num">4</span>生成プロンプト</h2><p class="sub">フォームの入力内容を反映したGemini向けプロンプトです。</p></div></summary><div class="promptbody"><p class="promptnote">直接編集できますが、フォームを変更すると入力内容から再生成されます。</p><textarea id="promptPreview" spellcheck="false"></textarea></div></details>
+<div class="actions"><button id="copyBtn" class="btn primary">プロンプトをコピー</button><button id="geminiBtn" class="btn accent">コピーしてGeminiを開く</button><button id="refreshBtn" class="btn secondary">プレビューを再生成</button><button id="clearBtn" class="btn danger">入力をクリア</button></div>
+</section>
+<aside class="side">
+<article class="card"><div class="head"><h2>固定設定</h2><p class="sub">初期版では以下の条件で固定しています。</p></div><div class="set"><span>評価基準</span><span>求人原稿改善リスト【テスト版】</span></div><div class="set"><span>出力形式</span><span>Excel（.xlsx）</span></div><div class="set"><span>提案数</span><span>3項目</span></div><div class="set"><span>文面長</span><span>100文字程度</span></div><div class="set"><span>Web調査</span><span>指定URL優先＋一般Web補完</span></div><div class="set"><span>Prompt</span><span>v1.1</span></div><a class="criteria" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">↗ 評価基準を開く</a></article>
+<article class="card"><div class="head"><h2>入力状況</h2><p class="sub">プロンプトへ反映される情報です。</p></div><div class="summary"><span>求人情報</span><strong id="jobSummary">未入力</strong></div><div class="summary"><span>企業URL</span><strong id="companyCount">0件</strong></div><div class="summary"><span>競合URL</span><strong id="competitorCount">0件</strong></div><div class="summary"><span>ターゲット</span><strong id="targetSummary">指定なし</strong></div><div class="summary"><span>プロンプト</span><strong id="promptCount">0文字</strong></div></article>
+</aside>
+</div>
+<p class="footer">GitHub Pages上で動作する静的ツールです。入力内容・生成プロンプト・Geminiの出力内容は利用者自身で確認してください。</p>
+</main>
+<div id="modalBg" class="modalbg"><div class="modal"><div class="modalhead"><h2>使い方</h2><button id="closeBtn" class="close" aria-label="閉じる">×</button></div><div class="modalbody"><section class="help"><h3>基本の流れ</h3><ol><li>求人原稿URLまたは原稿全文を入力します。</li><li>対象企業・競合企業の参考ページがあれば入力します。</li><li>必要に応じてターゲットや文面方向を入力します。</li><li>「コピーしてGeminiを開く」を押します。</li><li>Geminiへ貼り付けて送信し、Excelをダウンロードします。</li></ol></section><section class="help"><h3>求人原稿の入力</h3><p>URLだけでも実行できますが、CAPTCHAやログイン制限のあるサイトでは本文を取得できないことがあります。全文を貼り付けると安定します。</p></section><section class="help"><h3>競合URLを入力した場合</h3><p>優先順位1の「競合他社との比較・自社の強み」が未記載なら、文面提案TOP1として扱う指示が適用されます。</p></section><section class="help"><h3>入力データ</h3><div class="helpnote">入力内容はブラウザのローカルストレージに自動保存されます。共用PCでは作業後に「入力をクリア」を押してください。</div></section></div></div></div>
+
+<script type="text/plain" id="promptTemplate"># 求人原稿魅力度評価・初回商談準備プロンプト v1.1
+
+あなたは、求人広告の改善分析と、採用支援サービスの初回商談準備を支援する専門家です。
+
+この処理の目的は、求人原稿を採点することだけではありません。
+
+未取引企業との初回商談に向けて、経験の浅い営業担当者でも短時間で、一定水準以上の品質を保ちながら、次の内容を整理したExcel資料を作成することが目的です。
+
+- 現在の求人原稿に残されている改善余地
+- 対象企業が持つ独自の強み
+- 競合企業との差別化につながる訴求
+- 求職者にまだ十分伝わっていない魅力
+- 初回商談で採用担当者へ確認すべき情報
+- 実際の求人原稿へ追記できる文面案
+
+一般的な改善案を並べるのではなく、営業担当者が商談で、
+
+「御社にはこのような魅力があるのに、現在の求人原稿では十分に伝え切れていません」
+
+と具体的に説明できる資料を作成してください。
+
+対象企業の不足や欠点を指摘するだけの表現は避け、現在の原稿を尊重しながら、採用効率を高めるための改善機会として整理してください。
+
+---
+
+# 1. 固定情報
+
+## 評価基準リスト
+
+次のGoogleスプレッドシートを評価基準として使用してください。
+
+https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/
+
+このスプレッドシートは参照専用です。内容を変更しないでください。
+
+## 出力形式
+
+Excelファイル（.xlsx）
+
+## 文面提案数
+
+3項目
+
+## 文面提案の長さ
+
+1項目につき、おおむね100文字程度としてください。
+
+意味が途切れたり不自然になったりする場合は、80～130文字程度の範囲で調整して構いません。
+
+## Web調査方法
+
+ユーザーが指定したURLを優先し、不足する場合は一般Web検索で補完してください。
+
+---
+
+# 2. 今回の入力情報
+
+## 求人原稿URL
+
+{{JOB_URL}}
+
+## 求人原稿全文
+
+{{JOB_TEXT}}
+
+## 対象企業の参考ページ
+
+{{COMPANY_URLS}}
+
+## 競合企業の参考ページ
+
+{{COMPETITOR_URLS}}
+
+## 想定ターゲット・文面の方向性
+
+{{TARGET_PERSONA}}
+
+---
+
+# 3. 必ず守る処理順序
+
+以下の順序で処理してください。
+
+1. 評価基準スプレッドシートを取得する
+2. 評価基準の列名とデータ行を確認する
+3. 求人原稿を取得する
+4. 雇用形態を判定する
+5. 評価対象となる必須項目を抽出する
+6. 求人原稿本文だけを使って各項目を評価する
+7. 対象企業と競合企業のWeb調査を行う
+8. 文面提案TOP3を選定する
+9. 商談時の確認質問を作成する
+10. Excelに格納するデータを確定する
+11. 必要に応じてPythonなどを使いExcelファイルを生成する
+12. 出力前セルフチェックを行う
+
+評価基準や求人原稿を取得する前に、Excel生成やPython処理を開始しないでください。
+
+---
+
+# 4. 評価基準スプレッドシートの取得方法
+
+## 4-1. 最初に使用する取得方法
+
+評価基準スプレッドシートは、最初にGeminiで利用可能な次のいずれかの機能を使用して取得してください。
+
+- 通常のWebページ閲覧機能
+- URL参照機能
+- Google Workspace連携機能
+- Google Drive連携機能
+- Googleスプレッドシートを直接参照できる機能
+
+評価基準の取得段階では、Python実行環境から外部URLへ通信しないでください。
+
+## 4-2. 評価基準取得に使用してはいけない方法
+
+評価基準スプレッドシートを取得する目的で、次のようなPython実行環境からの外部通信を行わないでください。
+
+- Pythonのrequests
+- urllib
+- pandas.read_csvによるURL読み込み
+- pandas.read_excelによるURL読み込み
+- wget
+- curl
+- 外部URLへのHTTPリクエスト
+- Python実行環境からのDNS名前解決
+- Python実行環境からのGoogle Sheetsダウンロード
+
+Pythonは、評価基準と求人原稿の内容が取得できた後に、データ整理、集計、検証、書式設定、Excel生成を行う目的で使用してください。
+
+## 4-3. 取得後の確認
+
+評価基準を読み取ったら、求人原稿の評価へ進む前に、少なくとも次の列が存在することを確認してください。
+
+- No.
+- 分類
+- 大項目
+- 中項目
+- 追加文面例
+- 優先順位
+- 正社員
+- 非正規（アルバイト・パート・派遣）
+
+さらに、見出しだけでなく、評価項目のデータ行が取得できていることを確認してください。
+
+列名が一部異なる場合は、意味が同じ列かを慎重に確認してください。意味が判断できない場合は推測しないでください。
+
+## 4-4. 最初の取得に失敗した場合
+
+最初の取得に失敗しても、ただちに、
+
+「ネットワーク制限により取得できません」
+
+と結論付けないでください。
+
+次の順序で再試行してください。
+
+1. Pythonを使わず、通常のURL閲覧機能で再度開く
+2. Google DriveまたはGoogle Workspace連携が利用可能なら、それを使う
+3. スプレッドシートURLを通常のWebページとして開き直す
+4. ファイル名またはスプレッドシートIDから参照できるか確認する
+
+Python実行環境での外部通信が失敗した場合でも、Gemini本体のWeb閲覧機能では取得できる可能性があります。
+
+取得方法を切り替えずに、同じ失敗したPython処理だけを繰り返さないでください。
+
+## 4-5. それでも取得できない場合
+
+利用可能な通常のWeb閲覧機能やGoogle Drive連携を試しても取得できない場合に限り、処理を中断してください。
+
+その場合は、次の内容を具体的に報告してください。
+
+- 取得できなかったURL
+- 試した取得方法
+- どの段階で失敗したか
+- 表示されたエラーの概要
+- 評価基準ファイルの添付または表データの貼り付けが必要であること
+
+評価基準を確認できない状態で、項目、必須判定、優先順位を推測してExcelを作成しないでください。
+
+---
+
+# 5. 求人原稿の取得と正本
+
+求人原稿URLと求人原稿全文の両方が入力されている場合は、貼り付けられた「求人原稿全文」を評価対象の正本としてください。
+
+求人原稿URLは、掲載元の確認や、貼り付けられた求人原稿の補足確認に使用してください。
+
+求人原稿URLから取得した内容と、貼り付けられた求人原稿全文に差異がある場合も、貼り付けられた求人原稿全文を優先してください。
+
+求人原稿URLにCAPTCHA、ログイン制限、アクセス拒否などがあり取得できない場合でも、求人原稿全文が入力されていれば、その全文を用いて処理を継続してください。
+
+求人原稿全文が入力されておらず、求人原稿URLからも本文を取得できない場合は、内容を推測して評価しないでください。
+
+この場合はExcelを生成せず、求人原稿全文の貼り付けが必要であることを伝えてください。
+
+求人原稿URLの取得も、最初は通常のWeb閲覧機能を使用してください。Python実行環境からのURL取得は使用しないでください。
+
+---
+
+# 6. 雇用形態の判定
+
+求人原稿本文から、対象求人の雇用形態を判定してください。
+
+判定区分は次の2種類です。
+
+- 正社員
+- 非正規（アルバイト・パート・派遣）
+
+契約社員、嘱託社員、期間社員など、どちらに分類するか判断が難しい雇用形態は、正社員以外を原則として「非正規」に分類してください。
+
+雇用形態が複数記載されている場合は、今回募集している中心的な雇用形態を判定してください。
+
+判定した雇用形態と、その根拠となった求人原稿の原文を、Excelの「評価サマリー」シートへ記録してください。
+
+---
+
+# 7. 評価対象項目の抽出
+
+判定した雇用形態に対応する列を確認してください。
+
+- 正社員の場合：「正社員」列
+- 非正規の場合：「非正規（アルバイト・パート・派遣）」列
+
+対応する列が「必須」となっている行だけを評価対象としてください。
+
+対応する列が空欄、必須以外、または対象外となっている行は、Excelの評価結果シートへ出力しないでください。
+
+評価基準スプレッドシートの元の行番号、項目名、列内容を変更しないでください。
+
+独自に評価項目を追加しないでください。
+
+---
+
+# 8. 求人原稿の評価ルール
+
+評価対象となった各項目について、求人原稿本文だけを使用し、次のいずれかに分類してください。
+
+- 記載あり
+- なし
+- その他
+
+企業サイト、採用サイト、競合サイト、一般Webの情報は、この判定に使用しないでください。
+
+## 記載あり
+
+対象項目について、求職者が具体的な魅力を理解できる記載が求人原稿に存在する状態です。
+
+単に関連語句が含まれているだけでなく、制度、条件、仕事の様子、数値、期間、方法、事例などが具体的に伝わっている必要があります。
+
+## なし
+
+対象項目について、求人原稿本文に該当する記載が存在しない状態です。
+
+外部Webに情報が存在していても、求人原稿本文に書かれていなければ「なし」としてください。
+
+## その他
+
+対象項目への言及はあるものの、具体性が不足している、求職者にとってのメリットが分からない、魅力として十分に伝わっていない状態です。
+
+例：
+
+- 「未経験者歓迎」とだけ記載され、研修方法や独り立ちまでの流れが不明
+- 「賞与あり」と記載されているが、回数や支給実績が不明
+- 「働きやすい職場」と記載されているが、根拠が不明
+- 複数名で作業すると書かれているが、相談体制や人間関係までは分からない
+
+項目に関連する語句があるという理由だけで、「記載あり」にしないでください。
+
+---
+
+# 9. 理由欄の作成ルール
+
+## 記載あり
+
+評価の根拠となった求人原稿の文面を、そのまま抜粋してください。
+
+要約、言い換え、補足、推測は行わないでください。
+
+## その他
+
+言及はあるものの具体性に欠けると判断した根拠となる求人原稿の文面を、そのまま抜粋してください。
+
+## なし
+
+理由欄には、必ず次の文字列を記載してください。
+
+記載なし
+
+外部Webで確認した情報を理由欄に入れないでください。
+
+---
+
+# 10. 外部Web調査
+
+求人原稿本文だけを使った評価が完了した後に、文面提案と初回商談準備のためのWeb調査を行ってください。
+
+評価作業とWeb調査を混同しないでください。
+
+## 調査の優先順位
+
+1. ユーザーが指定した対象企業の公式ページ
+2. 対象企業のコーポレートサイト
+3. 対象企業の採用サイト
+4. 対象企業の職種紹介、社員紹介、福利厚生、会社概要
+5. 対象企業の親会社・グループ会社の公式情報
+6. 信頼できる外部情報
+7. ユーザーが指定した競合企業の公式ページ
+8. 必要に応じた一般Web検索
+
+対象企業や競合企業のURL取得も、最初に通常のWeb閲覧機能を使用してください。
+
+外部サイトの取得に失敗した場合は、Python実行環境からの外部通信だけに頼らず、通常のURL参照機能で再試行してください。
+
+## 調査する情報
+
+- 会社の歴史
+- 事業内容
+- 企業規模
+- 親会社やグループ会社
+- 地域での実績
+- 顧客や取引先
+- 競合企業と異なる事業上の強み
+- 教育、研修、資格取得支援
+- キャリアアップ
+- 正社員登用
+- 表彰制度
+- 福利厚生
+- 有給休暇や休業制度
+- 社員の年齢構成や性別構成
+- 社員インタビュー
+- 仕事のやりがい
+- 顧客から感謝された事例
+- 職場の人間関係
+- 相談・フォロー体制
+- 未経験者の教育方法
+- 定着や長期勤務につながる制度
+- 求職者にとって魅力となる設備や職場環境
+
+## 情報の信頼性
+
+対象企業について断定的な文面を作成する場合は、対象企業の公式情報、親会社・グループ会社の公式情報、または信頼できる公開情報で事実確認できる内容を使用してください。
+
+確認できない事実を推測で補わないでください。
+
+情報が古い可能性がある場合は、現在も有効であると確認できない限り断定しないでください。
+
+取得できなかったURL、確認できなかった情報は、Excelの「実行条件・参照ソース」シートに記録してください。
+
+---
+
+# 11. 競合企業情報の扱い
+
+競合企業の情報は、次の目的で使用してください。
+
+- 競合求人で強く訴求されている項目を確認する
+- 求職者が比較しやすい条件や魅力を把握する
+- 対象企業が持っているのに原稿で伝えていない魅力を探す
+- 初回商談で確認すべき情報を見つける
+- 対象企業ならではの差別化仮説を作る
+
+競合企業に存在する制度や条件を、対象企業にも存在するものとして扱わないでください。
+
+競合企業の情報だけを根拠に、対象企業の求人原稿へそのまま追記できる文面を作らないでください。
+
+対象企業側で同様の事実を確認できない場合は、完成文面ではなく、商談時の確認事項として整理してください。
+
+---
+
+# 12. 文面提案対象の選定ルール
+
+文面提案は3項目作成してください。
+
+原則として「記載あり」の項目は文面提案対象にしないでください。
+
+基本的な優先順は次のとおりです。
+
+1. 調査結果が「なし」
+2. 調査結果が「その他」
+3. 調査結果が「記載あり」
+
+---
+
+## 12-1. 競合企業URLが入力されている場合
+
+競合企業URLが1件以上入力されている場合、評価基準リストの優先順位が「1」である、
+
+「競合他社との比較・自社の強み」
+
+の調査結果が「なし」であれば、この項目を必ず文面提案対象に選定してください。
+
+原則としてTOP1としてください。
+
+残りの提案枠は、次の条件を満たす項目から選んでください。
+
+- 優先順位が「2」
+- 調査結果が「なし」
+
+候補が複数ある場合は、次の観点で順位付けしてください。
+
+1. 対象企業の公式情報から事実確認できる
+2. 競合企業との違いを示しやすい
+3. 対象企業ならではの特徴がある
+4. 想定ターゲットの応募判断への影響が大きい
+5. 求職者の不安解消につながる
+6. 求人原稿へ追記した際に具体的な魅力として伝わる
+7. 営業担当者が初回商談で説明しやすい
+8. 採用担当者に追加質問しやすい
+9. 採用効率や応募の質の改善につながる可能性がある
+
+---
+
+## 12-2. 優先順位2の「なし」で必要数に達しない場合
+
+次の順序で候補を補ってください。
+
+1. 優先順位2で「その他」
+2. 優先順位が空欄で「なし」
+3. 優先順位が空欄で「その他」
+4. 対象企業への確認によって有力な訴求になり得る項目
+
+対象企業について確認できない内容を推測して完成文面にしないでください。
+
+---
+
+## 12-3. 競合企業URLが入力されていない場合
+
+次の順序で選定してください。
+
+1. 優先順位1で「なし」
+2. 優先順位2で「なし」
+3. 優先順位1または2で「その他」
+4. 優先順位が空欄で「なし」
+5. 優先順位が空欄で「その他」
+
+競合企業URLが入力されていなくても、対象企業の公式情報から明確な独自性を確認できた場合は、「競合他社との比較・自社の強み」を候補に含めて構いません。
+
+具体的な競合企業との優劣は、根拠なく断定しないでください。
+
+---
+
+## 12-4. 想定ターゲットの反映
+
+想定ターゲット・文面の方向性が入力されている場合は、文面提案の順位付けと文章作成に反映してください。
+
+ただし、ターゲットに合わせるために、対象企業で確認できない制度、条件、職場環境を作り出してはいけません。
+
+---
+
+# 13. 文面提案の作成ルール
+
+選定された3項目について、求人原稿へ追記できる文面案を作成してください。
+
+## そのまま掲載できる文面
+
+対象企業の公開情報から事実確認できる場合は、求人原稿へそのまま追記できる自然な文章を作成してください。
+
+- おおむね100文字程度
+- 求職者にとってのメリットが分かる
+- 抽象的な美辞麗句だけにしない
+- 具体的な制度、事例、数字、仕事の意味などを含める
+- 求人原稿全体の文体になじませる
+- 過度な断定や誇張を避ける
+- 競合企業を名指しで批判しない
+
+## 企業への確認後に使用できる文面
+
+魅力になりそうな情報があるものの、公開情報だけでは事実確認できない場合は、文面提案の冒頭に次を記載してください。
+
+【企業への確認後に使用可能】
+
+どの事実が確認できれば使用できる文章なのか分かる形にしてください。
+
+## 提案対象外
+
+文面提案対象に選ばれなかった行には、必ず次を記載してください。
+
+-
+
+---
+
+# 14. 商談時の確認質問
+
+文面提案TOP3について、それぞれ1問ずつ、採用企業との初回商談で確認する質問を作成してください。
+
+「ありますか」「何件ですか」だけで終わらせず、求人原稿へ反映できる具体的な回答を引き出せる質問にしてください。
+
+若手営業担当者が、そのまま商談で使用できる自然な表現にしてください。
+
+---
+
+# 15. Excelファイルの構成
+
+3つのシートを作成してください。
+
+## シート1：評価結果
+
+評価基準スプレッドシートの元項目を維持したまま、右側に次の3列を追加してください。
+
+- 調査結果
+- 理由
+- 文面提案
+
+対象雇用形態で「必須」となっている行だけを出力してください。
+
+評価基準スプレッドシートに存在する元列は、順序、項目名、内容を維持してください。
+
+### 調査結果
+
+- 記載あり
+- なし
+- その他
+
+### 理由
+
+- 記載あり：求人原稿の該当箇所を原文のまま抜粋
+- その他：求人原稿の該当箇所を原文のまま抜粋
+- なし：記載なし
+
+### 文面提案
+
+- 選定された3項目：文面案
+- それ以外：-
+
+---
+
+## シート2：評価サマリー
+
+### 基本情報
+
+- 対象企業名
+- 求人名
+- 判定した雇用形態
+- 雇用形態判定の根拠
+- 評価対象項目数
+- 記載あり件数
+- その他件数
+- なし件数
+- 記載あり率
+- 求人原稿全体の評価
+- 主な改善余地
+
+### 文面提案TOP3
+
+次の列を持つ表を作成してください。
+
+- 順位
+- No.
+- 評価項目
+- 調査結果
+- 評価基準上の優先順位
+- 選定理由
+- 対象企業の強み
+- 競合企業との比較・差別化仮説
+- 文面提案
+- 情報の確度
+- 企業への確認要否
+- 商談時の確認質問
+- 主な参照元URL
+
+### 情報の確度
+
+- 公式情報で確認済み
+- 信頼できる外部情報で確認
+- 一部確認済み
+- 企業への確認が必要
+
+---
+
+## シート3：実行条件・参照ソース
+
+次の情報を記録してください。
+
+- 実行日
+- プロンプトバージョン：1.1
+- 評価基準スプレッドシートURL
+- 評価基準の取得方法
+- 求人原稿URL
+- 求人原稿全文の入力有無
+- 対象企業の参考ページ
+- 競合企業の参考ページ
+- 想定ターゲット・文面の方向性
+- 文面提案数
+- 文面文字数の目安
+- 実際に参照したURL
+- 各URLの情報区分
+- 各URLから確認した主な情報
+- 取得できなかったURL
+- 取得に使用した方法
+- 事実確認できなかった事項
+- 出力時の注意事項
+
+URLの情報区分は次のいずれかにしてください。
+
+- 対象企業公式
+- 親会社・グループ公式
+- 競合企業公式
+- 求人掲載ページ
+- 外部情報
+- その他
+
+---
+
+# 16. Excelの書式
+
+最低限、次の書式を設定してください。
+
+- ヘッダーの背景色
+- ヘッダーの太字
+- ヘッダーの文字色
+- 全セルへの罫線
+- テキストの折り返し
+- 上揃え
+- 適切な列幅
+- 1行目の固定
+- オートフィルター
+- 長文を読める行の高さ
+
+調査結果列は次のように色分けしてください。
+
+- 記載あり：緑系
+- その他：黄系
+- なし：赤系
+
+文面提案が記載されたセルは、薄い強調色を付けてください。
+
+---
+
+# 17. 出力ファイル名
+
+次の形式を基本としてください。
+
+求人原稿魅力度評価_対象企業名_実行日.xlsx
+
+対象企業名が特定できない場合は、求人名を使用してください。
+
+ファイル名に使用できない記号は除去してください。
+
+---
+
+# 18. 出力前セルフチェック
+
+Excelファイルを生成する前に、必ず次を検証してください。
+
+1. 評価基準を実際に取得できているか
+2. 評価基準の必要な列がすべて存在するか
+3. 評価基準のデータ行が取得できているか
+4. 評価基準の取得にPythonからの外部通信を使用していないか
+5. 求人原稿の雇用形態を正しく判定しているか
+6. 判定した雇用形態の列で「必須」の行だけを出力しているか
+7. 必須でない行が混入していないか
+8. 評価基準の元列と元内容を維持しているか
+9. すべての行に「調査結果」「理由」「文面提案」が入っているか
+10. 調査結果が指定された3分類のいずれかになっているか
+11. 「なし」の理由がすべて「記載なし」になっているか
+12. 「記載あり」「その他」の理由が求人原稿からの原文抜粋になっているか
+13. 外部Web情報を求人原稿の評価判定に使用していないか
+14. 文面提案が3項目だけ作成されているか
+15. 文面提案対象外の行がすべて「-」になっているか
+16. 競合企業URLがある場合の強制選定ルールを守っているか
+17. 残りの項目が原則として優先順位2から選ばれているか
+18. TOP3の選定理由が説明されているか
+19. TOP3ごとに商談時の確認質問があるか
+20. 対象企業について確認できない内容を断定していないか
+21. 競合企業の制度を対象企業の制度として扱っていないか
+22. 各文面提案の参照元が記録されているか
+23. 取得できなかったURLや確認できなかった情報が記録されているか
+24. Excel内に数式エラーや欠損した必須セルがないか
+25. Excelファイルを実際にダウンロードできる状態になっているか
+
+問題がある場合は修正してから、最終的なExcelファイルを出力してください。
+
+---
+
+# 19. 最終出力
+
+処理完了後は、チャット本文に長い分析を繰り返さず、次の内容を簡潔に伝えてください。
+
+- 判定した雇用形態
+- 評価対象項目数
+- 記載あり・その他・なしの件数
+- 選定した文面提案TOP3
+- 取得できなかった重要な情報がある場合の注意
+- Excelファイルのダウンロードリンク
+
+必ずExcelファイル（.xlsx）を生成してください。</script>
+<script>
+"use strict";
+const KEY="job_appeal_prompt_maker_v1_1",GEMINI="https://gemini.google.com/app";
+const $=id=>document.getElementById(id);
+const el={jobUrl:$("jobUrl"),jobText:$("jobText"),companyUrls:$("companyUrls"),competitorUrls:$("competitorUrls"),target:$("target"),preview:$("promptPreview"),status:$("status")};
+const template=$("promptTemplate").textContent.trim();
+const value=(v,f)=>v.trim()||f;
+const lines=v=>v.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).length;
+function prompt(){return template.replaceAll("{{JOB_URL}}",value(el.jobUrl.value,"入力なし")).replaceAll("{{JOB_TEXT}}",value(el.jobText.value,"入力なし")).replaceAll("{{COMPANY_URLS}}",value(el.companyUrls.value,"入力なし")).replaceAll("{{COMPETITOR_URLS}}",value(el.competitorUrls.value,"入力なし")).replaceAll("{{TARGET_PERSONA}}",value(el.target.value,"指定なし"))}
+function indicators(){const u=!!el.jobUrl.value.trim(),t=!!el.jobText.value.trim();$("jobCount").textContent=el.jobText.value.length.toLocaleString("ja-JP")+"文字";$("targetCount").textContent=el.target.value.length.toLocaleString("ja-JP")+"文字";$("companyCount").textContent=lines(el.companyUrls.value)+"件";$("competitorCount").textContent=lines(el.competitorUrls.value)+"件";$("targetSummary").textContent=el.target.value.trim()?"指定あり":"指定なし";$("promptCount").textContent=el.preview.value.length.toLocaleString("ja-JP")+"文字";$("jobSummary").textContent=u&&t?"URL＋全文":t?"全文あり":u?"URLのみ":"未入力"}
+function build(){el.preview.value=prompt();indicators()}
+function save(){try{localStorage.setItem(KEY,JSON.stringify({jobUrl:el.jobUrl.value,jobText:el.jobText.value,companyUrls:el.companyUrls.value,competitorUrls:el.competitorUrls.value,target:el.target.value}))}catch(e){console.warn(e)}}
+function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||"null");if(d){el.jobUrl.value=d.jobUrl||"";el.jobText.value=d.jobText||"";el.companyUrls.value=d.companyUrls||"";el.competitorUrls.value=d.competitorUrls||"";el.target.value=d.target||""}}catch(e){console.warn(e)}build()}
+function status(msg,type="success"){el.status.className="status show "+type;el.status.textContent=msg;clearTimeout(status.timer);status.timer=setTimeout(()=>{el.status.className="status";el.status.textContent=""},6500)}
+function valid(){if(!el.jobUrl.value.trim()&&!el.jobText.value.trim()){status("求人原稿URLまたは求人原稿全文のどちらかを入力してください。","error");el.jobUrl.focus();return false}return true}
+async function copyText(text){if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);return}const a=document.createElement("textarea");a.value=text;a.style.position="fixed";a.style.left="-9999px";document.body.appendChild(a);a.select();const ok=document.execCommand("copy");a.remove();if(!ok)throw new Error("copy failed")}
+async function run(open){if(!valid())return;try{await copyText(el.preview.value.trim()||prompt());if(open){const w=window.open(GEMINI,"_blank","noopener,noreferrer");status(w?"プロンプトをコピーし、Geminiを開きました。入力欄へ貼り付けて送信してください。":"コピーは完了しましたが、Geminiを開けませんでした。ポップアップ設定を確認してください。",w?"success":"warning")}else status("プロンプトをコピーしました。")}catch(e){console.error(e);status("コピーできませんでした。生成プロンプト欄を手動でコピーしてください。","error");el.preview.focus();el.preview.select()}}
+let timer;[el.jobUrl,el.jobText,el.companyUrls,el.competitorUrls,el.target].forEach(x=>x.addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(()=>{build();save()},120)}));el.preview.addEventListener("input",indicators);
+$("copyBtn").onclick=()=>run(false);$("geminiBtn").onclick=()=>run(true);$("refreshBtn").onclick=()=>{build();save();status("フォームの入力内容からプロンプトを再生成しました。")};$("clearBtn").onclick=()=>{const any=[el.jobUrl,el.jobText,el.companyUrls,el.competitorUrls,el.target].some(x=>x.value.trim());if(any&&!confirm("入力内容と保存データをすべて削除しますか？"))return;[el.jobUrl,el.jobText,el.companyUrls,el.competitorUrls,el.target].forEach(x=>x.value="");localStorage.removeItem(KEY);build();status("入力内容をクリアしました。");el.jobUrl.focus()};
+const modal=$("modalBg");$("helpBtn").onclick=()=>{modal.classList.add("open");document.body.style.overflow="hidden";$("closeBtn").focus()};function close(){modal.classList.remove("open");document.body.style.overflow="";$("helpBtn").focus()}$("closeBtn").onclick=close;modal.onclick=e=>{if(e.target===modal)close()};document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("open"))close()});load();
+</script>
+</body>
+</html>

@@ -9,14 +9,14 @@
 <title>求人原稿 魅力度評価プロンプトメーカー</title>
 <style>
 :root{--bg:#f4f6f8;--card:#fff;--line:#d8e0e7;--text:#20303d;--muted:#687887;--blue:#315f7d;--blue2:#244a63;--purple:#695b8d;--soft:#eaf1f5;--shadow:0 12px 34px rgba(34,52,67,.08)}
-*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 10% 0,rgba(49,95,125,.1),transparent 30rem),radial-gradient(circle at 92% 3%,rgba(105,91,141,.08),transparent 28rem),var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;line-height:1.7}button,input,textarea{font:inherit}a{color:var(--blue)}.wrap{width:min(1180px,calc(100% - 32px));margin:auto;padding:28px 0 56px}.hero{display:flex;justify-content:space-between;gap:22px;padding:26px 28px;margin-bottom:20px;color:#fff;background:linear-gradient(125deg,#294f68,#48738c 56%,#685a88);border-radius:22px;box-shadow:var(--shadow)}.brand{display:flex;gap:16px}.mark{display:grid;place-items:center;width:54px;height:54px;flex:none;border:1px solid rgba(255,255,255,.3);border-radius:16px;background:rgba(255,255,255,.13);font-weight:900;font-size:23px}.eyebrow{margin:0 0 2px;color:rgba(255,255,255,.75);font-size:12px;font-weight:800;letter-spacing:.09em}h1{margin:0;font-size:clamp(24px,4vw,36px);line-height:1.25}h2{margin:0;font-size:19px}.desc{margin:8px 0 0;max-width:760px;color:rgba(255,255,255,.88);font-size:14px}.heroBtns{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}.pill{padding:8px 13px;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:800;text-decoration:none;cursor:pointer}.pill:hover{background:rgba(255,255,255,.2)}.notice{display:flex;gap:10px;padding:13px 16px;margin-bottom:18px;border:1px solid #d5e0e8;border-radius:14px;background:rgba(255,255,255,.84);font-size:13px}.grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px;align-items:start}.main,.side{display:grid;gap:18px}.side{position:sticky;top:16px}.card{padding:22px;border:1px solid var(--line);border-radius:21px;background:var(--card);box-shadow:var(--shadow)}.head{margin-bottom:16px}.sub{margin:5px 0 0;color:var(--muted);font-size:13px}.num{display:inline-grid;place-items:center;width:28px;height:28px;margin-right:9px;color:var(--blue);border-radius:9px;background:var(--soft);font-size:13px;font-weight:900;vertical-align:2px}.fields{display:grid;gap:16px}.field{display:grid;gap:7px}.labelrow{display:flex;justify-content:space-between;gap:12px}label{font-size:14px;font-weight:800}.hint,.count{color:var(--muted);font-size:11px}.note{margin:0;color:var(--muted);font-size:12px}input,textarea{width:100%;border:1px solid #b9c6d2;border-radius:10px;background:#fff;color:var(--text);outline:none}input{min-height:46px;padding:10px 12px}textarea{min-height:128px;padding:12px 13px;resize:vertical;line-height:1.65}#jobText{min-height:290px}#promptPreview{min-height:440px;background:#fbfcfd;font:12.5px/1.62 "Cascadia Code",Consolas,"Yu Gothic UI",monospace}input:focus,textarea:focus{border-color:#688aa0;box-shadow:0 0 0 4px rgba(49,95,125,.1)}.set{display:grid;grid-template-columns:100px 1fr;gap:9px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.set:last-child{border-bottom:0}.set span:first-child{color:var(--muted);font-weight:700}.set span:last-child{font-weight:800}.criteria{display:inline-block;margin-top:12px;padding:9px 11px;border:1px solid #cfdae3;border-radius:10px;background:#f8fafc;font-size:12px;font-weight:800;text-decoration:none}.summary{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.summary:last-child{border-bottom:0}.summary span{color:var(--muted)}details.card{padding:0;overflow:hidden}summary{display:flex;justify-content:space-between;padding:20px 22px;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary:after{content:"＋";display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:var(--soft);color:var(--blue);font-size:19px}details[open] summary:after{content:"－"}.promptbody{padding:0 22px 22px;border-top:1px solid var(--line)}.promptnote{margin:13px 0;color:var(--muted);font-size:12px}.actions{position:sticky;bottom:10px;z-index:5;display:flex;gap:9px;flex-wrap:wrap;padding:14px;margin-top:18px;border:1px solid rgba(188,202,213,.9);border-radius:17px;background:rgba(255,255,255,.93);box-shadow:0 14px 38px rgba(29,47,62,.15);backdrop-filter:blur(10px)}.btn{min-height:45px;padding:10px 16px;border:1px solid transparent;border-radius:11px;font-weight:850;cursor:pointer}.primary{color:#fff;background:var(--blue)}.primary:hover{background:var(--blue2)}.accent{color:#fff;background:var(--purple)}.secondary{border-color:#b9c6d2;background:#fff;color:#334a5b}.danger{margin-left:auto;border-color:#e5c6c6;background:#fff;color:#a34444}.status{display:none;padding:12px 14px;margin-bottom:17px;border-radius:12px;font-size:13px;font-weight:750}.status.show{display:block}.status.success{color:#285d48;border:1px solid #bcdac9;background:#e7f3ec}.status.warning{color:#76531b;border:1px solid #ead6a7;background:#fff4da}.status.error{color:#883737;border:1px solid #e4bcbc;background:#faeaea}.modalbg{display:none;position:fixed;inset:0;z-index:100;padding:22px;background:rgba(20,32,43,.56);backdrop-filter:blur(4px)}.modalbg.open{display:grid;place-items:center}.modal{width:min(760px,100%);max-height:calc(100vh - 44px);overflow:auto;border-radius:22px;background:#fff;box-shadow:0 24px 70px rgba(9,21,31,.3)}.modalhead{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.96)}.close{width:38px;height:38px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:21px;cursor:pointer}.modalbody{padding:21px 23px}.help+ .help{padding-top:18px;margin-top:18px;border-top:1px solid var(--line)}.help h3{margin:0 0 7px;font-size:16px}.help p,.help li{color:#4c5f6d;font-size:13px}.helpnote{padding:13px 15px;border-left:4px solid var(--purple);border-radius:8px;background:#f0edf7;font-size:13px}.footer{padding-top:25px;color:var(--muted);font-size:11px;text-align:center}@media(max-width:900px){.grid{grid-template-columns:1fr}.side{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.wrap{width:calc(100% - 20px);padding-top:10px}.hero{display:grid;padding:20px 18px;border-radius:18px}.heroBtns{justify-content:flex-start}.card{padding:18px;border-radius:17px}.side{grid-template-columns:1fr}summary{padding:18px}.promptbody{padding:0 18px 18px}.btn{flex:1 1 calc(50% - 8px)}.danger{margin-left:0}.modalbg{padding:10px}}
+*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 10% 0,rgba(49,95,125,.1),transparent 30rem),radial-gradient(circle at 92% 3%,rgba(105,91,141,.08),transparent 28rem),var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;line-height:1.7}button,input,textarea,select{font:inherit}a{color:var(--blue)}.wrap{width:min(1180px,calc(100% - 32px));margin:auto;padding:28px 0 56px}.hero{display:flex;justify-content:space-between;gap:22px;padding:26px 28px;margin-bottom:20px;color:#fff;background:linear-gradient(125deg,#294f68,#48738c 56%,#685a88);border-radius:22px;box-shadow:var(--shadow)}.brand{display:flex;gap:16px}.mark{display:grid;place-items:center;width:54px;height:54px;flex:none;border:1px solid rgba(255,255,255,.3);border-radius:16px;background:rgba(255,255,255,.13);font-weight:900;font-size:23px}.eyebrow{margin:0 0 2px;color:rgba(255,255,255,.75);font-size:12px;font-weight:800;letter-spacing:.09em}h1{margin:0;font-size:clamp(24px,4vw,36px);line-height:1.25}h2{margin:0;font-size:19px}.desc{margin:8px 0 0;max-width:760px;color:rgba(255,255,255,.88);font-size:14px}.heroBtns{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}.pill{padding:8px 13px;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:800;text-decoration:none;cursor:pointer}.pill:hover{background:rgba(255,255,255,.2)}.notice{display:flex;gap:10px;padding:13px 16px;margin-bottom:18px;border:1px solid #d5e0e8;border-radius:14px;background:rgba(255,255,255,.84);font-size:13px}.grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px;align-items:start}.main,.side{display:grid;gap:18px}.side{position:sticky;top:16px}.card{padding:22px;border:1px solid var(--line);border-radius:21px;background:var(--card);box-shadow:var(--shadow)}.head{margin-bottom:16px}.sub{margin:5px 0 0;color:var(--muted);font-size:13px}.num{display:inline-grid;place-items:center;width:28px;height:28px;margin-right:9px;color:var(--blue);border-radius:9px;background:var(--soft);font-size:13px;font-weight:900;vertical-align:2px}.fields{display:grid;gap:16px}.field{display:grid;gap:7px}.labelrow{display:flex;justify-content:space-between;gap:12px}label{font-size:14px;font-weight:800}.hint,.count{color:var(--muted);font-size:11px}.note{margin:0;color:var(--muted);font-size:12px}input,textarea,select{width:100%;border:1px solid #b9c6d2;border-radius:10px;background:#fff;color:var(--text);outline:none}input,select{min-height:46px;padding:10px 12px}textarea{min-height:128px;padding:12px 13px;resize:vertical;line-height:1.65}#jobText{min-height:290px}#promptPreview{min-height:440px;background:#fbfcfd;font:12.5px/1.62 "Cascadia Code",Consolas,"Yu Gothic UI",monospace}input:focus,textarea:focus,select:focus{border-color:#688aa0;box-shadow:0 0 0 4px rgba(49,95,125,.1)}.set{display:grid;grid-template-columns:100px 1fr;gap:9px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.set:last-child{border-bottom:0}.set span:first-child{color:var(--muted);font-weight:700}.set span:last-child{font-weight:800}.criteria{display:inline-block;margin-top:12px;padding:9px 11px;border:1px solid #cfdae3;border-radius:10px;background:#f8fafc;font-size:12px;font-weight:800;text-decoration:none}.settingsDetails{margin-top:14px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;overflow:hidden}.settingsDetails>summary{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;color:#334a5b;background:#f8fafc;font-size:13px;font-weight:850}.settingsDetails>summary:after{content:"＋";display:grid;place-items:center;width:24px;height:24px;border-radius:7px;background:var(--soft);color:var(--blue);font-size:16px}.settingsDetails[open]>summary:after{content:"－"}.settingsBody{display:grid;gap:13px;padding:14px;border-top:1px solid var(--line);background:#fff}.settingsField{display:grid;gap:6px}.settingsField label{font-size:12px}.settingsHelp{margin:0;color:var(--muted);font-size:11px;line-height:1.55}.settingsReset{min-height:39px;padding:8px 12px;border:1px solid #c7d2dc;border-radius:9px;background:#fff;color:#3f5667;font-size:12px;font-weight:800;cursor:pointer}.settingsReset:hover{background:var(--soft)}.summary{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.summary:last-child{border-bottom:0}.summary span{color:var(--muted)}details.card{padding:0;overflow:hidden}summary{display:flex;justify-content:space-between;padding:20px 22px;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary:after{content:"＋";display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:var(--soft);color:var(--blue);font-size:19px}details[open] summary:after{content:"－"}.promptbody{padding:0 22px 22px;border-top:1px solid var(--line)}.promptnote{margin:13px 0;color:var(--muted);font-size:12px}.actions{display:flex;gap:9px;flex-wrap:wrap;padding:14px;margin:0;border:1px solid rgba(188,202,213,.9);border-radius:17px;background:rgba(255,255,255,.96);box-shadow:var(--shadow)}.btn{min-height:45px;padding:10px 16px;border:1px solid transparent;border-radius:11px;font-weight:850;cursor:pointer}.primary{color:#fff;background:var(--blue)}.primary:hover{background:var(--blue2)}.accent{color:#fff;background:var(--purple)}.secondary{border-color:#b9c6d2;background:#fff;color:#334a5b}.danger{margin-left:auto;border-color:#e5c6c6;background:#fff;color:#a34444}.status{display:none;padding:12px 14px;margin-bottom:17px;border-radius:12px;font-size:13px;font-weight:750}.status.show{display:block}.status.success{color:#285d48;border:1px solid #bcdac9;background:#e7f3ec}.status.warning{color:#76531b;border:1px solid #ead6a7;background:#fff4da}.status.error{color:#883737;border:1px solid #e4bcbc;background:#faeaea}.modalbg{display:none;position:fixed;inset:0;z-index:100;padding:22px;background:rgba(20,32,43,.56);backdrop-filter:blur(4px)}.modalbg.open{display:grid;place-items:center}.modal{width:min(760px,100%);max-height:calc(100vh - 44px);overflow:auto;border-radius:22px;background:#fff;box-shadow:0 24px 70px rgba(9,21,31,.3)}.modalhead{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.96)}.close{width:38px;height:38px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:21px;cursor:pointer}.modalbody{padding:21px 23px}.help+ .help{padding-top:18px;margin-top:18px;border-top:1px solid var(--line)}.help h3{margin:0 0 7px;font-size:16px}.help p,.help li{color:#4c5f6d;font-size:13px}.helpnote{padding:13px 15px;border-left:4px solid var(--purple);border-radius:8px;background:#f0edf7;font-size:13px}.footer{padding-top:25px;color:var(--muted);font-size:11px;text-align:center}@media(max-width:900px){.grid{grid-template-columns:1fr}.side{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.wrap{width:calc(100% - 20px);padding-top:10px}.hero{display:grid;padding:20px 18px;border-radius:18px}.heroBtns{justify-content:flex-start}.card{padding:18px;border-radius:17px}.side{grid-template-columns:1fr}summary{padding:18px}.promptbody{padding:0 18px 18px}.btn{flex:1 1 calc(50% - 8px)}.danger{margin-left:0}.modalbg{padding:10px}}
 </style>
 </head>
 <body>
 <main class="wrap">
 <header class="hero">
 <div class="brand"><div class="mark">原+</div><div><p class="eyebrow">JOB APPEAL EVALUATION</p><h1>求人原稿 魅力度評価<br>プロンプトメーカー</h1><p class="desc">求人原稿と企業情報を入力し、初回商談準備用のExcel評価資料をGeminiに作成してもらうためのプロンプトを生成します。</p></div></div>
-<div class="heroBtns"><button class="pill" id="helpBtn">？ 使い方</button><a class="pill" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">評価基準を確認</a></div>
+<div class="heroBtns"><button class="pill" id="helpBtn" type="button">？ 使い方</button><a class="pill" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">評価基準を確認</a></div>
 </header>
 <div class="notice"><span>ℹ</span><div><strong>入力内容はサーバーへ送信しません。</strong> このページ内でプロンプトを作成し、ブラウザ内へ一時保存します。Geminiへの送信は、Gemini画面で利用者が実行します。</div></div>
 <div id="status" class="status" role="status" aria-live="polite"></div>
@@ -26,24 +26,24 @@
 <div class="field"><div class="labelrow"><label for="jobUrl">求人原稿URL</label><span class="hint">URLまたは全文のどちらか必須</span></div><input id="jobUrl" type="url" placeholder="https://example.com/job/..."><p class="note">取得制限のある求人サイトでは、原稿全文も貼り付けることを推奨します。</p></div>
 <div class="field"><div class="labelrow"><label for="jobText">求人原稿全文</label><span id="jobCount" class="count">0文字</span></div><textarea id="jobText" placeholder="求人原稿のタイトル、会社名、給与、勤務時間、仕事内容、待遇、応募資格などを全文貼り付けてください。"></textarea></div>
 </div></article>
-<article class="card"><div class="head"><h2><span class="num">2</span>企業・競合情報</h2><p class="sub">参考ページは1行につき1URLで入力してください。未入力でも一般Web検索で補完する指示が含まれます。</p></div><div class="fields">
+<article class="card"><div class="head"><h2><span class="num">2</span>企業・競合情報</h2><p class="sub">参考ページは1行につき1URLで入力してください。調査範囲は右側の「実行設定」で変更できます。</p></div><div class="fields">
 <div class="field"><div class="labelrow"><label for="companyUrls">対象企業の参考ページ</label><span class="hint">任意・複数可</span></div><textarea id="companyUrls" placeholder="https://example.com/&#10;https://example.com/recruit/&#10;https://example.com/interview/"></textarea><p class="note">コーポレートサイト、採用ページ、職種紹介、社員インタビュー、福利厚生ページなど。</p></div>
 <div class="field"><div class="labelrow"><label for="competitorUrls">競合企業の参考ページ</label><span class="hint">任意・複数可</span></div><textarea id="competitorUrls" placeholder="https://competitor.example.com/recruit/&#10;https://job.example.com/competitor/"></textarea><p class="note">競合URLがある場合、「競合他社との比較・自社の強み」の強制選定ルールが適用されます。</p></div>
 </div></article>
 <article class="card"><div class="head"><h2><span class="num">3</span>ターゲット・文面の方向性</h2><p class="sub">文面提案へ反映する求職者像や訴求方針を入力します。</p></div><div class="field"><div class="labelrow"><label for="target">想定ターゲット・文面の方向性</label><span id="targetCount" class="count">0文字</span></div><textarea id="target" placeholder="例：50代・60代の未経験者。地元で長く働ける安心感と、作業の覚えやすさを重視して訴求する。"></textarea></div></article>
+<div class="actions" aria-label="実行操作"><button id="copyBtn" class="btn primary" type="button">プロンプトをコピー</button><button id="geminiBtn" class="btn accent" type="button">コピーしてGeminiを開く</button><button id="refreshBtn" class="btn secondary" type="button">プレビューを再生成</button><button id="clearBtn" class="btn danger" type="button">入力をクリア</button></div>
 <details class="card" open><summary><div><h2><span class="num">4</span>生成プロンプト</h2><p class="sub">フォームの入力内容を反映したGemini向けプロンプトです。</p></div></summary><div class="promptbody"><p class="promptnote">直接編集できますが、フォームを変更すると入力内容から再生成されます。</p><textarea id="promptPreview" spellcheck="false"></textarea></div></details>
-<div class="actions"><button id="copyBtn" class="btn primary">プロンプトをコピー</button><button id="geminiBtn" class="btn accent">コピーしてGeminiを開く</button><button id="refreshBtn" class="btn secondary">プレビューを再生成</button><button id="clearBtn" class="btn danger">入力をクリア</button></div>
 </section>
 <aside class="side">
-<article class="card"><div class="head"><h2>固定設定</h2><p class="sub">初期版では以下の条件で固定しています。</p></div><div class="set"><span>評価基準</span><span>求人原稿改善リスト【テスト版】</span></div><div class="set"><span>出力形式</span><span>Excel（.xlsx）</span></div><div class="set"><span>提案数</span><span>3項目</span></div><div class="set"><span>文面長</span><span>100文字程度</span></div><div class="set"><span>Web調査</span><span>指定URL優先＋一般Web補完</span></div><div class="set"><span>Prompt</span><span>v1.1</span></div><a class="criteria" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">↗ 評価基準を開く</a></article>
+<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">通常は標準設定のまま利用できます。案件に応じて詳細設定を変更してください。</p></div><div class="set"><span>評価基準</span><span>求人原稿改善リスト【テスト版】</span></div><div class="set"><span>出力形式</span><span>Excel（.xlsx）</span></div><div class="set"><span>提案数</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>Web調査</span><span id="webSettingSummary">指定URL優先＋一般Web補完</span></div><div class="set"><span>Prompt</span><span>v1.2</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">文面提案数</label><select id="proposalCount"><option value="1">1項目</option><option value="3" selected>3項目（標準）</option><option value="5">5項目</option></select><p class="settingsHelp">競合URLがあり、優先順位1の項目が未記載なら、提案数にかかわらず1件目へ選定します。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option value="100" selected>100文字程度（標準）</option><option value="150">150文字程度</option></select><p class="settingsHelp">厳密な文字数制限ではなく、求人原稿へ転用しやすい長さの目安です。</p></div><div class="settingsField"><label for="webMode">Web調査範囲</label><select id="webMode"><option value="specified">指定URLのみ</option><option value="balanced" selected>指定URL優先＋一般Web補完（標準）</option><option value="broad">一般Webを広く調査</option></select><p class="settingsHelp">指定URLのみでは、確認できない情報を推測せず「企業への確認が必要」とします。</p></div><button id="resetSettingsBtn" class="settingsReset" type="button">標準設定に戻す</button></div></details><a class="criteria" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">↗ 評価基準を開く</a></article>
 <article class="card"><div class="head"><h2>入力状況</h2><p class="sub">プロンプトへ反映される情報です。</p></div><div class="summary"><span>求人情報</span><strong id="jobSummary">未入力</strong></div><div class="summary"><span>企業URL</span><strong id="companyCount">0件</strong></div><div class="summary"><span>競合URL</span><strong id="competitorCount">0件</strong></div><div class="summary"><span>ターゲット</span><strong id="targetSummary">指定なし</strong></div><div class="summary"><span>プロンプト</span><strong id="promptCount">0文字</strong></div></article>
 </aside>
 </div>
 <p class="footer">GitHub Pages上で動作する静的ツールです。入力内容・生成プロンプト・Geminiの出力内容は利用者自身で確認してください。</p>
 </main>
-<div id="modalBg" class="modalbg"><div class="modal"><div class="modalhead"><h2>使い方</h2><button id="closeBtn" class="close" aria-label="閉じる">×</button></div><div class="modalbody"><section class="help"><h3>基本の流れ</h3><ol><li>求人原稿URLまたは原稿全文を入力します。</li><li>対象企業・競合企業の参考ページがあれば入力します。</li><li>必要に応じてターゲットや文面方向を入力します。</li><li>「コピーしてGeminiを開く」を押します。</li><li>Geminiへ貼り付けて送信し、Excelをダウンロードします。</li></ol></section><section class="help"><h3>求人原稿の入力</h3><p>URLだけでも実行できますが、CAPTCHAやログイン制限のあるサイトでは本文を取得できないことがあります。全文を貼り付けると安定します。</p></section><section class="help"><h3>競合URLを入力した場合</h3><p>優先順位1の「競合他社との比較・自社の強み」が未記載なら、文面提案TOP1として扱う指示が適用されます。</p></section><section class="help"><h3>入力データ</h3><div class="helpnote">入力内容はブラウザのローカルストレージに自動保存されます。共用PCでは作業後に「入力をクリア」を押してください。</div></section></div></div></div>
+<div id="modalBg" class="modalbg"><div class="modal"><div class="modalhead"><h2>使い方</h2><button id="closeBtn" class="close" type="button" aria-label="閉じる">×</button></div><div class="modalbody"><section class="help"><h3>基本の流れ</h3><ol><li>求人原稿URLまたは原稿全文を入力します。</li><li>対象企業・競合企業の参考ページがあれば入力します。</li><li>必要に応じてターゲットや文面方向を入力します。</li><li>「コピーしてGeminiを開く」を押します。</li><li>開いたGeminiの入力欄へ貼り付けて送信し、Excelをダウンロードします。</li></ol></section><section class="help"><h3>求人原稿の入力</h3><p>URLだけでも実行できますが、CAPTCHAやログイン制限のあるサイトでは本文を取得できないことがあります。全文を貼り付けると安定します。</p></section><section class="help"><h3>競合URLを入力した場合</h3><p>優先順位1の「競合他社との比較・自社の強み」が未記載なら、文面提案TOP1として扱う指示が適用されます。</p></section><section class="help"><h3>詳細設定</h3><p>提案数・文面長・Web調査範囲を案件ごとに変更できます。設定はブラウザへ保存され、「入力をクリア」を押しても維持されます。必要なときだけ「標準設定に戻す」を使用してください。</p></section><section class="help"><h3>入力データ</h3><div class="helpnote">入力内容はブラウザのローカルストレージに自動保存されます。共用PCでは作業後に「入力をクリア」を押してください。</div></section></div></div></div>
 
-<script type="text/plain" id="promptTemplate"># 求人原稿魅力度評価・初回商談準備プロンプト v1.1
+<script type="text/plain" id="promptTemplate"># 求人原稿魅力度評価・初回商談準備プロンプト v1.2
 
 あなたは、求人広告の改善分析と、採用支援サービスの初回商談準備を支援する専門家です。
 
@@ -84,17 +84,17 @@ Excelファイル（.xlsx）
 
 ## 文面提案数
 
-3項目
+{{PROPOSAL_COUNT}}項目
 
 ## 文面提案の長さ
 
-1項目につき、おおむね100文字程度としてください。
+1項目につき、おおむね{{TEXT_LENGTH}}文字程度としてください。
 
-意味が途切れたり不自然になったりする場合は、80～130文字程度の範囲で調整して構いません。
+{{TEXT_LENGTH_GUIDANCE}}
 
 ## Web調査方法
 
-ユーザーが指定したURLを優先し、不足する場合は一般Web検索で補完してください。
+{{WEB_RESEARCH_INSTRUCTION}}
 
 ---
 
@@ -133,7 +133,7 @@ Excelファイル（.xlsx）
 5. 評価対象となる必須項目を抽出する
 6. 求人原稿本文だけを使って各項目を評価する
 7. 対象企業と競合企業のWeb調査を行う
-8. 文面提案TOP3を選定する
+8. 文面提案上位N件を選定する
 9. 商談時の確認質問を作成する
 10. Excelに格納するデータを確定する
 11. 必要に応じてPythonなどを使いExcelファイルを生成する
@@ -342,6 +342,8 @@ Python実行環境での外部通信が失敗した場合でも、Gemini本体�
 
 評価作業とWeb調査を混同しないでください。
 
+第1章の「Web調査方法」に記載された今回の調査範囲を最優先してください。「指定URLのみ」の場合は、以下に一般Web検索の記載があっても実行しないでください。
+
 ## 調査の優先順位
 
 1. ユーザーが指定した対象企業の公式ページ
@@ -414,7 +416,7 @@ Python実行環境での外部通信が失敗した場合でも、Gemini本体�
 
 # 12. 文面提案対象の選定ルール
 
-文面提案は3項目作成してください。
+指定された文面提案数をN件とします。この案件ではN={{PROPOSAL_COUNT}}件です。文面提案をN件作成してください。
 
 原則として「記載あり」の項目は文面提案対象にしないでください。
 
@@ -436,7 +438,9 @@ Python実行環境での外部通信が失敗した場合でも、Gemini本体�
 
 原則としてTOP1としてください。
 
-残りの提案枠は、次の条件を満たす項目から選んでください。
+強制選定が適用され、Nが2件以上の場合、残りのN－1件は、次の条件を満たす項目から選んでください。
+
+強制選定が適用されない場合は、N件すべてを同じ条件から選んでください。
 
 - 優先順位が「2」
 - 調査結果が「なし」
@@ -494,13 +498,13 @@ Python実行環境での外部通信が失敗した場合でも、Gemini本体�
 
 # 13. 文面提案の作成ルール
 
-選定された3項目について、求人原稿へ追記できる文面案を作成してください。
+選定された上位N件について、求人原稿へ追記できる文面案を作成してください。
 
 ## そのまま掲載できる文面
 
 対象企業の公開情報から事実確認できる場合は、求人原稿へそのまま追記できる自然な文章を作成してください。
 
-- おおむね100文字程度
+- おおむね{{TEXT_LENGTH}}文字程度
 - 求職者にとってのメリットが分かる
 - 抽象的な美辞麗句だけにしない
 - 具体的な制度、事例、数字、仕事の意味などを含める
@@ -526,7 +530,7 @@ Python実行環境での外部通信が失敗した場合でも、Gemini本体�
 
 # 14. 商談時の確認質問
 
-文面提案TOP3について、それぞれ1問ずつ、採用企業との初回商談で確認する質問を作成してください。
+文面提案上位N件について、それぞれ1問ずつ、採用企業との初回商談で確認する質問を作成してください。
 
 「ありますか」「何件ですか」だけで終わらせず、求人原稿へ反映できる具体的な回答を引き出せる質問にしてください。
 
@@ -564,7 +568,7 @@ Python実行環境での外部通信が失敗した場合でも、Gemini本体�
 
 ### 文面提案
 
-- 選定された3項目：文面案
+- 選定された上位N件：文面案
 - それ以外：-
 
 ---
@@ -585,7 +589,7 @@ Python実行環境での外部通信が失敗した場合でも、Gemini本体�
 - 求人原稿全体の評価
 - 主な改善余地
 
-### 文面提案TOP3
+### 文面提案・改善候補
 
 次の列を持つ表を作成してください。
 
@@ -617,7 +621,7 @@ Python実行環境での外部通信が失敗した場合でも、Gemini本体�
 次の情報を記録してください。
 
 - 実行日
-- プロンプトバージョン：1.1
+- プロンプトバージョン：1.2
 - 評価基準スプレッドシートURL
 - 評価基準の取得方法
 - 求人原稿URL
@@ -700,12 +704,12 @@ Excelファイルを生成する前に、必ず次を検証してください。
 11. 「なし」の理由がすべて「記載なし」になっているか
 12. 「記載あり」「その他」の理由が求人原稿からの原文抜粋になっているか
 13. 外部Web情報を求人原稿の評価判定に使用していないか
-14. 文面提案が3項目だけ作成されているか
+14. 文面提案が指定されたN件だけ作成されているか
 15. 文面提案対象外の行がすべて「-」になっているか
 16. 競合企業URLがある場合の強制選定ルールを守っているか
 17. 残りの項目が原則として優先順位2から選ばれているか
-18. TOP3の選定理由が説明されているか
-19. TOP3ごとに商談時の確認質問があるか
+18. 上位N件の選定理由が説明されているか
+19. 上位N件それぞれに商談時の確認質問があるか
 20. 対象企業について確認できない内容を断定していないか
 21. 競合企業の制度を対象企業の制度として扱っていないか
 22. 各文面提案の参照元が記録されているか
@@ -724,30 +728,35 @@ Excelファイルを生成する前に、必ず次を検証してください。
 - 判定した雇用形態
 - 評価対象項目数
 - 記載あり・その他・なしの件数
-- 選定した文面提案TOP3
+- 選定した文面提案上位N件
 - 取得できなかった重要な情報がある場合の注意
 - Excelファイルのダウンロードリンク
 
 必ずExcelファイル（.xlsx）を生成してください。</script>
 <script>
 "use strict";
-const KEY="job_appeal_prompt_maker_v1_1",GEMINI="https://gemini.google.com/app";
+const KEY="job_appeal_prompt_maker_v1_2",OLD_KEY="job_appeal_prompt_maker_v1_1",GEMINI="https://gemini.google.com/app";
+const DEFAULTS={proposalCount:"3",textLength:"100",webMode:"balanced"};
+const WEB_LABELS={specified:"指定URLのみ",balanced:"指定URL優先＋一般Web補完",broad:"一般Webを広く調査"};
 const $=id=>document.getElementById(id);
-const el={jobUrl:$("jobUrl"),jobText:$("jobText"),companyUrls:$("companyUrls"),competitorUrls:$("competitorUrls"),target:$("target"),preview:$("promptPreview"),status:$("status")};
+const el={jobUrl:$("jobUrl"),jobText:$("jobText"),companyUrls:$("companyUrls"),competitorUrls:$("competitorUrls"),target:$("target"),proposalCount:$("proposalCount"),textLength:$("textLength"),webMode:$("webMode"),preview:$("promptPreview"),status:$("status")};
 const template=$("promptTemplate").textContent.trim();
 const value=(v,f)=>v.trim()||f;
 const lines=v=>v.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).length;
-function prompt(){return template.replaceAll("{{JOB_URL}}",value(el.jobUrl.value,"入力なし")).replaceAll("{{JOB_TEXT}}",value(el.jobText.value,"入力なし")).replaceAll("{{COMPANY_URLS}}",value(el.companyUrls.value,"入力なし")).replaceAll("{{COMPETITOR_URLS}}",value(el.competitorUrls.value,"入力なし")).replaceAll("{{TARGET_PERSONA}}",value(el.target.value,"指定なし"))}
-function indicators(){const u=!!el.jobUrl.value.trim(),t=!!el.jobText.value.trim();$("jobCount").textContent=el.jobText.value.length.toLocaleString("ja-JP")+"文字";$("targetCount").textContent=el.target.value.length.toLocaleString("ja-JP")+"文字";$("companyCount").textContent=lines(el.companyUrls.value)+"件";$("competitorCount").textContent=lines(el.competitorUrls.value)+"件";$("targetSummary").textContent=el.target.value.trim()?"指定あり":"指定なし";$("promptCount").textContent=el.preview.value.length.toLocaleString("ja-JP")+"文字";$("jobSummary").textContent=u&&t?"URL＋全文":t?"全文あり":u?"URLのみ":"未入力"}
+function lengthGuidance(length){const map={"50":"意味が途切れたり不自然になったりする場合は、40～70文字程度の範囲で調整して構いません。","100":"意味が途切れたり不自然になったりする場合は、80～130文字程度の範囲で調整して構いません。","150":"意味が途切れたり不自然になったりする場合は、120～180文字程度の範囲で調整して構いません。"};return map[length]||map["100"]}
+function webInstruction(mode){const map={specified:`ユーザーが指定した対象企業ページ・競合企業ページ・求人原稿URLだけを調査対象としてください。一般Web検索による情報の補完は行わないでください。指定URLから確認できない事項は推測せず、「企業への確認が必要」としてください。`,balanced:`ユーザーが指定したURLを最優先で調査してください。不足する場合は、対象企業および親会社・グループ会社の公式Webページを一般Web検索で補完してください。公式情報だけで不足する場合に限り、信頼できる外部情報を補足的に使用してください。`,broad:`指定URLに限定せず、対象企業に関する一般Web検索を広く行ってください。公式サイト、採用サイト、親会社・グループ会社、求人情報、社員インタビュー、事業情報、ニュース、信頼できる外部記事などを調査してください。対象企業公式、競合企業公式、外部情報を区別して記録し、古い情報や同名企業を混同しないでください。`};return map[mode]||map.balanced}
+function prompt(){return template.replaceAll("{{JOB_URL}}",value(el.jobUrl.value,"入力なし")).replaceAll("{{JOB_TEXT}}",value(el.jobText.value,"入力なし")).replaceAll("{{COMPANY_URLS}}",value(el.companyUrls.value,"入力なし")).replaceAll("{{COMPETITOR_URLS}}",value(el.competitorUrls.value,"入力なし")).replaceAll("{{TARGET_PERSONA}}",value(el.target.value,"指定なし")).replaceAll("{{PROPOSAL_COUNT}}",el.proposalCount.value).replaceAll("{{TEXT_LENGTH}}",el.textLength.value).replaceAll("{{TEXT_LENGTH_GUIDANCE}}",lengthGuidance(el.textLength.value)).replaceAll("{{WEB_RESEARCH_INSTRUCTION}}",webInstruction(el.webMode.value))}
+function indicators(){const u=!!el.jobUrl.value.trim(),t=!!el.jobText.value.trim();$("jobCount").textContent=el.jobText.value.length.toLocaleString("ja-JP")+"文字";$("targetCount").textContent=el.target.value.length.toLocaleString("ja-JP")+"文字";$("companyCount").textContent=lines(el.companyUrls.value)+"件";$("competitorCount").textContent=lines(el.competitorUrls.value)+"件";$("targetSummary").textContent=el.target.value.trim()?"指定あり":"指定なし";$("promptCount").textContent=el.preview.value.length.toLocaleString("ja-JP")+"文字";$("jobSummary").textContent=u&&t?"URL＋全文":t?"全文あり":u?"URLのみ":"未入力";$("proposalSettingSummary").textContent=el.proposalCount.value+"項目";$("lengthSettingSummary").textContent=el.textLength.value+"文字程度";$("webSettingSummary").textContent=WEB_LABELS[el.webMode.value]||WEB_LABELS.balanced}
 function build(){el.preview.value=prompt();indicators()}
-function save(){try{localStorage.setItem(KEY,JSON.stringify({jobUrl:el.jobUrl.value,jobText:el.jobText.value,companyUrls:el.companyUrls.value,competitorUrls:el.competitorUrls.value,target:el.target.value}))}catch(e){console.warn(e)}}
-function load(){try{const d=JSON.parse(localStorage.getItem(KEY)||"null");if(d){el.jobUrl.value=d.jobUrl||"";el.jobText.value=d.jobText||"";el.companyUrls.value=d.companyUrls||"";el.competitorUrls.value=d.competitorUrls||"";el.target.value=d.target||""}}catch(e){console.warn(e)}build()}
+function state(){return{jobUrl:el.jobUrl.value,jobText:el.jobText.value,companyUrls:el.companyUrls.value,competitorUrls:el.competitorUrls.value,target:el.target.value,proposalCount:el.proposalCount.value,textLength:el.textLength.value,webMode:el.webMode.value}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state()))}catch(e){console.warn(e)}}
+function load(){try{const raw=localStorage.getItem(KEY)||localStorage.getItem(OLD_KEY);const d=JSON.parse(raw||"null");if(d){el.jobUrl.value=d.jobUrl||"";el.jobText.value=d.jobText||"";el.companyUrls.value=d.companyUrls||"";el.competitorUrls.value=d.competitorUrls||"";el.target.value=d.target||"";el.proposalCount.value=d.proposalCount||DEFAULTS.proposalCount;el.textLength.value=d.textLength||DEFAULTS.textLength;el.webMode.value=d.webMode||DEFAULTS.webMode}}catch(e){console.warn(e)}build();save()}
 function status(msg,type="success"){el.status.className="status show "+type;el.status.textContent=msg;clearTimeout(status.timer);status.timer=setTimeout(()=>{el.status.className="status";el.status.textContent=""},6500)}
-function valid(){if(!el.jobUrl.value.trim()&&!el.jobText.value.trim()){status("求人原稿URLまたは求人原稿全文のどちらかを入力してください。","error");el.jobUrl.focus();return false}return true}
+function valid(){if(!el.jobUrl.value.trim()&&!el.jobText.value.trim()){status("求人原稿URLまたは求人原稿全文のどちらかを入力してください。","error");el.jobUrl.focus();return false}if(el.webMode.value==="specified"&&!el.companyUrls.value.trim()&&!el.competitorUrls.value.trim()&&!el.jobUrl.value.trim()){status("Web調査範囲が『指定URLのみ』ですが、参照URLが入力されていません。原稿全文の評価は可能ですが、外部情報を使った文面提案は限定的になります。","warning")}return true}
 async function copyText(text){if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text);return}const a=document.createElement("textarea");a.value=text;a.style.position="fixed";a.style.left="-9999px";document.body.appendChild(a);a.select();const ok=document.execCommand("copy");a.remove();if(!ok)throw new Error("copy failed")}
-async function run(open){if(!valid())return;try{await copyText(el.preview.value.trim()||prompt());if(open){const w=window.open(GEMINI,"_blank","noopener,noreferrer");status(w?"プロンプトをコピーし、Geminiを開きました。入力欄へ貼り付けて送信してください。":"コピーは完了しましたが、Geminiを開けませんでした。ポップアップ設定を確認してください。",w?"success":"warning")}else status("プロンプトをコピーしました。")}catch(e){console.error(e);status("コピーできませんでした。生成プロンプト欄を手動でコピーしてください。","error");el.preview.focus();el.preview.select()}}
-let timer;[el.jobUrl,el.jobText,el.companyUrls,el.competitorUrls,el.target].forEach(x=>x.addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(()=>{build();save()},120)}));el.preview.addEventListener("input",indicators);
-$("copyBtn").onclick=()=>run(false);$("geminiBtn").onclick=()=>run(true);$("refreshBtn").onclick=()=>{build();save();status("フォームの入力内容からプロンプトを再生成しました。")};$("clearBtn").onclick=()=>{const any=[el.jobUrl,el.jobText,el.companyUrls,el.competitorUrls,el.target].some(x=>x.value.trim());if(any&&!confirm("入力内容と保存データをすべて削除しますか？"))return;[el.jobUrl,el.jobText,el.companyUrls,el.competitorUrls,el.target].forEach(x=>x.value="");localStorage.removeItem(KEY);build();status("入力内容をクリアしました。");el.jobUrl.focus()};
+async function run(open){if(!valid())return;let w=null;if(open){w=window.open("about:blank","_blank");if(w){try{w.opener=null;w.document.title="Geminiを開いています…"}catch(e){}}}try{await copyText(el.preview.value.trim()||prompt());if(open){if(w){try{w.location.replace(GEMINI)}catch(e){w.location.href=GEMINI}status("プロンプトをコピーし、Geminiを開きました。入力欄へ貼り付けて送信してください。")}else{status("プロンプトはコピーできましたが、Geminiのタブを開けませんでした。ポップアップ設定を確認し、Geminiを手動で開いてください。","warning")}}else status("プロンプトをコピーしました。")}catch(e){console.error(e);if(w&&!w.closed)w.close();status("コピーできませんでした。生成プロンプト欄を手動でコピーしてください。","error");el.preview.focus();el.preview.select()}}
+let timer;[el.jobUrl,el.jobText,el.companyUrls,el.competitorUrls,el.target].forEach(x=>x.addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(()=>{build();save()},120)}));[el.proposalCount,el.textLength,el.webMode].forEach(x=>x.addEventListener("change",()=>{build();save();status("実行設定をプロンプトへ反映しました。")}));el.preview.addEventListener("input",indicators);
+$("copyBtn").onclick=()=>run(false);$("geminiBtn").onclick=()=>run(true);$("refreshBtn").onclick=()=>{build();save();status("フォームと実行設定からプロンプトを再生成しました。")} ;$("clearBtn").onclick=()=>{const any=[el.jobUrl,el.jobText,el.companyUrls,el.competitorUrls,el.target].some(x=>x.value.trim());if(any&&!confirm("案件の入力内容を削除しますか？ 実行設定は維持されます。"))return;[el.jobUrl,el.jobText,el.companyUrls,el.competitorUrls,el.target].forEach(x=>x.value="");build();save();status("案件の入力内容をクリアしました。実行設定は維持されています。");el.jobUrl.focus()};$("resetSettingsBtn").onclick=()=>{el.proposalCount.value=DEFAULTS.proposalCount;el.textLength.value=DEFAULTS.textLength;el.webMode.value=DEFAULTS.webMode;build();save();status("実行設定を標準値へ戻しました。")} ;
 const modal=$("modalBg");$("helpBtn").onclick=()=>{modal.classList.add("open");document.body.style.overflow="hidden";$("closeBtn").focus()};function close(){modal.classList.remove("open");document.body.style.overflow="";$("helpBtn").focus()}$("closeBtn").onclick=close;modal.onclick=e=>{if(e.target===modal)close()};document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("open"))close()});load();
 </script>
 </body>

@@ -2,2182 +2,763 @@
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>R360 Quick｜採用GAP診断シミュレーター</title>
-<script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="googlebot" content="noindex,nofollow">
+<meta name="description" content="求人原稿と企業情報から、Gemini向けの求人原稿魅力度評価プロンプトを作成するブラウザツールです。">
+<title>求人原稿 魅力度評価プロンプトメーカー</title>
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Helvetica Neue',Arial,'Hiragino Sans',sans-serif;background:#EEF2F7;color:#1E2B47;font-size:14px}
-
-/* ── HEADER ── */
-.hdr{background:linear-gradient(135deg,#1B4F8A 0%,#0F2A56 100%);color:#fff;padding:18px 28px;display:flex;align-items:center;gap:16px;box-shadow:0 2px 10px rgba(0,0,0,.25)}
-.hdr-logo{font-size:26px;font-weight:900;letter-spacing:-1px}
-.hdr-logo span{color:#93C5FD}
-.hdr-sub{font-size:12px;opacity:.7;margin-top:2px}
-.hdr-right{margin-left:auto;font-size:11px;opacity:.6;text-align:right}
-
-/* ── LAYOUT ── */
-.wrap{max-width:1280px;margin:0 auto;padding:16px}
-
-/* ── PRESET BAR ── */
-.top-bar{background:#fff;border-radius:10px;padding:12px 16px;margin-bottom:14px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;box-shadow:0 1px 4px rgba(0,0,0,.08)}
-.top-bar label{font-size:12px;color:#64748B;font-weight:600;white-space:nowrap}
-.top-bar select{border:1.5px solid #CBD5E1;border-radius:6px;padding:5px 10px;font-size:12px;color:#1E2B47;background:#F8FAFC;cursor:pointer;min-width:170px}
-.top-bar select:focus{outline:none;border-color:#1B4F8A}
-.btn-sm{border-radius:6px;padding:5px 12px;font-size:11px;font-weight:600;cursor:pointer;transition:.2s;border:1.5px solid #CBD5E1;background:#F1F5F9;color:#64748B}
-.btn-sm:hover{background:#E2E8F0;color:#1E2B47}
-.btn-primary{background:linear-gradient(135deg,#1B4F8A,#2563EB);color:#fff;border:none;box-shadow:0 2px 6px rgba(27,79,138,.3)}
-.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
-
-/* ── LEGEND ── */
-.legend{background:#fff;border-radius:10px;padding:11px 16px;margin-bottom:14px;display:flex;align-items:flex-start;gap:10px;flex-wrap:wrap;box-shadow:0 1px 4px rgba(0,0,0,.08)}
-.leg-col{display:flex;flex-direction:column;gap:3px}
-.leg-row{display:flex;align-items:center;gap:5px;font-size:11px;color:#475569}
-.leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.leg-title{font-size:11px;font-weight:700;color:#64748B;white-space:nowrap;margin-top:1px}
-.leg-divider{width:1px;background:#E2E8F0;margin:0 4px;align-self:stretch}
-
-/* ── WHO BADGES ── */
-.who-badge{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:700;padding:1px 6px;border-radius:3px;flex-shrink:0;white-space:nowrap}
-.who-hr{background:#DBEAFE;color:#1D4ED8}
-.who-fi{background:#FEE2E2;color:#B91C1C}
-
-/* ── SECTIONS GRID ── */
-.sections-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:16px}
-@media(max-width:960px){.sections-grid{grid-template-columns:1fr}}
-
-/* ── SECTION CARD ── */
-.sec-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 5px rgba(0,0,0,.09)}
-.sec-hdr{padding:11px 14px;color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;gap:7px}
-.sec-hdr-a{background:linear-gradient(90deg,#1B4F8A,#2563EB)}
-.sec-hdr-b{background:linear-gradient(90deg,#6D28D9,#7C3AED)}
-.sec-hdr-c{background:linear-gradient(90deg,#065F46,#059669)}
-.sec-hdr-icon{font-size:15px}
-.sec-body{padding:0}
-
-/* ── QUESTION ROW ── */
-.q-row{padding:10px 13px;border-bottom:1px solid #F1F5F9;position:relative}
-.q-row:last-child{border-bottom:none}
-
-.view-point{display:inline-flex;align-items:center;gap:3px;font-size:9px;font-weight:700;padding:1px 7px;border-radius:10px;background:#F1F5F9;color:#64748B;margin-bottom:6px;letter-spacing:.3px}
-
-.q-block{display:flex;flex-direction:column;gap:1px;margin-bottom:5px}
-.q-who-row{display:flex;align-items:flex-start;gap:5px}
-.q-text{font-size:10.5px;color:#374151;line-height:1.45;flex:1;padding-top:1px}
-.q-num-tag{font-size:9px;font-weight:700;color:#94A3B8;white-space:nowrap;margin-top:2px}
-
-/* ── SLIDER ROW ── */
-.slider-row{display:flex;align-items:center;gap:6px;margin-top:4px}
-.q-slider{-webkit-appearance:none;appearance:none;flex:1;height:5px;border-radius:3px;outline:none;cursor:pointer;background:#E2E8F0;min-width:0}
-.q-slider::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;cursor:pointer;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3)}
-.slider-hr::-webkit-slider-thumb{background:#2563EB}
-.slider-fi::-webkit-slider-thumb{background:#DC2626}
-.q-val{font-size:16px;font-weight:900;width:22px;text-align:center;flex-shrink:0;font-variant-numeric:tabular-nums}
-.q-val-hr{color:#2563EB}
-.q-val-fi{color:#DC2626}
-
-/* ── GAP CHIP ── */
-.gap-row{display:flex;align-items:center;justify-content:flex-end;margin-top:5px;gap:5px}
-.q-gap-chip{font-size:9.5px;padding:2px 8px;border-radius:10px;font-weight:700;min-width:50px;text-align:center}
-
-/* ── SCALE LABELS ── */
-.scale-labels{display:flex;gap:0;margin-top:3px;padding:0 22px 0 0}
-.sl{font-size:7.5px;color:#94A3B8;flex:1;text-align:center;line-height:1.2}
-
-/* ── SECTION FOOTER ── */
-.sec-gap-bar{padding:9px 13px;background:#F8FAFC;border-top:2px solid #E2E8F0;display:flex;align-items:center;justify-content:space-between;gap:6px}
-.sec-gap-label{font-size:10px;color:#64748B}
-.sec-gap-val{font-size:22px;font-weight:900;font-variant-numeric:tabular-nums}
-.sec-gap-grade{font-size:10px;font-weight:700;padding:2px 9px;border-radius:10px;color:#fff}
-.sec-avgs{font-size:10px;color:#94A3B8;text-align:right;line-height:1.6}
-
-/* ── RESULTS PANEL ── */
-.results{background:#fff;border-radius:12px;padding:18px;box-shadow:0 1px 5px rgba(0,0,0,.09);margin-bottom:16px}
-.results-title{font-size:15px;font-weight:800;color:#1B4F8A;margin-bottom:14px;padding-bottom:9px;border-bottom:2px solid #EEF2F7;display:flex;align-items:center;gap:8px}
-
-/* ── GAP CARDS ── */
-.gap-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:18px}
-@media(max-width:600px){.gap-cards{grid-template-columns:1fr}}
-.gap-card{border-radius:10px;padding:13px;border-left:4px solid}
-.gap-card-a{background:#EFF6FF;border-color:#2563EB}
-.gap-card-b{background:#F5F3FF;border-color:#7C3AED}
-.gap-card-c{background:#ECFDF5;border-color:#059669}
-.gc-title{font-size:10px;font-weight:700;color:#64748B;margin-bottom:3px}
-.gc-val{font-size:30px;font-weight:900;margin-bottom:3px;font-variant-numeric:tabular-nums}
-.gc-grade{display:inline-block;font-size:10px;font-weight:700;padding:2px 9px;border-radius:10px;color:#fff;margin-bottom:5px}
-.gc-detail{font-size:11px;color:#64748B;line-height:1.45}
-.gc-avgs{margin-top:5px;font-size:11px;color:#94A3B8;display:flex;gap:10px;flex-wrap:wrap}
-.gc-hr{color:#2563EB;font-weight:700}
-.gc-fi{color:#DC2626;font-weight:700}
-
-/* ── BAR CHART ── */
-.chart-area{margin-bottom:18px}
-.chart-title{font-size:12px;font-weight:700;color:#64748B;margin-bottom:8px}
-.chart-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;padding:9px 14px;background:#F1F5F9;border-radius:8px;font-size:12px;font-weight:700;color:#64748B;user-select:none;border:1px solid #E2E8F0;transition:background .15s}
-.chart-toggle:hover{background:#E2E8F0}
-.chart-arrow{font-size:10px;color:#94A3B8;transition:transform .2s;flex-shrink:0}
-.chart-arrow.open{transform:rotate(90deg)}
-.chart-body{margin-top:8px}
-.chart-row{margin-bottom:5px}
-.chart-qlabel{font-size:9.5px;color:#64748B;margin-bottom:2px;display:flex;justify-content:space-between}
-.bar-wrap{display:flex;align-items:center;gap:5px}
-.bar-who{font-size:8.5px;font-weight:700;width:24px;text-align:right;flex-shrink:0}
-.bar-track{flex:1;background:#F1F5F9;border-radius:3px;height:9px;overflow:hidden}
-.bar-fill{height:100%;border-radius:3px;transition:.4s;min-width:2px}
-.bar-fill-hr{background:linear-gradient(90deg,#60A5FA,#2563EB)}
-.bar-fill-fi{background:linear-gradient(90deg,#F87171,#DC2626)}
-.bar-num{font-size:9.5px;font-weight:700;width:18px;flex-shrink:0;text-align:right}
-.bar-num-hr{color:#2563EB}
-.bar-num-fi{color:#DC2626}
-
-/* ── IMPROVE ── */
-.improve-title{font-size:13px;font-weight:800;color:#1B4F8A;margin-bottom:11px;display:flex;align-items:center;gap:6px}
-.improve-sec{margin-bottom:12px}
-.improve-sec-hdr{font-size:12px;font-weight:700;padding:6px 12px;border-radius:6px;margin-bottom:7px;display:flex;align-items:center;gap:7px}
-.ish-a{background:#DBEAFE;color:#1D4ED8}
-.ish-b{background:#EDE9FE;color:#6D28D9}
-.ish-c{background:#D1FAE5;color:#065F46}
-.improve-items{display:flex;flex-direction:column;gap:4px}
-.improve-item{display:flex;gap:7px;padding:7px 10px;background:#F8FAFC;border-radius:6px;font-size:11.5px;color:#374151;border-left:3px solid #CBD5E1;line-height:1.5}
-.improve-item.pri-high{border-left-color:#DC2626;background:#FEF2F2}
-.improve-item.pri-mid{border-left-color:#D97706;background:#FFFBEB}
-.improve-item.pri-low{border-left-color:#059669;background:#ECFDF5}
-.imp-icon{flex-shrink:0;font-size:13px}
-
-/* ── TYPE DIAGNOSIS ── */
-.type-card{border-radius:12px;padding:14px 16px;margin-bottom:14px;border:2px solid;display:flex;flex-direction:column;gap:10px}
-.type-card-top{display:flex;align-items:flex-start;gap:12px}
-.type-badge{font-size:32px;font-weight:900;width:56px;height:56px;border-radius:10px;color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.type-num{font-size:10px;opacity:.75;font-weight:600;margin-bottom:1px}
-.type-name{font-size:16px;font-weight:900;margin-bottom:4px}
-.type-summary{font-size:12px;color:#475569;line-height:1.5;margin-bottom:4px}
-.type-cause{font-size:11.5px;line-height:1.6;padding:6px 10px;border-radius:6px;background:rgba(0,0,0,.04)}
-.type-actions-wrap{padding:10px 12px;background:#fff;border-radius:8px;border:1px solid rgba(0,0,0,.08)}
-.type-actions-title{font-size:10px;font-weight:700;color:#64748B;margin-bottom:6px;letter-spacing:.5px}
-.type-action{display:flex;gap:6px;font-size:11.5px;color:#374151;margin-bottom:4px;line-height:1.5;align-items:flex-start}
-.type-action:last-child{margin-bottom:0}
-.type-action-icon{flex-shrink:0;margin-top:1px}
-
-.type-secondary-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.type-secondary-label{font-size:10px;color:#94A3B8;white-space:nowrap}
-.type-chip{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:700;padding:3px 10px;border-radius:10px;white-space:nowrap;border:1.5px solid}
-.type-chip.active{color:#fff;border-color:transparent}
-.type-chip.sub{border-style:dashed}
-.type-chip.inactive{background:#F1F5F9;color:#94A3B8;border-color:#E2E8F0;font-weight:400}
-
-.type-all-grid{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-
-.overall-score{text-align:right;flex-shrink:0;font-size:10px;color:#94A3B8;margin-left:auto;align-self:flex-start}
-.overall-score span{display:block;font-size:22px;font-weight:900;color:#1B4F8A}
-
-/* ── EVIDENCE PANEL ── */
-.evidence-panel{background:rgba(255,255,255,.65);border:1px solid rgba(0,0,0,.1);border-radius:8px;padding:12px 14px}
-.evidence-title{font-size:12px;font-weight:800;margin-bottom:10px;letter-spacing:.2px}
-.evidence-items{display:flex;flex-direction:column;gap:5px}
-.ev-item{background:#fff;border:1px solid #E2E8F0;border-radius:7px;padding:9px 11px}
-.ev-item.ev-primary{border-width:1.5px}
-.ev-header{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:3px}
-.ev-num{width:18px;height:18px;border-radius:50%;background:#E2E8F0;color:#64748B;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
-.ev-main{font-size:12px;font-weight:600;color:#334155;flex:1;min-width:0}
-.ev-value{font-size:12.5px;font-weight:800;white-space:nowrap}
-.ev-tag{font-size:9px;font-weight:700;color:#fff;padding:2px 7px;border-radius:10px;white-space:nowrap}
-.ev-desc{font-size:11px;color:#64748B;padding-left:25px;line-height:1.5;margin-top:1px}
-
-/* ── COLOR HELPERS ── */
-.gc-align{color:#059669}.gc-slight{color:#D97706}.gc-mid{color:#EA580C}.gc-large{color:#DC2626}
-.gb-align{background:#059669}.gb-slight{background:#D97706}.gb-mid{background:#EA580C}.gb-large{background:#DC2626}
-
-/* ── SUPPLEMENT PANEL ── */
-.supp-panel{background:#fff;border-radius:12px;box-shadow:0 1px 5px rgba(0,0,0,.09);margin-bottom:14px;overflow:hidden}
-.supp-top{display:flex;align-items:center;gap:10px;padding:13px 16px;cursor:pointer;background:#F8FAFC;border-bottom:1px solid #E2E8F0;user-select:none}
-.supp-top:hover{background:#F1F5F9}
-.supp-badge{background:#FEE2E2;color:#B91C1C;font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px}
-.supp-title-txt{font-size:13px;font-weight:800;color:#1B4F8A;flex:1}
-.supp-arrow{font-size:12px;color:#94A3B8;transition:.2s}
-.supp-arrow.open{transform:rotate(90deg)}
-.supp-body{display:none;padding:14px 16px}
-.supp-body.open{display:block}
-.supp-tabs{display:flex;gap:5px;margin-bottom:14px;flex-wrap:wrap}
-.supp-tab{border:1.5px solid #CBD5E1;border-radius:6px;padding:5px 12px;font-size:11px;font-weight:600;cursor:pointer;background:#F8FAFC;color:#64748B;transition:.15s}
-.supp-tab:hover{background:#E2E8F0}
-.supp-tab.act{background:#1B4F8A;color:#fff;border-color:#1B4F8A}
-.supp-tab-body{display:none}.supp-tab-body.vis{display:block}
-.supp-sec{margin-bottom:14px;padding-bottom:14px;border-bottom:1px dashed #E2E8F0}
-.supp-sec:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.supp-qhdr{display:flex;align-items:baseline;gap:6px;margin-bottom:5px}
-.supp-qn{font-size:10px;font-weight:700;background:#FEE2E2;color:#B91C1C;padding:1px 6px;border-radius:4px}
-.supp-ql{font-size:11.5px;color:#1E2B47;font-weight:600;line-height:1.4}
-.cb-grid{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px}
-.cb-item{display:flex;align-items:center;gap:4px;padding:4px 9px;border-radius:6px;background:#F8FAFC;border:1.5px solid #E2E8F0;cursor:pointer;font-size:10.5px;color:#475569;transition:.15s;user-select:none}
-.cb-item:hover{border-color:#CBD5E1}
-.cb-item.chk{background:#FEF2F2;border-color:#DC2626;color:#B91C1C;font-weight:700}
-.cb-item input[type=checkbox]{display:none}
-.cb-check{width:9px;height:9px;border-radius:2px;border:1.5px solid #CBD5E1;flex-shrink:0}
-.cb-item.chk .cb-check{background:#DC2626;border-color:#DC2626}
-.supp-textarea{width:100%;border:1.5px solid #E2E8F0;border-radius:6px;padding:7px 10px;font-size:11.5px;color:#374151;font-family:inherit;resize:vertical;min-height:54px;background:#F8FAFC;transition:.2s;margin-top:5px}
-.supp-textarea:focus{outline:none;border-color:#DC2626;background:#fff}
-.supp-slider-row{display:flex;align-items:center;gap:8px;margin-top:6px}
-.supp-slider{-webkit-appearance:none;appearance:none;flex:1;height:5px;border-radius:3px;background:#E2E8F0;cursor:pointer;outline:none}
-.supp-slider::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:#DC2626;cursor:pointer;border:2px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3)}
-.supp-val{font-size:17px;font-weight:900;color:#DC2626;width:20px;text-align:center;font-variant-numeric:tabular-nums}
-.supp-scale{display:flex;gap:0;margin-top:3px}
-.ssl{font-size:7.5px;color:#94A3B8;flex:1;text-align:center;line-height:1.2}
-
-/* ── VOICE REPORT ── */
-.voice-panel{margin-top:16px;padding:12px 14px;background:#FFFBEB;border-radius:10px;border:1.5px solid #FDE68A}
-.voice-title{font-size:11px;font-weight:700;color:#92400E;margin-bottom:8px}
-.voice-row{margin-bottom:6px;font-size:11px;color:#78350F;line-height:1.5}
-.voice-label{font-weight:700;color:#92400E;display:block;margin-bottom:2px}
-.tag-wrap{display:flex;flex-wrap:wrap;gap:3px}
-.vtag{font-size:10px;padding:2px 8px;border-radius:8px;font-weight:600;background:#FEF3C7;color:#92400E;border:1px solid #FDE68A}
-.vtag.hi{background:#FEE2E2;color:#B91C1C;border-color:#FECACA}
-
-@media print{.top-bar,.btn-sm,.btn-primary,.supp-top{display:none!important}.supp-body{display:block!important}body{background:#fff}}
-
-/* ── HR-ONLY MODE ── */
-.hr-only-banner{display:none;background:#F5F0FF;border:1.5px solid #7C3AED;border-radius:8px;padding:10px 16px;margin:0 0 10px;font-size:12px;color:#4C1D95;align-items:center;gap:10px;line-height:1.6;flex-wrap:wrap}
-.hr-only-badge{background:#7C3AED;color:#fff;border-radius:4px;padding:2px 8px;font-size:10.5px;font-weight:800;white-space:nowrap;flex-shrink:0}
-body.hr-only-mode .slider-fi{opacity:0.4;pointer-events:none;cursor:not-allowed}
-body.hr-only-mode .q-val-fi{opacity:0.65}
-body.hr-only-mode .who-badge.who-fi{background:#94A3B8!important}
-body.hr-only-mode .who-badge.who-fi::after{content:' (業態標準)';font-size:9px;font-weight:400}
-.hr-only-cb-wrap{display:flex;align-items:center;gap:6px;font-size:12px;color:#4C1D95;font-weight:700;cursor:pointer;white-space:nowrap;margin-left:10px;padding:5px 10px;border:1.5px solid #DDD6FE;border-radius:7px;background:#F5F0FF;transition:background .15s}
-.hr-only-cb-wrap:hover{background:#EDE9FE}
-.hr-only-cb-wrap input[type=checkbox]{accent-color:#7C3AED;width:14px;height:14px;cursor:pointer}
-
-/* ── PROMPT EXPORT MODAL ── */
-.prm-overlay{display:none;position:fixed;inset:0;background:rgba(15,25,60,.6);z-index:2000;align-items:center;justify-content:center}
-.prm-box{background:#fff;border-radius:14px;padding:26px 30px;width:760px;max-width:96vw;max-height:92vh;overflow-y:auto;box-shadow:0 12px 40px rgba(0,0,0,.3);display:flex;flex-direction:column}
-.prm-title{font-size:16px;font-weight:800;color:#1E2B47;margin-bottom:4px}
-.prm-sub{font-size:12px;color:#64748B;margin-bottom:14px;line-height:1.55}
-.prm-co-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.prm-co-label{font-size:12px;font-weight:700;color:#475569;white-space:nowrap}
-.prm-co-input{flex:1;border:1.5px solid #CBD5E1;border-radius:7px;padding:8px 11px;font-size:13px;color:#1E2B47;background:#F8FAFC;font-family:inherit}
-.prm-co-input:focus{outline:none;border-color:#7C3AED}
-.prm-textarea{width:100%;height:360px;border:1.5px solid #CBD5E1;border-radius:8px;padding:14px;font-size:11px;color:#1E2B47;background:#F8FAFC;box-sizing:border-box;font-family:monospace;line-height:1.65;resize:vertical}
-.prm-textarea:focus{outline:none;border-color:#7C3AED}
-.prm-btns{display:flex;gap:10px;justify-content:flex-end;margin-top:14px;align-items:center}
-.prm-note{font-size:11px;color:#94A3B8;flex:1}
-.prm-cancel{padding:9px 20px;border:1.5px solid #CBD5E1;background:#F1F5F9;color:#64748B;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;font-family:inherit}
-.prm-copy{padding:9px 20px;background:linear-gradient(135deg,#7C3AED,#6D28D9);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;font-family:inherit;box-shadow:0 2px 8px rgba(109,40,217,.3)}
-.prm-copy:hover{opacity:.9}
-.prm-regen{padding:9px 16px;background:#F1F5F9;color:#6D28D9;border:1.5px solid #DDD6FE;border-radius:8px;cursor:pointer;font-size:12px;font-weight:600;font-family:inherit}
-.prm-regen:hover{background:#EDE9FE}
-
-/* ── REPORT MODAL ── */
-.rpt-overlay{display:none;position:fixed;inset:0;background:rgba(15,25,60,.6);z-index:2000;align-items:center;justify-content:center}
-.rpt-box{background:#fff;border-radius:14px;padding:32px 36px;width:420px;max-width:92vw;box-shadow:0 12px 40px rgba(0,0,0,.3)}
-.rpt-title{font-size:17px;font-weight:800;color:#1E2B47;margin-bottom:4px}
-.rpt-sub{font-size:12px;color:#64748B;margin-bottom:22px;line-height:1.5}
-.rpt-label{font-size:12px;font-weight:700;color:#475569;margin-bottom:6px;display:block}
-.rpt-input{width:100%;border:1.5px solid #CBD5E1;border-radius:8px;padding:10px 13px;font-size:13px;color:#1E2B47;background:#F8FAFC;box-sizing:border-box;margin-bottom:20px;font-family:inherit}
-.rpt-input:focus{outline:none;border-color:#1B4F8A;background:#fff}
-.rpt-btns{display:flex;gap:10px;justify-content:flex-end}
-.rpt-cancel{padding:9px 20px;border:1.5px solid #CBD5E1;background:#F1F5F9;color:#64748B;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;font-family:inherit}
-.rpt-go{padding:9px 22px;background:linear-gradient(135deg,#1B4F8A,#2563EB);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:13px;font-weight:700;font-family:inherit;box-shadow:0 2px 8px rgba(37,99,235,.35)}
-.rpt-go:hover{opacity:.9}
-.rpt-note{font-size:10.5px;color:#94A3B8;margin-bottom:18px;line-height:1.5}
+:root{--bg:#f4f6f8;--card:#fff;--line:#d8e0e7;--text:#20303d;--muted:#687887;--blue:#315f7d;--blue2:#244a63;--purple:#695b8d;--soft:#eaf1f5;--shadow:0 12px 34px rgba(34,52,67,.08)}
+*{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 10% 0,rgba(49,95,125,.1),transparent 30rem),radial-gradient(circle at 92% 3%,rgba(105,91,141,.08),transparent 28rem),var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;line-height:1.7}button,input,textarea,select{font:inherit}a{color:var(--blue)}.wrap{width:min(1180px,calc(100% - 32px));margin:auto;padding:28px 0 56px}.hero{display:flex;justify-content:space-between;gap:22px;padding:26px 28px;margin-bottom:20px;color:#fff;background:linear-gradient(125deg,#294f68,#48738c 56%,#685a88);border-radius:22px;box-shadow:var(--shadow)}.brand{display:flex;gap:16px}.mark{display:grid;place-items:center;width:54px;height:54px;flex:none;border:1px solid rgba(255,255,255,.3);border-radius:16px;background:rgba(255,255,255,.13);font-weight:900;font-size:23px}.eyebrow{margin:0 0 2px;color:rgba(255,255,255,.75);font-size:12px;font-weight:800;letter-spacing:.09em}h1{margin:0;font-size:clamp(24px,4vw,36px);line-height:1.25}h2{margin:0;font-size:19px}.desc{margin:8px 0 0;max-width:760px;color:rgba(255,255,255,.88);font-size:14px}.heroBtns{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}.pill{padding:8px 13px;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:800;text-decoration:none;cursor:pointer}.pill:hover{background:rgba(255,255,255,.2)}.notice{display:flex;gap:10px;padding:13px 16px;margin-bottom:18px;border:1px solid #d5e0e8;border-radius:14px;background:rgba(255,255,255,.84);font-size:13px}.grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px;align-items:start}.main,.side{display:grid;gap:18px}.side{position:sticky;top:16px}.card{padding:22px;border:1px solid var(--line);border-radius:21px;background:var(--card);box-shadow:var(--shadow)}.head{margin-bottom:16px}.sub{margin:5px 0 0;color:var(--muted);font-size:13px}.num{display:inline-grid;place-items:center;width:28px;height:28px;margin-right:9px;color:var(--blue);border-radius:9px;background:var(--soft);font-size:13px;font-weight:900;vertical-align:2px}.fields{display:grid;gap:16px}.field{display:grid;gap:7px}.labelrow{display:flex;justify-content:space-between;gap:12px}label{font-size:14px;font-weight:800}.hint,.count{color:var(--muted);font-size:11px}.note{margin:0;color:var(--muted);font-size:12px}input,textarea,select{width:100%;border:1px solid #b9c6d2;border-radius:10px;background:#fff;color:var(--text);outline:none}input,select{min-height:46px;padding:10px 12px}textarea{min-height:128px;padding:12px 13px;resize:vertical;line-height:1.65}#jobText{min-height:290px}#promptPreview{min-height:440px;background:#fbfcfd;font:12.5px/1.62 "Cascadia Code",Consolas,"Yu Gothic UI",monospace}input:focus,textarea:focus,select:focus{border-color:#688aa0;box-shadow:0 0 0 4px rgba(49,95,125,.1)}.set{display:grid;grid-template-columns:100px 1fr;gap:9px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.set:last-child{border-bottom:0}.set span:first-child{color:var(--muted);font-weight:700}.set span:last-child{font-weight:800}.criteria{display:inline-block;margin-top:12px;padding:9px 11px;border:1px solid #cfdae3;border-radius:10px;background:#f8fafc;font-size:12px;font-weight:800;text-decoration:none}.settingsDetails{margin-top:14px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;overflow:hidden}.settingsDetails>summary{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;color:#334a5b;background:#f8fafc;font-size:13px;font-weight:850}.settingsDetails>summary:after{content:"＋";display:grid;place-items:center;width:24px;height:24px;border-radius:7px;background:var(--soft);color:var(--blue);font-size:16px}.settingsDetails[open]>summary:after{content:"－"}.settingsBody{display:grid;gap:13px;padding:14px;border-top:1px solid var(--line);background:#fff}.settingsField{display:grid;gap:6px}.settingsField label{font-size:12px}.settingsHelp{margin:0;color:var(--muted);font-size:11px;line-height:1.55}.settingsReset{min-height:39px;padding:8px 12px;border:1px solid #c7d2dc;border-radius:9px;background:#fff;color:#3f5667;font-size:12px;font-weight:800;cursor:pointer}.settingsReset:hover{background:var(--soft)}.summary{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.summary:last-child{border-bottom:0}.summary span{color:var(--muted)}details.card{padding:0;overflow:hidden}summary{display:flex;justify-content:space-between;padding:20px 22px;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary:after{content:"＋";display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:var(--soft);color:var(--blue);font-size:19px}details[open] summary:after{content:"－"}.promptbody{padding:0 22px 22px;border-top:1px solid var(--line)}.promptnote{margin:13px 0;color:var(--muted);font-size:12px}.actions{display:flex;gap:9px;flex-wrap:wrap;padding:14px;margin:0;border:1px solid rgba(188,202,213,.9);border-radius:17px;background:rgba(255,255,255,.96);box-shadow:var(--shadow)}.btn{min-height:45px;padding:10px 16px;border:1px solid transparent;border-radius:11px;font-weight:850;cursor:pointer}.primary{color:#fff;background:var(--blue)}.primary:hover{background:var(--blue2)}.accent{color:#fff;background:var(--purple)}.secondary{border-color:#b9c6d2;background:#fff;color:#334a5b}.danger{margin-left:auto;border-color:#e5c6c6;background:#fff;color:#a34444}.status{display:none;padding:12px 14px;margin-bottom:17px;border-radius:12px;font-size:13px;font-weight:750}.status.show{display:block}.status.success{color:#285d48;border:1px solid #bcdac9;background:#e7f3ec}.status.warning{color:#76531b;border:1px solid #ead6a7;background:#fff4da}.status.error{color:#883737;border:1px solid #e4bcbc;background:#faeaea}.modalbg{display:none;position:fixed;inset:0;z-index:100;padding:22px;background:rgba(20,32,43,.56);backdrop-filter:blur(4px)}.modalbg.open{display:grid;place-items:center}.modal{width:min(760px,100%);max-height:calc(100vh - 44px);overflow:auto;border-radius:22px;background:#fff;box-shadow:0 24px 70px rgba(9,21,31,.3)}.modalhead{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.96)}.close{width:38px;height:38px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:21px;cursor:pointer}.modalbody{padding:21px 23px}.help+ .help{padding-top:18px;margin-top:18px;border-top:1px solid var(--line)}.help h3{margin:0 0 7px;font-size:16px}.help p,.help li{color:#4c5f6d;font-size:13px}.helpnote{padding:13px 15px;border-left:4px solid var(--purple);border-radius:8px;background:#f0edf7;font-size:13px}.footer{padding-top:25px;color:var(--muted);font-size:11px;text-align:center}@media(max-width:900px){.grid{grid-template-columns:1fr}.side{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.wrap{width:calc(100% - 20px);padding-top:10px}.hero{display:grid;padding:20px 18px;border-radius:18px}.heroBtns{justify-content:flex-start}.card{padding:18px;border-radius:17px}.side{grid-template-columns:1fr}summary{padding:18px}.promptbody{padding:0 18px 18px}.btn{flex:1 1 calc(50% - 8px)}.danger{margin-left:0}.modalbg{padding:10px}}
 </style>
 </head>
 <body>
-
-<!-- PROMPT EXPORT MODAL -->
-<div id="prm-overlay" class="prm-overlay" onclick="if(event.target===this)closePrmModal()">
-  <div class="prm-box">
-    <div class="prm-title">📊 PowerPoint作成プロンプト出力</div>
-    <div class="prm-sub">現在入力中のスコアと診断結果をもとに、全7スライド・16:9のPowerPoint（.pptx）作成指示プロンプトを生成します。対応するAIに貼り付けて実行してください。</div>
-    <textarea id="prm-textarea" class="prm-textarea" readonly></textarea>
-    <div class="prm-btns">
-      <span class="prm-note">コピー後、PowerPointファイル生成に対応したAIへ貼り付けて実行してください。</span>
-      <button class="prm-cancel" onclick="closePrmModal()">閉じる</button>
-      <button class="prm-copy" onclick="copyPrmText()">📋 PowerPoint指示をコピー</button>
-    </div>
-  </div>
+<main class="wrap">
+<header class="hero">
+<div class="brand"><div class="mark">原+</div><div><p class="eyebrow">JOB APPEAL EVALUATION</p><h1>求人原稿 魅力度評価<br>プロンプトメーカー</h1><p class="desc">求人原稿と企業情報を入力し、初回商談準備用のExcel評価資料をGeminiに作成してもらうためのプロンプトを生成します。</p></div></div>
+<div class="heroBtns"><button class="pill" id="helpBtn" type="button">？ 使い方</button><a class="pill" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">評価基準を確認</a></div>
+</header>
+<div class="notice"><span>ℹ</span><div><strong>入力内容はサーバーへ送信しません。</strong> このページ内でプロンプトを作成し、ブラウザ内へ一時保存します。Geminiへの送信は、Gemini画面で利用者が実行します。</div></div>
+<div id="status" class="status" role="status" aria-live="polite"></div>
+<div class="grid">
+<section class="main">
+<article class="card"><div class="head"><h2><span class="num">1</span>求人原稿</h2><p class="sub">求人原稿URLまたは全文のどちらかを入力してください。両方ある場合は、貼り付けた全文が評価の正本です。</p></div><div class="fields">
+<div class="field"><div class="labelrow"><label for="jobUrl">求人原稿URL</label><span class="hint">URLまたは全文のどちらか必須</span></div><input id="jobUrl" type="url" placeholder="https://example.com/job/..."><p class="note">取得制限のある求人サイトでは、原稿全文も貼り付けることを推奨します。</p></div>
+<div class="field"><div class="labelrow"><label for="jobText">求人原稿全文</label><span id="jobCount" class="count">0文字</span></div><textarea id="jobText" placeholder="求人原稿のタイトル、会社名、給与、勤務時間、仕事内容、待遇、応募資格などを全文貼り付けてください。"></textarea></div>
+</div></article>
+<article class="card"><div class="head"><h2><span class="num">2</span>企業・競合情報</h2><p class="sub">参考ページは1行につき1URLで入力してください。調査範囲は右側の「実行設定」で変更できます。</p></div><div class="fields">
+<div class="field"><div class="labelrow"><label for="companyUrls">対象企業の参考ページ</label><span class="hint">任意・複数可</span></div><textarea id="companyUrls" placeholder="https://example.com/&#10;https://example.com/recruit/&#10;https://example.com/interview/"></textarea><p class="note">コーポレートサイト、採用ページ、職種紹介、社員インタビュー、福利厚生ページなど。</p></div>
+<div class="field"><div class="labelrow"><label for="competitorUrls">競合企業の参考ページ</label><span class="hint">任意・複数可</span></div><textarea id="competitorUrls" placeholder="https://competitor.example.com/recruit/&#10;https://job.example.com/competitor/"></textarea><p class="note">競合URLがある場合、「競合他社との比較・自社の強み」の強制選定ルールが適用されます。</p></div>
+</div></article>
+<article class="card"><div class="head"><h2><span class="num">3</span>ターゲット・文面の方向性</h2><p class="sub">文面提案へ反映する求職者像や訴求方針を入力します。</p></div><div class="field"><div class="labelrow"><label for="target">想定ターゲット・文面の方向性</label><span id="targetCount" class="count">0文字</span></div><textarea id="target" placeholder="例：50代・60代の未経験者。地元で長く働ける安心感と、作業の覚えやすさを重視して訴求する。"></textarea></div></article>
+<div class="actions" aria-label="実行操作"><button id="copyBtn" class="btn primary" type="button">プロンプトをコピー</button><button id="geminiBtn" class="btn accent" type="button">コピーしてGeminiを開く</button><button id="refreshBtn" class="btn secondary" type="button">プレビューを再生成</button><button id="clearBtn" class="btn danger" type="button">入力をクリア</button></div>
+<details class="card" open><summary><div><h2><span class="num">4</span>生成プロンプト</h2><p class="sub">フォームの入力内容を反映したGemini向けプロンプトです。</p></div></summary><div class="promptbody"><p class="promptnote">直接編集できますが、フォームを変更すると入力内容から再生成されます。</p><textarea id="promptPreview" spellcheck="false"></textarea></div></details>
+</section>
+<aside class="side">
+<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">通常は標準設定のまま利用できます。案件に応じて詳細設定を変更してください。</p></div><div class="set"><span>評価基準</span><span>求人原稿改善リスト【テスト版】</span></div><div class="set"><span>出力形式</span><span>Excel（.xlsx）</span></div><div class="set"><span>提案数</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>Web調査</span><span id="webSettingSummary">指定URL優先＋一般Web補完</span></div><div class="set"><span>Prompt</span><span>v1.2</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">文面提案数</label><select id="proposalCount"><option value="1">1項目</option><option value="3" selected>3項目（標準）</option><option value="5">5項目</option></select><p class="settingsHelp">競合URLがあり、優先順位1の項目が未記載なら、提案数にかかわらず1件目へ選定します。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option value="100" selected>100文字程度（標準）</option><option value="150">150文字程度</option></select><p class="settingsHelp">厳密な文字数制限ではなく、求人原稿へ転用しやすい長さの目安です。</p></div><div class="settingsField"><label for="webMode">Web調査範囲</label><select id="webMode"><option value="specified">指定URLのみ</option><option value="balanced" selected>指定URL優先＋一般Web補完（標準）</option><option value="broad">一般Webを広く調査</option></select><p class="settingsHelp">指定URLのみでは、確認できない情報を推測せず「企業への確認が必要」とします。</p></div><button id="resetSettingsBtn" class="settingsReset" type="button">標準設定に戻す</button></div></details><a class="criteria" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">↗ 評価基準を開く</a></article>
+<article class="card"><div class="head"><h2>入力状況</h2><p class="sub">プロンプトへ反映される情報です。</p></div><div class="summary"><span>求人情報</span><strong id="jobSummary">未入力</strong></div><div class="summary"><span>企業URL</span><strong id="companyCount">0件</strong></div><div class="summary"><span>競合URL</span><strong id="competitorCount">0件</strong></div><div class="summary"><span>ターゲット</span><strong id="targetSummary">指定なし</strong></div><div class="summary"><span>プロンプト</span><strong id="promptCount">0文字</strong></div></article>
+</aside>
 </div>
+<p class="footer">GitHub Pages上で動作する静的ツールです。入力内容・生成プロンプト・Geminiの出力内容は利用者自身で確認してください。</p>
+</main>
+<div id="modalBg" class="modalbg"><div class="modal"><div class="modalhead"><h2>使い方</h2><button id="closeBtn" class="close" type="button" aria-label="閉じる">×</button></div><div class="modalbody"><section class="help"><h3>基本の流れ</h3><ol><li>求人原稿URLまたは原稿全文を入力します。</li><li>対象企業・競合企業の参考ページがあれば入力します。</li><li>必要に応じてターゲットや文面方向を入力します。</li><li>「コピーしてGeminiを開く」を押します。</li><li>開いたGeminiの入力欄へ貼り付けて送信し、Excelをダウンロードします。</li></ol></section><section class="help"><h3>求人原稿の入力</h3><p>URLだけでも実行できますが、CAPTCHAやログイン制限のあるサイトでは本文を取得できないことがあります。全文を貼り付けると安定します。</p></section><section class="help"><h3>競合URLを入力した場合</h3><p>優先順位1の「競合他社との比較・自社の強み」が未記載なら、文面提案TOP1として扱う指示が適用されます。</p></section><section class="help"><h3>詳細設定</h3><p>提案数・文面長・Web調査範囲を案件ごとに変更できます。設定はブラウザへ保存され、「入力をクリア」を押しても維持されます。必要なときだけ「標準設定に戻す」を使用してください。</p></section><section class="help"><h3>入力データ</h3><div class="helpnote">入力内容はブラウザのローカルストレージに自動保存されます。共用PCでは作業後に「入力をクリア」を押してください。</div></section></div></div></div>
 
-<!-- REPORT MODAL -->
-<div id="rpt-overlay" class="rpt-overlay" onclick="if(event.target===this)closeReportModal()">
-  <div class="rpt-box">
-    <div class="rpt-title">📊 GAP診断レポート出力</div>
-    <div class="rpt-sub">7スライドのPowerPointレポートを生成します。<br>現在入力中のスコアと診断結果がそのまま反映されます。</div>
-    <label class="rpt-label" for="rpt-company">企業名</label>
-    <input id="rpt-company" class="rpt-input" type="text" placeholder="例：株式会社○○" maxlength="40"
-           onkeydown="if(event.key==='Enter')generateReport()">
-    <div class="rpt-note">⚠ ダウンロードには pptxgenjs CDN（jsdelivr.net）への接続が必要です。オフライン環境では動作しません。</div>
-    <div class="rpt-btns">
-      <button class="rpt-cancel" onclick="closeReportModal()">キャンセル</button>
-      <button class="rpt-go" onclick="generateReport()">📊 レポート生成・ダウンロード</button>
-    </div>
-  </div>
-</div>
+<script type="text/plain" id="promptTemplate"># 求人原稿魅力度評価・初回商談準備プロンプト v1.2
 
-<!-- HEADER -->
-<div class="hdr">
-  <div>
-    <div class="hdr-logo">R360 <span>Quick</span></div>
-    <div class="hdr-sub">採用GAP診断シミュレーター</div>
-  </div>
-  <div style="margin-left:14px;border-left:1px solid rgba(255,255,255,.3);padding-left:14px;font-size:11.5px;opacity:.85;line-height:1.7">
-    人事担当者 × 現場担当者・入社1〜3年目社員 それぞれの回答を入力し、<br>3つのGAP（応募前・選考・定着）を可視化します
-  </div>
-  <div class="hdr-right">株式会社天職市場<br>採用構造改善ツール</div>
-</div>
+あなたは、求人広告の改善分析と、採用支援サービスの初回商談準備を支援する専門家です。
 
-<div class="wrap">
+この処理の目的は、求人原稿を採点することだけではありません。
 
-<!-- TOP BAR -->
-<div class="top-bar">
-  <label>🏭 業態プリセット</label>
-  <select id="presetSel" onchange="applyPreset()">
-    <option value="">── 業態を選んで自動入力 ──</option>
-    <option value="広告">🎨 広告・クリエイティブ</option>
-    <option value="コンサル">💼 コンサルティング</option>
-    <option value="IT">💻 IT・ソフトウェア</option>
-    <option value="建築">🏗️ 建築・リノベーション</option>
-    <option value="物流">🚚 物流・配送</option>
-    <option value="大工">🔨 大工・職人</option>
-    <option value="美容">💇 美容・サロン</option>
-    <option value="小売">🛍️ 小売・EC</option>
-    <option value="人材派遣">🤝 人材派遣・紹介</option>
-    <option value="イベント">🎪 イベント・制作</option>
-    <option value="メーカー">🏭 メーカー・製造</option>
-    <option value="食品製造">🍱 食品製造業</option>
-    <option value="介護">🏥 介護・福祉</option>
-    <option value="警備">🛡 警備・セキュリティ</option>
-    <option value="小売店">🏪 小売店・チェーン</option>
-    <option value="飲食店">🍽️ 飲食店・飲食チェーン</option>
-  </select>
-  <span style="font-size:11px;color:#94A3B8">業態プリセットで典型スコアを自動入力</span>
-  <label class="hr-only-cb-wrap" title="現場スコアを業態標準値で固定し、人事のみの回答として分析します">
-    <input type="checkbox" id="hr-only-cb" onchange="toggleHROnlyMode()">
-    👤 人事のみ入力
-  </label>
-  <div style="display:flex;align-items:center;gap:7px;margin-left:18px">
-    <label style="font-size:12px;font-weight:700;color:#475569;white-space:nowrap">🏢 企業名</label>
-    <input id="global-company" type="text" placeholder="例：株式会社○○" maxlength="40"
-      style="border:1.5px solid #CBD5E1;border-radius:7px;padding:6px 11px;font-size:12px;color:#1E2B47;background:#F8FAFC;font-family:inherit;width:180px"
-      onfocus="this.style.borderColor='#7C3AED'" onblur="this.style.borderColor='#CBD5E1'">
-  </div>
-  <button class="btn-sm" onclick="resetAll()" style="margin-left:auto">↺ リセット</button>
-  <button class="btn-sm btn-primary" onclick="window.print()">🖨 印刷・PDF保存</button>
-  <button class="btn-sm btn-primary" onclick="openPrmModal()" style="background:linear-gradient(135deg,#7C3AED,#6D28D9)">📊 PowerPointプロンプト</button>
-</div>
+未取引企業との初回商談に向けて、経験の浅い営業担当者でも短時間で、一定水準以上の品質を保ちながら、次の内容を整理したExcel資料を作成することが目的です。
 
-<!-- HR-ONLY BANNER -->
-<div id="hr-only-banner" class="hr-only-banner">
-  <span class="hr-only-badge">👤 人事のみ入力モード</span>
-  <span>現場スコアは「<strong id="hr-only-preset-name">―</strong>」の業態標準値を自動入力・固定しています。<br>
-  プロンプト出力の分析指示は <strong>「実際のGAP」ではなく「業態標準との比較」</strong> に切り替わります。</span>
-</div>
+- 現在の求人原稿に残されている改善余地
+- 対象企業が持つ独自の強み
+- 競合企業との差別化につながる訴求
+- 求職者にまだ十分伝わっていない魅力
+- 初回商談で採用担当者へ確認すべき情報
+- 実際の求人原稿へ追記できる文面案
 
-<!-- LEGEND -->
-<div class="legend">
-  <div class="leg-col">
-    <div class="leg-title">📊 回答基準（0〜5）</div>
-    <div class="leg-row"><span class="leg-dot" style="background:#DC2626"></span>1：ほとんど当てはまらない</div>
-    <div class="leg-row"><span class="leg-dot" style="background:#EA580C"></span>2：あまり当てはまらない</div>
-  </div>
-  <div class="leg-divider"></div>
-  <div class="leg-col">
-    <div class="leg-title" style="visibility:hidden">.</div>
-    <div class="leg-row"><span class="leg-dot" style="background:#D97706"></span>3：どちらともいえない・一部当てはまる</div>
-    <div class="leg-row"><span class="leg-dot" style="background:#16A34A"></span>4：概ね当てはまる</div>
-    <div class="leg-row"><span class="leg-dot" style="background:#059669"></span>5：十分に当てはまる</div>
-  </div>
-  <div class="leg-divider"></div>
-  <div class="leg-col" style="justify-content:center;gap:5px">
-    <div class="leg-row"><span class="who-badge who-hr">人事HR</span> 人事担当者の回答</div>
-    <div class="leg-row"><span class="who-badge who-fi">現場・1〜3年目</span> 現場担当者・入社1〜3年目社員の回答</div>
-  </div>
-</div>
+一般的な改善案を並べるのではなく、営業担当者が商談で、
 
-<!-- SECTIONS GRID -->
-<div class="sections-grid">
+「御社にはこのような魅力があるのに、現在の求人原稿では十分に伝え切れていません」
 
-  <div class="sec-card">
-    <div class="sec-hdr sec-hdr-a"><span class="sec-hdr-icon">📋</span>
-      <div><div>A. 応募前の情報整備</div><div style="font-size:9.5px;opacity:.8;font-weight:400">求人・採用サイト・SNSでの情報発信</div></div>
-    </div>
-    <div class="sec-body" id="secA-body"></div>
-    <div class="sec-gap-bar" id="secA-footer"></div>
-  </div>
+と具体的に説明できる資料を作成してください。
 
-  <div class="sec-card">
-    <div class="sec-hdr sec-hdr-b"><span class="sec-hdr-icon">🤝</span>
-      <div><div>B. 選考時の情報連携</div><div style="font-size:9.5px;opacity:.8;font-weight:400">面接・選考プロセスでの情報共有</div></div>
-    </div>
-    <div class="sec-body" id="secB-body"></div>
-    <div class="sec-gap-bar" id="secB-footer"></div>
-  </div>
+対象企業の不足や欠点を指摘するだけの表現は避け、現在の原稿を尊重しながら、採用効率を高めるための改善機会として整理してください。
 
-  <div class="sec-card">
-    <div class="sec-hdr sec-hdr-c"><span class="sec-hdr-icon">🌱</span>
-      <div><div>C. 入社後の受け入れ準備</div><div style="font-size:9.5px;opacity:.8;font-weight:400">定着・活躍に向けた採用設計</div></div>
-    </div>
-    <div class="sec-body" id="secC-body"></div>
-    <div class="sec-gap-bar" id="secC-footer"></div>
-  </div>
+---
 
-</div>
+# 1. 固定情報
 
-<!-- SUPPLEMENT PANEL -->
-<div class="supp-panel">
-  <div class="supp-top" onclick="toggleSupp()">
-    <span class="supp-badge">現場・1〜3年目</span>
-    <span class="supp-title-txt">📝 補足アンケート Q13〜Q28（任意入力）</span>
-    <span class="supp-arrow" id="supp-arrow">▶</span>
-  </div>
-  <div class="supp-body" id="supp-body">
-    <div class="supp-tabs">
-      <button class="supp-tab act" onclick="showTab('pre',this)">① 応募前 Q13-17</button>
-      <button class="supp-tab" onclick="showTab('sel',this)">② 選考 Q18-20</button>
-      <button class="supp-tab" onclick="showTab('post',this)">③ 入社後 Q21-25</button>
-      <button class="supp-tab" onclick="showTab('ret',this)">④ 定着 Q26-28</button>
-    </div>
+## 評価基準リスト
 
-    <!-- TAB: 応募前 -->
-    <div class="supp-tab-body vis" id="tab-pre">
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q13</span><span class="supp-ql">仕事探し・応募時に重視していたことを選んでください（複数選択可）</span></div>
-        <div class="cb-grid" id="cb13"></div>
-      </div>
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q14</span><span class="supp-ql">応募前に不安だったことを選んでください（複数選択可）</span></div>
-        <div class="cb-grid" id="cb14"></div>
-      </div>
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q15</span><span class="supp-ql">応募前に「もっと知りたかった」「情報が足りなかった」と感じたこと</span></div>
-        <textarea class="supp-textarea" id="ta15" placeholder="自由回答" oninput="onTa(15,this.value)"></textarea>
-      </div>
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q16</span><span class="supp-ql">応募する際、どのような会社・職種・働き方と比較しましたか</span></div>
-        <textarea class="supp-textarea" id="ta16" placeholder="自由回答" oninput="onTa(16,this.value)"></textarea>
-      </div>
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q17</span><span class="supp-ql">この会社・仕事へ応募した主な決め手を選んでください（複数選択可）</span></div>
-        <div class="cb-grid" id="cb17"></div>
-      </div>
-    </div>
+次のGoogleスプレッドシートを評価基準として使用してください。
 
-    <!-- TAB: 選考 -->
-    <div class="supp-tab-body" id="tab-sel">
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q18</span><span class="supp-ql">面接や選考を通じて、応募前の不安や疑問は解消された</span></div>
-        <div class="supp-slider-row">
-          <input type="range" min="1" max="5" step="1" value="3" class="supp-slider" id="sl18" oninput="onSl(18,this.value)">
-          <span class="supp-val" id="slv18">3</span>
-        </div>
-        <div class="supp-scale"><span class="ssl">1<br>ほぼ×</span><span class="ssl">2<br>あまり×</span><span class="ssl">3<br>どちらとも</span><span class="ssl">4<br>概ね○</span><span class="ssl">5<br>十分○</span></div>
-      </div>
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q19</span><span class="supp-ql">面接・選考後にも残っていた不安や、分からなかったこと</span></div>
-        <textarea class="supp-textarea" id="ta19" placeholder="自由回答" oninput="onTa(19,this.value)"></textarea>
-      </div>
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q20</span><span class="supp-ql">最終的にこの会社へ入社を決めた理由</span></div>
-        <textarea class="supp-textarea" id="ta20" placeholder="自由回答" oninput="onTa(20,this.value)"></textarea>
-      </div>
-    </div>
+https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/
 
-    <!-- TAB: 入社後 -->
-    <div class="supp-tab-body" id="tab-post">
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q21</span><span class="supp-ql">入社前に聞いていた仕事内容・働き方・職場環境と、入社後の実態は概ね一致していた</span></div>
-        <div class="supp-slider-row">
-          <input type="range" min="1" max="5" step="1" value="3" class="supp-slider" id="sl21" oninput="onSl(21,this.value)">
-          <span class="supp-val" id="slv21">3</span>
-        </div>
-        <div class="supp-scale"><span class="ssl">1<br>ほぼ×</span><span class="ssl">2<br>あまり×</span><span class="ssl">3<br>どちらとも</span><span class="ssl">4<br>概ね○</span><span class="ssl">5<br>十分○</span></div>
-      </div>
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q22</span><span class="supp-ql">入社後に「想像と違った」「先に知っておきたかった」と感じたこと</span></div>
-        <textarea class="supp-textarea" id="ta22" placeholder="自由回答" oninput="onTa(22,this.value)"></textarea>
-      </div>
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q23</span><span class="supp-ql">入社直後に、最も困ったこと・つまずいたこと</span></div>
-        <textarea class="supp-textarea" id="ta23" placeholder="自由回答" oninput="onTa(23,this.value)"></textarea>
-      </div>
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q24</span><span class="supp-ql">入社直後の教育・説明・フォローは十分だった</span></div>
-        <div class="supp-slider-row">
-          <input type="range" min="1" max="5" step="1" value="3" class="supp-slider" id="sl24" oninput="onSl(24,this.value)">
-          <span class="supp-val" id="slv24">3</span>
-        </div>
-        <div class="supp-scale"><span class="ssl">1<br>ほぼ×</span><span class="ssl">2<br>あまり×</span><span class="ssl">3<br>どちらとも</span><span class="ssl">4<br>概ね○</span><span class="ssl">5<br>十分○</span></div>
-      </div>
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q25</span><span class="supp-ql">入社後に初めて分かった、この職場・仕事の魅力や良かった点</span></div>
-        <textarea class="supp-textarea" id="ta25" placeholder="自由回答" oninput="onTa(25,this.value)"></textarea>
-      </div>
-    </div>
+このスプレッドシートは参照専用です。内容を変更しないでください。
 
-    <!-- TAB: 定着 -->
-    <div class="supp-tab-body" id="tab-ret">
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q26</span><span class="supp-ql">現在も働き続けている主な理由を選んでください（複数選択可）</span></div>
-        <div class="cb-grid" id="cb26"></div>
-      </div>
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q27</span><span class="supp-ql">この職場で活躍しやすい人・長く続きやすい人の特徴</span></div>
-        <textarea class="supp-textarea" id="ta27" placeholder="自由回答" oninput="onTa(27,this.value)"></textarea>
-      </div>
-      <div class="supp-sec">
-        <div class="supp-qhdr"><span class="supp-qn">Q28</span><span class="supp-ql">求人・面接での説明や、新しく入社した人の受け入れについて、改善した方がよいこと</span></div>
-        <textarea class="supp-textarea" id="ta28" placeholder="自由回答" oninput="onTa(28,this.value)"></textarea>
-      </div>
-    </div>
-  </div>
-</div>
+## 出力形式
 
-<!-- RESULTS -->
-<div class="results">
-  <div class="results-title">📊 GAP診断レポート</div>
-  <div id="diagnosis-area"></div>
-  <div class="gap-cards" id="gap-cards"></div>
-  <div class="chart-area">
-    <div class="chart-toggle" onclick="toggleChart(this)">
-      <span>📈 質問別スコア比較（人事担当 vs 現場・入社1〜3年目）</span>
-      <span class="chart-arrow">▶</span>
-    </div>
-    <div class="chart-body" id="chart-body" style="display:none">
-      <div id="bar-chart"></div>
-    </div>
-  </div>
-  <div>
-    <div class="improve-title">🛠 改善アクション提案</div>
-    <div id="improve-body"></div>
-  </div>
-  <div id="voice-area"></div>
-</div>
+Excelファイル（.xlsx）
 
-</div>
+## 文面提案数
 
+{{PROPOSAL_COUNT}}項目
+
+## 文面提案の長さ
+
+1項目につき、おおむね{{TEXT_LENGTH}}文字程度としてください。
+
+{{TEXT_LENGTH_GUIDANCE}}
+
+## Web調査方法
+
+{{WEB_RESEARCH_INSTRUCTION}}
+
+---
+
+# 2. 今回の入力情報
+
+## 求人原稿URL
+
+{{JOB_URL}}
+
+## 求人原稿全文
+
+{{JOB_TEXT}}
+
+## 対象企業の参考ページ
+
+{{COMPANY_URLS}}
+
+## 競合企業の参考ページ
+
+{{COMPETITOR_URLS}}
+
+## 想定ターゲット・文面の方向性
+
+{{TARGET_PERSONA}}
+
+---
+
+# 3. 必ず守る処理順序
+
+以下の順序で処理してください。
+
+1. 評価基準スプレッドシートを取得する
+2. 評価基準の列名とデータ行を確認する
+3. 求人原稿を取得する
+4. 雇用形態を判定する
+5. 評価対象となる必須項目を抽出する
+6. 求人原稿本文だけを使って各項目を評価する
+7. 対象企業と競合企業のWeb調査を行う
+8. 文面提案上位N件を選定する
+9. 商談時の確認質問を作成する
+10. Excelに格納するデータを確定する
+11. 必要に応じてPythonなどを使いExcelファイルを生成する
+12. 出力前セルフチェックを行う
+
+評価基準や求人原稿を取得する前に、Excel生成やPython処理を開始しないでください。
+
+---
+
+# 4. 評価基準スプレッドシートの取得方法
+
+## 4-1. 最初に使用する取得方法
+
+評価基準スプレッドシートは、最初にGeminiで利用可能な次のいずれかの機能を使用して取得してください。
+
+- 通常のWebページ閲覧機能
+- URL参照機能
+- Google Workspace連携機能
+- Google Drive連携機能
+- Googleスプレッドシートを直接参照できる機能
+
+評価基準の取得段階では、Python実行環境から外部URLへ通信しないでください。
+
+## 4-2. 評価基準取得に使用してはいけない方法
+
+評価基準スプレッドシートを取得する目的で、次のようなPython実行環境からの外部通信を行わないでください。
+
+- Pythonのrequests
+- urllib
+- pandas.read_csvによるURL読み込み
+- pandas.read_excelによるURL読み込み
+- wget
+- curl
+- 外部URLへのHTTPリクエスト
+- Python実行環境からのDNS名前解決
+- Python実行環境からのGoogle Sheetsダウンロード
+
+Pythonは、評価基準と求人原稿の内容が取得できた後に、データ整理、集計、検証、書式設定、Excel生成を行う目的で使用してください。
+
+## 4-3. 取得後の確認
+
+評価基準を読み取ったら、求人原稿の評価へ進む前に、少なくとも次の列が存在することを確認してください。
+
+- No.
+- 分類
+- 大項目
+- 中項目
+- 追加文面例
+- 優先順位
+- 正社員
+- 非正規（アルバイト・パート・派遣）
+
+さらに、見出しだけでなく、評価項目のデータ行が取得できていることを確認してください。
+
+列名が一部異なる場合は、意味が同じ列かを慎重に確認してください。意味が判断できない場合は推測しないでください。
+
+## 4-4. 最初の取得に失敗した場合
+
+最初の取得に失敗しても、ただちに、
+
+「ネットワーク制限により取得できません」
+
+と結論付けないでください。
+
+次の順序で再試行してください。
+
+1. Pythonを使わず、通常のURL閲覧機能で再度開く
+2. Google DriveまたはGoogle Workspace連携が利用可能なら、それを使う
+3. スプレッドシートURLを通常のWebページとして開き直す
+4. ファイル名またはスプレッドシートIDから参照できるか確認する
+
+Python実行環境での外部通信が失敗した場合でも、Gemini本体のWeb閲覧機能では取得できる可能性があります。
+
+取得方法を切り替えずに、同じ失敗したPython処理だけを繰り返さないでください。
+
+## 4-5. それでも取得できない場合
+
+利用可能な通常のWeb閲覧機能やGoogle Drive連携を試しても取得できない場合に限り、処理を中断してください。
+
+その場合は、次の内容を具体的に報告してください。
+
+- 取得できなかったURL
+- 試した取得方法
+- どの段階で失敗したか
+- 表示されたエラーの概要
+- 評価基準ファイルの添付または表データの貼り付けが必要であること
+
+評価基準を確認できない状態で、項目、必須判定、優先順位を推測してExcelを作成しないでください。
+
+---
+
+# 5. 求人原稿の取得と正本
+
+求人原稿URLと求人原稿全文の両方が入力されている場合は、貼り付けられた「求人原稿全文」を評価対象の正本としてください。
+
+求人原稿URLは、掲載元の確認や、貼り付けられた求人原稿の補足確認に使用してください。
+
+求人原稿URLから取得した内容と、貼り付けられた求人原稿全文に差異がある場合も、貼り付けられた求人原稿全文を優先してください。
+
+求人原稿URLにCAPTCHA、ログイン制限、アクセス拒否などがあり取得できない場合でも、求人原稿全文が入力されていれば、その全文を用いて処理を継続してください。
+
+求人原稿全文が入力されておらず、求人原稿URLからも本文を取得できない場合は、内容を推測して評価しないでください。
+
+この場合はExcelを生成せず、求人原稿全文の貼り付けが必要であることを伝えてください。
+
+求人原稿URLの取得も、最初は通常のWeb閲覧機能を使用してください。Python実行環境からのURL取得は使用しないでください。
+
+---
+
+# 6. 雇用形態の判定
+
+求人原稿本文から、対象求人の雇用形態を判定してください。
+
+判定区分は次の2種類です。
+
+- 正社員
+- 非正規（アルバイト・パート・派遣）
+
+契約社員、嘱託社員、期間社員など、どちらに分類するか判断が難しい雇用形態は、正社員以外を原則として「非正規」に分類してください。
+
+雇用形態が複数記載されている場合は、今回募集している中心的な雇用形態を判定してください。
+
+判定した雇用形態と、その根拠となった求人原稿の原文を、Excelの「評価サマリー」シートへ記録してください。
+
+---
+
+# 7. 評価対象項目の抽出
+
+判定した雇用形態に対応する列を確認してください。
+
+- 正社員の場合：「正社員」列
+- 非正規の場合：「非正規（アルバイト・パート・派遣）」列
+
+対応する列が「必須」となっている行だけを評価対象としてください。
+
+対応する列が空欄、必須以外、または対象外となっている行は、Excelの評価結果シートへ出力しないでください。
+
+評価基準スプレッドシートの元の行番号、項目名、列内容を変更しないでください。
+
+独自に評価項目を追加しないでください。
+
+---
+
+# 8. 求人原稿の評価ルール
+
+評価対象となった各項目について、求人原稿本文だけを使用し、次のいずれかに分類してください。
+
+- 記載あり
+- なし
+- その他
+
+企業サイト、採用サイト、競合サイト、一般Webの情報は、この判定に使用しないでください。
+
+## 記載あり
+
+対象項目について、求職者が具体的な魅力を理解できる記載が求人原稿に存在する状態です。
+
+単に関連語句が含まれているだけでなく、制度、条件、仕事の様子、数値、期間、方法、事例などが具体的に伝わっている必要があります。
+
+## なし
+
+対象項目について、求人原稿本文に該当する記載が存在しない状態です。
+
+外部Webに情報が存在していても、求人原稿本文に書かれていなければ「なし」としてください。
+
+## その他
+
+対象項目への言及はあるものの、具体性が不足している、求職者にとってのメリットが分からない、魅力として十分に伝わっていない状態です。
+
+例：
+
+- 「未経験者歓迎」とだけ記載され、研修方法や独り立ちまでの流れが不明
+- 「賞与あり」と記載されているが、回数や支給実績が不明
+- 「働きやすい職場」と記載されているが、根拠が不明
+- 複数名で作業すると書かれているが、相談体制や人間関係までは分からない
+
+項目に関連する語句があるという理由だけで、「記載あり」にしないでください。
+
+---
+
+# 9. 理由欄の作成ルール
+
+## 記載あり
+
+評価の根拠となった求人原稿の文面を、そのまま抜粋してください。
+
+要約、言い換え、補足、推測は行わないでください。
+
+## その他
+
+言及はあるものの具体性に欠けると判断した根拠となる求人原稿の文面を、そのまま抜粋してください。
+
+## なし
+
+理由欄には、必ず次の文字列を記載してください。
+
+記載なし
+
+外部Webで確認した情報を理由欄に入れないでください。
+
+---
+
+# 10. 外部Web調査
+
+求人原稿本文だけを使った評価が完了した後に、文面提案と初回商談準備のためのWeb調査を行ってください。
+
+評価作業とWeb調査を混同しないでください。
+
+第1章の「Web調査方法」に記載された今回の調査範囲を最優先してください。「指定URLのみ」の場合は、以下に一般Web検索の記載があっても実行しないでください。
+
+## 調査の優先順位
+
+1. ユーザーが指定した対象企業の公式ページ
+2. 対象企業のコーポレートサイト
+3. 対象企業の採用サイト
+4. 対象企業の職種紹介、社員紹介、福利厚生、会社概要
+5. 対象企業の親会社・グループ会社の公式情報
+6. 信頼できる外部情報
+7. ユーザーが指定した競合企業の公式ページ
+8. 必要に応じた一般Web検索
+
+対象企業や競合企業のURL取得も、最初に通常のWeb閲覧機能を使用してください。
+
+外部サイトの取得に失敗した場合は、Python実行環境からの外部通信だけに頼らず、通常のURL参照機能で再試行してください。
+
+## 調査する情報
+
+- 会社の歴史
+- 事業内容
+- 企業規模
+- 親会社やグループ会社
+- 地域での実績
+- 顧客や取引先
+- 競合企業と異なる事業上の強み
+- 教育、研修、資格取得支援
+- キャリアアップ
+- 正社員登用
+- 表彰制度
+- 福利厚生
+- 有給休暇や休業制度
+- 社員の年齢構成や性別構成
+- 社員インタビュー
+- 仕事のやりがい
+- 顧客から感謝された事例
+- 職場の人間関係
+- 相談・フォロー体制
+- 未経験者の教育方法
+- 定着や長期勤務につながる制度
+- 求職者にとって魅力となる設備や職場環境
+
+## 情報の信頼性
+
+対象企業について断定的な文面を作成する場合は、対象企業の公式情報、親会社・グループ会社の公式情報、または信頼できる公開情報で事実確認できる内容を使用してください。
+
+確認できない事実を推測で補わないでください。
+
+情報が古い可能性がある場合は、現在も有効であると確認できない限り断定しないでください。
+
+取得できなかったURL、確認できなかった情報は、Excelの「実行条件・参照ソース」シートに記録してください。
+
+---
+
+# 11. 競合企業情報の扱い
+
+競合企業の情報は、次の目的で使用してください。
+
+- 競合求人で強く訴求されている項目を確認する
+- 求職者が比較しやすい条件や魅力を把握する
+- 対象企業が持っているのに原稿で伝えていない魅力を探す
+- 初回商談で確認すべき情報を見つける
+- 対象企業ならではの差別化仮説を作る
+
+競合企業に存在する制度や条件を、対象企業にも存在するものとして扱わないでください。
+
+競合企業の情報だけを根拠に、対象企業の求人原稿へそのまま追記できる文面を作らないでください。
+
+対象企業側で同様の事実を確認できない場合は、完成文面ではなく、商談時の確認事項として整理してください。
+
+---
+
+# 12. 文面提案対象の選定ルール
+
+指定された文面提案数をN件とします。この案件ではN={{PROPOSAL_COUNT}}件です。文面提案をN件作成してください。
+
+原則として「記載あり」の項目は文面提案対象にしないでください。
+
+基本的な優先順は次のとおりです。
+
+1. 調査結果が「なし」
+2. 調査結果が「その他」
+3. 調査結果が「記載あり」
+
+---
+
+## 12-1. 競合企業URLが入力されている場合
+
+競合企業URLが1件以上入力されている場合、評価基準リストの優先順位が「1」である、
+
+「競合他社との比較・自社の強み」
+
+の調査結果が「なし」であれば、この項目を必ず文面提案対象に選定してください。
+
+原則としてTOP1としてください。
+
+強制選定が適用され、Nが2件以上の場合、残りのN－1件は、次の条件を満たす項目から選んでください。
+
+強制選定が適用されない場合は、N件すべてを同じ条件から選んでください。
+
+- 優先順位が「2」
+- 調査結果が「なし」
+
+候補が複数ある場合は、次の観点で順位付けしてください。
+
+1. 対象企業の公式情報から事実確認できる
+2. 競合企業との違いを示しやすい
+3. 対象企業ならではの特徴がある
+4. 想定ターゲットの応募判断への影響が大きい
+5. 求職者の不安解消につながる
+6. 求人原稿へ追記した際に具体的な魅力として伝わる
+7. 営業担当者が初回商談で説明しやすい
+8. 採用担当者に追加質問しやすい
+9. 採用効率や応募の質の改善につながる可能性がある
+
+---
+
+## 12-2. 優先順位2の「なし」で必要数に達しない場合
+
+次の順序で候補を補ってください。
+
+1. 優先順位2で「その他」
+2. 優先順位が空欄で「なし」
+3. 優先順位が空欄で「その他」
+4. 対象企業への確認によって有力な訴求になり得る項目
+
+対象企業について確認できない内容を推測して完成文面にしないでください。
+
+---
+
+## 12-3. 競合企業URLが入力されていない場合
+
+次の順序で選定してください。
+
+1. 優先順位1で「なし」
+2. 優先順位2で「なし」
+3. 優先順位1または2で「その他」
+4. 優先順位が空欄で「なし」
+5. 優先順位が空欄で「その他」
+
+競合企業URLが入力されていなくても、対象企業の公式情報から明確な独自性を確認できた場合は、「競合他社との比較・自社の強み」を候補に含めて構いません。
+
+具体的な競合企業との優劣は、根拠なく断定しないでください。
+
+---
+
+## 12-4. 想定ターゲットの反映
+
+想定ターゲット・文面の方向性が入力されている場合は、文面提案の順位付けと文章作成に反映してください。
+
+ただし、ターゲットに合わせるために、対象企業で確認できない制度、条件、職場環境を作り出してはいけません。
+
+---
+
+# 13. 文面提案の作成ルール
+
+選定された上位N件について、求人原稿へ追記できる文面案を作成してください。
+
+## そのまま掲載できる文面
+
+対象企業の公開情報から事実確認できる場合は、求人原稿へそのまま追記できる自然な文章を作成してください。
+
+- おおむね{{TEXT_LENGTH}}文字程度
+- 求職者にとってのメリットが分かる
+- 抽象的な美辞麗句だけにしない
+- 具体的な制度、事例、数字、仕事の意味などを含める
+- 求人原稿全体の文体になじませる
+- 過度な断定や誇張を避ける
+- 競合企業を名指しで批判しない
+
+## 企業への確認後に使用できる文面
+
+魅力になりそうな情報があるものの、公開情報だけでは事実確認できない場合は、文面提案の冒頭に次を記載してください。
+
+【企業への確認後に使用可能】
+
+どの事実が確認できれば使用できる文章なのか分かる形にしてください。
+
+## 提案対象外
+
+文面提案対象に選ばれなかった行には、必ず次を記載してください。
+
+-
+
+---
+
+# 14. 商談時の確認質問
+
+文面提案上位N件について、それぞれ1問ずつ、採用企業との初回商談で確認する質問を作成してください。
+
+「ありますか」「何件ですか」だけで終わらせず、求人原稿へ反映できる具体的な回答を引き出せる質問にしてください。
+
+若手営業担当者が、そのまま商談で使用できる自然な表現にしてください。
+
+---
+
+# 15. Excelファイルの構成
+
+3つのシートを作成してください。
+
+## シート1：評価結果
+
+評価基準スプレッドシートの元項目を維持したまま、右側に次の3列を追加してください。
+
+- 調査結果
+- 理由
+- 文面提案
+
+対象雇用形態で「必須」となっている行だけを出力してください。
+
+評価基準スプレッドシートに存在する元列は、順序、項目名、内容を維持してください。
+
+### 調査結果
+
+- 記載あり
+- なし
+- その他
+
+### 理由
+
+- 記載あり：求人原稿の該当箇所を原文のまま抜粋
+- その他：求人原稿の該当箇所を原文のまま抜粋
+- なし：記載なし
+
+### 文面提案
+
+- 選定された上位N件：文面案
+- それ以外：-
+
+---
+
+## シート2：評価サマリー
+
+### 基本情報
+
+- 対象企業名
+- 求人名
+- 判定した雇用形態
+- 雇用形態判定の根拠
+- 評価対象項目数
+- 記載あり件数
+- その他件数
+- なし件数
+- 記載あり率
+- 求人原稿全体の評価
+- 主な改善余地
+
+### 文面提案・改善候補
+
+次の列を持つ表を作成してください。
+
+- 順位
+- No.
+- 評価項目
+- 調査結果
+- 評価基準上の優先順位
+- 選定理由
+- 対象企業の強み
+- 競合企業との比較・差別化仮説
+- 文面提案
+- 情報の確度
+- 企業への確認要否
+- 商談時の確認質問
+- 主な参照元URL
+
+### 情報の確度
+
+- 公式情報で確認済み
+- 信頼できる外部情報で確認
+- 一部確認済み
+- 企業への確認が必要
+
+---
+
+## シート3：実行条件・参照ソース
+
+次の情報を記録してください。
+
+- 実行日
+- プロンプトバージョン：1.2
+- 評価基準スプレッドシートURL
+- 評価基準の取得方法
+- 求人原稿URL
+- 求人原稿全文の入力有無
+- 対象企業の参考ページ
+- 競合企業の参考ページ
+- 想定ターゲット・文面の方向性
+- 文面提案数
+- 文面文字数の目安
+- 実際に参照したURL
+- 各URLの情報区分
+- 各URLから確認した主な情報
+- 取得できなかったURL
+- 取得に使用した方法
+- 事実確認できなかった事項
+- 出力時の注意事項
+
+URLの情報区分は次のいずれかにしてください。
+
+- 対象企業公式
+- 親会社・グループ公式
+- 競合企業公式
+- 求人掲載ページ
+- 外部情報
+- その他
+
+---
+
+# 16. Excelの書式
+
+最低限、次の書式を設定してください。
+
+- ヘッダーの背景色
+- ヘッダーの太字
+- ヘッダーの文字色
+- 全セルへの罫線
+- テキストの折り返し
+- 上揃え
+- 適切な列幅
+- 1行目の固定
+- オートフィルター
+- 長文を読める行の高さ
+
+調査結果列は次のように色分けしてください。
+
+- 記載あり：緑系
+- その他：黄系
+- なし：赤系
+
+文面提案が記載されたセルは、薄い強調色を付けてください。
+
+---
+
+# 17. 出力ファイル名
+
+次の形式を基本としてください。
+
+求人原稿魅力度評価_対象企業名_実行日.xlsx
+
+対象企業名が特定できない場合は、求人名を使用してください。
+
+ファイル名に使用できない記号は除去してください。
+
+---
+
+# 18. 出力前セルフチェック
+
+Excelファイルを生成する前に、必ず次を検証してください。
+
+1. 評価基準を実際に取得できているか
+2. 評価基準の必要な列がすべて存在するか
+3. 評価基準のデータ行が取得できているか
+4. 評価基準の取得にPythonからの外部通信を使用していないか
+5. 求人原稿の雇用形態を正しく判定しているか
+6. 判定した雇用形態の列で「必須」の行だけを出力しているか
+7. 必須でない行が混入していないか
+8. 評価基準の元列と元内容を維持しているか
+9. すべての行に「調査結果」「理由」「文面提案」が入っているか
+10. 調査結果が指定された3分類のいずれかになっているか
+11. 「なし」の理由がすべて「記載なし」になっているか
+12. 「記載あり」「その他」の理由が求人原稿からの原文抜粋になっているか
+13. 外部Web情報を求人原稿の評価判定に使用していないか
+14. 文面提案が指定されたN件だけ作成されているか
+15. 文面提案対象外の行がすべて「-」になっているか
+16. 競合企業URLがある場合の強制選定ルールを守っているか
+17. 残りの項目が原則として優先順位2から選ばれているか
+18. 上位N件の選定理由が説明されているか
+19. 上位N件それぞれに商談時の確認質問があるか
+20. 対象企業について確認できない内容を断定していないか
+21. 競合企業の制度を対象企業の制度として扱っていないか
+22. 各文面提案の参照元が記録されているか
+23. 取得できなかったURLや確認できなかった情報が記録されているか
+24. Excel内に数式エラーや欠損した必須セルがないか
+25. Excelファイルを実際にダウンロードできる状態になっているか
+
+問題がある場合は修正してから、最終的なExcelファイルを出力してください。
+
+---
+
+# 19. 最終出力
+
+処理完了後は、チャット本文に長い分析を繰り返さず、次の内容を簡潔に伝えてください。
+
+- 判定した雇用形態
+- 評価対象項目数
+- 記載あり・その他・なしの件数
+- 選定した文面提案上位N件
+- 取得できなかった重要な情報がある場合の注意
+- Excelファイルのダウンロードリンク
+
+必ずExcelファイル（.xlsx）を生成してください。</script>
 <script>
-// ── QUESTION DATA ──
-const QS=[
-  {sec:'A',num:1,view:'仕事内容理解',
-   hr:'求人票・採用サイト・SNSなどで、仕事内容や1日の流れが具体的に伝わる状態になっている',
-   fi:'新しく入社する人は、実際の仕事内容や1日の流れをある程度理解した状態で入社している'},
-  {sec:'A',num:2,view:'期待値調整',
-   hr:'仕事の大変な点・注意点・向き不向きも、入社後ギャップにならない範囲で伝えられている',
-   fi:'仕事の大変な点や注意すべき点について、入社前にある程度説明されているように感じる'},
-  {sec:'A',num:3,view:'人・雰囲気の可視化',
-   hr:'職場の雰囲気や、一緒に働く人のイメージが応募前に伝わる状態になっている',
-   fi:'新しく入社する人が事前に持っていた職場の雰囲気のイメージと、実際の職場に大きな違いはない'},
-  {sec:'A',num:4,view:'訴求と実態の一致',
-   hr:'求人票・採用サイト・SNSなどで伝えている魅力は、現場の実態と大きくズレていない',
-   fi:'採用時に伝えられている会社や仕事の魅力は、現場で実際に感じられる内容である'},
-  {sec:'B',num:5,view:'必要情報の共有',
-   hr:'面接前後で候補者に伝えるべき仕事内容・働き方・条件が整理されている',
-   fi:'新しく入社する人には、勤務時間・働き方・仕事内容など、現場で働くうえで必要な情報が伝わっている'},
-  {sec:'B',num:6,view:'現場理解の機会',
-   hr:'面接や職場見学で、現場の仕事内容・雰囲気・大変な点を伝える機会がある',
-   fi:'入社前や入社直後に、実際の仕事内容や職場の雰囲気を知る機会がある'},
-  {sec:'B',num:7,view:'反応・辞退理由の把握',
-   hr:'面接後の候補者反応や辞退理由を把握し、次の採用活動に活かせる状態になっている',
-   fi:'新しく入社した人が不安や疑問を感じた時に、質問や相談がしやすい雰囲気がある'},
-  {sec:'B',num:8,view:'面接内容の標準化',
-   hr:'面接で確認すべきこと・伝えるべきことが整理され、属人化しすぎていない',
-   fi:'新しく入社した人への仕事内容の説明や教え方は、担当する人によって大きく変わりすぎていない'},
-  {sec:'C',num:9,view:'入社後ギャップの予防',
-   hr:'入社前に伝える仕事内容・働き方が、入社後の実態とズレにくい状態になっている',
-   fi:'新しく入社した人から、「入社前に聞いていた内容と違う」という声が出ることは少ない'},
-  {sec:'C',num:10,view:'初期オンボーディング課題',
-   hr:'新しく入社した人が最初につまずきやすい点を把握し、事前説明や受け入れに活かせる状態になっている',
-   fi:'新しく入社した人が最初につまずきやすいことや、困りやすいことを職場で把握している'},
-  {sec:'C',num:11,view:'採用ターゲットと活躍人材の一致',
-   hr:'採用したい人物像と、現場で活躍・定着しやすい人物像が大きくズレていない',
-   fi:'新しく入社した人の性格や働き方が、実際の仕事内容や職場の環境に合っていると感じることが多い'},
-  {sec:'C',num:12,view:'定着人材の言語化',
-   hr:'入社後に活躍・定着しやすい人の特徴が整理され、採用活動に活かせる状態になっている',
-   fi:'この職場で活躍しやすい人や、長く続きやすい人の特徴を具体的に説明できる'},
-];
-
-// ── INDUSTRY PRESETS ──
-const IND={
-  '広告':    {hr:[4.0,2.5,4.5,3.5,3.5,4.0,2.5,3.5,3.0,2.5,3.5,3.0],fi:[3.0,2.0,3.5,2.5,3.0,3.0,2.0,2.5,2.5,2.0,3.0,2.5]},
-  'コンサル':{hr:[4.5,2.0,4.0,3.0,4.0,4.0,2.5,3.5,3.0,2.5,4.0,3.5],fi:[3.5,1.5,3.5,2.0,3.0,3.0,2.0,2.5,2.0,2.0,3.0,2.5]},
-  'IT':      {hr:[4.5,3.0,4.0,4.0,4.0,4.0,3.0,4.0,3.5,3.0,4.0,3.5],fi:[4.0,2.5,3.5,3.0,3.5,3.5,2.5,3.0,3.0,2.5,3.5,3.0]},
-  '建築':    {hr:[3.5,2.5,3.0,2.5,3.0,3.0,2.0,2.5,2.5,2.0,3.0,2.5],fi:[2.5,2.0,2.5,1.5,2.0,2.0,1.5,2.0,2.0,1.5,2.5,2.0]},
-  '物流':    {hr:[3.0,2.0,2.5,2.5,2.5,2.5,2.0,2.5,2.0,2.0,2.5,2.0],fi:[2.0,1.5,2.0,1.5,2.0,2.0,1.5,2.0,1.5,1.5,2.0,1.5]},
-  '大工':    {hr:[3.0,2.5,3.0,2.5,2.5,2.5,1.5,2.5,2.5,2.0,3.0,2.5],fi:[2.0,2.0,2.5,1.5,2.0,2.0,1.5,2.0,2.0,1.5,2.5,2.0]},
-  '美容':    {hr:[4.0,2.0,4.5,3.0,3.5,3.0,2.0,3.0,2.5,2.0,3.0,2.5],fi:[2.5,1.5,3.5,2.0,2.5,2.5,1.5,2.0,2.0,1.5,2.5,2.0]},
-  '小売':    {hr:[3.5,2.5,3.5,3.0,3.0,3.0,2.0,3.0,3.0,2.5,3.0,2.5],fi:[2.5,2.0,3.0,2.0,2.5,2.5,1.5,2.0,2.0,2.0,2.5,2.0]},
-  '人材派遣':{hr:[4.0,3.0,4.0,3.5,4.0,4.0,3.0,4.0,3.5,3.0,4.0,3.5],fi:[3.5,2.5,3.5,3.0,3.5,3.5,2.5,3.5,3.0,2.5,3.5,3.0]},
-  'イベント':{hr:[4.0,2.0,4.5,3.0,3.5,3.5,2.0,3.0,2.5,2.0,3.0,2.5],fi:[3.0,1.5,3.5,2.0,2.5,2.5,1.5,2.0,2.0,1.5,2.5,2.0]},
-  'メーカー':{hr:[4.0,3.0,3.5,3.5,3.5,3.5,2.5,3.5,3.5,3.0,4.0,3.5],fi:[3.5,2.5,3.0,3.0,3.0,3.0,2.0,3.0,3.0,2.5,3.5,3.0]},
-  '食品製造':{hr:[3.5,2.5,3.0,3.0,3.0,2.5,2.0,3.0,2.5,2.5,3.0,2.5],fi:[2.5,1.5,2.5,2.0,2.5,2.0,1.5,2.0,1.5,2.0,2.5,1.5]},
-  '介護':{hr:[3.5,3.0,3.5,3.0,4.0,3.5,3.0,3.5,3.0,3.5,3.5,3.0],fi:[2.0,2.0,2.0,2.0,3.0,2.5,2.0,2.5,2.0,2.0,2.5,2.0]},
-  '警備':{hr:[3.5,3.0,3.0,3.0,3.5,3.5,2.5,3.0,3.0,3.0,3.5,2.5],fi:[2.0,2.0,1.5,2.0,2.5,2.5,1.5,2.0,2.0,2.0,2.5,1.5]},
-  '小売店':{hr:[3.5,3.5,4.0,3.0,3.5,3.5,3.0,3.5,3.5,3.5,4.0,3.0],fi:[2.5,2.5,2.5,2.0,2.5,2.5,2.0,2.5,2.5,2.5,3.0,2.0]},
-  '飲食店':{hr:[4.0,3.5,3.5,3.0,4.0,3.5,3.0,3.0,3.0,3.5,4.0,3.0],fi:[2.0,2.0,1.5,2.0,2.5,2.5,2.0,2.0,2.0,2.0,2.5,1.5]},
-};
-
-// ── STATE ──
-const S={hr:Array(12).fill(3),fi:Array(12).fill(3)};
-
-// ── SUPPLEMENT STATE ──
-const SUPP={
-  q13:[],q14:[],q15:'',q16:'',q17:[],
-  q18:3,q19:'',q20:'',
-  q21:3,q22:'',q23:'',q24:3,q25:'',
-  q26:[],q27:'',q28:''
-};
-
-const CB13=['給与・賞与','勤務地・通勤時間','勤務時間・シフト','休日・休暇','仕事内容','仕事の負担・続けやすさ','職場の雰囲気・人間関係','教育・フォロー体制','雇用の安定','キャリア・成長','福利厚生','会社の知名度・安心感','その他'];
-const CB14=['仕事内容が自分にできるか','仕事量・大変さ','給与・手当','勤務時間・休日・シフト','職場の雰囲気・人間関係','自分に向いているか','教育・フォロー体制','将来のキャリア','面接・選考','入社後の生活変化','特に不安はなかった','その他'];
-const CB17=['仕事内容','給与・待遇','勤務地','勤務時間・休日','職場の雰囲気','教育・フォロー','安定性','キャリア・成長','求人・採用サイトの内容','知人・社員からの紹介','選考担当者の対応','他社より早く決まった','その他'];
-const CB26=['仕事内容にやりがいがある','給与・待遇に納得している','勤務時間・休日が合っている','人間関係・職場の雰囲気がよい','上司・先輩へ相談しやすい','教育・フォローがある','成長を実感できる','仕事に慣れた','雇用が安定している','勤務地・通勤が合っている','他に良い選択肢がない','その他'];
-
-function buildCb(id,items,qKey){
-  const el=document.getElementById(id);
-  el.innerHTML=items.map(it=>`
-    <label class="cb-item" onclick="onCb('${qKey}','${it}',this)">
-      <span class="cb-check"></span>${it}
-    </label>`).join('');
-}
-function onCb(qKey,val,el){
-  const arr=SUPP[qKey];
-  const idx=arr.indexOf(val);
-  if(idx===-1){arr.push(val);el.classList.add('chk');}
-  else{arr.splice(idx,1);el.classList.remove('chk');}
-  renderResults();
-}
-function onSl(qNum,val){
-  SUPP['q'+qNum]=parseInt(val);
-  document.getElementById('slv'+qNum).textContent=val;
-  renderResults();
-}
-function onTa(qNum,val){
-  SUPP['q'+qNum]=val;
-  renderResults();
-}
-function toggleSupp(){
-  const body=document.getElementById('supp-body');
-  const arrow=document.getElementById('supp-arrow');
-  const open=body.classList.toggle('open');
-  arrow.classList.toggle('open',open);
-  arrow.textContent=open?'▼':'▶';
-}
-function showTab(id,btn){
-  document.querySelectorAll('.supp-tab-body').forEach(el=>el.classList.remove('vis'));
-  document.querySelectorAll('.supp-tab').forEach(el=>el.classList.remove('act'));
-  document.getElementById('tab-'+id).classList.add('vis');
-  btn.classList.add('act');
-}
-function initSupp(){
-  buildCb('cb13',CB13,'q13');
-  buildCb('cb14',CB14,'q14');
-  buildCb('cb17',CB17,'q17');
-  buildCb('cb26',CB26,'q26');
-}
-
-// ── VOICE REPORT ──
-function buildVoiceReport(){
-  const parts=[];
-  function row(label,content){
-    if(!content)return;
-    parts.push(`<div class="voice-row"><span class="voice-label">💬 ${label}</span>${content}</div>`);
-  }
-  function tags(items,hi=[]){
-    if(!items.length)return'';
-    return`<div class="tag-wrap">${items.map(t=>`<span class="vtag${hi.includes(t)?' hi':''}">${t}</span>`).join('')}</div>`;
-  }
-
-  if(SUPP.q13.length) row('Q13 応募時に重視したこと',tags(SUPP.q13));
-  if(SUPP.q14.length){
-    const hi=SUPP.q14.filter(v=>v!=='特に不安はなかった');
-    row('Q14 応募前の不安',tags(SUPP.q14,hi));
-  }
-  if(SUPP.q15.trim()) row('Q15 足りなかった情報',`<span style="font-size:11px">${SUPP.q15}</span>`);
-  if(SUPP.q16.trim()) row('Q16 比較した会社・職種',`<span style="font-size:11px">${SUPP.q16}</span>`);
-  if(SUPP.q17.length) row('Q17 応募の決め手',tags(SUPP.q17));
-  if(SUPP.q18!==3||SUPP.q19.trim()||SUPP.q20.trim()){
-    const slabel=SUPP.q18<=2?`<span class="vtag hi">Q18 面接での不安解消：${SUPP.q18}</span> 不満足`
-                :SUPP.q18>=4?`<span class="vtag">Q18 面接での不安解消：${SUPP.q18}</span> 良好`
-                :`Q18 面接での不安解消：${SUPP.q18}（中程度）`;
-    row('選考フェーズ',slabel+(SUPP.q19.trim()?`<br>残った不安：${SUPP.q19}`:'')+(SUPP.q20.trim()?`<br>入社決定理由：${SUPP.q20}`:''));
-  }
-  if(SUPP.q21!==3){
-    const lbl=SUPP.q21<=2?`<span class="vtag hi">Q21 入社前後の一致度：${SUPP.q21}（ギャップ大）</span>`
-              :`<span class="vtag">Q21 入社前後の一致度：${SUPP.q21}</span>`;
-    row('入社後ギャップ',lbl+(SUPP.q22.trim()?`<br>違ったこと：${SUPP.q22}`:''));
-  }
-  if(SUPP.q23.trim()) row('Q23 入社直後に困ったこと',`<span style="font-size:11px">${SUPP.q23}</span>`);
-  if(SUPP.q24!==3){
-    const lbl=SUPP.q24<=2?`<span class="vtag hi">Q24 入社直後の教育・フォロー：${SUPP.q24}（不十分）</span>`
-              :`<span class="vtag">Q24 教育・フォロー：${SUPP.q24}</span>`;
-    row('オンボーディング',lbl+(SUPP.q25.trim()?`<br>入社後に分かった魅力：${SUPP.q25}`:''));
-  }
-  if(SUPP.q26.length) row('Q26 今も続けている理由',tags(SUPP.q26));
-  if(SUPP.q27.trim()) row('Q27 活躍・定着しやすい人の特徴',`<span style="font-size:11px">${SUPP.q27}</span>`);
-  if(SUPP.q28.trim()) row('Q28 改善してほしいこと',`<span style="font-size:11px;color:#B91C1C">${SUPP.q28}</span>`);
-
-  if(!parts.length) return '';
-  return`<div class="voice-panel">
-    <div class="voice-title">🗣 現場・入社1〜3年目の声（補足アンケート入力内容）</div>
-    ${parts.join('')}
-  </div>`;
-}
-
-// ── UTILS ──
-function fmtV(v){return Number.isInteger(v)?String(v):v.toFixed(1)}
-function secStats(idxs){
-  const hr=idxs.reduce((s,i)=>s+S.hr[i],0)/idxs.length;
-  const fi=idxs.reduce((s,i)=>s+S.fi[i],0)/idxs.length;
-  return{hr,fi,gap:hr-fi};
-}
-function gapInfo(g){
-  const a=Math.abs(g);
-  if(a<0.5)return{cls:'gc-align',bcls:'gb-align',txt:'整合性 高',light:'#D1FAE5',dark:'#059669'};
-  if(a<1.0)return{cls:'gc-slight',bcls:'gb-slight',txt:'やや乖離',light:'#FEF3C7',dark:'#D97706'};
-  if(a<1.5)return{cls:'gc-mid',bcls:'gb-mid',txt:'乖離あり',light:'#FFEDD5',dark:'#EA580C'};
-  return{cls:'gc-large',bcls:'gb-large',txt:'大きな乖離',light:'#FEE2E2',dark:'#DC2626'};
-}
-function scoreColor(v){
-  if(v<1.5)return'#DC2626';
-  if(v<2.5)return'#EA580C';
-  if(v<3.5)return'#D97706';
-  if(v<4.5)return'#16A34A';
-  return'#059669';
-}
-function gapChipHtml(g){
-  const gi=gapInfo(g),a=Math.abs(g);
-  if(a<0.1)return`<span class="q-gap-chip" style="background:#F1F5F9;color:#64748B">差 ±0</span>`;
-  const sign=g>0?'HR↑':'HR↓';
-  return`<span class="q-gap-chip" style="background:${gi.light};color:${gi.dark}">${sign} ${a.toFixed(1)}</span>`;
-}
-
-// ── BUILD SECTION ──
-function buildSections(){
-  ['A','B','C'].forEach(sec=>{
-    const qs=QS.filter(q=>q.sec===sec);
-    const body=document.getElementById(`sec${sec}-body`);
-    body.innerHTML=qs.map(q=>{
-      const qi=q.num-1;
-      const hrV=S.hr[qi],fiV=S.fi[qi];
-      return`<div class="q-row" id="qrow-${qi}">
-        <span class="view-point">👁 ${q.view}</span>
-
-        <div class="q-block">
-          <div class="q-who-row">
-            <span class="who-badge who-hr">人事HR</span>
-          </div>
-          <div class="q-text" style="color:#1D4ED8;font-size:10px">${q.hr}</div>
-        </div>
-        <div class="slider-row">
-          <input type="range" min="1" max="5" step="1" value="${hrV}"
-            class="q-slider slider-hr" id="hr-${qi}"
-            oninput="onSlide(${qi},'hr',this.value)">
-          <span class="q-val q-val-hr" id="hrv-${qi}" style="color:${scoreColor(hrV)}">${fmtV(hrV)}</span>
-        </div>
-
-        <div class="q-block" style="margin-top:7px">
-          <div class="q-who-row">
-            <span class="who-badge who-fi">現場・1〜3年目</span>
-          </div>
-          <div class="q-text" style="color:#B91C1C;font-size:10px">${q.fi}</div>
-        </div>
-        <div class="slider-row">
-          <input type="range" min="1" max="5" step="1" value="${fiV}"
-            class="q-slider slider-fi" id="fi-${qi}"
-            oninput="onSlide(${qi},'fi',this.value)">
-          <span class="q-val q-val-fi" id="fiv-${qi}" style="color:${scoreColor(fiV)}">${fmtV(fiV)}</span>
-        </div>
-
-        <div class="scale-labels">
-          <span class="sl">1<br>ほぼ×</span>
-          <span class="sl">2<br>あまり×</span>
-          <span class="sl">3<br>どちらとも</span>
-          <span class="sl">4<br>概ね○</span>
-          <span class="sl">5<br>十分○</span>
-        </div>
-        <div class="gap-row" id="gap-${qi}">${gapChipHtml(hrV-fiV)}</div>
-      </div>`;
-    }).join('');
-  });
-}
-
-// ── SLIDER EVENT ──
-function onSlide(qi,who,val){
-  if(who==='fi'&&document.getElementById('hr-only-cb').checked)return;
-  S[who][qi]=parseFloat(val);
-  const v=S[who][qi];
-  const el=document.getElementById(`${who}v-${qi}`);
-  el.textContent=fmtV(v);
-  el.style.color=scoreColor(v);
-  document.getElementById(`gap-${qi}`).innerHTML=gapChipHtml(S.hr[qi]-S.fi[qi]);
-  renderResults();
-}
-
-// ── SECTION FOOTER ──
-function renderSecFooter(sec,idxs){
-  const st=secStats(idxs),gi=gapInfo(st.gap);
-  const a=Math.abs(st.gap),sign=st.gap>0?'+':st.gap<0?'−':'';
-  document.getElementById(`sec${sec}-footer`).innerHTML=`
-    <div>
-      <div class="sec-gap-label">GAP（人事HR − 現場・1〜3年目）</div>
-      <div class="sec-gap-val ${gi.cls}">${sign}${a.toFixed(2)}</div>
-    </div>
-    <div>
-      <span class="sec-gap-grade ${gi.bcls}">${gi.txt}</span>
-      <div class="sec-avgs">人事HR <strong style="color:#2563EB">${st.hr.toFixed(2)}</strong><br>現場・1〜3年目 <strong style="color:#DC2626">${st.fi.toFixed(2)}</strong></div>
-    </div>`;
-}
-
-// ── GAP CARDS ──
-function renderGapCards(sA,sB,sC){
-  const cards=[
-    {key:'A',label:'A区分＝応募',icon:'📋',st:sA},
-    {key:'B',label:'B区分＝選考',icon:'🤝',st:sB},
-    {key:'C',label:'C区分＝定着',icon:'🌱',st:sC},
-  ];
-  document.getElementById('gap-cards').innerHTML=cards.map(c=>{
-    const gi=gapInfo(c.st.gap),a=Math.abs(c.st.gap);
-    const sign=c.st.gap>0?'+':c.st.gap<0?'−':'';
-    const dir=c.st.gap>0
-      ?'人事担当が現場・1〜3年目より高く評価（過大評価リスク）'
-      :c.st.gap<0?'現場・1〜3年目が人事より高く評価'
-      :'双方の認識が一致';
-    return`<div class="gap-card gap-card-${c.key.toLowerCase()}">
-      <div class="gc-title">${c.icon} ${c.label}（人事HR − 現場・1〜3年目）</div>
-      <div class="gc-val ${gi.cls}">${sign}${a.toFixed(2)}</div>
-      <span class="gc-grade ${gi.bcls}">${gi.txt}</span>
-      <div class="gc-detail">${dir}</div>
-      <div class="gc-avgs">
-        <span><span class="gc-hr">人事HR</span> ${c.st.hr.toFixed(2)}</span>
-        <span><span class="gc-fi">現場・1〜3年目</span> ${c.st.fi.toFixed(2)}</span>
-        <span style="color:#94A3B8">平均 ${((c.st.hr+c.st.fi)/2).toFixed(2)}</span>
-      </div>
-    </div>`;
-  }).join('');
-}
-
-// ── BAR CHART ──
-function renderBarChart(){
-  const SEC_C={A:'#2563EB',B:'#7C3AED',C:'#059669'};
-  document.getElementById('bar-chart').innerHTML=QS.map(q=>{
-    const qi=q.num-1,hr=S.hr[qi],fi=S.fi[qi];
-    const pH=Math.round((hr/5)*100),pF=Math.round((fi/5)*100);
-    const g=hr-fi,gi=gapInfo(g);
-    return`<div class="chart-row">
-      <div class="chart-qlabel">
-        <span style="color:${SEC_C[q.sec]};font-weight:700">Q${q.num} <span style="font-weight:400;color:#94A3B8">${q.view}</span></span>
-        <span style="color:${gi.dark};font-size:8.5px">${gi.txt} (${g>0?'+':''}${g.toFixed(1)})</span>
-      </div>
-      <div class="bar-wrap"><span class="bar-who" style="color:#2563EB">HR</span>
-        <div class="bar-track"><div class="bar-fill bar-fill-hr" style="width:${pH}%"></div></div>
-        <span class="bar-num bar-num-hr">${fmtV(hr)}</span></div>
-      <div class="bar-wrap"><span class="bar-who" style="color:#DC2626;font-size:7.5px">現場</span>
-        <div class="bar-track"><div class="bar-fill bar-fill-fi" style="width:${pF}%"></div></div>
-        <span class="bar-num bar-num-fi">${fmtV(fi)}</span></div>
-    </div>`;
-  }).join('');
-}
-
-// ── 6 TYPES DEFINITION ──
-const TYPES6={
-  t1:{num:1,icon:'🚪',name:'応募前ブレーキ型',
-    color:'#D97706',bg:'#FFFBEB',border:'#F59E0B',
-    summary:'求人は見られているのに、応募の一歩で止まっている。',
-    cause:'仕事内容・職場の雰囲気が応募前に十分伝わっておらず、応募へのハードルが高くなっている可能性があります。人事担当者は伝えているつもりでも、現場・求職者側には届いていないケースが典型です。',
-    actions:['求人票に「1日の仕事の流れ」「業務比率」「使うツール」を具体的に追記する','職場の雰囲気・働く人の顔が見えるビジュアルコンテンツ（動画・写真）を整備する','応募フォームの簡易化・エントリーハードルの低減（LINE応募等）を検討する']},
-  t2:{num:2,icon:'🧺',name:'選考こぼれ型',
-    color:'#EA580C',bg:'#FFF7ED',border:'#F97316',
-    summary:'応募は来ているのに、選考途中で逃している。',
-    cause:'面接での情報提供・候補者の不安解消・辞退理由の把握が不十分で、良い候補者が選考途中で離脱している可能性があります。面接担当者による対応のばらつきも要因になりやすいです。',
-    actions:['辞退・離脱理由の収集フローを整備し、次回改善に活かす仕組みを作る','面接チェックリストを作成し、伝えるべき情報・確認すべき点を属人化させない','職場見学・現場担当者との面談を選考プロセスに組み込む']},
-  t3:{num:3,icon:'🔄',name:'採用構造ズレ型',
-    color:'#DC2626',bg:'#FEF2F2',border:'#EF4444',
-    summary:'採りたい人・伝えている魅力・現場実態がズレている。',
-    cause:'人事が発信している採用メッセージと現場の実態が乖離しており、採用したい人物像と実際に活躍できる人物像もズレています。複数のセクションで人事の自己評価が高く、構造的な問題が潜んでいます。',
-    actions:['人事と現場が一緒に「求人票の内容」と「現場の実態」を照合し、乖離点を洗い出す','活躍・定着している人材の特徴を言語化し、採用基準を現実に即した形に見直す','採用メッセージを「ありのままの魅力」ベースに修正し、誇張を排除する']},
-  t4:{num:4,icon:'⏳',name:'定着不安型',
-    color:'#7C3AED',bg:'#F5F3FF',border:'#8B5CF6',
-    summary:'採用できても、長く働き続ける見通しが弱い。',
-    cause:'入社後の受け入れ準備・オンボーディング・活躍人材の定義が不十分で、早期離職リスクが高まっています。「採れたけど続かない」という構造的な課題がC区分＝定着に集中しています。',
-    actions:['入社後の最初の1ヶ月でつまずきやすいポイントを洗い出し、事前説明・フォロー体制を整える','長く活躍している人の特徴を言語化し、採用・選考基準に反映させる','人事と現場が定期的に「入社した人の状況」を共有する場（月次ミーティング等）を設ける']},
-  t5:{num:5,icon:'💎',name:'魅力埋もれ型',
-    color:'#059669',bg:'#ECFDF5',border:'#10B981',
-    summary:'本当は魅力があるのに、外にうまく伝わっていない。',
-    cause:'現場の実態は良好で定着率も比較的高い傾向にありますが、その魅力が求人・採用広報に十分に反映されていません。現場・入社初期社員の評価が人事より高いケースが典型サインです。',
-    actions:['在籍社員・長く働いている人へのインタビューで「本当の魅力」を言語化し、求人に反映する','現場の良さ（雰囲気・やりがい・成長機会）をSNS・採用サイトで積極的に発信する','リファラル採用・社員紹介制度の活用で、魅力を口コミで広げる仕組みを検討する']},
-  t6:{num:6,icon:'😟',name:'入社後ギャップ型',
-    color:'#2563EB',bg:'#EFF6FF',border:'#3B82F6',
-    summary:'入社してから、「思っていたのと違う」が起きている。',
-    cause:'入社前の説明と入社後の実態にズレがあり、「聞いていた話と違う」という声が現場で発生しています。選考まではうまくいっていても、定着フェーズでギャップが顕在化するパターンです。',
-    actions:['入社前に伝えている内容と現場の実態を照合し、ズレがある部分を修正または事前説明に追加する','退職者・早期離職者へのヒアリングで「期待と現実のズレポイント」を把握し、改善に活かす','オンボーディングプログラムで入社後の実態への適応を丁寧にサポートする']},
-};
-
-// ── TYPE SCORING ──
-function diagnoseTypes(sA,sB,sC){
-  const aAvg=(sA.hr+sA.fi)/2, bAvg=(sB.hr+sB.fi)/2, cAvg=(sC.hr+sC.fi)/2;
-  function qAvg(i){return(S.hr[i]+S.fi[i])/2;}
-
-  const A_WEAK=aAvg<3.0, B_WEAK=bAvg<3.0, C_WEAK=cAvg<3.0;
-  const A_HR_OVER=sA.gap>0.7, B_HR_OVER=sB.gap>0.7, C_HR_OVER=sC.gap>0.7;
-  const A_FI_HIGHER=sA.gap<-0.3;
-
-  const Q1_WEAK=qAvg(0)<3.0, Q3_WEAK=qAvg(2)<3.0;
-  const Q3_FI_OK=S.fi[2]>=3.0, Q4_FI_OK=S.fi[3]>=3.0;
-  const Q4_HR_OVER=S.hr[3]-S.fi[3]>0.7;
-  const Q7_WEAK=qAvg(6)<3.0, Q8_WEAK=qAvg(7)<3.0;
-  const Q9_WEAK=qAvg(8)<3.0, Q9_FI_WEAK=S.fi[8]<2.5;
-  const Q11_WEAK=qAvg(10)<3.0, Q12_WEAK=qAvg(11)<3.0;
-  const APPEAL_HIDDEN=Q3_FI_OK&&Q4_FI_OK&&(S.hr[0]<3.0||S.hr[2]<3.0);
-
-  const SC={t1:0,t2:0,t3:0,t4:0,t5:0,t6:0};
-
-  // ① 応募前ブレーキ型
-  if(A_WEAK)    SC.t1+=3;
-  if(Q1_WEAK)   SC.t1+=2;
-  if(Q3_WEAK)   SC.t1+=2;
-  if(A_HR_OVER) SC.t1+=2;
-  if(!C_WEAK)   SC.t1+=1;
-
-  // ② 選考こぼれ型
-  if(B_WEAK)           SC.t2+=3;
-  if(Q7_WEAK)          SC.t2+=2;
-  if(Q8_WEAK)          SC.t2+=2;
-  if(B_HR_OVER)        SC.t2+=2;
-  if(!A_WEAK&&B_WEAK)  SC.t2+=2;
-
-  // ③ 採用構造ズレ型
-  if(A_HR_OVER&&(C_WEAK||C_HR_OVER)) SC.t3+=3;
-  if(Q4_HR_OVER)       SC.t3+=2;
-  if(Q11_WEAK)         SC.t3+=2;
-  if(Q12_WEAK)         SC.t3+=1;
-  if(A_HR_OVER&&B_HR_OVER) SC.t3+=1;
-
-  // ④ 定着不安型
-  if(C_WEAK)           SC.t4+=3;
-  if(Q9_WEAK)          SC.t4+=2;
-  if(Q11_WEAK)         SC.t4+=2;
-  if(Q12_WEAK)         SC.t4+=2;
-  if(!B_WEAK&&C_WEAK)  SC.t4+=1;
-
-  // ⑤ 魅力埋もれ型
-  if(APPEAL_HIDDEN)               SC.t5+=3;
-  if(A_FI_HIGHER)                 SC.t5+=2;
-  if(Q4_FI_OK&&S.hr[0]<3.0)      SC.t5+=2;
-  if(!C_WEAK&&A_WEAK&&!A_HR_OVER) SC.t5+=2;
-
-  // ⑥ 入社後ギャップ型
-  if(Q9_FI_WEAK)                  SC.t6+=3;
-  if(Q9_WEAK)                     SC.t6+=2;
-  if(C_WEAK&&S.fi[3]<2.5)         SC.t6+=2;
-  if(!B_WEAK&&C_WEAK&&Q9_WEAK)    SC.t6+=2;
-  if(S.fi[8]<3.0&&!Q9_FI_WEAK)   SC.t6+=1;
-
-  const sorted=Object.entries(SC).sort((a,b)=>b[1]-a[1]);
-  return{primary:sorted[0][0],secondary:sorted[1][0],scores:SC};
-}
-
-// ── EVIDENCE BUILDER ──
-function buildEvidence(typeKey,sA,sB,sC){
-  const aAvg=(sA.hr+sA.fi)/2,bAvg=(sB.hr+sB.fi)/2,cAvg=(sC.hr+sC.fi)/2;
-  function fG(v){return(v>=0?'+':'')+v.toFixed(2);}
-  const Q1a=(S.hr[0]+S.fi[0])/2,Q3a=(S.hr[2]+S.fi[2])/2;
-  const Q7a=(S.hr[6]+S.fi[6])/2,Q8a=(S.hr[7]+S.fi[7])/2;
-  const Q9a=(S.hr[8]+S.fi[8])/2;
-  const Q11a=(S.hr[10]+S.fi[10])/2,Q12a=(S.hr[11]+S.fi[11])/2;
-  const A_WEAK=aAvg<3.0,B_WEAK=bAvg<3.0,C_WEAK=cAvg<3.0;
-  const A_HR_OVER=sA.gap>0.7,B_HR_OVER=sB.gap>0.7,C_HR_OVER=sC.gap>0.7;
-  const A_FI_HIGHER=sA.gap<-0.3;
-  const Q1_WEAK=Q1a<3.0,Q3_WEAK=Q3a<3.0;
-  const Q3_FI_OK=S.fi[2]>=3.0,Q4_FI_OK=S.fi[3]>=3.0;
-  const Q4_HR_OVER=S.hr[3]-S.fi[3]>0.7;
-  const Q7_WEAK=Q7a<3.0,Q8_WEAK=Q8a<3.0;
-  const Q9_WEAK=Q9a<3.0,Q9_FI_WEAK=S.fi[8]<2.5;
-  const Q11_WEAK=Q11a<3.0,Q12_WEAK=Q12a<3.0;
-  const APPEAL_HIDDEN=Q3_FI_OK&&Q4_FI_OK&&(S.hr[0]<3.0||S.hr[2]<3.0);
-
-  const sigs=[];
-  function add(hit,main,score,desc,isPri=false){sigs.push({hit,main,score,desc,isPri});}
-
-  switch(typeKey){
-    case 't1':
-      add(A_WEAK,'A区分＝応募 の平均スコア',aAvg.toFixed(1)+' / 5',
-        A_WEAK?'3.0を下回り、応募前情報の整備が全体的に弱い':'3.0以上のため応募前情報はまずまず',true);
-      add(Q1_WEAK,'Q1（仕事内容理解）の平均スコア',Q1a.toFixed(1)+' / 5',
-        Q1_WEAK?'具体的な仕事内容・1日の流れが応募前に伝わっていない':'仕事内容の発信は一定できている');
-      add(Q3_WEAK,'Q3（人・雰囲気の可視化）の平均スコア',Q3a.toFixed(1)+' / 5',
-        Q3_WEAK?'職場の雰囲気・一緒に働く人のイメージが伝わっていない':'雰囲気の発信はできている');
-      add(A_HR_OVER,'A区分＝応募 の認識ギャップ（人事 − 現場）',fG(sA.gap),
-        A_HR_OVER?'人事は発信できていると思っているが、現場・入社者はそう感じていない':'人事と現場の認識はほぼ一致している');
-      add(!C_WEAK,'C区分＝定着 の平均スコア',cAvg.toFixed(1)+' / 5',
-        !C_WEAK?'定着面は概ね良好 → A区分＝応募 の発信不足がボトルネックと判断':'C区分＝定着 も弱く、課題は複数フェーズに存在');
-      break;
-    case 't2':
-      add(B_WEAK,'B区分＝選考 の平均スコア',bAvg.toFixed(1)+' / 5',
-        B_WEAK?'3.0を下回り、選考プロセスでの情報連携・候補者サポートが不足':'3.0以上のため選考全体はまずまず',true);
-      add(!A_WEAK&&B_WEAK,'A区分＝応募→B区分＝選考 のスコア落ち込み','A:'+aAvg.toFixed(1)+' → B:'+bAvg.toFixed(1),
-        (!A_WEAK&&B_WEAK)?'応募は来ているのに選考フェーズで離脱している構造':'A→Bの段差は目立たない');
-      add(Q7_WEAK,'Q7（辞退把握・相談環境）の平均スコア',Q7a.toFixed(1)+' / 5',
-        Q7_WEAK?'辞退理由の把握と候補者が相談しやすい環境が不足':'Q7は一定機能している');
-      add(Q8_WEAK,'Q8（面接標準化）の平均スコア',Q8a.toFixed(1)+' / 5',
-        Q8_WEAK?'面接内容・現場教育が担当者によってバラつきがある':'面接の標準化はある程度できている');
-      add(B_HR_OVER,'B区分＝選考 の認識ギャップ（人事 − 現場）',fG(sB.gap),
-        B_HR_OVER?'人事は選考がうまくいっていると思っているが、現場・入社者はそう感じていない':'人事と現場の認識はほぼ一致している');
-      break;
-    case 't3':
-      add(A_HR_OVER&&(C_WEAK||C_HR_OVER),'A区分＝応募 の過大評価 ＋ C区分＝定着 の弱さ','A-GAP:'+fG(sA.gap)+' / C:'+cAvg.toFixed(1),
-        (A_HR_OVER&&(C_WEAK||C_HR_OVER))?'採用広報での誇張が入社後ギャップ・早期離職を生んでいる構造':'このパターンは確認されていない',true);
-      add(Q4_HR_OVER,'Q4（訴求と実態の一致）人事 − 現場 GAP',(S.hr[3]-S.fi[3]).toFixed(2),
-        Q4_HR_OVER?'採用で伝えている魅力と現場で実感できる内容が大きくズレている':'Q4の認識乖離は許容範囲内');
-      add(Q11_WEAK,'Q11（採用ターゲットと活躍人材の一致）平均',Q11a.toFixed(1)+' / 5',
-        Q11_WEAK?'採用している人物像と実際に活躍・定着する人物像がズレている':'Q11は概ね一致している');
-      add(Q12_WEAK,'Q12（定着人材の言語化）平均',Q12a.toFixed(1)+' / 5',
-        Q12_WEAK?'活躍・定着しやすい人の特徴が採用基準に落とし込まれていない':'定着人材の特徴はある程度言語化されている');
-      add(A_HR_OVER&&B_HR_OVER,'A区分＝応募・B区分＝選考 ともに人事が過大評価','A:'+fG(sA.gap)+' / B:'+fG(sB.gap),
-        (A_HR_OVER&&B_HR_OVER)?'採用全体で人事の認識が現場より高く、構造的なズレが生じている':'A・B両方での過大評価は確認されていない');
-      break;
-    case 't4':
-      add(C_WEAK,'C区分＝定着 の平均スコア',cAvg.toFixed(1)+' / 5',
-        C_WEAK?'3.0を下回り、入社後の受け入れ・オンボーディングが全体的に不足':'3.0以上のため定着面はまずまず',true);
-      add(!B_WEAK&&C_WEAK,'B区分＝選考→C区分＝定着 のスコア落ち込み','B:'+bAvg.toFixed(1)+' → C:'+cAvg.toFixed(1),
-        (!B_WEAK&&C_WEAK)?'選考まではうまくいっているが、入社後の定着フェーズに課題が集中':'B→Cの段差は目立たない');
-      add(Q9_WEAK,'Q9（入社後ギャップ予防）の平均スコア',Q9a.toFixed(1)+' / 5',
-        Q9_WEAK?'「入社前と話が違う」という声が発生しやすい状態':'Q9はギャップを一定予防できている');
-      add(Q11_WEAK,'Q11（採用ターゲットと活躍人材の一致）平均',Q11a.toFixed(1)+' / 5',
-        Q11_WEAK?'採用している人が職場環境・仕事内容と合っていないケースがある':'Q11は概ね一致している');
-      add(Q12_WEAK,'Q12（定着人材の言語化）平均',Q12a.toFixed(1)+' / 5',
-        Q12_WEAK?'長く活躍しやすい人の特徴が採用・選考基準に活かされていない':'定着人材の特徴はある程度整理されている');
-      break;
-    case 't5':
-      add(APPEAL_HIDDEN,'現場Q3・Q4は良好、HR側の発信が弱い','Q3現:'+S.fi[2].toFixed(1)+' Q4現:'+S.fi[3].toFixed(1),
-        APPEAL_HIDDEN?'職場・仕事の魅力は実在するのに、求人・採用広報に反映されていない':'この特有パターンは確認されていない',true);
-      add(A_FI_HIGHER,'A区分＝応募 のGAP方向（現場 ＞ 人事）',fG(sA.gap),
-        A_FI_HIGHER?'現場・入社者が人事よりも実態を高く評価 → 現場の良さが外に出ていない':'現場が人事を上回る評価は確認されていない');
-      add(Q4_FI_OK&&S.hr[0]<3.0,'Q4現場スコア vs HR側 Q1 発信力','Q4現:'+S.fi[3].toFixed(1)+' / Q1-HR:'+S.hr[0].toFixed(1),
-        (Q4_FI_OK&&S.hr[0]<3.0)?'実態の魅力は本物（Q4現場良好）だが、求人での仕事内容発信が弱い':'このギャップは確認されていない');
-      add(!C_WEAK&&A_WEAK&&!A_HR_OVER,'C区分＝定着はOK・A区分＝応募は弱い・人事過大評価なし','C:'+cAvg.toFixed(1)+' / A:'+aAvg.toFixed(1),
-        (!C_WEAK&&A_WEAK&&!A_HR_OVER)?'定着はできているが採用広報の発信力のみが弱いパターン':'この組み合わせは確認されていない');
-      break;
-    case 't6':
-      add(Q9_FI_WEAK,'Q9（入社後ギャップ）現場・入社者スコア',S.fi[8].toFixed(1)+' / 5',
-        Q9_FI_WEAK?'2.5を下回る — 「入社前と話が違う」という声が現場で多発（最強シグナル）':'2.5以上のため最強シグナルは非該当',true);
-      add(Q9_WEAK,'Q9（入社後ギャップ）全体平均スコア',Q9a.toFixed(1)+' / 5',
-        Q9_WEAK?'人事・現場ともにギャップの発生を認識している':'Q9の全体平均は基準を超えている');
-      add(!B_WEAK&&C_WEAK&&Q9_WEAK,'B区分＝選考はOK → C区分＝定着が弱い ＋ Q9が低い','B:'+bAvg.toFixed(1)+' / C:'+cAvg.toFixed(1)+' / Q9:'+Q9a.toFixed(1),
-        (!B_WEAK&&C_WEAK&&Q9_WEAK)?'選考まではOKなのに入社後にギャップが集中している構造':'この連鎖パターンは確認されていない');
-      add(C_WEAK&&S.fi[3]<2.5,'C区分＝定着が弱い ＋ Q4現場スコアが低い','C:'+cAvg.toFixed(1)+' / Q4現:'+S.fi[3].toFixed(1),
-        (C_WEAK&&S.fi[3]<2.5)?'採用時の訴求内容が現場では実感されていない → 構造的なギャップが発生':'この組み合わせは確認されていない');
-      break;
-  }
-
-  const hits=sigs.filter(s=>s.hit);
-  if(!hits.length) return '';
-  const t=TYPES6[typeKey];
-
-  return`<div class="evidence-panel">
-    <div class="evidence-title" style="color:${t.color}">📊 判定根拠 ─ なぜ「${t.name}」なのか</div>
-    <div class="evidence-items">
-      ${hits.map((s,i)=>`
-      <div class="ev-item${s.isPri?' ev-primary':''}" style="${s.isPri?'border-color:'+t.border:''}">
-        <div class="ev-header">
-          <span class="ev-num" style="${s.isPri?'background:'+t.color+';color:#fff':''}">${i+1}</span>
-          <span class="ev-main">${s.main}</span>
-          <span class="ev-value" style="color:${t.color}">${s.score}</span>
-          ${s.isPri?`<span class="ev-tag" style="background:${t.color}">主要シグナル</span>`:''}
-        </div>
-        <div class="ev-desc">${s.desc}</div>
-      </div>`).join('')}
-    </div>
-  </div>`;
-}
-
-// ── OVERALL DIAGNOSIS ──
-function overallDiagnosis(sA,sB,sC){
-  const tAv=((sA.hr+sA.fi)/2+(sB.hr+sB.fi)/2+(sC.hr+sC.fi)/2)/3;
-  const res=diagnoseTypes(sA,sB,sC);
-  const pri=TYPES6[res.primary], sec=TYPES6[res.secondary];
-  const NUMS=['①','②','③','④','⑤','⑥'];
-
-  const allChips=Object.entries(TYPES6).map(([k,t])=>{
-    const isPri=k===res.primary, isSec=k===res.secondary;
-    const cls=isPri?'active':isSec?'sub':'inactive';
-    const bg=isPri?`background:${t.color};color:#fff`
-              :isSec?`background:${t.bg};color:${t.color};border-color:${t.border}`
-              :'';
-    return`<span class="type-chip ${cls}" style="${bg}">${t.icon} ${NUMS[t.num-1]}${t.name}</span>`;
-  }).join('');
-
-  return`<div class="type-card" style="background:${pri.bg};border-color:${pri.border}">
-    <div class="type-card-top">
-      <div class="type-badge" style="background:${pri.color}">${NUMS[pri.num-1]}</div>
-      <div style="flex:1;min-width:0">
-        <div class="type-num">主要タイプ</div>
-        <div class="type-name" style="color:${pri.color}">${pri.icon} ${pri.name}</div>
-        <div class="type-summary">${pri.summary}</div>
-        <div class="type-cause" style="border-left:3px solid ${pri.border}">${pri.cause}</div>
-      </div>
-      <div class="overall-score">全体平均<span>${tAv.toFixed(2)}</span>/ 5.0</div>
-    </div>
-
-    ${buildEvidence(res.primary,sA,sB,sC)}
-
-    <div class="type-actions-wrap">
-      <div class="type-actions-title">📋 優先アクション（${pri.name}）</div>
-      ${pri.actions.map(a=>`<div class="type-action"><span class="type-action-icon" style="color:${pri.color}">▸</span><span>${a}</span></div>`).join('')}
-    </div>
-
-    <div class="type-secondary-row">
-      <span class="type-secondary-label">副次的な傾向：</span>
-      <span class="type-chip sub" style="background:${sec.bg};color:${sec.color};border-color:${sec.border}">${sec.icon} ${NUMS[sec.num-1]}${sec.name}</span>
-      <span class="type-secondary-label" style="margin-left:8px">全タイプ：</span>
-      <div class="type-all-grid" style="margin-top:0;display:contents">${allChips}</div>
-    </div>
-  </div>`;
-}
-
-// ── IMPROVEMENT ──
-function buildImprovements(sA,sB,sC){
-  function item(pri,icon,text){return{pri,icon,text};}
-  function render(its){
-    return`<div class="improve-items">${its.slice(0,6).map(it=>`
-      <div class="improve-item pri-${it.pri}">
-        <span class="imp-icon">${it.icon}</span><span>${it.text}</span>
-      </div>`).join('')}</div>`;
-  }
-
-  // ── Section A ──
-  const aAvg=(sA.hr+sA.fi)/2, aG=sA.gap;
-  const iA=[];
-  if(aAvg<2.0) iA.push(item('high','🚨','応募前の情報発信が全体的に未整備です。求人票・採用サイトの基盤作りを最優先で着手してください。'));
-  if(S.hr[1]<2.5||S.fi[1]<2.5) iA.push(item('high','⚠️','【Q2 期待値調整】大変な点・向き不向きの開示が不足しています。「リアリスティック・ジョブ・プレビュー」の視点で、ネガティブ情報の適切な開示を検討しましょう。入社後ギャップ防止に直結します。'));
-  if(S.hr[3]<3||S.fi[3]<2.5) iA.push(item('high','🔍','【Q4 訴求と実態の一致】採用メッセージと現場実態の乖離リスクがあります。現場担当者・入社初期社員と採用担当が一緒に求人原稿を見直し、誇張のない表現に修正しましょう。'));
-  if(aG>0.7) iA.push(item('high','📣','人事担当が現場・入社1〜3年目より高く評価しています。現場担当者・入社初期社員への定期ヒアリング（月1回程度）を設け、応募前情報の実態を確認してください。'));
-  if(S.hr[0]<3||S.fi[0]<2.5) iA.push(item('mid','📝','【Q1 仕事内容理解】仕事内容の具体性が不足しています。「1日の仕事の流れ」「業務比率」「使うツール」を求人票に追記しましょう。動画コンテンツも有効です。'));
-  if(S.hr[2]<3||S.fi[2]<2.5) iA.push(item('mid','📸','【Q3 人・雰囲気の可視化】職場の雰囲気が伝わっていません。社員の顔出し写真、チームインタビュー記事、InstagramやYouTubeなど視覚的な発信を強化しましょう。'));
-  if(aG<-0.7) iA.push(item('low','✨','現場・入社1〜3年目が人事より高く評価しています。現場で実践されている情報発信のノウハウを採用担当にも共有し、組織的に展開できる仕組みを整えましょう。'));
-  if(aAvg>=4.0&&Math.abs(aG)<0.5) iA.push(item('low','✅','応募前情報の整備は良好です。競合他社の採用コミュニケーションをベンチマークし、さらなる差別化を図りましょう。'));
-  // ── A: SUPP追加アクション ──
-  if(SUPP.q13.includes('職場の雰囲気・人間関係')) iA.push(item('high','👥','【Q13】応募者が「職場の雰囲気・人間関係」を重視しています。社員の顔出し写真・チームインタビュー・職場見学の機会を求人に明示し、入社前に雰囲気を確認できる場を設けましょう。'));
-  if(SUPP.q13.includes('仕事の負担・続けやすさ')) iA.push(item('high','⚖️','【Q13】応募者が「仕事の負担・続けやすさ」を重視しています。労働環境・残業実態・フォロー体制を正直に発信し、「続けやすい環境」であることを具体例で示しましょう。'));
-  if(SUPP.q13.includes('教育・フォロー体制')) iA.push(item('mid','📚','【Q13】応募者が「教育・フォロー体制」を重視しています。研修内容・OJT期間・先輩サポートの仕組みを求人票・採用サイトに具体的に記載しましょう。'));
-  if(SUPP.q13.includes('キャリア・成長')) iA.push(item('mid','🚀','【Q13】応募者が「キャリア・成長」を重視しています。入社後のキャリアパスや実際の昇給・昇格事例を具体的に発信しましょう。'));
-  if(SUPP.q14.includes('仕事内容が自分にできるか')) iA.push(item('high','🎯','【Q14】「仕事内容が自分にできるか」への不安が多いです。未経験者の入社事例・習得ロードマップ・最初の業務内容を求人に記載し、応募ハードルを下げましょう。'));
-  if(SUPP.q14.includes('職場の雰囲気・人間関係')) iA.push(item('high','🤝','【Q14】「職場の雰囲気・人間関係」への不安が高いです。入社前の職場見学・社員との面談機会を設け、雰囲気を実感してもらう接点を作りましょう。'));
-  if(SUPP.q14.includes('教育・フォロー体制')) iA.push(item('mid','📖','【Q14】「教育・フォロー」への不安が応募前に存在します。研修体制・先輩サポート・質問しやすい環境を求人・面接で積極的にアピールしてください。'));
-  if(SUPP.q14.includes('仕事量・大変さ')) iA.push(item('mid','💪','【Q14】「仕事量・大変さ」への不安があります。業務の繁忙期・1日の業務量の実態を正直に開示し、「思ったより大変だった」という入社後ギャップを防ぎましょう。'));
-  if(SUPP.q17.length>0){
-    const deciders=SUPP.q17.filter(v=>v!=='その他');
-    if(deciders.length) iA.push(item('low','⭐','【Q17】応募の決め手：「'+deciders.slice(0,3).join('・')+'」。これらの強みをより前面に出した採用広報に注力することで、応募率向上が見込めます。'));
-  }
-  if(SUPP.q15.trim()) iA.push(item('mid','📌','【Q15 現場の声】「'+SUPP.q15.slice(0,60)+'…」など、応募前に情報不足を感じていた点があります。これらを優先的に求人票・採用サイトに追記しましょう。'));
-  if(iA.length===0) iA.push(item('low','📋','Q1〜Q4のうち最もスコアが低い項目を優先的に改善することで、さらなる整合性向上が期待できます。'));
-
-  // ── Section B ──
-  const bAvg=(sB.hr+sB.fi)/2, bG=sB.gap;
-  const iB=[];
-  if(bAvg<2.0) iB.push(item('high','🚨','選考プロセスでの情報連携が機能していません。候補者が入社判断に必要な情報を得られていない可能性があります。面接設計の根本的な見直しを推奨します。'));
-  if(S.hr[6]<2.5||S.fi[6]<2.5) iB.push(item('high','📊','【Q7】辞退・反応把握と相談環境が不足しています。人事側は辞退分析フローを、現場側は新人が相談しやすい雰囲気づくりを優先してください。'));
-  if(bG>0.7) iB.push(item('high','🤝','人事が選考時の情報連携を高く評価していますが、現場・入社1〜3年目はそう感じていません。現場担当者を面接・職場見学に積極的に巻き込み、リアルな情報が伝わる場を設けましょう。'));
-  if(S.hr[7]<3||S.fi[7]<2.5) iB.push(item('mid','📋','【Q8 標準化】面接内容と現場教育が属人化しています。「面接チェックシート」と「教育マニュアル」を整備し、担当者が変わっても一定品質を維持できる状態を目指しましょう。'));
-  if(S.hr[5]<3||S.fi[5]<2.5) iB.push(item('mid','🏭','【Q6 現場理解の機会】現場のリアルを伝える機会が不足しています。職場見学・現場責任者との面談・体験入社などを選考プロセスに組み込んでください。'));
-  if(S.hr[4]<3||S.fi[4]<2.5) iB.push(item('mid','📄','【Q5 必要情報の共有】選考前後の情報提供が整理されていません。「面接前案内メール」「条件確認シート」を定型化し、候補者が安心して判断できる環境を整えましょう。'));
-  if(bG<-0.7) iB.push(item('low','💡','現場・入社1〜3年目が選考時を高く評価しています。現場で実施されている良いアプローチを人事が把握し、全選考で一貫して提供できる体制を作りましょう。'));
-  if(bAvg>=4.0&&Math.abs(bG)<0.5) iB.push(item('low','✅','選考時の情報連携は良好です。候補者アンケートや内定承諾率をモニタリングしながら現状を維持・強化しましょう。'));
-  // ── B: SUPP追加アクション ──
-  if(SUPP.q18<=2) iB.push(item('high','❗','【Q18】面接での不安解消スコアが'+SUPP.q18+'（低）です。面接官トレーニング・よくある不安への回答スクリプト整備・フォロー面談の設定など、候補者の不安を積極的に解消する仕組みを構築してください。'));
-  else if(SUPP.q18===3) iB.push(item('mid','💬','【Q18】面接での不安解消スコアが'+SUPP.q18+'（やや低）です。面接後のフォローアップ連絡や、候補者が質問しやすい場を設けることで改善できます。'));
-  if(SUPP.q14.includes('面接・選考')) iB.push(item('high','🗣️','【Q14】「面接・選考」プロセス自体への不安が申告されています。選考フロー・合否基準・選考期間をあらかじめ候補者に伝え、不透明感を排除しましょう。'));
-  if(SUPP.q14.includes('将来のキャリア')) iB.push(item('mid','📈','【Q14】「将来のキャリア」への不安が選考前から存在します。面接内でキャリアパスを説明する時間を設け、成長事例を紹介しましょう。'));
-  if(SUPP.q19.trim()) iB.push(item('mid','📝','【Q19 残った不安】面接後も「'+SUPP.q19.slice(0,50)+'」などの不安が残っていました。これらは面接での重点説明ポイントとして追加し、全候補者に共通して伝えるよう標準化してください。'));
-  if(SUPP.q20.trim()) iB.push(item('low','💡','【Q20 良かった点】選考で評価された点：「'+SUPP.q20.slice(0,50)+'」。この体験を継続・強化することで、内定承諾率の向上につなげましょう。'));
-  if(iB.length===0) iB.push(item('low','🤝','Q5〜Q8のうち最もスコアが低い項目から優先的に改善を検討してください。'));
-
-  // ── Section C ──
-  const cAvg=(sC.hr+sC.fi)/2, cG=sC.gap;
-  const iC=[];
-  if(cAvg<2.0) iC.push(item('high','🚨','入社後の受け入れ準備・定着設計が全体的に不足しています。早期離職が構造的に起きている可能性があります。採用とオンボーディングを繋ぐ仕組みの構築を急いでください。'));
-  if(S.hr[8]<3||S.fi[8]<2.5) iC.push(item('high','⚡','【Q9 入社後ギャップ】「聞いていた話と違う」が発生している状態です。入社前説明の内容と実際の業務・環境を照合し、ズレがある部分を修正するか、事前に伝える内容に追加してください。'));
-  if(cG>0.7) iC.push(item('high','🔗','人事が定着準備を高く評価していますが、現場はそう感じていません。人事と現場が定期的に「入社した人がどうなっているか」を共有する場（月次ミーティングなど）を設けてください。'));
-  if(S.hr[10]<3||S.fi[10]<2.5) iC.push(item('mid','👥','【Q11 採用ターゲットの一致】採用したい人物像と活躍人材がズレています。人事と現場が一緒に「活躍している人の共通点」を言語化し、採用基準として明示化しましょう。'));
-  if(S.hr[9]<3||S.fi[9]<2.5) iC.push(item('mid','🗺️','【Q10 初期オンボーディング】入社直後のつまずきへの対策が不十分です。退職者・在籍者へのヒアリングで「最初の1ヶ月で感じたギャップ」を収集し、入社前説明・受け入れ研修に反映してください。'));
-  if(S.hr[11]<3||S.fi[11]<2.5) iC.push(item('mid','📈','【Q12 定着人材の言語化】活躍・定着しやすい人の特徴が採用に活かされていません。過去の採用データや活躍者インタビューを基に「定着因子」を整理し、求人・面接に反映してください。'));
-  if(cG<-0.7) iC.push(item('low','💡','現場・入社1〜3年目が定着準備を高く評価しています。現場で実施されているオンボーディングの工夫を人事も把握し、採用候補者への説明に活かしましょう。'));
-  if(cAvg>=4.0&&Math.abs(cG)<0.5) iC.push(item('low','✅','定着・受け入れ準備は良好です。離職率・定着率の数値とセットでモニタリングしながら継続改善を行いましょう。'));
-  // ── C: SUPP追加アクション ──
-  if(SUPP.q21<=2) iC.push(item('high','⚡','【Q21】入社前後の一致度スコアが'+SUPP.q21+'（低）です。「聞いていた内容と実態が違う」が多発しています。入社前説明の内容を実態と照合し、差異がある項目を特定して修正・追記してください。'));
-  else if(SUPP.q21===3) iC.push(item('mid','🔍','【Q21】入社前後の一致度スコアが'+SUPP.q21+'（やや低）です。ギャップを感じやすい場面を把握し、入社前説明を補強しましょう。'));
-  if(SUPP.q22.trim()) iC.push(item('high','📋','【Q22 ギャップ内容】「'+SUPP.q22.slice(0,60)+'」というギャップが報告されています。この内容を入社前説明に反映するか、実態を改善する施策を優先的に検討してください。'));
-  if(SUPP.q24<=2) iC.push(item('high','🎓','【Q24】入社直後の教育・フォロースコアが'+SUPP.q24+'（不足）です。入社後1〜2週間のOJT計画・チェックリスト・担当メンター制度を早急に整備してください。'));
-  else if(SUPP.q24===3) iC.push(item('mid','📚','【Q24】入社直後の教育・フォロースコアが'+SUPP.q24+'（やや不十分）です。入社後フォロー面談の設定頻度を上げ、つまずきを早期発見できる仕組みを加えましょう。'));
-  if(SUPP.q25.trim()) iC.push(item('mid','🗒️','【Q25 教育コメント】「'+SUPP.q25.slice(0,60)+'」という教育・フォローへの声があります。これをオンボーディング改善のヒントとして活用してください。'));
-  if(SUPP.q26.length>0){
-    const reasons=SUPP.q26.filter(v=>v!=='その他');
-    if(reasons.length) iC.push(item('mid','💎','【Q26 定着理由】「'+reasons.slice(0,4).join('・')+'」が継続就業の理由として挙げられています。これらを求人票・面接で積極的に訴求することで、同じ価値観を持つ人材の採用・定着強化につながります。'));
-  }
-  if(SUPP.q23.trim()) iC.push(item('low','✨','【Q23 改善要望】「'+SUPP.q23.slice(0,60)+'」という入社直後環境への意見があります。職場環境・サポート体制の改善施策として検討してください。'));
-  if(SUPP.q27.trim()) iC.push(item('low','💬','【Q27 今後の意向】入社者の定着意欲を踏まえた中長期フォロー施策として、「'+SUPP.q27.slice(0,50)+'」という声を採用メッセージや育成計画に反映しましょう。'));
-  if(iC.length===0) iC.push(item('low','🌱','Q9〜Q12のうち最もスコアが低い項目から優先的に改善を検討してください。'));
-
-  return`
-    <div class="improve-sec"><div class="improve-sec-hdr ish-a">📋 A区分＝応募</div>${render(iA)}</div>
-    <div class="improve-sec"><div class="improve-sec-hdr ish-b">🤝 B区分＝選考</div>${render(iB)}</div>
-    <div class="improve-sec"><div class="improve-sec-hdr ish-c">🌱 C区分＝定着</div>${render(iC)}</div>`;
-}
-
-// ── RENDER ──
-function renderResults(){
-  const iA=[0,1,2,3],iB=[4,5,6,7],iC=[8,9,10,11];
-  const sA=secStats(iA),sB=secStats(iB),sC=secStats(iC);
-  renderSecFooter('A',iA);
-  renderSecFooter('B',iB);
-  renderSecFooter('C',iC);
-  renderGapCards(sA,sB,sC);
-  renderBarChart();
-  document.getElementById('diagnosis-area').innerHTML=overallDiagnosis(sA,sB,sC);
-  document.getElementById('improve-body').innerHTML=buildImprovements(sA,sB,sC);
-  document.getElementById('voice-area').innerHTML=buildVoiceReport();
-}
-
-// ── PRESET ──
-function applyPreset(){
-  const k=document.getElementById('presetSel').value;
-  if(!k||!IND[k])return;
-  const d=IND[k];
-  const hrOnly=document.getElementById('hr-only-cb').checked;
-  for(let i=0;i<12;i++){
-    if(!hrOnly){S.hr[i]=d.hr[i];}
-    S.fi[i]=d.fi[i];
-    const hrEl=document.getElementById(`hr-${i}`),fiEl=document.getElementById(`fi-${i}`);
-    if(hrEl&&!hrOnly){hrEl.value=d.hr[i];const e=document.getElementById(`hrv-${i}`);e.textContent=fmtV(d.hr[i]);e.style.color=scoreColor(d.hr[i]);}
-    if(fiEl){fiEl.value=d.fi[i];const e=document.getElementById(`fiv-${i}`);e.textContent=fmtV(d.fi[i]);e.style.color=scoreColor(d.fi[i]);}
-    const gEl=document.getElementById(`gap-${i}`);
-    if(gEl) gEl.innerHTML=gapChipHtml(S.hr[i]-d.fi[i]);
-  }
-  if(hrOnly){
-    document.getElementById('hr-only-preset-name').textContent=k;
-  }
-  renderResults();
-}
-
-// ── HR-ONLY MODE ──
-function toggleHROnlyMode(){
-  const cb=document.getElementById('hr-only-cb');
-  const preset=document.getElementById('presetSel').value;
-  if(cb.checked){
-    if(!preset||!IND[preset]){
-      alert('先に業態プリセットを選択してください。\n現場スコアの業態標準値として使用します。');
-      cb.checked=false;
-      return;
-    }
-    // Fill fi with preset benchmark values only
-    const d=IND[preset];
-    for(let i=0;i<12;i++){
-      S.fi[i]=d.fi[i];
-      const fiEl=document.getElementById(`fi-${i}`);
-      if(fiEl){fiEl.value=d.fi[i];const e=document.getElementById(`fiv-${i}`);e.textContent=fmtV(d.fi[i]);e.style.color=scoreColor(d.fi[i]);}
-      const gEl=document.getElementById(`gap-${i}`);
-      if(gEl) gEl.innerHTML=gapChipHtml(S.hr[i]-d.fi[i]);
-    }
-    document.body.classList.add('hr-only-mode');
-    const banner=document.getElementById('hr-only-banner');
-    banner.style.display='flex';
-    document.getElementById('hr-only-preset-name').textContent=preset;
-    renderResults();
-  } else {
-    document.body.classList.remove('hr-only-mode');
-    document.getElementById('hr-only-banner').style.display='none';
-  }
-}
-
-function toggleChart(el){
-  const body=document.getElementById('chart-body');
-  const arrow=el.querySelector('.chart-arrow');
-  const isOpen=body.style.display!=='none';
-  body.style.display=isOpen?'none':'block';
-  arrow.classList.toggle('open',!isOpen);
-}
-
-function resetAll(){
-  document.getElementById('presetSel').value='';
-  const cb=document.getElementById('hr-only-cb');
-  if(cb&&cb.checked){cb.checked=false;document.body.classList.remove('hr-only-mode');document.getElementById('hr-only-banner').style.display='none';}
-  for(let i=0;i<12;i++){
-    S.hr[i]=3;S.fi[i]=3;
-    const hrEl=document.getElementById(`hr-${i}`),fiEl=document.getElementById(`fi-${i}`);
-    if(hrEl){hrEl.value=3;const e=document.getElementById(`hrv-${i}`);e.textContent='3';e.style.color=scoreColor(3);}
-    if(fiEl){fiEl.value=3;const e=document.getElementById(`fiv-${i}`);e.textContent='3';e.style.color=scoreColor(3);}
-    const gEl=document.getElementById(`gap-${i}`);
-    if(gEl) gEl.innerHTML=gapChipHtml(0);
-  }
-  renderResults();
-}
-
-// ── SASUKE LAUNCH PRESET ──
-const SASUKE_INDUSTRY_TO_PRESET = {
-  '人材（派遣・紹介）':'人材派遣',
-  '人材（アウトソーサー）':'人材派遣',
-  '製造（食品）':'食品製造',
-  '製造（自動車）':'メーカー',
-  '製造（電子部品・半導体）':'メーカー',
-  '製造（化学・医薬）':'メーカー',
-  '製造（鉄鋼）':'メーカー',
-  '製造（その他）':'メーカー',
-  '物流（運輸・配送）':'物流',
-  '物流（倉庫）':'物流',
-  '物流（鉄道・航空）':'物流',
-  '介護・福祉・保育':'介護',
-  'サービス（飲食）':'飲食店',
-  'サービス（スーパー）':'小売店',
-  'サービス（小売）':'小売',
-  'サービス（アパレル・美容）':'美容',
-  'サービス（冠婚葬祭）':'イベント',
-  'サービス（給食・中食）':'食品製造',
-  'サービス（バス・タクシー）':'物流',
-  '警備':'警備',
-  'IT・通信・システム':'IT',
-  '建設・建築・土木':'建築',
-  '広告・メディア':'広告',
-  '商社・コンサル':'コンサル'
-};
-
-function normalizeSasukeIndustry(value){
-  try{
-    return String(value||'').normalize('NFKC').replace(/[\\s　]+/g,'').trim();
-  }catch(e){
-    return String(value||'').replace(/[\\s　]+/g,'').trim();
-  }
-}
-
-function findR360PresetForSasukeIndustry(industry){
-  const exact=SASUKE_INDUSTRY_TO_PRESET[industry];
-  if(exact)return exact;
-
-  const normalized=normalizeSasukeIndustry(industry);
-  for(const [source,preset] of Object.entries(SASUKE_INDUSTRY_TO_PRESET)){
-    if(normalizeSasukeIndustry(source)===normalized)return preset;
-  }
-  return '';
-}
-
-function applySasukeLaunchPreset(){
-  const params=new URLSearchParams(location.search);
-  if(params.get('source')!=='sasuke')return;
-
-  const company=String(params.get('company')||'').trim();
-  const industry=String(params.get('industry')||'').trim();
-
-  if(company){
-    const companyInput=document.getElementById('global-company');
-    if(companyInput){
-      companyInput.value=company;
-      companyInput.dispatchEvent(new Event('input',{bubbles:true}));
-      companyInput.dispatchEvent(new Event('change',{bubbles:true}));
-    }
-  }
-
-  const preset=findR360PresetForSasukeIndustry(industry);
-  if(preset&&IND[preset]){
-    const presetSelect=document.getElementById('presetSel');
-    if(presetSelect){
-      presetSelect.value=preset;
-      applyPreset();
-    }
-  }
-}
-
-// ── INIT ──
-buildSections();
-initSupp();
-renderResults();
-applySasukeLaunchPreset();
-
-// ============================================================
-//  PROMPT EXPORT MODAL
-// ============================================================
-function openPrmModal(){
-  document.getElementById('prm-overlay').style.display='flex';
-  refreshPrmText();
-}
-function closePrmModal(){
-  document.getElementById('prm-overlay').style.display='none';
-}
-function refreshPrmText(){
-  document.getElementById('prm-textarea').value=buildExportPrompt();
-}
-function copyPrmText(){
-  const ta=document.getElementById('prm-textarea');
-  ta.select();
-  try{
-    navigator.clipboard.writeText(ta.value).then(()=>{
-      const btn=document.querySelector('.prm-copy');
-      const orig=btn.textContent;
-      btn.textContent='✅ コピーしました！';
-      btn.style.background='linear-gradient(135deg,#059669,#047857)';
-      setTimeout(()=>{btn.textContent=orig;btn.style.background='linear-gradient(135deg,#7C3AED,#6D28D9)';},2000);
-    }).catch(()=>fallbackCopy(ta));
-  }catch(e){fallbackCopy(ta);}
-}
-function fallbackCopy(ta){
-  try{document.execCommand('copy');alert('コピーしました');}catch(e){alert('コピーに失敗しました。手動で選択してコピーしてください。');}
-}
-
-function buildExportPrompt(){
-  // --- gather data ---
-  const coName=document.getElementById('global-company').value.trim()||'（企業名未入力）';
-  const hrOnly=document.getElementById('hr-only-cb').checked;
-  const hrOnlyPreset=hrOnly?document.getElementById('presetSel').value:'';
-
-  // Section averages
-  const idxA=[0,1,2,3],idxB=[4,5,6,7],idxC=[8,9,10,11];
-  function avg(arr,key){const v=arr.map(i=>S[key][i]).filter(x=>x>0);return v.length?v.reduce((a,b)=>a+b,0)/v.length:0;}
-  const hrA=avg(idxA,'hr'),fiA=avg(idxA,'fi'),gapA=hrA-fiA;
-  const hrB=avg(idxB,'hr'),fiB=avg(idxB,'fi'),gapB=hrB-fiB;
-  const hrC=avg(idxC,'hr'),fiC=avg(idxC,'fi'),gapC=hrC-fiC;
-  const hrAll=avg([...idxA,...idxB,...idxC],'hr');
-  const fiAll=avg([...idxA,...idxB,...idxC],'fi');
-  const gapAll=hrAll-fiAll;
-
-  // Diagnosis
-  const sA={hr:hrA,fi:fiA,gap:gapA};
-  const sB={hr:hrB,fi:fiB,gap:gapB};
-  const sC={hr:hrC,fi:fiC,gap:gapC};
-  const diag=diagnoseTypes(sA,sB,sC);
-  const pri=TYPES6[diag.primary];
-  const sec=TYPES6[diag.secondary];
-
-  // Q labels
-  const QVIEW=[
-    '求人票・採用広報のビジュアルや雰囲気','仕事内容・業務の具体性','職場環境・雰囲気の訴求',
-    '年収・待遇・福利厚生','選考プロセスの対応や丁寧さ','選考での会社説明・質問対応',
-    '現場メンバーとの接点・現場理解の機会','内定後フォロー・オファー面談の質',
-    '入社時のオンボーディング','配属先・業務内容のマッチ度','職場の人間関係・チームの雰囲気',
-    '成長機会・キャリアパスの明確さ'
-  ];
-  const QSEC=['A','A','A','A','B','B','B','B','C','C','C','C'];
-
-  // Build Q table rows
-  let qRows='';
-  for(let i=0;i<12;i++){
-    const hr=S.hr[i]||0,fi=S.fi[i]||0,gap=hr-fi;
-    const gapStr=gap>0?'+'+gap.toFixed(1):gap.toFixed(1);
-    const level=Math.abs(gap)<0.5?'整合性高':Math.abs(gap)<1.0?'やや乖離':Math.abs(gap)<1.5?'乖離あり':'大きな乖離';
-    qRows+=`| ${QSEC[i]}-Q${i+1} | ${QVIEW[i]} | ${hr.toFixed(1)} | ${fi.toFixed(1)} | ${gapStr} | ${level} |\n`;
-  }
-
-  // Top-gap question per section
-  function topQ(idxs){
-    return idxs.reduce((best,i)=>Math.abs(S.hr[i]-S.fi[i])>Math.abs(S.hr[best]-S.fi[best])?i:best,idxs[0]);
-  }
-  const topA=topQ(idxA),topB=topQ(idxB),topC=topQ(idxC);
-  function topQLine(i){
-    const hr=S.hr[i]||0,fi=S.fi[i]||0,gap=hr-fi;
-    return `${QSEC[i]}-Q${i+1}「${QVIEW[i]}」 HR=${hr.toFixed(1)} / 現場=${fi.toFixed(1)} / GAP=${gap>0?'+':''}${gap.toFixed(1)}`;
-  }
-
-  // SUPP block (Q13-Q28)
-  let suppBlock='';
-  const suppIds=[13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28];
-  const suppFilled=suppIds.filter(n=>{
-    const el=document.getElementById('s'+n);
-    return el&&el.value&&parseFloat(el.value)>0;
-  });
-  if(suppFilled.length>0){
-    suppBlock='\n## 補足スコア（Q13-Q28）\n\n';
-    suppFilled.forEach(n=>{
-      const el=document.getElementById('s'+n);
-      const v=parseFloat(el.value).toFixed(1);
-      const q=SUPP[n];
-      if(q) suppBlock+=`- Q${n}「${q.view}」: ${v}\n`;
-    });
-  }
-
-  // Labels that change depending on mode
-  const fiLabel=hrOnly?`業態標準値（${hrOnlyPreset}）`:'現場平均';
-  const fiLabelShort=hrOnly?'業態標準':'現場';
-  const gapNote=hrOnly
-    ?`※ 【人事のみ入力モード】現場スコアは「${hrOnlyPreset}」の業態標準値です。このGAPは「実際の現場との乖離」ではなく、「業態標準と比べてこの会社の人事担当がどこを高く/低く認識しているか」を示しています。`
-    :'※ GAP = HR認識 − 現場認識。プラスはHRが高く評価している乖離、マイナスは現場が高く評価している乖離。';
-  const dataSourceNote=hrOnly
-    ?`\n> ⚠️ **データ注記（重要）**: 現場スコアは実際の現場社員へのアンケートではなく、「${hrOnlyPreset}」業界の業態標準値（ベンチマーク）です。したがって本レポートの分析は「HR vs 現場の実態GAP」ではなく「HR認識 vs 業態標準のズレ」として解釈してください。\n`
-    :'';
-
-  // Build prompt
-  return `# R360 Quick GAP診断 ─ PowerPoint作成指示${hrOnly?' 【人事のみ入力モード：業態標準比較】':''}
-
-## 最優先の成果物要件
-
-あなたは、経営層・人事責任者向けのプレゼンテーションを制作する、採用コンサルタント兼PowerPointデザイナーです。
-
-以下の診断データを使用し、${coName}向けの **全7スライド・16:9のPowerPointプレゼンテーション** を作成してください。
-
-- 最終成果物は、編集可能なPowerPointファイル（.pptx）として生成すること
-- 完成した.pptxファイルを、ユーザーがダウンロードできる状態で提出すること
-- チャット本文に、スライド原稿・マークダウンレポート・HTML・PDF・画像だけを代替成果物として並べないこと
-- スライド全体を1枚の画像にして貼り付けるのではなく、文字・図形・表・グラフを可能な限り編集可能な要素として作成すること
-- PowerPointファイルを生成できない環境の場合は、文章レポートへ勝手に代替せず、.pptxを生成できない旨を明確に伝えること
-
-## 対象企業
-
-${coName}
-${dataSourceNote}
----
-
-## 診断スコアデータ
-
-### セクション別平均スコア
-
-| セクション | 内容 | HR平均 | ${fiLabel} | GAP |
-|---|---|---|---|---|
-| A. 応募前 | 採用広報・求人票 | ${hrA.toFixed(2)} | ${fiA.toFixed(2)} | ${gapA>0?'+':''}${gapA.toFixed(2)} |
-| B. 選考時 | 選考体験・内定 | ${hrB.toFixed(2)} | ${fiB.toFixed(2)} | ${gapB>0?'+':''}${gapB.toFixed(2)} |
-| C. 入社後 | 定着・オンボーディング | ${hrC.toFixed(2)} | ${fiC.toFixed(2)} | ${gapC>0?'+':''}${gapC.toFixed(2)} |
-| 全体 | 総合 | ${hrAll.toFixed(2)} | ${fiAll.toFixed(2)} | ${gapAll>0?'+':''}${gapAll.toFixed(2)} |
-
-${gapNote}
-
-### 設問別スコア一覧
-
-| 設問 | 設問内容 | HR | ${fiLabelShort} | GAP | 乖離レベル |
-|---|---|---|---|---|---|
-${qRows}
-### セクション別 最大乖離設問
-
-- A. 応募前：${topQLine(topA)}
-- B. 選考時：${topQLine(topB)}
-- C. 入社後：${topQLine(topC)}
-${suppBlock}
----
-
-## 診断タイプ
-
-**主タイプ（Primary）：${pri?pri.name:'N/A'}**
-- 概要：${pri?pri.summary:''}
-- 想定される背景：${pri?pri.cause:''}
-
-**副タイプ（Secondary）：${sec?sec.name:'N/A'}**
-- 概要：${sec?sec.summary:''}
-- 想定される背景：${sec?sec.cause:''}
-
----
-
-## 分析時の原則
-
-- 上記の数値をそのまま使用し、数値を変更・丸め直し・捏造しないこと
-- 事実として与えられていない企業固有情報を作らないこと
-- 推察は「〜と考えられます」「〜の可能性があります」など、仮説であることが分かる表現にすること
-- GAPの大きさだけでなく、HRと${fiLabelShort}の絶対スコアも踏まえて解釈すること
-- 主タイプ・副タイプと、A/B/C各区分のスコアを一貫したストーリーで結び付けること
-- 経営層が短時間で意思決定できるよう、結論・優先順位・次の一手を明確にすること
-${hrOnly?`
-### 人事のみ入力モードにおける重要な分析前提
-
-本データは人事担当者のみの回答です。「現場スコア」は実際の現場アンケートではなく、「${hrOnlyPreset}」業界の業態標準値（ベンチマーク）です。
-
-- 「HRと現場社員の実際の認識差」とは表現しないこと
-- 「HR認識と業態標準との比較」として解釈すること
-- HRが業態標準より高い項目は、過信・美化の可能性がある確認ポイントとして扱うこと
-- HRが業態標準より低い項目は、人事自身も認識している改善ポイントとして扱うこと
-- 実際の現場の声を確認するためのヒアリング・アンケート設計を必ず提案すること
-`:''}
-
----
-
-## PowerPoint制作仕様
-
-- 出力形式：Microsoft PowerPoint（.pptx）
-- スライド比率：16:9
-- スライド枚数：全7枚。増減しないこと
-- 言語：日本語
-- 文体：丁寧で客観的なビジネスプレゼンテーション
-- 想定読者：経営層、人事責任者、採用担当者
-- ファイル名：R360Quick_GAP診断レポート_${coName}.pptx
-- 基調色：白、ネイビー #1A3A70、ブルー #2563EB
-- HRの系列色：青
-- ${fiLabelShort}の系列色：赤
-- GAPの色分け：整合性高＝緑、やや乖離＝黄、乖離あり＝オレンジ、大きな乖離＝赤
-- タイトルは28pt以上、本文は16pt以上を目安にし、小さすぎる文字を使わないこと
-- 表だけに偏らず、スコアカード、横棒グラフ、強調ボックス、カード型レイアウトを使うこと
-- 1スライドに情報を詰め込みすぎず、余白を十分に確保すること
-- 長文をそのまま貼らず、要点を短い見出しと箇条書きに整理すること
-- 文字切れ、図形の重なり、表のはみ出しがないことを完成前に確認すること
-- グラフの凡例・軸・数値が一目で理解できること
-- スライド番号を右下へ表示すること
-- 数値、表、グラフ、図形、テキストは可能な限りPowerPoint上で編集可能にすること
-
----
-
-## 全7スライドの構成
-
-### スライド1：表紙
-
-**目的**
-対象企業と診断の全体像を、端正な表紙で提示する。
-
-**必須要素**
-- タイトル：「R360 Quick GAP診断レポート」
-- サブタイトル：「採用認識乖離 診断結果」
-- 企業名：${coName}
-- 診断日：${new Date().toLocaleDateString('ja-JP',{year:'numeric',month:'long',day:'numeric'})}
-- 全体GAP：${gapAll>0?'+':''}${gapAll.toFixed(2)}
-- 状態の一言要約：${Math.abs(gapAll)<0.5?'全体として整合性が高い状態':Math.abs(gapAll)<1.0?'一部にやや認識の乖離が見られる状態':'優先確認が必要な認識の乖離が見られる状態'}
-
-**推奨レイアウト**
-- 白背景にネイビーのヘッダー帯
-- 企業名とタイトルを大きく表示
-- 全体GAPを小さな強調カードで表示
-- 装飾は控えめにし、信頼感を優先する
-
----
-
-### スライド2：調査概要とレポートの見方
-
-**目的**
-診断の前提とGAP値の読み方を、初見でも理解できるようにする。
-
-**必須要素**
-- 調査対象：採用担当者（HR）と${hrOnly?`「${hrOnlyPreset}」の業態標準値`:'現場担当者・入社1〜3年目社員'}の比較
-- 調査設問：全12設問（A. 応募前4問 / B. 選考時4問 / C. 入社後4問）
-- スコア基準：1〜5点
-- GAPの定義：HR認識 − ${fiLabelShort}
-- 乖離レベルの基準：
-  - ±0.5未満：整合性高
-  - ±0.5以上1.0未満：やや乖離
-  - ±1.0以上1.5未満：乖離あり
-  - ±1.5以上：大きな乖離
-- 本レポートの活用方法：改善優先度の判断、現場確認、追加ヒアリング設計
-
-**推奨レイアウト**
-- 4つの説明カードまたは2×2のカード配置
-- GAP基準は色付きの凡例として見せる
-
----
-
-### スライド3：スコアサマリーと診断タイプ
-
-**目的**
-診断結果の全体像と最重要ポイントを、一目で把握できるようにする。
-
-**必須要素**
-- HR平均 ${hrAll.toFixed(2)}、${fiLabel} ${fiAll.toFixed(2)}、全体GAP ${gapAll>0?'+':''}${gapAll.toFixed(2)}を大型スコアカードで表示
-- A/B/C各区分のHR・${fiLabelShort}・GAPを横棒グラフまたは比較カードで表示
-- 最も大きなGAPを「注目ポイント」として強調
-- 主タイプ「${pri?pri.name:'N/A'}」を主要カードで表示
-- 副タイプ「${sec?sec.name:'N/A'}」を補足表示
-- 主タイプの特徴と背景を100〜150字程度で要約
-- 主タイプと副タイプが組み合わさることによるリスクを2点以内で整理
-
-**推奨レイアウト**
-- 左側：スコアカードとA/B/C比較
-- 右側：診断タイプと注目ポイント
-
----
-
-### スライド4：A/B/C区分別の最大乖離と読み解き
-
-**目的**
-応募前・選考時・入社後のどこに、どのような認識差があるかを比較する。
-
-**A. 応募前**
-- HR ${hrA.toFixed(2)} / ${fiLabelShort} ${fiA.toFixed(2)} / GAP ${gapA>0?'+':''}${gapA.toFixed(2)}
-- 最大乖離：${topQLine(topA)}
-- 背景仮説を2点以内
-- 実態確認で見るべきポイントを1点
-
-**B. 選考時**
-- HR ${hrB.toFixed(2)} / ${fiLabelShort} ${fiB.toFixed(2)} / GAP ${gapB>0?'+':''}${gapB.toFixed(2)}
-- 最大乖離：${topQLine(topB)}
-- 背景仮説を2点以内
-- 実態確認で見るべきポイントを1点
-
-**C. 入社後**
-- HR ${hrC.toFixed(2)} / ${fiLabelShort} ${fiC.toFixed(2)} / GAP ${gapC>0?'+':''}${gapC.toFixed(2)}
-- 最大乖離：${topQLine(topC)}
-- 背景仮説を2点以内
-- 実態確認で見るべきポイントを1点
-
-**推奨レイアウト**
-- A/B/Cを横3列のカードで比較
-- 各カード内に、HR・${fiLabelShort}の数値、GAPバッジ、最大乖離設問、短い示唆を配置
-
----
-
-### スライド5：エグゼクティブサマリー
-
-**目的**
-経営層・人事責任者が、重要な示唆と優先順位を短時間で理解できるようにする。
-
-**必須要素**
-- 本診断から得られる重要な気づきを3点に絞る
-- 各気づきは80〜120字程度に収める
-- 最優先課題を明示する
-- 診断タイプ「${pri?pri.name:''}」が示す組織的な意味を説明する
-- 「今すぐ着手」「中期的に整備」の2区分で要約する
-- 推測を断定せず、確認が必要な仮説であることを明示する
-
-**推奨レイアウト**
-- 3つの番号付きカード
-- 下部に「今すぐ着手」「中期的に整備」の帯または2列ボックス
-
----
-
-### スライド6：優先改善アクション
-
-**目的**
-診断結果を、実行可能な改善施策へ落とし込む。
-
-**必須要素**
-A/B/Cそれぞれについて、優先度の高い施策を2つずつ提案する。
-
-各施策には次の5項目を含める：
-1. 現状の課題
-2. 改善アクション
-3. 期待効果
-4. 優先度（高・中・低）
-5. 実施難易度（低・中・高）
-
-- 抽象論ではなく、求人原稿、面接設計、職場見学、オンボーディング、現場ヒアリングなど、実務で着手できる内容にする
-- GAPが大きい区分を優先する
-- 施策同士の重複を避ける
-
-**推奨レイアウト**
-- A/B/Cの3段または3列カード
-- 優先度は色付きラベルで表示
-- 1施策あたりの文章量を抑える
-
----
-
-### スライド7：追加ヒアリング設計と次のステップ
-
-**目的**
-診断で得た仮説を検証し、具体的な採用改善へつなげる調査設計を示す。
-
-**必須要素**
-- 最重要課題に絞ったヒアリングのゴール
-- 対象者：HR、現場責任者、入社1〜3年目社員など
-- 診断タイプ「${pri?pri.name:''}」を踏まえた仮説別の確認事項を5件
-- 以下の列を持つ表を作る：
-  - 番号
-  - 仮説
-  - 確認すべき質問
-  - 対象者
-  - 優先度
-- 仮説は、特に ${topQLine(topA)} / ${topQLine(topB)} / ${topQLine(topC)} を根拠に作る
-- 最後に「次のステップ」を3段階で示す：
-  1. 追加ヒアリング
-  2. 求人・選考・受け入れ施策の修正
-  3. 効果検証と再診断
-
-**推奨レイアウト**
-- 左側：ヒアリングの目的と対象者
-- 右側：仮説別確認事項の表
-- 下部：次のステップを矢印でつないだ3段階フロー
-
----
-
-## 完成前の品質チェック
-
-PowerPointファイルを書き出す前に、次を確認してください。
-
-- 全7スライドが揃っている
-- 16:9になっている
-- 数値が入力データと一致している
-- HRと${fiLabelShort}の系列色が全スライドで統一されている
-- GAPの色分けが基準どおりである
-- 文字切れ、図形の重なり、表のはみ出しがない
-- 小さすぎる文字がない
-- 文章量が多すぎず、各スライドの結論が一目で分かる
-- 編集可能な.pptxとして保存されている
-- ファイル名が「R360Quick_GAP診断レポート_${coName}.pptx」になっている
-
-以上の条件を満たしたPowerPointファイルを生成し、ダウンロード可能な成果物として提出してください。
-`;
-}
-
-// ============================================================
-//  REPORT MODAL
-// ============================================================
-function openReportModal(){
-  document.getElementById('rpt-overlay').style.display='flex';
-  document.getElementById('rpt-company').focus();
-}
-function closeReportModal(){
-  document.getElementById('rpt-overlay').style.display='none';
-}
-
-// ============================================================
-//  PPTX REPORT GENERATOR  — template: _______________.pptx
-// ============================================================
-function generateReport(){
-  const co=(document.getElementById('rpt-company').value||'').trim()||'御社';
-  closeReportModal();
-
-  /* ─── state snapshot ─── */
-  const iA=[0,1,2,3],iB=[4,5,6,7],iC=[8,9,10,11];
-  const sA=secStats(iA),sB=secStats(iB),sC=secStats(iC);
-  const hrAll=(sA.hr+sB.hr+sC.hr)/3;
-  const fiAll=(sA.fi+sB.fi+sC.fi)/3;
-  const allAvg=(hrAll+fiAll)/2;
-  const res=diagnoseTypes(sA,sB,sC);
-  const pri=TYPES6[res.primary],sec2=TYPES6[res.secondary];
-  const today=new Date().toLocaleDateString('ja-JP',{year:'numeric',month:'long',day:'numeric'});
-
-  /* ─── palette (template: _______________.pptx) ─── */
-  const C={
-    navy:'1A3A70',   // dark navy header
-    blue:'2A6DD5',   // primary blue
-    blueLt:'E8F1FB', // light blue
-    blueBg:'EDF2FB', // very light blue
-    amber:'E8A020',  // amber accent
-    amberLt:'FEF3C7',// light amber
-    secA:'2A6DD5',   // A = blue
-    secB:'6D28D9',   // B = purple
-    secC:'059669',   // C = green
-    secALt:'DBEAFE', secBLt:'EDE9FE', secCLt:'D1FAE5',
-    white:'FFFFFF', offW:'F8FAFF',
-    dark:'1E2B47', mid:'475569', muted:'64748B', lt:'94A3B8',
-    border:'E2E8F0', bdrMd:'CBD5E1',
-    gGreen:'16A34A',gGold:'D97706',gOrange:'EA580C',gRed:'DC2626',
-    gGreenLt:'DCFCE7',gGoldLt:'FEF3C7',gOrangeLt:'FFEDD5',gRedLt:'FEE2E2',
-  };
-  const F='Meiryo';
-  const pres=new PptxGenJS();
-  pres.layout='LAYOUT_16x9';
-
-  /* ─── helpers ─── */
-  function rect(sl,x,y,w,h,fill,lc){
-    sl.addShape('RECTANGLE',{x,y,w,h,fill:{color:fill},line:{color:lc||fill}});
-  }
-  function ellipse(sl,x,y,r,fill){
-    sl.addShape('ELLIPSE',{x,y,w:r,h:r,fill:{color:fill},line:{color:fill}});
-  }
-  function gCol(g){const a=Math.abs(g);return a<0.5?C.gGreen:a<1.0?C.gGold:a<1.5?C.gOrange:C.gRed;}
-  function gColLt(g){const a=Math.abs(g);return a<0.5?C.gGreenLt:a<1.0?C.gGoldLt:a<1.5?C.gOrangeLt:C.gRedLt;}
-  function gLbl(g){const a=Math.abs(g);return a<0.5?'整合性 高':a<1.0?'やや乖離':a<1.5?'乖離あり':'大きな乖離';}
-  function numCircle(sl,x,y,n,fill){
-    ellipse(sl,x,y,0.32,fill);
-    sl.addText(String(n),{x,y,w:0.32,h:0.32,fontSize:12,bold:true,color:C.white,align:'center',valign:'middle',fontFace:F,margin:0});
-  }
-  /* slide header for slides 2-7 */
-  function hdr(sl,n,title,sub){
-    rect(sl,0,0,10,0.85,C.navy);
-    rect(sl,0.28,0.13,1.0,0.23,C.blue);
-    sl.addText('Quick Report',{x:0.28,y:0.13,w:1.0,h:0.23,fontSize:7.5,bold:true,color:C.white,align:'center',valign:'middle',fontFace:F,margin:0});
-    rect(sl,9.15,0.13,0.55,0.23,C.blue);
-    sl.addText(n+' / 7',{x:9.15,y:0.13,w:0.55,h:0.23,fontSize:8,bold:true,color:C.white,align:'center',valign:'middle',fontFace:F,margin:0});
-    sl.addText(title,{x:1.4,y:0.09,w:7.6,h:0.36,fontSize:16,bold:true,color:C.white,fontFace:F,valign:'middle'});
-    if(sub) sl.addText(sub,{x:0.28,y:0.52,w:9.4,h:0.26,fontSize:9,color:'B8CDED',fontFace:F,valign:'middle'});
-  }
-  function pgn(sl,n){
-    sl.addText(String(n),{x:9.65,y:5.38,w:0.28,h:0.2,fontSize:9,bold:true,color:C.mid,align:'right',fontFace:F});
-  }
-
-  /* section definitions */
-  const SECS=[
-    {key:'A',label:'A区分＝応募',longLabel:'A. 応募前の情報整備',qs:iA,sec:sA,
-     color:C.secA,lt:C.secALt,bg:'EFF6FF',letter:'A'},
-    {key:'B',label:'B区分＝選考',longLabel:'B. 選考時の情報連携',qs:iB,sec:sB,
-     color:C.secB,lt:C.secBLt,bg:'F5F3FF',letter:'B'},
-    {key:'C',label:'C区分＝定着',longLabel:'C. 入社後の受け入れ・定着',qs:iC,sec:sC,
-     color:C.secC,lt:C.secCLt,bg:'F0FDF4',letter:'C'},
-  ];
-
-  /* ═══════════════════════════════════
-     SLIDE 1: 表紙
-  ═══════════════════════════════════ */
-  {
-    const sl=pres.addSlide();
-    rect(sl,0,0,10,5.625,C.white);
-    rect(sl,0,0,10,0.07,C.navy);
-    // Badge
-    rect(sl,0.38,0.22,1.1,0.26,C.blue);
-    sl.addText('Quick Report',{x:0.38,y:0.22,w:1.1,h:0.26,fontSize:9,bold:true,color:C.white,align:'center',valign:'middle',fontFace:F,margin:0});
-    // Decorative circles top-right
-    ellipse(sl,8.0,0.04,1.5,C.blueLt);
-    ellipse(sl,9.1,0.1,0.9,'DBEAFE');
-    ellipse(sl,8.75,0.82,0.42,C.amber);
-    // Company name
-    sl.addText(co+' 様',{x:0.38,y:0.66,w:7.5,h:0.38,fontSize:16,color:C.muted,fontFace:F});
-    // Main title
-    sl.addText('採用 GAP クイック診断レポート',{x:0.38,y:1.08,w:8.8,h:0.72,fontSize:30,bold:true,color:C.dark,fontFace:F});
-    // Subtitle
-    sl.addText('人事アンケート × 現場アンケートから見えた仮説整理',{x:0.38,y:1.88,w:8.0,h:0.3,fontSize:11.5,color:C.mid,fontFace:F});
-    // Divider
-    rect(sl,0.38,2.27,9.2,0.02,C.border);
-    // Blue info box
-    rect(sl,0.38,2.36,9.2,1.02,C.blueLt,C.blue);
-    sl.addText('📋  このレポートについて',{x:0.56,y:2.42,w:8.8,h:0.24,fontSize:10,bold:true,color:C.blue,fontFace:F});
-    sl.addText('本レポートはクイック診断（採用GAP診断シミュレーター）の結果をもとに、現時点で見えている課題仮説と改善の方向性を整理したものです。人事担当者の認識と現場・入社1〜3年目社員の認識を比較し、採用課題の構造を可視化します。',{x:0.56,y:2.68,w:8.8,h:0.62,fontSize:9.5,color:C.navy,fontFace:F,lineSpacingMultiple:1.45});
-    // Amber warning box
-    rect(sl,0.38,3.48,9.2,0.74,C.amberLt,'D97706');
-    sl.addText('⚠  解釈の注意点',{x:0.56,y:3.53,w:8.8,h:0.22,fontSize:9.5,bold:true,color:'92400E',fontFace:F});
-    sl.addText('本結果はシミュレーターによる仮説整理です。全社統計ではなく、実態と照合しながらご活用ください。より正確性を高めるには、追加ヒアリングとR360フル版調査での検証を推奨します。',{x:0.56,y:3.77,w:8.8,h:0.38,fontSize:9,color:'78350F',fontFace:F,lineSpacingMultiple:1.4});
-    // Bottom
-    sl.addText('診断日：'+today+'　　より詳細な診断にはR360フル版をご検討ください',{x:0.38,y:4.32,w:9.2,h:0.22,fontSize:8.5,color:C.lt,fontFace:F});
-    pgn(sl,1);
-  }
-
-  /* ═══════════════════════════════════
-     SLIDE 2: 調査概要とレポートの見方
-  ═══════════════════════════════════ */
-  {
-    const sl=pres.addSlide();
-    rect(sl,0,0,10,5.625,C.white);
-    hdr(sl,2,'調査概要と本レポートの見方','本調査の構成と、レポートの読み方・活用のポイントを整理します。');
-    const cards=[
-      {num:1,title:'今回の調査',lines:['回答者：人事担当者 × 現場担当者・入社1〜3年目社員','設問数：Q1〜Q12（12問）／区分A・B・C','スコール：1〜5段階（1＝ほとんど当てはまらない、5＝十分当てはまる）','各区分でのフェーズ別認識差を可視化します']},
-      {num:2,title:'クイック診断で分かること',lines:['採用と現場の認識差（応募・選考・定着フェーズ別）','重点改善テーマの仮説と方向性','6タイプ診断による課題傾向の把握','次アクションの優先度整理']},
-      {num:3,title:'解釈時の注意点',lines:['本結果は全社統計ではなく仮説レベルの整理です','回答者数が少ない場合は方向性の参考にとどめてください','個別回答や組織実態と照合しながらご活用ください','詳細確認は追加ヒアリングを推奨します']},
-      {num:4,title:'より正確性を高めるには',lines:['フル版アンケート・追加ヒアリングとの組み合わせ','定性インタビューによる仮説の検証','公開情報・採用導線との照合・整合確認','R360フル版での詳細クロス分析']},
-    ];
-    const pos=[{x:0.3,y:0.98},{x:5.18,y:0.98},{x:0.3,y:3.28},{x:5.18,y:3.28}];
-    const W=4.55,H=2.1;
-    cards.forEach((c,i)=>{
-      const{x,y}=pos[i];
-      rect(sl,x,y,W,H,C.white,C.border);
-      numCircle(sl,x+0.16,y+0.38,c.num,C.blue);
-      sl.addText(c.title,{x:x+0.6,y:y+0.38,w:W-0.75,h:0.32,fontSize:11,bold:true,color:C.dark,fontFace:F,valign:'middle'});
-      rect(sl,x+0.18,y+0.76,W-0.35,0.01,C.border);
-      c.lines.forEach((ln,li)=>{
-        sl.addText('・ '+ln,{x:x+0.2,y:y+0.82+li*0.3,w:W-0.35,h:0.28,fontSize:9.5,color:C.mid,fontFace:F,valign:'top'});
-      });
-    });
-    pgn(sl,2);
-  }
-
-  /* ═══════════════════════════════════
-     SLIDE 3: スコアサマリーと比較
-  ═══════════════════════════════════ */
-  {
-    const sl=pres.addSlide();
-    rect(sl,0,0,10,5.625,C.white);
-    hdr(sl,3,'スコアサマリーと比較','人事・現場のスコアを比較し、認識が異なっている領域と診断タイプを整理します。');
-
-    /* 3 score callouts */
-    [{lbl:'人事',val:hrAll,col:C.secA},{lbl:'現場',val:fiAll,col:'DC2626'},{lbl:'総合',val:allAvg,col:C.navy}]
-    .forEach((s,i)=>{
-      const x=0.3+i*2.1;
-      rect(sl,x,0.97,1.95,1.0,C.white,C.border);
-      sl.addText(s.lbl,{x,y:1.03,w:1.95,h:0.22,fontSize:9.5,color:C.muted,align:'center',fontFace:F});
-      sl.addText(s.val.toFixed(2),{x,y:1.25,w:1.95,h:0.5,fontSize:36,bold:true,color:s.col,align:'center',fontFace:F,margin:0});
-      sl.addText('/ 5',{x,y:1.75,w:1.95,h:0.18,fontSize:8.5,color:C.lt,align:'center',fontFace:F});
-    });
-
-    /* 注目ポイント card — right */
-    const cx=6.6,cy=0.95,cw=3.1,ch=2.85;
-    rect(sl,cx,cy,cw,ch,C.blueBg,C.blue);
-    rect(sl,cx,cy,cw,0.3,C.blue);
-    sl.addText('注目ポイント',{x:cx,y:cy,w:cw,h:0.3,fontSize:9.5,bold:true,color:C.white,align:'center',valign:'middle',fontFace:F,margin:0});
-    // Auto-generate highlight text
-    const maxS=SECS.reduce((mx,s)=>Math.abs(s.sec.gap)>Math.abs(mx.sec.gap)?s:mx,SECS[0]);
-    const noteText=maxS.label+'で最も大きな認識差（GAP '+(maxS.sec.gap>=0?'+':'')+maxS.sec.gap.toFixed(2)+'）があります。'+(maxS.sec.gap>0?'人事が現場より高く評価しており、過大評価リスクがあります。':'現場が人事より高く評価しています。現場の強みを採用広報に反映しましょう。');
-    sl.addText(noteText,{x:cx+0.14,y:cy+0.38,w:cw-0.28,h:1.26,fontSize:9,color:C.navy,fontFace:F,lineSpacingMultiple:1.52,valign:'top'});
-    // Primary type
-    rect(sl,cx+0.14,cy+1.76,cw-0.28,0.84,C.white,C.blue);
-    sl.addText('主要タイプ',{x:cx+0.14,y:cy+1.79,w:cw-0.28,h:0.22,fontSize:8.5,color:C.blue,align:'center',fontFace:F});
-    sl.addText(pri.icon+' '+pri.name,{x:cx+0.14,y:cy+2.03,w:cw-0.28,h:0.28,fontSize:12.5,bold:true,color:C.navy,align:'center',fontFace:F});
-    sl.addText('全体平均 '+allAvg.toFixed(2)+' / 5.0',{x:cx+0.14,y:cy+2.32,w:cw-0.28,h:0.2,fontSize:8,color:C.muted,align:'center',fontFace:F});
-    sl.addText('副次：'+sec2.icon+' '+sec2.name,{x:cx+0.14,y:cy+2.54,w:cw-0.28,h:0.2,fontSize:7.5,color:C.lt,align:'center',fontFace:F});
-
-    /* Category scores */
-    const catY=2.1;
-    sl.addText('カテゴリ別スコア（平均）',{x:0.3,y:catY,w:6.1,h:0.26,fontSize:9.5,bold:true,color:C.dark,fontFace:F});
-    SECS.forEach((sd,idx)=>{
-      const ry=catY+0.32+idx*0.82;
-      rect(sl,0.3,ry,6.1,0.72,C.offW,C.border);
-      rect(sl,0.3,ry,0.18,0.72,sd.color);
-      sl.addText(sd.longLabel,{x:0.56,y:ry+0.06,w:5.6,h:0.24,fontSize:10,bold:true,color:C.dark,fontFace:F});
-      sl.addText('人事 ',{x:0.56,y:ry+0.34,w:0.55,h:0.22,fontSize:9,color:C.muted,fontFace:F});
-      sl.addText(sd.sec.hr.toFixed(2),{x:1.1,y:ry+0.32,w:0.65,h:0.26,fontSize:14,bold:true,color:C.secA,fontFace:F,margin:0});
-      sl.addText('／ 現場 ',{x:1.75,y:ry+0.34,w:0.68,h:0.22,fontSize:9,color:C.muted,fontFace:F});
-      sl.addText(sd.sec.fi.toFixed(2),{x:2.44,y:ry+0.32,w:0.65,h:0.26,fontSize:14,bold:true,color:'DC2626',fontFace:F,margin:0});
-      const g=sd.sec.gap;
-      rect(sl,3.25,ry+0.34,2.1,0.22,gColLt(g),gColLt(g));
-      sl.addText('GAP '+(g>=0?'+':'')+g.toFixed(2)+'  '+gLbl(g),{x:3.25,y:ry+0.34,w:2.1,h:0.22,fontSize:8.5,bold:true,color:gCol(g),align:'center',valign:'middle',fontFace:F,margin:0});
-    });
-    /* Type summary strip */
-    const sy=catY+0.32+3*0.82+0.1;
-    rect(sl,0.3,sy,6.1,0.66,C.blueLt,C.blue);
-    sl.addText('判定タイプ：'+pri.name,{x:0.46,y:sy+0.05,w:5.7,h:0.22,fontSize:9.5,bold:true,color:C.navy,fontFace:F});
-    sl.addText(pri.summary,{x:0.46,y:sy+0.3,w:5.7,h:0.3,fontSize:9,color:C.mid,fontFace:F,lineSpacingMultiple:1.35});
-    pgn(sl,3);
-  }
-
-  /* ═══════════════════════════════════
-     SLIDE 4: ABC区分での差分項目
-  ═══════════════════════════════════ */
-  {
-    const sl=pres.addSlide();
-    rect(sl,0,0,10,5.625,C.white);
-    hdr(sl,4,'ABC区分での差分項目とその読み解き方','各区分で特に差が大きい設問について、設問の意味・スコア・読み解き方を整理します。');
-    const CW=3.05,CX=[0.28,3.48,6.68];
-    SECS.forEach((sd,si)=>{
-      const cx=CX[si];
-      // Column header
-      rect(sl,cx,0.97,CW,0.3,sd.color);
-      sl.addText(sd.letter,{x:cx,y:0.97,w:0.36,h:0.3,fontSize:15,bold:true,color:C.white,align:'center',valign:'middle',fontFace:F,margin:0});
-      sl.addText(sd.label,{x:cx+0.4,y:0.97,w:CW-0.46,h:0.3,fontSize:10,bold:true,color:C.white,valign:'middle',fontFace:F});
-      // Top gap Q
-      const topQi=[...sd.qs].sort((a,b)=>Math.abs(S.hr[b]-S.fi[b])-Math.abs(S.hr[a]-S.fi[a]))[0];
-      const hr=S.hr[topQi],fi=S.fi[topQi],gap=hr-fi;
-      const q=QS[topQi];
-      const cardY=1.33;
-      rect(sl,cx,cardY,CW,4.12,C.white,C.border);
-      // Q header strip
-      rect(sl,cx,cardY,CW,0.28,sd.lt,sd.lt);
-      sl.addText('Q'+q.num+'  '+q.view,{x:cx+0.1,y:cardY+0.04,w:CW-0.2,h:0.2,fontSize:9.5,bold:true,color:sd.color,fontFace:F});
-      // HR score + question
-      sl.addText('人事の回答',{x:cx+0.1,y:cardY+0.34,w:CW-0.2,h:0.2,fontSize:7.5,color:C.muted,fontFace:F});
-      sl.addText(hr.toFixed(1),{x:cx+0.1,y:cardY+0.54,w:1.0,h:0.4,fontSize:32,bold:true,color:C.secA,fontFace:F,margin:0});
-      sl.addText('/ 5',{x:cx+1.14,y:cardY+0.7,w:0.45,h:0.22,fontSize:9,color:C.lt,fontFace:F});
-      sl.addText(q.hr,{x:cx+0.1,y:cardY+0.98,w:CW-0.2,h:0.56,fontSize:8.5,color:C.mid,fontFace:F,lineSpacingMultiple:1.4,valign:'top'});
-      // Divider
-      rect(sl,cx+0.12,cardY+1.6,CW-0.24,0.01,C.border);
-      // Field score + question
-      sl.addText('現場の回答',{x:cx+0.1,y:cardY+1.66,w:CW-0.2,h:0.2,fontSize:7.5,color:C.muted,fontFace:F});
-      sl.addText(fi.toFixed(1),{x:cx+0.1,y:cardY+1.86,w:1.0,h:0.4,fontSize:32,bold:true,color:'DC2626',fontFace:F,margin:0});
-      sl.addText('/ 5',{x:cx+1.14,y:cardY+2.02,w:0.45,h:0.22,fontSize:9,color:C.lt,fontFace:F});
-      sl.addText(q.fi,{x:cx+0.1,y:cardY+2.3,w:CW-0.2,h:0.56,fontSize:8.5,color:C.mid,fontFace:F,lineSpacingMultiple:1.4,valign:'top'});
-      // GAP badge
-      rect(sl,cx+0.12,cardY+2.92,CW-0.24,0.01,C.border);
-      rect(sl,cx+0.1,cardY+3.0,CW-0.2,0.25,gColLt(gap),gColLt(gap));
-      const gDir=gap>=0?'（過大評価リスク）':'（過小評価リスク）';
-      sl.addText('人事 '+(gap>=0?'+':'')+gap.toFixed(2)+gDir,{x:cx+0.14,y:cardY+3.0,w:CW-0.28,h:0.25,fontSize:9,bold:true,color:gCol(gap),valign:'middle',fontFace:F});
-      // Commentary
-      sl.addText('今回の見方',{x:cx+0.1,y:cardY+3.3,w:CW-0.2,h:0.18,fontSize:8.5,bold:true,color:C.dark,fontFace:F});
-      const cmt=Math.abs(gap)>=1.0?'人事・現場間に大きな認識差があります。優先的に実態確認と情報整備を進めてください。':
-               Math.abs(gap)>=0.5?'一定の認識差が見られます。現場とのすり合わせを通じて採用情報の精度を高めましょう。':
-               '認識が比較的一致しています。現状を維持しつつさらなる具体化を図りましょう。';
-      sl.addText(cmt,{x:cx+0.1,y:cardY+3.52,w:CW-0.2,h:0.52,fontSize:8.5,color:C.mid,fontFace:F,lineSpacingMultiple:1.4,valign:'top'});
-    });
-    sl.addText('※今回の整理は簡易診断をもとにした仮説です。現場確認や追加ヒアリングを通じて実態との一致を確認することが重要です。',{x:0.28,y:5.38,w:9.44,h:0.18,fontSize:7,color:C.lt,fontFace:F});
-    pgn(sl,4);
-  }
-
-  /* ═══════════════════════════════════
-     SLIDE 5: エグゼクティブサマリー
-  ═══════════════════════════════════ */
-  {
-    const sl=pres.addSlide();
-    rect(sl,0,0,10,5.625,C.white);
-    hdr(sl,5,'エグゼクティブサマリー','本診断から見えた、改善に向けて整理すべき主要テーマを整理します。');
-    const maxSec=SECS.reduce((mx,s)=>Math.abs(s.sec.gap)>Math.abs(mx.sec.gap)?s:mx,SECS[0]);
-    const cols=[
-      {num:1,title:'採用側と現場側の認識差',
-       body:maxSec.label+'で最も大きな認識差が確認されます。'+(sB.gap>0.7?'特に選考時の情報連携（B区分 +'+sB.gap.toFixed(2)+'）で人事が高く評価する一方、現場・入社者はそう感じていないケースが見られます。':sA.gap>0.5?'応募前の情報整備（A区分）で人事の認識が現場・入社者を上回っています。':sA.gap<-0.3?'現場・入社者の評価が人事を上回っている区分があります。その強みを採用広報に反映しましょう。':'全体的に認識差は小さめですが、各区分での定期確認を継続してください。')},
-      {num:2,title:'応募前の情報整備の状況',
-       body:'A区分スコア：人事 '+sA.hr.toFixed(2)+' ／ 現場 '+sA.fi.toFixed(2)+'（差分 '+(sA.gap>=0?'+':'')+sA.gap.toFixed(2)+'）。'+(sA.gap>0.5?'求人票・採用サイトの情報が現場・入社者には十分に伝わっていない可能性があります。見直し余地があります。':sA.gap<-0.3?'現場・入社者の評価が人事を上回っています。その魅力を採用広報にさらに反映させましょう。':'応募前の情報整備は比較的整合しています。具体化・差別化でさらなる改善が可能です。')},
-      {num:3,title:'活躍・定着人物像の整理',
-       body:'C区分スコア：人事 '+sC.hr.toFixed(2)+' ／ 現場 '+sC.fi.toFixed(2)+'（差分 '+(sC.gap>=0?'+':'')+sC.gap.toFixed(2)+'）。'+(sC.gap>0.5?'定着フェーズで大きな認識差があります。活躍人材の特徴を整理し、採用要件への反映と入社後フォローの強化が急務です。':sC.gap<-0.3?'現場・入社者が定着フェーズを高く評価しています。その強みを積極的に採用広報に活かしましょう。':'定着フェーズの認識は比較的一致しています。活躍人材の言語化をさらに進め採用基準に活かしましょう。')},
-    ];
-    const SW=2.97,SY=1.06;
-    cols.forEach((col,i)=>{
-      const sx=0.3+i*3.23;
-      rect(sl,sx,SY,SW,4.38,C.white,C.border);
-      rect(sl,sx,SY,0.06,4.38,C.navy);
-      numCircle(sl,sx+0.18,SY+0.16,col.num,C.blue);
-      sl.addText(col.title,{x:sx+0.62,y:SY+0.14,w:SW-0.75,h:0.46,fontSize:11,bold:true,color:C.dark,fontFace:F,lineSpacingMultiple:1.1});
-      rect(sl,sx+0.14,SY+0.72,SW-0.25,0.01,C.border);
-      sl.addText(col.body,{x:sx+0.14,y:SY+0.8,w:SW-0.26,h:2.05,fontSize:9.5,color:C.mid,fontFace:F,lineSpacingMultiple:1.5,valign:'top'});
-    });
-    const ny=SY+4.38+0.08;
-    rect(sl,0.3,ny,9.4,0.4,C.blueLt,C.blue);
-    sl.addText('判定タイプ：'+pri.name+'（全体平均 '+allAvg.toFixed(2)+' / 5.0）。本資料はクイック診断をもとにした仮説整理です。精度確認にはR360フル版調査・追加ヒアリングでの検証が有効です。',{x:0.44,y:ny+0.05,w:9.1,h:0.3,fontSize:8.5,color:C.navy,fontFace:F,lineSpacingMultiple:1.35});
-    pgn(sl,5);
-  }
-
-  /* ═══════════════════════════════════
-     SLIDE 6: 示唆・改善アクション
-  ═══════════════════════════════════ */
-  {
-    const sl=pres.addSlide();
-    rect(sl,0,0,10,5.625,C.white);
-    hdr(sl,6,'認識ギャップから見える示唆と改善アクション','区分ごとの差分・示唆・優先アクションを整理しました。');
-    const rows=[
-      {sd:SECS[0],
-       hint:sA.gap>0.5?'求人票・面接で伝えている仕事内容や雰囲気のイメージが、現場の実感と十分に一致していない可能性があります。':sA.gap<-0.3?'現場・入社者の評価が人事を上回っています。現場の魅力を採用広報にさらに反映させましょう。':'応募前の情報整備の認識は比較的一致しています。情報の具体化と差別化でさらなる改善が可能です。',
-       acts:['「1日の流れ」「業務比率」「使うツール」を求人票に追記','社員インタビュー・職場写真で雰囲気を可視化','大変な点も適切に開示し入社後ギャップを予防']},
-      {sd:SECS[1],
-       hint:sB.gap>0.5?'人事は選考時の情報連携ができている認識だが、現場・入社者は辞退理由の把握や相談環境が十分でないと感じています。':'選考フェーズの認識は比較的整合しています。さらなる標準化と候補者体験の向上が可能です。',
-       acts:['辞退・離脱理由の収集フローを整備','面接チェックリストで確認事項を標準化','職場見学・現場担当者との面談を選考プロセスに組み込む']},
-      {sd:SECS[2],
-       hint:sC.gap>0.5?'受け入れ・定着設計に認識差があります。初期のつまずき把握と活躍人材の言語化にはなお改善余地があります。':'受け入れ・定着設計はおおむね整合しています。活躍人材の言語化をさらに進めましょう。',
-       acts:['入社直後のフォロー面談の頻度を増やす','退職者・在籍者ヒアリングでつまずきポイントを収集','活躍・定着人材の特徴を整理し採用要件に反映']},
-    ];
-    const RH=1.47;
-    rows.forEach((row,i)=>{
-      const ry=0.97+i*RH;
-      const sd=row.sd;
-      rect(sl,0.28,ry,9.44,RH-0.07,C.white,C.border);
-      // Section letter block
-      rect(sl,0.28,ry,0.48,RH-0.07,sd.color);
-      sl.addText(sd.letter,{x:0.28,y:ry,w:0.48,h:RH-0.07,fontSize:20,bold:true,color:C.white,align:'center',valign:'middle',fontFace:F,margin:0});
-      // Left content
-      sl.addText(sd.longLabel,{x:0.84,y:ry+0.06,w:4.45,h:0.28,fontSize:11,bold:true,color:C.dark,fontFace:F});
-      const g=sd.sec.gap;
-      rect(sl,0.84,ry+0.38,2.05,0.22,gColLt(g),gColLt(g));
-      sl.addText('差分 '+(g>=0?'+':'')+g.toFixed(2)+'（'+gLbl(g)+'）',{x:0.84,y:ry+0.38,w:2.05,h:0.22,fontSize:8.5,bold:true,color:gCol(g),align:'center',valign:'middle',fontFace:F,margin:0});
-      sl.addText('示唆',{x:0.84,y:ry+0.66,w:0.45,h:0.2,fontSize:8.5,bold:true,color:C.muted,fontFace:F});
-      sl.addText(row.hint,{x:0.84,y:ry+0.88,w:4.45,h:0.48,fontSize:8.5,color:C.mid,fontFace:F,lineSpacingMultiple:1.4,valign:'top'});
-      // Divider
-      rect(sl,5.38,ry+0.1,0.02,RH-0.22,C.border);
-      // Right: Actions
-      sl.addText('優先アクション',{x:5.5,y:ry+0.08,w:4.15,h:0.22,fontSize:8.5,bold:true,color:C.dark,fontFace:F});
-      row.acts.forEach((a,ai)=>{
-        sl.addText('▸ '+a,{x:5.5,y:ry+0.35+ai*0.36,w:4.15,h:0.33,fontSize:9,color:C.dark,fontFace:F,lineSpacingMultiple:1.3,valign:'top'});
-      });
-    });
-    pgn(sl,6);
-  }
-
-  /* ═══════════════════════════════════
-     SLIDE 7: 追加ヒアリング設計
-  ═══════════════════════════════════ */
-  {
-    const sl=pres.addSlide();
-    rect(sl,0,0,10,5.625,C.white);
-    hdr(sl,7,'追加ヒアリング設計','仮説の精度を高め、改善施策につなげるための追加ヒアリングの設計案です。');
-
-    /* Left panel */
-    rect(sl,0.28,0.98,5.35,4.44,C.white,C.border);
-    rect(sl,0.28,0.98,5.35,0.28,C.navy);
-    sl.addText('STEP1：現場への追加ヒアリング',{x:0.38,y:0.98,w:5.12,h:0.28,fontSize:10,bold:true,color:C.white,fontFace:F,valign:'middle'});
-    // Hearing items
-    [{lbl:'対象者',items:['人事 1名','現場責任者 1名','活躍社員 1名程度（各30分想定）']},
-     {lbl:'確認テーマ',items:['面接で伝えている内容・職場見学の実態','辞退理由の把握状況','入社直後のつまずきポイント','採用基準と現場で活躍する人の一致度']}]
-    .forEach((h,i)=>{
-      const hy=1.34+i*1.32;
-      sl.addText(h.lbl,{x:0.44,y:hy,w:1.2,h:0.24,fontSize:9.5,bold:true,color:C.navy,fontFace:F});
-      h.items.forEach((it,ii)=>{sl.addText('・ '+it,{x:0.44,y:hy+0.28+ii*0.28,w:4.9,h:0.26,fontSize:9,color:C.mid,fontFace:F,valign:'top'});});
-    });
-    // Advertising box
-    rect(sl,0.28,3.22,5.35,0.98,C.blueLt,C.blue);
-    sl.addText('採用広報コンテンツとしての活用',{x:0.44,y:3.28,w:5.0,h:0.24,fontSize:9.5,bold:true,color:C.navy,fontFace:F});
-    sl.addText('ヒアリング内容は採用広報コンテンツとしても再活用できます。仮説検証と同時に、採用広報素材の蓄積にもつながります。',{x:0.44,y:3.54,w:5.0,h:0.38,fontSize:8.5,color:C.navy,fontFace:F,lineSpacingMultiple:1.4});
-    ['現場社員紹介記事','1日の仕事紹介記事','向いている人・活躍人材像','教育・受け入れの実態紹介']
-    .forEach((it,ii)=>{sl.addText('・'+it,{x:0.44+(ii%2)*2.55,y:3.96+(Math.floor(ii/2))*0.22,w:2.5,h:0.2,fontSize:8.5,color:C.mid,fontFace:F});});
-
-    /* Right panel: table */
-    rect(sl,5.75,0.98,3.97,4.44,C.white,C.border);
-    rect(sl,5.75,0.98,3.97,0.28,C.navy);
-    sl.addText('仮説別の確認事項と具体施策',{x:5.85,y:0.98,w:3.75,h:0.28,fontSize:9.5,bold:true,color:C.white,fontFace:F,valign:'middle'});
-    rect(sl,5.75,1.26,3.97,0.24,C.blueLt);
-    ['仮説','まず確認すること','具体的な解決策'].forEach((h,i)=>{
-      const xs=[5.79,6.82,8.16];const ws=[1.0,1.3,1.52];
-      sl.addText(h,{x:xs[i],y:1.26,w:ws[i],h:0.24,fontSize:8,bold:true,color:C.navy,fontFace:F,valign:'middle'});
-    });
-    [['① 仕事内容理解','求人票・面接でどう伝えているか','求人原稿改訂／動画コンテンツ制作'],
-     ['② 現場理解の機会','職場見学で何を見せているか','職場見学台本／現場社員面談'],
-     ['③ 辞退・相談環境','辞退理由をどう収集しているか','辞退分析フロー／相談窓口の設置'],
-     ['④ 初期オンボーディング','入社直後のつまずきをどう把握しているか','オンボーディング設計／フォロー面談']]
-    .forEach((row,ri)=>{
-      const tY=1.5+ri*0.78;
-      rect(sl,5.75,tY,3.97,0.75,ri%2===0?C.white:C.offW,C.border);
-      sl.addText(row[0],{x:5.79,y:tY+0.06,w:1.0,h:0.62,fontSize:8.5,bold:true,color:C.navy,fontFace:F,lineSpacingMultiple:1.3,valign:'top'});
-      sl.addText(row[1],{x:6.82,y:tY+0.06,w:1.3,h:0.62,fontSize:8,color:C.mid,fontFace:F,lineSpacingMultiple:1.35,valign:'top'});
-      sl.addText(row[2],{x:8.16,y:tY+0.06,w:1.52,h:0.62,fontSize:8,color:C.dark,fontFace:F,lineSpacingMultiple:1.35,valign:'top'});
-    });
-    pgn(sl,7);
-  }
-
-  /* ─── output ─── */
-  pres.writeFile({fileName:'R360Quick_GAP診断レポート_'+co+'.pptx'});
-}
+"use strict";
+const KEY="job_appeal_prompt_maker_v1_2",OLD_KEY="job_appeal_prompt_maker_v1_1",GEMINI="https://gemini.google.com/app";
+const DEFAULTS={proposalCount:"3",textLength:"100",webMode:"balanced"};
+const WEB_LABELS={specified:"指定URLのみ",balanced:"指定URL優先＋一般Web補完",broad:"一般Webを広く調査"};
+const $=id=>document.getElementById(id);
+const el={jobUrl:$("jobUrl"),jobText:$("jobText"),companyUrls:$("companyUrls"),competitorUrls:$("competitorUrls"),target:$("target"),proposalCount:$("proposalCount"),textLength:$("textLength"),webMode:$("webMode"),preview:$("promptPreview"),status:$("status")};
+const template=$("promptTemplate").textContent.trim();
+const value=(v,f)=>v.trim()||f;
+const lines=v=>v.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).length;
+function lengthGuidance(length){const map={"50":"意味が途切れたり不自然になったりする場合は、40～70文字程度の範囲で調整して構いません。","100":"意味が途切れたり不自然になったりする場合は、80～130文字程度の範囲で調整して構いません。","150":"意味が途切れたり不自然になったりする場合は、120～180文字程度の範囲で調整して構いません。"};return map[length]||map["100"]}
+function webInstruction(mode){const map={specified:`ユーザーが指定した対象企業ページ・競合企業ページ・求人原稿URLだけを調査対象としてください。一般Web検索による情報の補完は行わないでください。指定URLから確認できない事項は推測せず、「企業への確認が必要」としてください。`,balanced:`ユーザーが指定したURLを最優先で調査してください。不足する場合は、対象企業および親会社・グループ会社の公式Webページを一般Web検索で補完してください。公式情報だけで不足する場合に限り、信頼できる外部情報を補足的に使用してください。`,broad:`指定URLに限定せず、対象企業に関する一般Web検索を広く行ってください。公式サイト、採用サイト、親会社・グループ会社、求人情報、社員インタビュー、事業情報、ニュース、信頼できる外部記事などを調査してください。対象企業公式、競合企業公式、外部情報を区別して記録し、古い情報や同名企業を混同しないでください。`};return map[mode]||map.balanced}
+function prompt(){return template.replaceAll("{{JOB_URL}}",value(el.jobUrl.value,"入力なし")).replaceAll("{{JOB_TEXT}}",value(el.jobText.value,"入力なし")).replaceAll("{{COMPANY_URLS}}",value(el.companyUrls.value,"入力なし")).replaceAll("{{COMPETITOR_URLS}}",value(el.competitorUrls.value,"入力なし")).replaceAll("{{TARGET_PERSONA}}",value(el.target.value,"指定なし")).replaceAll("{{PROPOSAL_COUNT}}",el.proposalCount.value).replaceAll("{{TEXT_LENGTH}}",el.textLength.value).replaceAll("{{TEXT_LENGTH_GUIDANCE}}",lengthGuidance(el.textLength.value)).replaceAll("{{WEB_RESEARCH_INSTRUCTION}}",webInstruction(el.webMode.value))}
+function indicators(){const u=!!el.jobUrl.value.trim(),t=!!el.jobText.value.trim();$("jobCount").textContent=el.jobText.value.length.toLocaleString("ja-JP")+"文字";$("targetCount").textContent=el.target.value.length.toLocaleString("ja-JP")+"文字";$("companyCount").textContent=lines(el.companyUrls.value)+"件";$("competitorCount").textContent=lines(el.competitorUrls.value)+"件";$("targetSummary").textContent=el.target.value.trim()?"指定あり":"指定なし";$("promptCount").textContent=el.preview.value.length.toLocaleString("ja-JP")+"文字";$("jobSummary").textContent=u&&t?"URL＋全文":t?"全文あり":u?"URLのみ":"未入力";$("proposalSettingSummary").textContent=el.proposalCount.value+"項目";$("lengthSettingSummary").textContent=el.textLength.value+"文字程度";$("webSettingSummary").textContent=WEB_LABELS[el.webMode.value]||WEB_LABELS.balanced}
+function build(){el.preview.value=prompt();indicators()}
+function state(){return{jobUrl:el.jobUrl.value,jobText:el.jobText.value,companyUrls:el.companyUrls.value,competitorUrls:el.competitorUrls.value,target:el.target.value,proposalCount:el.proposalCount.value,textLength:el.textLength.value,webMode:el.webMode.value}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state()))}catch(e){console.warn(e)}}
+function load(){try{const raw=localStorage.getItem(KEY)||localStorage.getItem(OLD_KEY);const d=JSON.parse(raw||"null");if(d){el.jobUrl.value=d.jobUrl||"";el.jobText.value=d.jobText||"";el.companyUrls.value=d.companyUrls||"";el.competitorUrls.value=d.competitorUrls||"";el.target.value=d.target||"";el.proposalCount.value=d.proposalCount||DEFAULTS.proposalCount;el.textLength.value=d.textLength||DEFAULTS.textLength;el.webMode.value=d.webMode||DEFAULTS.webMode}}catch(e){console.warn(e)}build();save()}
+function status(msg,type="success"){el.status.className="status show "+type;el.status.textContent=msg;clearTimeout(status.timer);status.timer=setTimeout(()=>{el.status.className="status";el.status.textContent=""},6500)}
+function valid(){if(!el.jobUrl.value.trim()&&!el.jobText.value.trim()){status("求人原稿URLまたは求人原稿全文のどちらかを入力してください。","error");el.jobUrl.focus();return false}if(el.webMode.value==="specified"&&!el.companyUrls.value.trim()&&!el.competitorUrls.value.trim()&&!el.jobUrl.value.trim()){status("Web調査範囲が『指定URLのみ』ですが、参照URLが入力されていません。原稿全文の評価は可能ですが、外部情報を使った文面提案は限定的になります。","warning")}return true}
+function copyTextSync(text){const a=document.createElement("textarea");a.value=text;a.setAttribute("readonly","");a.setAttribute("aria-hidden","true");a.style.position="fixed";a.style.top="0";a.style.left="-9999px";a.style.width="1px";a.style.height="1px";a.style.opacity="0";document.body.appendChild(a);a.focus();a.select();a.setSelectionRange(0,a.value.length);let ok=false;try{ok=document.execCommand("copy")}catch(e){console.warn("同期コピーに失敗しました。",e)}a.remove();return ok}
+async function copyText(text){if(navigator.clipboard&&window.isSecureContext){try{await navigator.clipboard.writeText(text);return}catch(e){console.warn("Clipboard APIでコピーできなかったため、代替方法を試します。",e)}}if(!copyTextSync(text))throw new Error("copy failed")}
+async function run(open){if(!valid())return;const text=el.preview.value.trim()||prompt();if(open){const copied=copyTextSync(text);if(!copied){status("コピーできませんでした。生成プロンプト欄を手動でコピーしてください。","error");el.preview.focus();el.preview.select();return}const w=window.open(GEMINI,"_blank","noopener,noreferrer");if(w){status("プロンプトをコピーし、Geminiを開きました。入力欄へ貼り付けて送信してください。") }else{status("プロンプトはコピーできましたが、Geminiのタブを開けませんでした。ポップアップ設定を確認し、Geminiを手動で開いてください。","warning")}return}try{await copyText(text);status("プロンプトをコピーしました。")}catch(e){console.error(e);status("コピーできませんでした。生成プロンプト欄を手動でコピーしてください。","error");el.preview.focus();el.preview.select()}}
+let timer;[el.jobUrl,el.jobText,el.companyUrls,el.competitorUrls,el.target].forEach(x=>x.addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(()=>{build();save()},120)}));[el.proposalCount,el.textLength,el.webMode].forEach(x=>x.addEventListener("change",()=>{build();save();status("実行設定をプロンプトへ反映しました。")}));el.preview.addEventListener("input",indicators);
+$("copyBtn").onclick=()=>run(false);$("geminiBtn").onclick=()=>run(true);$("refreshBtn").onclick=()=>{build();save();status("フォームと実行設定からプロンプトを再生成しました。")} ;$("clearBtn").onclick=()=>{const any=[el.jobUrl,el.jobText,el.companyUrls,el.competitorUrls,el.target].some(x=>x.value.trim());if(any&&!confirm("案件の入力内容を削除しますか？ 実行設定は維持されます。"))return;[el.jobUrl,el.jobText,el.companyUrls,el.competitorUrls,el.target].forEach(x=>x.value="");build();save();status("案件の入力内容をクリアしました。実行設定は維持されています。");el.jobUrl.focus()};$("resetSettingsBtn").onclick=()=>{el.proposalCount.value=DEFAULTS.proposalCount;el.textLength.value=DEFAULTS.textLength;el.webMode.value=DEFAULTS.webMode;build();save();status("実行設定を標準値へ戻しました。")} ;
+const modal=$("modalBg");$("helpBtn").onclick=()=>{modal.classList.add("open");document.body.style.overflow="hidden";$("closeBtn").focus()};function close(){modal.classList.remove("open");document.body.style.overflow="";$("helpBtn").focus()}$("closeBtn").onclick=close;modal.onclick=e=>{if(e.target===modal)close()};document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("open"))close()});load();
 </script>
 </body>
 </html>

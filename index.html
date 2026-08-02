@@ -36,7 +36,7 @@
 <details class="card" open><summary><div><h2><span class="num">4</span>生成プロンプト</h2><p class="sub">フォームの入力内容を反映したGemini向けプロンプトです。</p></div></summary><div class="promptbody"><p class="promptnote">直接編集できますが、フォームを変更すると入力内容から再生成されます。</p><textarea id="promptPreview" spellcheck="false"></textarea></div></details>
 </section>
 <aside class="side">
-<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">通常は標準設定のまま利用できます。案件に応じて詳細設定を変更してください。</p></div><div class="set"><span>評価基準</span><span>求人原稿改善リスト【評価基準シート】</span></div><div class="set"><span>出力形式</span><span>Excel（.xlsx）</span></div><div class="set"><span>シート構成</span><span>先方用3＋社内用2</span></div><div class="set"><span>提案数</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>Web調査</span><span id="webSettingSummary">指定URL優先＋一般Web補完</span></div><div class="set"><span>Prompt</span><span>v1.4.1</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">文面提案数</label><select id="proposalCount"><option value="1">1項目</option><option value="3" selected>3項目（標準）</option><option value="5">5項目</option></select><p class="settingsHelp">競合企業が1社以上あり、文面作成優先順位1の項目が未記載なら、提案数にかかわらず1件目へ選定します。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option value="100" selected>100文字程度（標準）</option><option value="150">150文字程度</option></select><p class="settingsHelp">厳密な文字数制限ではなく、求人原稿へ転用しやすい長さの目安です。</p></div><div class="settingsField"><label for="webMode">Web調査範囲</label><select id="webMode"><option value="specified">指定URLのみ</option><option value="balanced" selected>指定URL優先＋一般Web補完（標準）</option><option value="broad">一般Webを広く調査</option></select><p class="settingsHelp">指定URLのみでは、確認できない情報を推測せず「貴社でのご確認が必要」とします。</p></div><button id="resetSettingsBtn" class="settingsReset" type="button">標準設定に戻す</button></div></details><a class="criteria" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">↗ 評価基準を開く</a></article>
+<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">通常は標準設定のまま利用できます。案件に応じて詳細設定を変更してください。</p></div><div class="set"><span>評価基準</span><span>求人原稿改善リスト【評価基準シート】</span></div><div class="set"><span>出力形式</span><span>Excel（.xlsx）</span></div><div class="set"><span>シート構成</span><span>先方用3＋社内用2</span></div><div class="set"><span>提案数</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>Web調査</span><span id="webSettingSummary">指定URL優先＋一般Web補完</span></div><div class="set"><span>Prompt</span><span>v1.4.2</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">文面提案数</label><select id="proposalCount"><option value="1">1項目</option><option value="3" selected>3項目（標準）</option><option value="5">5項目</option></select><p class="settingsHelp">競合企業が1社以上あり、文面作成優先順位1の項目が未記載なら、提案数にかかわらず1件目へ選定します。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option value="100" selected>100文字程度（標準）</option><option value="150">150文字程度</option></select><p class="settingsHelp">厳密な文字数制限ではなく、求人原稿へ転用しやすい長さの目安です。</p></div><div class="settingsField"><label for="webMode">Web調査範囲</label><select id="webMode"><option value="specified">指定URLのみ</option><option value="balanced" selected>指定URL優先＋一般Web補完（標準）</option><option value="broad">一般Webを広く調査</option></select><p class="settingsHelp">指定URLのみでは、確認できない情報を推測せず「貴社でのご確認が必要」とします。</p></div><button id="resetSettingsBtn" class="settingsReset" type="button">標準設定に戻す</button></div></details><a class="criteria" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">↗ 評価基準を開く</a></article>
 <article class="card"><div class="head"><h2>入力状況</h2><p class="sub">プロンプトへ反映される情報です。</p></div><div class="summary"><span>求人情報</span><strong id="jobSummary">未入力</strong></div><div class="summary"><span>企業URL</span><strong id="companyCount">0件</strong></div><div class="summary"><span>競合企業</span><strong id="competitorCount">0/2社</strong></div><div class="summary"><span>ターゲット</span><strong id="targetSummary">指定なし</strong></div><div class="summary"><span>プロンプト</span><strong id="promptCount">0文字</strong></div></article>
 </aside>
 </div>
@@ -44,7 +44,7 @@
 </main>
 <div id="modalBg" class="modalbg"><div class="modal"><div class="modalhead"><h2>使い方</h2><button id="closeBtn" class="close" type="button" aria-label="閉じる">×</button></div><div class="modalbody"><section class="help"><h3>基本の流れ</h3><ol><li>求人原稿URLまたは原稿全文を入力します。</li><li>対象企業の参考ページと、比較したい競合企業を最大2社まで入力します。</li><li>必要に応じてターゲットや文面方向を入力します。</li><li>「コピーしてGeminiを開く」を押します。</li><li>開いたGeminiの入力欄へ貼り付けて送信し、Excelをダウンロードします。</li></ol></section><section class="help"><h3>求人原稿の入力</h3><p>URLだけでも実行できますが、CAPTCHAやログイン制限のあるサイトでは本文を取得できないことがあります。全文を貼り付けると安定します。</p></section><section class="help"><h3>競合URLを入力した場合</h3><p>競合企業は最大2社です。1社以上入力され、「競合他社との比較・自社の強み」が未記載なら、文面提案の1件目として扱う指示が適用されます。</p></section><section class="help"><h3>Excelの構成</h3><p>先方共有を想定した「貴社原稿分析」「貴社vs競合分析」「評価サマリー」と、社内限定の「【社内用】商談準備メモ」「【社内用】実行条件・参照ソース」の5シートを生成する指示です。</p></section><section class="help"><h3>詳細設定</h3><p>提案数・文面長・Web調査範囲を案件ごとに変更できます。設定はブラウザへ保存され、「入力をクリア」を押しても維持されます。必要なときだけ「標準設定に戻す」を使用してください。</p></section><section class="help"><h3>入力データ</h3><div class="helpnote">入力内容はブラウザのローカルストレージに自動保存されます。共用PCでは作業後に「入力をクリア」を押してください。</div></section></div></div></div>
 
-<script type="text/plain" id="promptTemplate"># 求人原稿魅力度評価・競合分析・初回商談準備プロンプト v1.4.1
+<script type="text/plain" id="promptTemplate"># 求人原稿魅力度評価・競合分析・初回商談準備プロンプト v1.4.2
 
 あなたは、求人広告改善、採用企業の魅力発掘、競合調査、採用支援サービスの初回商談準備を支援する専門家です。
 
@@ -485,6 +485,59 @@ No.、分類、大項目、中項目、調査結果、文面作成優先順位�
 
 評価判断に迷う場合は、「記載あり」へ広く寄せず、厳密に「その他」または「なし」を選択してください。
 
+## 11-2. 各評価行を独立した判定単位として扱う
+
+評価基準の各行は、同じ大項目・中項目であっても、それぞれ異なる評価条件を持つ独立した行です。
+
+各行について、次の4項目を組み合わせた固有条件を内部で確認してから判定してください。
+
+- No.
+- 中項目
+- 追加文面例
+- その行が求める具体的な証拠
+
+大項目または中項目が同じという理由で、複数行へ同じ判定を一括適用してはいけません。
+
+同じ求人原文を複数の行へ使用する場合も、各行固有の条件を本当に満たしているかを1行ずつ再判定してください。1つの文章があるだけで、近接する複数項目をまとめて「記載あり」にしてはいけません。
+
+特に次の判定を厳守してください。
+
+```json
+{
+  "No.50": {
+    "criterion": "作業工程が細かく記載され、仕事の流れを映像のようにイメージできる",
+    "insufficient_examples": [
+      "配送することだけが書かれている",
+      "配送先や配送エリアだけが書かれている",
+      "扱う商品名だけが書かれている"
+    ],
+    "judgment": "工程の順序や具体的な動作が一部だけなら『その他』、工程説明がなければ『なし』"
+  },
+  "No.51": {
+    "criterion": "扱うものの重さ・大きさが具体的に記載されている",
+    "insufficient_examples": [
+      "家具とだけ書かれている",
+      "大型商品とだけ書かれている",
+      "カゴ台車とだけ書かれている"
+    ],
+    "judgment": "重量・寸法・持ち方・個数などの具体値がなければ『なし』"
+  },
+  "No.52": {
+    "criterion": "仕事のやりがい、顧客から言われてうれしかった言葉などが記載されている",
+    "insufficient_examples": [
+      "仕事内容だけが書かれている",
+      "社会に役立つ仕事とだけ書かれている",
+      "配送先だけが書かれている"
+    ],
+    "judgment": "やりがいの具体例、達成感、顧客の反応・言葉がなければ『なし』"
+  }
+}
+```
+
+また、No.53など設備・負担軽減を評価する行では、業界一般の設備や推測を使用せず、求人原稿に具体的な設備・仕組みが書かれている場合だけ評価してください。
+
+評価完了後、同じ原文が3行以上で根拠として使われている場合は、それぞれの固有条件を満たしているか再点検してください。満たしていない行は「その他」または「なし」へ修正してください。
+
 ---
 
 # 12. 貴社原稿記載文例
@@ -611,6 +664,55 @@ Web調査と同時に、参照したページを一意のソースIDで管理し
 
 入力がない区分や調査対象外の区分は、行または項目を省略せず「入力なし」「調査対象外」と記録してください。
 
+## 13-4. 取得失敗ソース・未確認情報の使用禁止
+
+参照ソース台帳の「取得状況」は、次のいずれかへ統一してください。
+
+- 取得成功
+- 取得失敗
+- 検索結果のみ確認
+- 検索したが採用できる情報なし
+- 調査対象外
+- 入力なし
+
+事実の根拠として使用できるのは、**取得状況が「取得成功」で、ページ本文またはファイル内容を実際に確認できたソースだけ**です。
+
+次の情報は、先方共有用シートの事実、競合比較、貴社優位・貴社独自の判定、確認不要の文面提案の根拠として使用してはいけません。
+
+- 取得状況が「取得失敗」のURL
+- 検索結果一覧のタイトルやスニペットだけ
+- URLを開かずに得た検索結果の要約
+- モデルの一般知識、記憶、学習済み知識
+- 「業界では一般的」といった知識推論
+- 出典URLを特定できない内容
+- 同名企業や別法人の情報
+
+取得に失敗したページの内容を、「一般Web検索・知識推論で補完」してはいけません。
+
+取得失敗後に別のページで同じ事実を確認できた場合は、取得成功した代替ページへ新しいソースIDを付与し、そのソースだけを根拠として使用してください。
+
+代替となる取得成功ソースがない場合は、次のいずれかとして扱ってください。
+
+- 情報不足
+- 比較困難
+- 差別化仮説
+- 貴社でのご確認が必要
+
+先方共有用シートに記載する外部調査由来の主張には、最低1件の取得成功ソースIDを対応させてください。競合比較の各企業セルと強み欄についても、どの取得成功ソースに基づくかを追跡できる状態にしてください。
+
+ソースIDを付けていても、そのソースの取得状況が「取得失敗」であれば根拠として無効です。
+
+## 13-5. 取得経路の分離記録
+
+評価基準やWebページを処理する際は、次の情報を混同せず別項目として記録してください。
+
+- 原本URL
+- 原本を取得したGemini側の方法
+- Gemini内で一時変換したファイル名（存在する場合）
+- Pythonへ渡したデータ形式またはローカルファイル名（存在する場合）
+
+原本URL欄を、CSV名、一時ファイル名、ローカルパスへ置き換えてはいけません。
+
 ---
 
 # 14. 競合比較
@@ -716,6 +818,28 @@ Web調査と同時に、参照したページを一意のソースIDで管理し
 3. 原稿文面例ではなく、社内用の差別化仮説・確認質問へ移す
 
 「不要（公開情報で確認済み）」は、文面例に含まれるすべての事実要素が求人原稿または公式情報で確認できる場合だけ使用してください。文面の一部でも未確認なら「必要」としてください。
+
+## 15-2. ご確認要否と強み表現の整合
+
+「ご確認要否」が「必要」の行では、未確認事項に基づいて次の表現を使用してはいけません。
+
+- 貴社優位
+- 貴社独自
+- 公式情報で確認済み
+- 競合より優れている
+- 実現している
+- 充実している
+
+確認が必要な行の強み欄は、次のいずれかにしてください。
+
+- `-`
+- 【差別化仮説】
+- 【商談確認後に強み化できる可能性】
+- 【貴社でのご確認が必要】
+
+「身体的負担が少ない」「精神的負担が少ない」「長期定着しやすい」などの効果・評価表現は、業務の違いだけから推論せず、具体的な現場情報、社員の声、数値等で確認できた場合に限って使用してください。
+
+確認できない場合は、「個人宅への訪問・設置を伴わない店舗間配送です」のように、確認済みの業務差のみを事実として記載してください。
 
 ---
 
@@ -1113,6 +1237,33 @@ URLは `https://` または `http://` から始まる文字列として記載し
 - なし件数
 - 記載あり率
 
+## 基本情報の集計方法
+
+「評価対象項目数」「記載あり件数」「その他件数」「なし件数」「記載あり率」は、文章生成時の記憶や手入力値で作成してはいけません。
+
+「貴社原稿分析」のデータ範囲をExcelテーブルに変換し、テーブル名を `tblAnalysis` としてください。そのうえで、評価サマリーの集計セルに次の数式を設定してください。
+
+```excel
+評価対象項目数 = ROWS(tblAnalysis[No.])
+記載あり件数   = COUNTIF(tblAnalysis[調査結果],"記載あり")
+その他件数     = COUNTIF(tblAnalysis[調査結果],"その他")
+なし件数       = COUNTIF(tblAnalysis[調査結果],"なし")
+記載あり率     = IFERROR(COUNTIF(tblAnalysis[調査結果],"記載あり")/ROWS(tblAnalysis[No.]),0)
+```
+
+記載あり率のセルはパーセント表示にしてください。
+
+Excelファイルを開いたときに数式が再計算される設定を有効にしてください。
+
+Excel保存前にPython等でも同じ件数を独立集計し、次を確認してください。
+
+```text
+評価対象項目数 = 記載あり件数 + その他件数 + なし件数
+評価対象項目数 = 貴社原稿分析のデータ行数
+```
+
+一致しない場合は、評価サマリーを修正してから保存してください。内部検証値は「【社内用】実行条件・参照ソース」の必須行検証記録にも記載してください。
+
 ## 現在の求人原稿で評価できる点
 
 現在の求人原稿で、既に具体的に伝えられている良い点を3件程度整理してください。
@@ -1238,6 +1389,16 @@ URLは `https://` または `http://` から始まる文字列として記載し
 - 文面提案数
 - 文面文字数の目安
 - Web調査モード
+- 評価基準の原本URL
+- 評価基準を取得したGemini側の方法
+- Gemini内で一時変換したファイル名（該当する場合）
+- Pythonへ渡したデータ形式・ローカルファイル名（該当する場合）
+
+評価基準スプレッドシートURL欄および原本URL欄には、必ず次のGoogleスプレッドシートURLをそのまま記載してください。
+
+https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/
+
+CSVファイル名、一時ファイル名、ローカルパスを原本URLとして記載してはいけません。
 
 ## 参照ソース台帳
 
@@ -1286,6 +1447,25 @@ URL列には、`https://` または `http://` から始まる実URLを記載し�
 - 競合比較時の称賛観点
 - 調査結果
 - 選定理由
+
+### 内部制御値の完全コピー
+
+文面提案選定記録の次の4項目は、評価基準スプレッドシートの該当No.行から、値をそのままコピーしてください。
+
+- 文面作成優先順位
+- 原稿訴求重要度
+- 分析表表示順
+- 競合比較時の称賛観点
+
+次を禁止します。
+
+- 独自の要約や言い換え
+- 別のラベルへの変換
+- 元シートに値があるのに `-` や空欄にすること
+- 表示順を再計算すること
+- 称賛観点をAIが作り直すこと
+
+選定した各No.について、元シートの4項目と出力値をセル単位で照合してください。1項目でも一致しない場合は、選定記録を修正してから保存してください。
 
 ## 必須行検証記録
 
@@ -1338,6 +1518,62 @@ URL列には、`https://` または `http://` から始まる実URLを記載し�
 - 1行目または表ヘッダーの固定
 - オートフィルター
 - 先方共有用と社内用が区別できる配色
+
+## 26-1. 列幅・結合セル・表示倍率の固定契約
+
+極端に狭い列へ長文を詰め込み、1文字ずつ縦に近い状態で折り返してはいけません。次の列幅を基本設定として適用してください。
+
+```json
+{
+  "column_width_contract": {
+    "貴社原稿分析": {
+      "A": 7, "B": 22, "C": 22, "D": 30, "E": 48, "F": 11, "G": 22,
+      "H": 13, "I": 48, "J": 45, "K": 55, "L": 15, "M": 45, "N": 30
+    },
+    "貴社vs競合分析": {
+      "A": 24, "B": 34, "C": 34, "D": 34, "E": 50, "F": 18, "G": 18, "H": 55
+    },
+    "評価サマリー": {
+      "A": 8, "B": 9, "C": 24, "D": 14, "E": 30, "F": 44, "G": 16,
+      "H": 40, "I": 32, "J": 20, "K": 35, "L": 55, "M": 18, "N": 18
+    },
+    "【社内用】商談準備メモ": {
+      "A": 7, "B": 7, "C": 24, "D": 48, "E": 42, "F": 34, "G": 44,
+      "H": 34, "I": 35, "J": 18
+    },
+    "【社内用】実行条件・参照ソース": {
+      "A": 10, "B": 18, "C": 24, "D": 32, "E": 65, "F": 22, "G": 22,
+      "H": 18, "I": 48, "J": 20, "K": 18, "L": 30, "M": 40
+    }
+  }
+}
+```
+
+競合企業が1社で列数が減る場合は、余った幅を「競合に対する貴社の強み」と「主な根拠」へ配分してください。
+
+各シートの表示倍率は、次を基本としてください。
+
+- 貴社原稿分析：75～85％
+- 貴社vs競合分析：80～90％
+- 評価サマリー：85～95％
+- 社内用シート：80～90％
+
+長文セルは折り返し・上揃えとし、通常行は30以上、長文行は60～120程度の高さを確保してください。内容が多い場合は行高を増やし、列幅を極端に狭めないでください。
+
+### 評価サマリーのレイアウト
+
+- タイトル行は `A1:N1` を結合する
+- 「現在の求人原稿で評価できる点」「貴社の重点的な強み」「競合比較の要点」「総評」の各見出しは `A:N` の範囲で結合する
+- 各文章セクションの本文も、必要に応じて `A:N` を結合して複数行表示する
+- 「文面提案上位N件」の表では結合セルを使用せず、各列を独立させる
+- 基本情報と文面提案表の数値・表構造を、文章セクションの結合セルで壊さない
+
+### 社内用シートのレイアウト
+
+- 商談準備表の「営業トーク例」「商談時の確認質問」「提案へつなげる説明」は十分な幅を確保する
+- 商談ストーリーはA:Eの5列を使い、1行1ステップで表示する
+- 参照ソース台帳のURL列は幅65程度とし、実URLを判読できるようにする
+- 表が横に長い場合は横向き印刷・1ページ幅を設定する
 
 ## 貴社原稿分析
 
@@ -1433,6 +1669,22 @@ VALIDATION_ASSERTIONS
 45. 同じ事実についてシート間で矛盾する説明がない
 46. Excel内に数式エラーや欠損した必須セルがない
 47. Excelファイルを実際にダウンロードできる
+48. 貴社原稿分析がExcelテーブル `tblAnalysis` として作成されている
+49. 評価サマリーの5指標が `tblAnalysis` を参照する数式で作成されている
+50. 評価対象項目数が記載あり・その他・なしの合計と一致している
+51. 取得状況が「取得失敗」のソースを事実・強み・競合比較・文面提案の根拠に使用していない
+52. 検索結果スニペット、モデルの一般知識、知識推論を根拠に使用していない
+53. 外部調査由来の先方共有主張に取得成功ソースIDが対応している
+54. No.50、No.51、No.52をそれぞれ固有条件で独立判定している
+55. 同じ大項目・中項目という理由で複数行へ同じ判定を一括適用していない
+56. 文面提案選定記録の内部制御4項目が元シートの値と完全一致している
+57. 元シートに分析表表示順があるのに `-` または空欄になっている選定行がない
+58. ご確認要否が「必要」の行で、未確認事項を「貴社優位」「貴社独自」「公式情報で確認済み」と表現していない
+59. 評価基準の原本URLがGoogleスプレッドシートURLのまま記録されている
+60. 原本URL、一時ファイル名、Python処理用形式が別項目で記録されている
+61. 指定した列幅・結合セル・表示倍率が各シートへ適用されている
+62. 評価サマリーの文章セクションが読みやすい結合セルと行高で表示されている
+63. 社内用シートの長文列が1文字ずつ縦に近い状態で折り返されていない
 ```
 
 いずれかが満たされていない場合は、Excelを完成扱いにせず、問題を修正してから出力してください。
@@ -1460,7 +1712,7 @@ VALIDATION_ASSERTIONS
 必ずExcelファイル（.xlsx）を生成してください。</script>
 <script>
 "use strict";
-const KEY="job_appeal_prompt_maker_v1_4_1",OLD_KEYS=["job_appeal_prompt_maker_v1_4","job_appeal_prompt_maker_v1_3","job_appeal_prompt_maker_v1_2","job_appeal_prompt_maker_v1_1"],GEMINI="https://gemini.google.com/app";
+const KEY="job_appeal_prompt_maker_v1_4_2",OLD_KEYS=["job_appeal_prompt_maker_v1_4_1","job_appeal_prompt_maker_v1_4","job_appeal_prompt_maker_v1_3","job_appeal_prompt_maker_v1_2","job_appeal_prompt_maker_v1_1"],GEMINI="https://gemini.google.com/app";
 const DEFAULTS={proposalCount:"3",textLength:"100",webMode:"balanced"};
 const WEB_LABELS={specified:"指定URLのみ",balanced:"指定URL優先＋一般Web補完",broad:"一般Webを広く調査"};
 const $=id=>document.getElementById(id);
@@ -1469,7 +1721,7 @@ const template=$("promptTemplate").textContent.trim();
 const value=(v,f)=>v.trim()||f;
 const lines=v=>v.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).length;
 function lengthRange(length){const map={"50":"40～70文字程度","100":"80～130文字程度","150":"120～180文字程度"};return map[length]||map["100"]}
-function webInstruction(mode){const map={specified:`ユーザーが指定した対象企業ページ、競合企業1・2のページ、求人原稿URLだけを調査対象としてください。一般Web検索、追加のSNS検索、口コミ検索による補完は行わないでください。指定URLから確認できない事項は推測せず、「貴社でのご確認が必要」としてください。`,balanced:`ユーザーが指定したURLを最優先で調査してください。不足する場合は、対象企業・競合企業および親会社・グループ会社の公式Webページ、公式SNS、公式求人を一般Web検索で補完してください。公式情報だけで不足する場合に限り、信頼できる報道・業界メディア・求人媒体を補足的に使用し、口コミや個人SNSは傾向や商談仮説としてのみ扱ってください。`,broad:`指定URLに限定せず、対象企業と競合企業について一般Webを広く調査してください。公式サイト、採用サイト、親会社・グループ会社、公式SNS、求人情報、社員インタビュー、事業情報、ニュース、業界情報、口コミサイト、SNS上の投稿などを対象にしてください。ただし、公式情報・補足情報・口コミやSNS上の傾向を明確に区別し、古い情報、同名企業、匿名情報を確定的事実として扱わないでください。`};return map[mode]||map.balanced}
+function webInstruction(mode){const map={specified:`ユーザーが指定した対象企業ページ、競合企業1・2のページ、求人原稿URLだけを調査対象としてください。一般Web検索、追加のSNS検索、口コミ検索による補完は行わないでください。指定URLから確認できない事項は推測せず、「貴社でのご確認が必要」としてください。取得に失敗したURL、検索結果スニペット、モデルの一般知識は根拠として使用しないでください。`,balanced:`ユーザーが指定したURLを最優先で調査してください。不足する場合は、対象企業・競合企業および親会社・グループ会社の公式Webページ、公式SNS、公式求人を一般Web検索で補完してください。公式情報だけで不足する場合に限り、信頼できる報道・業界メディア・求人媒体を補足的に使用し、口コミや個人SNSは傾向や商談仮説としてのみ扱ってください。実際に取得成功した個別ページだけを根拠として使用し、取得失敗ページやモデルの一般知識で補完しないでください。`,broad:`指定URLに限定せず、対象企業と競合企業について一般Webを広く調査してください。公式サイト、採用サイト、親会社・グループ会社、公式SNS、求人情報、社員インタビュー、事業情報、ニュース、業界情報、口コミサイト、SNS上の投稿などを対象にしてください。ただし、公式情報・補足情報・口コミやSNS上の傾向を明確に区別し、古い情報、同名企業、匿名情報を確定的事実として扱わないでください。実際に取得成功した個別ページだけを根拠として使用し、取得失敗ページ、検索結果スニペット、モデルの一般知識で補完しないでください。`};return map[mode]||map.balanced}
 function prompt(){return template.replaceAll("{{JOB_URL}}",value(el.jobUrl.value,"入力なし")).replaceAll("{{JOB_TEXT}}",value(el.jobText.value,"入力なし")).replaceAll("{{COMPANY_URLS}}",value(el.companyUrls.value,"入力なし")).replaceAll("{{COMPETITOR_1_URL}}",value(el.competitor1Url.value,"入力なし")).replaceAll("{{COMPETITOR_2_URL}}",value(el.competitor2Url.value,"入力なし")).replaceAll("{{TARGET_PERSONA}}",value(el.target.value,"指定なし")).replaceAll("{{PROPOSAL_COUNT}}",el.proposalCount.value).replaceAll("{{TEXT_LENGTH}}",el.textLength.value).replaceAll("{{TEXT_LENGTH_RANGE}}",lengthRange(el.textLength.value)).replaceAll("{{WEB_RESEARCH_MODE}}",WEB_LABELS[el.webMode.value]||WEB_LABELS.balanced).replaceAll("{{WEB_RESEARCH_INSTRUCTION}}",webInstruction(el.webMode.value))}
 function competitorCount(){return [el.competitor1Url.value,el.competitor2Url.value].filter(v=>v.trim()).length}
 function indicators(){const u=!!el.jobUrl.value.trim(),t=!!el.jobText.value.trim();$("jobCount").textContent=el.jobText.value.length.toLocaleString("ja-JP")+"文字";$("targetCount").textContent=el.target.value.length.toLocaleString("ja-JP")+"文字";$("companyCount").textContent=lines(el.companyUrls.value)+"件";$("competitorCount").textContent=competitorCount()+"/2社";$("targetSummary").textContent=el.target.value.trim()?"指定あり":"指定なし";$("promptCount").textContent=el.preview.value.length.toLocaleString("ja-JP")+"文字";$("jobSummary").textContent=u&&t?"URL＋全文":t?"全文あり":u?"URLのみ":"未入力";$("proposalSettingSummary").textContent=el.proposalCount.value+"項目";$("lengthSettingSummary").textContent=el.textLength.value+"文字程度";$("webSettingSummary").textContent=WEB_LABELS[el.webMode.value]||WEB_LABELS.balanced}

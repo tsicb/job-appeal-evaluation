@@ -36,7 +36,7 @@
 <details class="card" open><summary><div><h2><span class="num">4</span>生成プロンプト</h2><p class="sub">フォームの入力内容を反映したGemini向けプロンプトです。</p></div></summary><div class="promptbody"><p class="promptnote">直接編集できますが、フォームを変更すると入力内容から再生成されます。</p><textarea id="promptPreview" spellcheck="false"></textarea></div></details>
 </section>
 <aside class="side">
-<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">通常は標準設定のまま利用できます。案件に応じて詳細設定を変更してください。</p></div><div class="set"><span>評価基準</span><span>求人原稿改善リスト【評価基準シート】</span></div><div class="set"><span>AI出力</span><span>検証用JSON</span></div><div class="set"><span>最終成果物</span><span>GASでGoogle Sheets化</span></div><div class="set"><span>シート構成</span><span>先方用3＋社内用2</span></div><div class="set"><span>提案数</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>Web調査</span><span id="webSettingSummary">指定URL優先＋一般Web補完</span></div><div class="set"><span>Prompt</span><span>v2.2</span></div><div class="set"><span>案件ID</span><span id="caseIdSummary">生成中</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">文面提案数</label><select id="proposalCount"><option value="1">1項目</option><option value="3" selected>3項目（標準）</option><option value="5">5項目</option></select><p class="settingsHelp">競合企業が1社以上あり、文面作成優先順位1の項目が未記載なら、提案数にかかわらず1件目へ選定します。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option value="100" selected>100文字程度（標準）</option><option value="150">150文字程度</option></select><p class="settingsHelp">厳密な文字数制限ではなく、求人原稿へ転用しやすい長さの目安です。</p></div><div class="settingsField"><label for="webMode">Web調査範囲</label><select id="webMode"><option value="specified">指定URLのみ</option><option value="balanced" selected>指定URL優先＋一般Web補完（標準）</option><option value="broad">一般Webを広く調査</option></select><p class="settingsHelp">指定URLのみでは、確認できない情報を推測せず「貴社でのご確認が必要」とします。</p></div><button id="resetSettingsBtn" class="settingsReset" type="button">標準設定に戻す</button></div></details><a class="criteria" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">↗ 評価基準を開く</a></article>
+<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">通常は標準設定のまま利用できます。案件に応じて詳細設定を変更してください。</p></div><div class="set"><span>評価基準</span><span>求人原稿改善リスト【評価基準シート】</span></div><div class="set"><span>AI出力</span><span>検証用JSON</span></div><div class="set"><span>最終成果物</span><span>GASでGoogle Sheets化</span></div><div class="set"><span>シート構成</span><span>先方用3＋社内用2</span></div><div class="set"><span>提案数</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>Web調査</span><span id="webSettingSummary">指定URL優先＋一般Web補完</span></div><div class="set"><span>Prompt</span><span>v2.3</span></div><div class="set"><span>案件ID</span><span id="caseIdSummary">生成中</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">文面提案数</label><select id="proposalCount"><option value="1">1項目</option><option value="3" selected>3項目（標準）</option><option value="5">5項目</option></select><p class="settingsHelp">競合企業が1社以上あり、文面作成優先順位1の項目が未記載なら、提案数にかかわらず1件目へ選定します。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option value="100" selected>100文字程度（標準）</option><option value="150">150文字程度</option></select><p class="settingsHelp">厳密な文字数制限ではなく、求人原稿へ転用しやすい長さの目安です。</p></div><div class="settingsField"><label for="webMode">Web調査範囲</label><select id="webMode"><option value="specified">指定URLのみ</option><option value="balanced" selected>指定URL優先＋一般Web補完（標準）</option><option value="broad">一般Webを広く調査</option></select><p class="settingsHelp">指定URLのみでは、確認できない情報を推測せず「貴社でのご確認が必要」とします。</p></div><button id="resetSettingsBtn" class="settingsReset" type="button">標準設定に戻す</button></div></details><a class="criteria" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">↗ 評価基準を開く</a></article>
 <article class="card"><div class="head"><h2>入力状況</h2><p class="sub">プロンプトへ反映される情報です。</p></div><div class="summary"><span>求人情報</span><strong id="jobSummary">未入力</strong></div><div class="summary"><span>企業URL</span><strong id="companyCount">0件</strong></div><div class="summary"><span>競合企業</span><strong id="competitorCount">0/2社</strong></div><div class="summary"><span>ターゲット</span><strong id="targetSummary">指定なし</strong></div><div class="summary"><span>プロンプト</span><strong id="promptCount">0文字</strong></div></article>
 </aside>
 </div>
@@ -44,7 +44,7 @@
 </main>
 <div id="modalBg" class="modalbg"><div class="modal"><div class="modalhead"><h2>使い方</h2><button id="closeBtn" class="close" type="button" aria-label="閉じる">×</button></div><div class="modalbody"><section class="help"><h3>基本の流れ</h3><ol><li>求人原稿URLまたは原稿全文を入力します。</li><li>対象企業の参考ページと、比較したい競合企業を最大2社まで入力します。</li><li>必要に応じてターゲットや文面方向を入力します。</li><li>「コピーしてGeminiを開く」を押します。</li><li>開いたGeminiの入力欄へ貼り付け、評価基準CSVを添付して送信します。Geminiから返されたJSONは、次工程のJSON受付機能で検証してGoogle Sheetsへ変換します。</li></ol></section><section class="help"><h3>求人原稿の入力</h3><p>URLだけでも実行できますが、CAPTCHAやログイン制限のあるサイトでは本文を取得できないことがあります。全文を貼り付けると安定します。</p></section><section class="help"><h3>評価基準の渡し方</h3><p>Geminiへプロンプトを送る際は、評価基準CSVだけを添付してください。JSON Schemaファイルは添付不要です。専用Gemで運用する場合は、評価基準CSVをGemの知識へ登録できます。</p></section><section class="help"><h3>競合URLを入力した場合</h3><p>競合企業は最大2社です。1社以上入力され、「競合他社との比較・自社の強み」が未記載なら、文面提案の1件目として扱う指示が適用されます。</p></section><section class="help"><h3>出力の流れ</h3><p>Geminiは分析結果をJSONで返します。GitHub PagesがJSONを検証し、GASがテンプレートへ書き込んで、先方用3シート・社内用2シートのGoogle Sheetsを生成する構成です。</p></section><section class="help"><h3>詳細設定</h3><p>提案数・文面長・Web調査範囲を案件ごとに変更できます。設定はブラウザへ保存され、「入力をクリア」を押しても維持されます。必要なときだけ「標準設定に戻す」を使用してください。</p></section><section class="help"><h3>入力データ</h3><div class="helpnote">入力内容はブラウザのローカルストレージに自動保存されます。共用PCでは作業後に「入力をクリア」を押してください。</div></section></div></div></div>
 
-<script type="text/plain" id="promptTemplate"># 求人原稿魅力度評価・JSON出力プロンプト v2.2
+<script type="text/plain" id="promptTemplate"># 求人原稿魅力度評価・JSON出力プロンプト v2.3
 
 あなたは、求人広告改善、採用企業の魅力発掘、競合調査、初回商談準備を支援する専門家です。
 
@@ -237,6 +237,9 @@ Pythonは、添付CSVの読み込み、No.照合、JSON構文確認には使用�
 特に次を区別してください。
 
 - No.9：取引先・親会社・グループの規模だけでは、募集企業自身の業界順位・国内シェアとはしない
+  - 「業界最大手の○○グループ」「大手グループの一員」だけなら、No.9を`記載あり`にしてはいけません
+  - 募集企業自身の順位・シェアが確認できない場合は、関連記載として`その他`、または無関係なら`なし`にしてください
+  - 出力前にNo.9を必ず個別再確認してください
 - No.44：試用期間だけでは、研修期間・マニュアルありとはしない
 - No.50：作業工程や1日の流れが具体的に分かるか
 - No.51：扱うものの重量・大きさが具体的に分かるか
@@ -291,7 +294,65 @@ Pythonは、添付CSVの読み込み、No.照合、JSON構文確認には使用�
 
 ---
 
-## 7. 強みと競合比較
+## 7. 事実・評価・仮説の分離
+
+根拠から直接確認できる事実と、そこから導く評価・期待効果を分けてください。
+
+### verifiedとしてよい内容
+
+`status: verified`の文面は、求人原稿または採用済みWebソースに直接書かれている事実に限定してください。
+
+例：
+
+- `ニトリグループの一員であること`
+- `賞与年2回`
+- `日勤のみ`
+- `近距離配送`
+
+### verifiedにしてはいけない評価語
+
+根拠にそのまま記載されていない限り、次のような評価を`verified`にしてはいけません。
+
+- 安定した基盤
+- 強力なブランド力
+- 抜群の安定感
+- 魅力的な福利厚生
+- 働きやすい環境
+- プライベートと両立しやすい
+- 採用力が高い
+
+このような表現を使う場合は、`hypothesis`または`needs_confirmation`とし、事実部分と推論部分を分けてください。
+
+悪い例：
+
+```json
+{
+  "text": "ニトリグループという安定した基盤",
+  "status": "verified"
+}
+```
+
+良い例：
+
+```json
+{
+  "text": "ニトリグループの一員であること",
+  "status": "verified"
+}
+```
+
+または、
+
+```json
+{
+  "text": "ニトリグループの一員であることが、求職者の安心感につながる可能性",
+  "status": "hypothesis"
+}
+```
+
+---
+
+## 8. 強みと競合比較
 
 `strength`は、根拠のある強み、または明示した仮説がある場合だけ作成してください。
 該当しない行は`null`です。
@@ -315,9 +376,28 @@ Pythonは、添付CSVの読み込み、No.照合、JSON構文確認には使用�
 
 競合がある場合の比較項目は5～8項目を目安にしますが、情報が不足する場合は件数を埋めるために推測しないでください。
 
+### 競合情報を取得できなかった場合
+
+競合企業について、`access_status=success`かつ`adopted=true`のソースを1件も確保できなかった場合は、競合優位性を確認できていません。
+
+この場合は次を厳守してください。
+
+- `judgment`は`情報不足`、`比較困難`、`差別化仮説`、`貴社でのご確認が必要`のいずれか
+- `貴社優位`、`貴社独自`を使用しない
+- `strength_text`は`null`を基本とする
+- 記載する場合は「求人原稿上で確認できる魅力。競合優位性は未確認」のように範囲を限定する
+- 「同業他社と比較して」「他社より」「競合にはない」などの断定を使わない
+- No.4を第1位に選ぶルールは維持するが、提案文は競合優位を断定せず、差別化ポイントを確認するためのプレースホルダー型にする
+
+No.4の安全な例：
+
+```text
+当社では、［求人原稿で確認できる特徴］に加え、［競合求人と比べて特に伝えたい強み］を大切にしています。
+```
+
 ---
 
-## 8. 文面提案の選定
+## 9. 文面提案の選定
 
 指定された`proposal_count`件だけ、`proposal`オブジェクトを作成してください。
 対象外行は`proposal: null`です。
@@ -352,18 +432,46 @@ No.4が`なし`であれば、No.4を必ず第1位にしてください。
 
 `sales_meeting.proposal_notes`は、選定提案と同じNo.・順位を1件ずつ出力してください。
 
-未確認の制度、数値、設備、実績は確定事実にせず、必要に応じてプレースホルダーを使ってください。
+未確認の制度、数値、設備、実績は確定事実にせず、必ずプレースホルダーを使ってください。
 
 例：
 
 - ［研修期間］
+- ［指導担当者］
+- ［同乗指導の有無］
 - ［制度名］
+- ［会社補助の範囲］
 - ［重量］
 - ［実績数値］
 
+### confirmation_required=trueの場合
+
+`confirmation_required=true`で、`statement_status`が`verified`以外の場合、未確認部分を通常文として断定してはいけません。
+未確認の具体情報はすべて`［...］`で囲んでください。
+
+禁止例：
+
+- 先輩社員が同乗して丁寧に指導します
+- 資格を会社全額負担で取得できます
+- 充実した研修制度を整えています
+- 毎日必ず家に帰れます
+
+安全な例：
+
+```text
+入社後は［研修期間］を設け、［指導担当者］が［研修内容・同乗指導の有無］をお伝えします。
+```
+
+```text
+業務に必要な［資格名］について、［資格取得支援の内容・会社補助の範囲］を利用できます。
+```
+
+確認質問と提案文は矛盾させないでください。
+制度の有無を質問しているのに、提案文で制度の存在や全額負担を断定してはいけません。
+
 ---
 
-## 9. 簡易JSON契約
+## 10. 簡易JSON契約
 
 最終JSONは、次のトップレベル構造を厳守してください。
 
@@ -534,7 +642,16 @@ No.4が`なし`であれば、No.4を必ず第1位にしてください。
 }
 ```
 
-`story_steps`は1～6の6件を必ず出力してください。
+`story_steps`は次の6件を、タイトル・役割・順序を変えずに必ず出力してください。
+
+1. `現在の求人原稿の良い点を伝える`：現在の原稿で評価できる点を具体的にほめる
+2. `御社の強みを伝える`：確認できた事実と仮説を分けて、御社の強みを伝える
+3. `原稿で十分に伝わっていない点を示す`：否定的にならないよう、未表現の魅力を示す
+4. `文面案を提示する`：選定した提案文を具体的に紹介する
+5. `期待効果を説明する`：確約せず、期待できる効果を説明する
+6. `追加ヒアリングへつなぐ`：未確認事項を質問し、次のアクションにつなぐ
+
+5番目と6番目を入れ替えないでください。
 
 ### sources
 
@@ -591,7 +708,7 @@ JSON内に表示用の`-`を大量に入れないでください。
 
 ---
 
-## 10. 文章表現
+## 11. 文章表現
 
 先方共有用では「貴社」を使用してください。
 
@@ -614,7 +731,7 @@ JSON内に表示用の`-`を大量に入れないでください。
 
 ---
 
-## 11. 出力前検証
+## 12. 出力前検証
 
 最終出力前に、内部で必ず確認してください。
 
@@ -639,10 +756,16 @@ JSON内に表示用の`-`を大量に入れないでください。
 19. `sources[].url`に`N/A`や架空URLを入れていない
 20. `adopted=true`のソースには1件以上の`verified_facts`がある
 21. 未完成の汎用文や仮置き文が残っていない
+22. No.9を、グループ企業の規模だけで`記載あり`にしていない
+23. `verified`の文面に、根拠にない評価語・効果推論を混ぜていない
+24. 競合の採用済み成功ソースが0件なら、競合優位を断定していない
+25. `confirmation_required=true`の提案文で、未確認情報をプレースホルダー化している
+26. 確認質問と提案文が矛盾していない
+27. `story_steps`が指定した6段階の順序・役割になっている
 
 ---
 
-## 12. 最終出力
+## 13. 最終出力
 
 最終回答はJSONコードブロックを1つだけ出力してください。
 
@@ -663,7 +786,7 @@ JSON内の文字列は日本語で記載してください。
 </script>
 <script>
 "use strict";
-const KEY="job_appeal_prompt_maker_v2_2",OLD_KEYS=["job_appeal_prompt_maker_v1_4_3","job_appeal_prompt_maker_v1_4_2","job_appeal_prompt_maker_v1_4_1","job_appeal_prompt_maker_v1_4","job_appeal_prompt_maker_v1_3","job_appeal_prompt_maker_v1_2","job_appeal_prompt_maker_v1_1"],GEMINI="https://gemini.google.com/app";
+const KEY="job_appeal_prompt_maker_v2_3",OLD_KEYS=["job_appeal_prompt_maker_v2_2","job_appeal_prompt_maker_v1_4_3","job_appeal_prompt_maker_v1_4_2","job_appeal_prompt_maker_v1_4_1","job_appeal_prompt_maker_v1_4","job_appeal_prompt_maker_v1_3","job_appeal_prompt_maker_v1_2","job_appeal_prompt_maker_v1_1"],GEMINI="https://gemini.google.com/app";
 const DEFAULTS={proposalCount:"3",textLength:"100",webMode:"balanced"};
 const WEB_LABELS={specified:"指定URLのみ",balanced:"指定URL優先＋一般Web",broad:"一般Web検索を含む"};
 const $=id=>document.getElementById(id);
@@ -673,6 +796,7 @@ const lines=v=>v.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).length;
 const urlLines=v=>v.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
 const json=v=>JSON.stringify(v,null,2);
 const JOB_TEXT_FALLBACK="［求人原稿全文の貼り付けなし：job_urlから本文を取得してください］";
+const KNOWN_PLACEHOLDERS=["{{CASE_ID}}","{{PROPOSAL_COUNT}}","{{TEXT_LENGTH}}","{{TEXT_LENGTH_RANGE}}","{{WEB_RESEARCH_MODE}}","{{JOB_URL_JSON}}","{{COMPANY_URLS_JSON}}","{{COMPETITORS_JSON}}","{{TARGET_PERSONA_JSON}}","{{CURRENT_DATE}}","{{WEB_RESEARCH_INSTRUCTION}}","{{JOB_TEXT}}"];
 let caseId="";
 function makeCaseId(){
   const now=new Date();
@@ -704,6 +828,18 @@ function prompt(){
   Object.entries(replacements).forEach(([key,val])=>{result=result.replaceAll(key,String(val))});
   return result
 }
+function validateGeneratedPrompt(text){
+  const unresolved=KNOWN_PLACEHOLDERS.filter(token=>text.includes(token));
+  if(unresolved.length){status("プロンプト内に未置換の変数が残っています。再生成しても解消しない場合は、index.htmlの版を確認してください："+unresolved.join(", "),"error");return false}
+  const match=text.match(/<EXECUTION_INPUT>\s*([\s\S]*?)\s*<\/EXECUTION_INPUT>/);
+  if(!match){status("実行入力ブロックを確認できません。プロンプトを再生成してください。","error");return false}
+  try{
+    const data=JSON.parse(match[1]);
+    if(!data.case_id||!/^case-[A-Za-z0-9-]+$/.test(data.case_id)){status("案件IDが正しく生成されていません。入力内容をクリアして新しい案件IDを発行してください。","error");return false}
+    if(!data.current_date||!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(data.current_date)){status("実行日が正しく生成されていません。プロンプトを再生成してください。","error");return false}
+  }catch(e){console.error(e);status("実行入力JSONに構文エラーがあります。プロンプトを再生成してください。","error");return false}
+  return true
+}
 function competitorCount(){return [el.competitor1Url.value,el.competitor2Url.value].filter(v=>v.trim()).length}
 function indicators(){const u=!!el.jobUrl.value.trim(),t=!!el.jobText.value.trim();$("caseIdSummary").textContent=caseId;$("jobCount").textContent=el.jobText.value.length.toLocaleString("ja-JP")+"文字";$("targetCount").textContent=el.target.value.length.toLocaleString("ja-JP")+"文字";$("companyCount").textContent=lines(el.companyUrls.value)+"件";$("competitorCount").textContent=competitorCount()+"/2社";$("targetSummary").textContent=el.target.value.trim()?"指定あり":"指定なし";$("promptCount").textContent=el.preview.value.length.toLocaleString("ja-JP")+"文字";$("jobSummary").textContent=u&&t?"URL＋全文":t?"全文あり":u?"URLのみ":"未入力";$("proposalSettingSummary").textContent=el.proposalCount.value+"項目";$("lengthSettingSummary").textContent=el.textLength.value+"文字程度";$("webSettingSummary").textContent=WEB_LABELS[el.webMode.value]||WEB_LABELS.balanced}
 function build(){el.preview.value=prompt();indicators()}
@@ -715,7 +851,7 @@ function status(msg,type="success"){el.status.className="status show "+type;el.s
 function valid(){if(!el.jobUrl.value.trim()&&!el.jobText.value.trim()){status("求人原稿URLまたは求人原稿全文のどちらかを入力してください。","error");el.jobUrl.focus();return false}if(el.competitor2Url.value.trim()&&!el.competitor1Url.value.trim()){status("競合企業2だけが入力されています。比較対象を明確にするため、競合企業1から順に入力してください。","error");el.competitor1Url.focus();return false}if(el.webMode.value==="specified"&&!el.companyUrls.value.trim()&&!el.competitor1Url.value.trim()&&!el.competitor2Url.value.trim()&&!el.jobUrl.value.trim()){status("Web調査範囲が『指定URLのみ』ですが、参照URLが入力されていません。原稿全文の評価は可能ですが、外部情報を使った分析は限定的になります。","warning")}return true}
 function copyTextSync(text){const a=document.createElement("textarea");a.value=text;a.setAttribute("readonly","");a.setAttribute("aria-hidden","true");a.style.position="fixed";a.style.top="0";a.style.left="-9999px";a.style.width="1px";a.style.height="1px";a.style.opacity="0";document.body.appendChild(a);a.focus();a.select();a.setSelectionRange(0,a.value.length);let ok=false;try{ok=document.execCommand("copy")}catch(e){console.warn("同期コピーに失敗しました。",e)}a.remove();return ok}
 async function copyText(text){if(navigator.clipboard&&window.isSecureContext){try{await navigator.clipboard.writeText(text);return}catch(e){console.warn("Clipboard APIでコピーできなかったため、代替方法を試します。",e)}}if(!copyTextSync(text))throw new Error("copy failed")}
-async function run(open){if(!valid())return;const text=el.preview.value.trim()||prompt();if(open){const copied=copyTextSync(text);if(!copied){status("コピーできませんでした。生成プロンプト欄を手動でコピーしてください。","error");el.preview.focus();el.preview.select();return}const w=window.open(GEMINI,"_blank","noopener,noreferrer");if(w){status("プロンプトをコピーし、Geminiを開きました。入力欄へ貼り付けて送信してください。") }else{status("プロンプトはコピーできましたが、Geminiのタブを開けませんでした。ポップアップ設定を確認し、Geminiを手動で開いてください。","warning")}return}try{await copyText(text);status("プロンプトをコピーしました。")}catch(e){console.error(e);status("コピーできませんでした。生成プロンプト欄を手動でコピーしてください。","error");el.preview.focus();el.preview.select()}}
+async function run(open){if(!valid())return;const text=el.preview.value.trim()||prompt();if(!validateGeneratedPrompt(text))return;if(open){const copied=copyTextSync(text);if(!copied){status("コピーできませんでした。生成プロンプト欄を手動でコピーしてください。","error");el.preview.focus();el.preview.select();return}const w=window.open(GEMINI,"_blank","noopener,noreferrer");if(w){status("プロンプトをコピーし、Geminiを開きました。入力欄へ貼り付けて送信してください。") }else{status("プロンプトはコピーできましたが、Geminiのタブを開けませんでした。ポップアップ設定を確認し、Geminiを手動で開いてください。","warning")}return}try{await copyText(text);status("プロンプトをコピーしました。")}catch(e){console.error(e);status("コピーできませんでした。生成プロンプト欄を手動でコピーしてください。","error");el.preview.focus();el.preview.select()}}
 let timer;[el.jobUrl,el.jobText,el.companyUrls,el.competitor1Url,el.competitor2Url,el.target].forEach(x=>x.addEventListener("input",()=>{clearTimeout(timer);timer=setTimeout(()=>{build();save()},120)}));[el.proposalCount,el.textLength,el.webMode].forEach(x=>x.addEventListener("change",()=>{build();save();status("実行設定をプロンプトへ反映しました。")}));el.preview.addEventListener("input",indicators);
 $("copyBtn").onclick=()=>run(false);$("geminiBtn").onclick=()=>run(true);$("refreshBtn").onclick=()=>{build();save();status("フォームと実行設定からプロンプトを再生成しました。")};$("clearBtn").onclick=()=>{const inputs=[el.jobUrl,el.jobText,el.companyUrls,el.competitor1Url,el.competitor2Url,el.target];const any=inputs.some(x=>x.value.trim());if(any&&!confirm("案件の入力内容を削除しますか？ 実行設定は維持されます。"))return;inputs.forEach(x=>x.value="");caseId=makeCaseId();build();save();status("案件の入力内容をクリアし、新しい案件IDを発行しました。実行設定は維持されています。");el.jobUrl.focus()};$("resetSettingsBtn").onclick=()=>{el.proposalCount.value=DEFAULTS.proposalCount;el.textLength.value=DEFAULTS.textLength;el.webMode.value=DEFAULTS.webMode;build();save();status("実行設定を標準値へ戻しました。")} ;
 const modal=$("modalBg");$("helpBtn").onclick=()=>{modal.classList.add("open");document.body.style.overflow="hidden";$("closeBtn").focus()};function close(){modal.classList.remove("open");document.body.style.overflow="";$("helpBtn").focus()}$("closeBtn").onclick=close;modal.onclick=e=>{if(e.target===modal)close()};document.addEventListener("keydown",e=>{if(e.key==="Escape"&&modal.classList.contains("open"))close()});load();

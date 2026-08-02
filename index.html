@@ -15,7 +15,7 @@
 <body>
 <main class="wrap">
 <header class="hero">
-<div class="brand"><div class="mark">原+</div><div><p class="eyebrow">JOB APPEAL EVALUATION</p><h1>求人原稿 魅力度評価<br>プロンプトメーカー</h1><p class="desc">求人原稿と企業・競合情報を入力し、原稿分析・競合比較・改善提案・社内商談メモをまとめた初回商談準備用ExcelをGeminiに作成してもらうためのプロンプトを生成します。</p></div></div>
+<div class="brand"><div class="mark">原+</div><div><p class="eyebrow">JOB APPEAL EVALUATION</p><h1>求人原稿 魅力度評価<br>プロンプトメーカー</h1><p class="desc">求人原稿と企業・競合情報を入力し、原稿分析・競合比較・改善提案・社内商談メモをまとめた初回商談準備用Google SheetsをGeminiに作成してもらうためのプロンプトを生成します。</p></div></div>
 <div class="heroBtns"><button class="pill" id="helpBtn" type="button">？ 使い方</button><a class="pill" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">評価基準を確認</a></div>
 </header>
 <div class="notice"><span>ℹ</span><div><strong>入力内容はサーバーへ送信しません。</strong> このページ内でプロンプトを作成し、ブラウザ内へ一時保存します。Geminiへの送信は、Gemini画面で利用者が実行します。</div></div>
@@ -36,19 +36,19 @@
 <details class="card" open><summary><div><h2><span class="num">4</span>生成プロンプト</h2><p class="sub">フォームの入力内容を反映したGemini向けプロンプトです。</p></div></summary><div class="promptbody"><p class="promptnote">直接編集できますが、フォームを変更すると入力内容から再生成されます。</p><textarea id="promptPreview" spellcheck="false"></textarea></div></details>
 </section>
 <aside class="side">
-<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">通常は標準設定のまま利用できます。案件に応じて詳細設定を変更してください。</p></div><div class="set"><span>評価基準</span><span>求人原稿改善リスト【評価基準シート】</span></div><div class="set"><span>出力形式</span><span>Excel（.xlsx）</span></div><div class="set"><span>シート構成</span><span>先方用3＋社内用2</span></div><div class="set"><span>提案数</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>Web調査</span><span id="webSettingSummary">指定URL優先＋一般Web補完</span></div><div class="set"><span>Prompt</span><span>v1.4.2</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">文面提案数</label><select id="proposalCount"><option value="1">1項目</option><option value="3" selected>3項目（標準）</option><option value="5">5項目</option></select><p class="settingsHelp">競合企業が1社以上あり、文面作成優先順位1の項目が未記載なら、提案数にかかわらず1件目へ選定します。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option value="100" selected>100文字程度（標準）</option><option value="150">150文字程度</option></select><p class="settingsHelp">厳密な文字数制限ではなく、求人原稿へ転用しやすい長さの目安です。</p></div><div class="settingsField"><label for="webMode">Web調査範囲</label><select id="webMode"><option value="specified">指定URLのみ</option><option value="balanced" selected>指定URL優先＋一般Web補完（標準）</option><option value="broad">一般Webを広く調査</option></select><p class="settingsHelp">指定URLのみでは、確認できない情報を推測せず「貴社でのご確認が必要」とします。</p></div><button id="resetSettingsBtn" class="settingsReset" type="button">標準設定に戻す</button></div></details><a class="criteria" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">↗ 評価基準を開く</a></article>
+<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">通常は標準設定のまま利用できます。案件に応じて詳細設定を変更してください。</p></div><div class="set"><span>評価基準</span><span>求人原稿改善リスト【評価基準シート】</span></div><div class="set"><span>出力形式</span><span>Google Sheets（Drive）</span></div><div class="set"><span>シート構成</span><span>先方用3＋社内用2</span></div><div class="set"><span>提案数</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>Web調査</span><span id="webSettingSummary">指定URL優先＋一般Web補完</span></div><div class="set"><span>Prompt</span><span>v1.4.3</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">文面提案数</label><select id="proposalCount"><option value="1">1項目</option><option value="3" selected>3項目（標準）</option><option value="5">5項目</option></select><p class="settingsHelp">競合企業が1社以上あり、文面作成優先順位1の項目が未記載なら、提案数にかかわらず1件目へ選定します。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option value="100" selected>100文字程度（標準）</option><option value="150">150文字程度</option></select><p class="settingsHelp">厳密な文字数制限ではなく、求人原稿へ転用しやすい長さの目安です。</p></div><div class="settingsField"><label for="webMode">Web調査範囲</label><select id="webMode"><option value="specified">指定URLのみ</option><option value="balanced" selected>指定URL優先＋一般Web補完（標準）</option><option value="broad">一般Webを広く調査</option></select><p class="settingsHelp">指定URLのみでは、確認できない情報を推測せず「貴社でのご確認が必要」とします。</p></div><button id="resetSettingsBtn" class="settingsReset" type="button">標準設定に戻す</button></div></details><a class="criteria" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/">↗ 評価基準を開く</a></article>
 <article class="card"><div class="head"><h2>入力状況</h2><p class="sub">プロンプトへ反映される情報です。</p></div><div class="summary"><span>求人情報</span><strong id="jobSummary">未入力</strong></div><div class="summary"><span>企業URL</span><strong id="companyCount">0件</strong></div><div class="summary"><span>競合企業</span><strong id="competitorCount">0/2社</strong></div><div class="summary"><span>ターゲット</span><strong id="targetSummary">指定なし</strong></div><div class="summary"><span>プロンプト</span><strong id="promptCount">0文字</strong></div></article>
 </aside>
 </div>
 <p class="footer">GitHub Pages上で動作する静的ツールです。入力内容・生成プロンプト・Geminiの出力内容は利用者自身で確認してください。</p>
 </main>
-<div id="modalBg" class="modalbg"><div class="modal"><div class="modalhead"><h2>使い方</h2><button id="closeBtn" class="close" type="button" aria-label="閉じる">×</button></div><div class="modalbody"><section class="help"><h3>基本の流れ</h3><ol><li>求人原稿URLまたは原稿全文を入力します。</li><li>対象企業の参考ページと、比較したい競合企業を最大2社まで入力します。</li><li>必要に応じてターゲットや文面方向を入力します。</li><li>「コピーしてGeminiを開く」を押します。</li><li>開いたGeminiの入力欄へ貼り付けて送信し、Excelをダウンロードします。</li></ol></section><section class="help"><h3>求人原稿の入力</h3><p>URLだけでも実行できますが、CAPTCHAやログイン制限のあるサイトでは本文を取得できないことがあります。全文を貼り付けると安定します。</p></section><section class="help"><h3>競合URLを入力した場合</h3><p>競合企業は最大2社です。1社以上入力され、「競合他社との比較・自社の強み」が未記載なら、文面提案の1件目として扱う指示が適用されます。</p></section><section class="help"><h3>Excelの構成</h3><p>先方共有を想定した「貴社原稿分析」「貴社vs競合分析」「評価サマリー」と、社内限定の「【社内用】商談準備メモ」「【社内用】実行条件・参照ソース」の5シートを生成する指示です。</p></section><section class="help"><h3>詳細設定</h3><p>提案数・文面長・Web調査範囲を案件ごとに変更できます。設定はブラウザへ保存され、「入力をクリア」を押しても維持されます。必要なときだけ「標準設定に戻す」を使用してください。</p></section><section class="help"><h3>入力データ</h3><div class="helpnote">入力内容はブラウザのローカルストレージに自動保存されます。共用PCでは作業後に「入力をクリア」を押してください。</div></section></div></div></div>
+<div id="modalBg" class="modalbg"><div class="modal"><div class="modalhead"><h2>使い方</h2><button id="closeBtn" class="close" type="button" aria-label="閉じる">×</button></div><div class="modalbody"><section class="help"><h3>基本の流れ</h3><ol><li>求人原稿URLまたは原稿全文を入力します。</li><li>対象企業の参考ページと、比較したい競合企業を最大2社まで入力します。</li><li>必要に応じてターゲットや文面方向を入力します。</li><li>「コピーしてGeminiを開く」を押します。</li><li>開いたGeminiの入力欄へ貼り付けて送信し、作成されたGoogle Sheetsを開きます。</li></ol></section><section class="help"><h3>求人原稿の入力</h3><p>URLだけでも実行できますが、CAPTCHAやログイン制限のあるサイトでは本文を取得できないことがあります。全文を貼り付けると安定します。</p></section><section class="help"><h3>評価基準の渡し方</h3><p>テスト中は、Geminiへプロンプトを送る際に評価基準スプレッドシートをDriveから添付してください。専用Gemで運用する場合は、同じファイルをGemの知識へ登録すると安定します。添付ファイルまたはGemの知識がある場合は、プロンプト内のURLより優先して使用します。</p></section><section class="help"><h3>競合URLを入力した場合</h3><p>競合企業は最大2社です。1社以上入力され、「競合他社との比較・自社の強み」が未記載なら、文面提案の1件目として扱う指示が適用されます。</p></section><section class="help"><h3>Google Sheetsの構成</h3><p>Google Drive上に案件ごとの新しいファイルを作成し、先方共有を想定した「貴社原稿分析」「貴社vs競合分析」「評価サマリー」と、社内限定の「【社内用】商談準備メモ」「【社内用】実行条件・参照ソース」の5シートを生成する指示です。</p></section><section class="help"><h3>詳細設定</h3><p>提案数・文面長・Web調査範囲を案件ごとに変更できます。設定はブラウザへ保存され、「入力をクリア」を押しても維持されます。必要なときだけ「標準設定に戻す」を使用してください。</p></section><section class="help"><h3>入力データ</h3><div class="helpnote">入力内容はブラウザのローカルストレージに自動保存されます。共用PCでは作業後に「入力をクリア」を押してください。</div></section></div></div></div>
 
-<script type="text/plain" id="promptTemplate"># 求人原稿魅力度評価・競合分析・初回商談準備プロンプト v1.4.2
+<script type="text/plain" id="promptTemplate"># 求人原稿魅力度評価・競合分析・初回商談準備プロンプト v1.4.3
 
 あなたは、求人広告改善、採用企業の魅力発掘、競合調査、採用支援サービスの初回商談準備を支援する専門家です。
 
-本依頼では、求人原稿の不足点を指摘するだけではなく、次の内容を整理したExcel資料を作成してください。
+本依頼では、求人原稿の不足点を指摘するだけではなく、次の内容を整理したGoogle Sheets資料をGoogle Drive上に新規作成してください。
 
 - 現在の求人原稿で既に伝えられている良い点
 - 求人原稿に残されている改善余地
@@ -60,7 +60,7 @@
 - 初回商談で追加確認したい情報
 - 営業担当者が商談で使用できる社内向け説明材料
 
-このExcelは、一部のシートを対象企業へ提示する可能性があります。
+このGoogle Sheetsは、一部のシートを対象企業へ提示する可能性があります。
 
 先方共有用シートでは、相手に失礼のない、前向きで根拠のある日本語を使用してください。対象企業の不足や問題点を一方的に批評せず、現在の良い点を評価したうえで、さらに魅力を伝えるための改善機会として整理してください。
 
@@ -78,9 +78,15 @@
 
 ```json
 {
-  "prompt_version": "1.4.1",
+  "prompt_version": "1.4.3",
   "output_language": "日本語",
-  "output_format": "xlsx",
+  "primary_output_format": "Google Sheets",
+  "output_location": "Google Drive",
+  "create_new_spreadsheet": true,
+  "modify_source_spreadsheet": false,
+  "excel_export_required": false,
+  "spreadsheet_locale": "ja_JP",
+  "spreadsheet_timezone": "Asia/Tokyo",
   "proposal_count": {{PROPOSAL_COUNT}},
   "proposal_text_length": {
     "target": {{TEXT_LENGTH}},
@@ -169,19 +175,19 @@ Web調査については、次の指示を適用してください。
 11. 文面提案対象を指定件数だけ選定する
 12. 原稿文面例、ご確認事項、期待効果を作成する
 13. 先方共有用資料と社内用資料を分けて作成する
-14. Excelファイルを生成する
+14. Google Drive上に案件専用の新しいGoogle Sheetsファイルを作成する
 15. 必須行数、No.一覧、並び順、列構成を検証する
 16. 問題がある場合は修正してから最終出力する
 
-評価基準や求人原稿を取得する前に、PythonによるExcel生成処理を開始しないでください。
+評価基準や求人原稿を取得する前に、Google Sheetsの作成処理を開始しないでください。Pythonを使用する場合は分析・検証の補助に限定し、最終ファイルはGoogle Sheetsとして作成してください。
 
-途中経過の回答は行わず、最後にExcelファイルを生成してください。
+途中経過の回答は行わず、最後にGoogle Drive上へGoogle Sheetsファイルを作成してください。
 
 ## 3-1. 出力省略禁止・必須セクション契約
 
 処理量や文章量が多いことを理由に、指定されたシート、表、セクション、行、列を省略してはいけません。
 
-Excel生成前に、次の必須構成を内部チェックリストとして作成し、すべて完成してからファイルを保存してください。
+Google Sheets作成前に、次の必須構成を内部チェックリストとして作成し、すべて完成してからファイルを確定してください。
 
 ```json
 {
@@ -225,31 +231,36 @@ Excel生成前に、次の必須構成を内部チェックリストとして作
 - 評価サマリーから「文面提案上位N件」または「総評」を省くこと
 - 商談準備メモから「商談ストーリー」を省くこと
 - 実行条件・参照ソースからURL台帳、選定記録、No.一覧を省くこと
-- URLを参照したにもかかわらず、Excel内へ記録しないこと
+- URLを参照したにもかかわらず、Google Sheets内へ記録しないこと
 
 ---
 
 # 4. 評価基準スプレッドシート
 
-次のGoogleスプレッドシートを評価基準として使用してください。
+評価基準の原本は、次のGoogleスプレッドシートです。
 
 https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/
 
-このスプレッドシートは参照専用です。内容を変更しないでください。
+この評価基準は参照専用です。原本へ書き込んだり、シート構成・セル・共有設定を変更したりしてはいけません。
 
-## 4-1. 取得方法
+## 4-1. 評価基準の参照優先順位
 
-最初に、Geminiで利用可能な次のいずれかの機能を使用して取得してください。
+次の優先順位で、同名の評価基準を探してください。
 
-- 通常のWebページ閲覧機能
-- URL参照機能
-- Google Workspace連携機能
-- Google Drive連携機能
-- Googleスプレッドシートを直接参照できる機能
+1. 今回のチャットに添付された「求人原稿改善リスト【評価基準シート】」
+2. このGemの知識に登録された「求人原稿改善リスト【評価基準シート】」
+3. Google DriveまたはGoogle Workspace連携から参照できる同名ファイル
+4. 上記のGoogleスプレッドシートURL
 
-評価基準を取得するために、Python実行環境から外部URLへ通信しないでください。
+上位の方法で11列と全データ行を正常に読み取れた場合は、それを今回の正本として使用してください。添付ファイルまたはGemの知識を使用した場合も、原本URLを「【社内用】実行条件・参照ソース」へ記録してください。
 
-次の方法を評価基準の取得に使用しないでください。
+複数の同名ファイルが存在する場合は、列名が完全一致し、分析表表示順が設定された最新版を使用してください。判断できない場合は推測せず処理を中断してください。
+
+## 4-2. 取得方法の制約
+
+評価基準の取得には、Geminiの添付ファイル参照、Gemの知識、Google Workspace・Drive連携、通常のURL参照を使用してください。
+
+評価基準を取得するために、Python実行環境から外部URLへ通信しないでください。次の方法を使用しないでください。
 
 - Pythonのrequests
 - urllib
@@ -261,22 +272,13 @@ https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpTh
 - Python実行環境からのDNS名前解決
 - Python実行環境からのGoogle Sheetsダウンロード
 
-Pythonは、評価基準と求人原稿を取得した後に、データ整理、検証、書式設定、Excel生成を行う目的でのみ使用してください。
+Pythonは、評価基準と求人原稿を取得した後のデータ整理、独立検証、集計確認にのみ使用できます。Google Drive上の最終Google Sheetsファイルは、Google Workspace・Drive・Sheetsの機能で作成してください。
 
-## 4-2. 取得に失敗した場合
+## 4-3. 取得に失敗した場合
 
-最初の取得に失敗しても、直ちにネットワーク制限と結論付けないでください。
+一つの方法で失敗しても、同じ失敗処理だけを繰り返さず、上記の参照優先順位に沿って別の方法を試してください。
 
-次の順序で再試行してください。
-
-1. Pythonを使用せず、通常のURL閲覧機能で再度開く
-2. Google DriveまたはGoogle Workspace連携を使用する
-3. Googleスプレッドシートを通常のWebページとして開き直す
-4. スプレッドシートIDまたはファイル名から参照する
-
-同じ失敗したPython処理だけを繰り返さないでください。
-
-それでも取得できない場合は、評価基準を推測せず、Excelを生成しないでください。
+11列と全データ行を取得できない場合は、評価基準を推測したり独自項目を作ったりせず、Google Sheetsを作成しないでください。最終回答で「評価基準を読み取れなかったため処理を中断した」と明記してください。
 
 ---
 
@@ -758,7 +760,7 @@ Web調査と同時に、参照したページを一意のソースIDで管理し
 - 比較判定が「同等」の場合は、「おおむね同等水準」または `-` とする
 - 比較判定が「情報不足」「比較困難」の場合、確認できなかったこと自体を貴社の強みとして扱わない
 - 「競合の公開情報に記載がない」と「競合に制度が存在しない」を区別する
-- 同じExcel内で、同じ事実について矛盾する評価や説明を作らない
+- 同じGoogle Sheets内で、同じ事実について矛盾する評価や説明を作らない
 
 比較に使用する求人は、可能な限り職種、雇用形態、勤務地、業務内容が近いものを選んでください。比較条件が大きく異なる場合は、その制約を明記してください。
 
@@ -1047,13 +1049,13 @@ Web調査と同時に、参照したページを一意のソースIDで管理し
 
 ---
 
-# 20. Excel出力契約
+# 20. Google Sheets出力契約
 
 次の5シートを作成してください。
 
 ```json
 {
-  "workbook_schema": {
+  "spreadsheet_schema": {
     "sheets": [
       {
         "name": "貴社原稿分析",
@@ -1093,6 +1095,13 @@ Web調査と同時に、参照したページを一意のソースIDで管理し
 # 21. シート1：貴社原稿分析
 
 シート名は必ず「貴社原稿分析」としてください。
+
+レイアウトは次のとおり固定してください。
+
+- 1行目：`A1:N1` を結合し、タイトルを表示
+- 2行目：`A2:N2` を結合し、対象企業名・求人名・判定雇用形態を表示
+- 3行目：列ヘッダー
+- 4行目以降：評価データ
 
 対象雇用形態で「必須」となっている行を、1行も省略せず全件出力してください。
 
@@ -1241,28 +1250,26 @@ URLは `https://` または `http://` から始まる文字列として記載し
 
 「評価対象項目数」「記載あり件数」「その他件数」「なし件数」「記載あり率」は、文章生成時の記憶や手入力値で作成してはいけません。
 
-「貴社原稿分析」のデータ範囲をExcelテーブルに変換し、テーブル名を `tblAnalysis` としてください。そのうえで、評価サマリーの集計セルに次の数式を設定してください。
+「貴社原稿分析」は3行目をヘッダー、4行目以降をデータ行とし、評価サマリーの集計セルには次のGoogle Sheets数式を設定してください。
 
-```excel
-評価対象項目数 = ROWS(tblAnalysis[No.])
-記載あり件数   = COUNTIF(tblAnalysis[調査結果],"記載あり")
-その他件数     = COUNTIF(tblAnalysis[調査結果],"その他")
-なし件数       = COUNTIF(tblAnalysis[調査結果],"なし")
-記載あり率     = IFERROR(COUNTIF(tblAnalysis[調査結果],"記載あり")/ROWS(tblAnalysis[No.]),0)
+```gs
+評価対象項目数 = COUNTA('貴社原稿分析'!A4:A)
+記載あり件数   = COUNTIF('貴社原稿分析'!H4:H,"記載あり")
+その他件数     = COUNTIF('貴社原稿分析'!H4:H,"その他")
+なし件数       = COUNTIF('貴社原稿分析'!H4:H,"なし")
+記載あり率     = IFERROR(COUNTIF('貴社原稿分析'!H4:H,"記載あり")/COUNTA('貴社原稿分析'!A4:A),0)
 ```
 
 記載あり率のセルはパーセント表示にしてください。
 
-Excelファイルを開いたときに数式が再計算される設定を有効にしてください。
-
-Excel保存前にPython等でも同じ件数を独立集計し、次を確認してください。
+数式を入力した後、表示値を読み取り、次を独立して確認してください。
 
 ```text
 評価対象項目数 = 記載あり件数 + その他件数 + なし件数
 評価対象項目数 = 貴社原稿分析のデータ行数
 ```
 
-一致しない場合は、評価サマリーを修正してから保存してください。内部検証値は「【社内用】実行条件・参照ソース」の必須行検証記録にも記載してください。
+一致しない場合は、評価サマリーを修正してからファイルを完成させてください。内部検証値は「【社内用】実行条件・参照ソース」の必須行検証記録にも記載してください。
 
 ## 現在の求人原稿で評価できる点
 
@@ -1422,7 +1429,7 @@ URL列には、`https://` または `http://` から始まる実URLを記載し�
 
 取得できなかったURLも行として残し、「取得状況」を「取得失敗」としてください。検索したが採用できる情報がなかった情報源区分も、「検索したが採用できる情報なし」として記録してください。
 
-評価基準URL、入力URL、実際に参照した追加URLのいずれかが台帳から欠落している場合は、Excelを完成扱いにしないでください。
+評価基準URL、入力URL、実際に参照した追加URLのいずれかが台帳から欠落している場合は、Google Sheetsを完成扱いにしないでください。
 
 ## 未確認事項・調査上の注意
 
@@ -1496,11 +1503,11 @@ URL列には、`https://` または `http://` から始まる実URLを記載し�
 - 完成状況
 - 不足内容
 
-5シートすべての必須セクションを1件ずつ検証し、完成状況を「完了」または「未完了」で記録してください。1件でも未完了がある場合は、修正してからExcelを保存してください。
+5シートすべての必須セクションを1件ずつ検証し、完成状況を「完了」または「未完了」で記録してください。1件でも未完了がある場合は、修正してからGoogle Sheetsを完成させてください。
 
 ---
 
-# 26. Excelの書式
+# 26. Google Sheetsの書式
 
 すべてのシートを、業務資料として読みやすく整えてください。
 
@@ -1603,21 +1610,37 @@ URL列には、`https://` または `http://` から始まる実URLを記載し�
 
 ---
 
-# 27. 出力ファイル名
+# 27. 出力ファイル名・保存先・共有設定
 
-次の形式を基本としてください。
+Google Drive上に、案件ごとの新しいGoogle Sheetsファイルを作成してください。
 
-求人原稿魅力度評価_対象企業名_実行日.xlsx
+ファイル名は次の形式を基本としてください。
 
-対象企業名を特定できない場合は、求人名を使用してください。
+求人原稿魅力度評価_対象企業名_実行日
 
-ファイル名に使用できない記号は除去してください。
+対象企業名を特定できない場合は求人名を使用してください。ファイル名に使用できない記号は除去してください。拡張子は付けないでください。
+
+次のルールを守ってください。
+
+- 評価基準の原本ファイルへ書き込まない
+- 既存の別案件ファイルを上書きしない
+- 案件ごとに新しいGoogle Sheetsを作成する
+- 標準の共有範囲は、作成した利用者本人がアクセスできる非公開状態とする
+- 「リンクを知っている全員」へ自動公開しない
+- 作成後、5つの指定シートが同じファイル内に存在することを確認する
+- 最終回答に、実在するGoogle SheetsのURLを記載する
+
+完成ファイルのURLは、原則として次の形式であることを確認してください。
+
+`https://docs.google.com/spreadsheets/d/<実在するスプレッドシートID>/...`
+
+検索ページ、Driveの検索結果、架空URL、Markdownで作った疑似リンク、ファイル名だけの記載は完了と見なしません。
 
 ---
 
 # 28. 出力前の厳密な検証
 
-Excelを完成扱いにする前に、次の条件をすべて検証してください。
+Google Sheetsを完成扱いにする前に、次の条件をすべて検証してください。
 
 ```text
 VALIDATION_ASSERTIONS
@@ -1667,33 +1690,35 @@ VALIDATION_ASSERTIONS
 43. 親会社・グループ・取引先の規模を募集企業自身の業界順位・シェアとして扱っていない
 44. カゴ台車の記載だけで身体的負担が少ないと断定していない
 45. 同じ事実についてシート間で矛盾する説明がない
-46. Excel内に数式エラーや欠損した必須セルがない
-47. Excelファイルを実際にダウンロードできる
-48. 貴社原稿分析がExcelテーブル `tblAnalysis` として作成されている
-49. 評価サマリーの5指標が `tblAnalysis` を参照する数式で作成されている
-50. 評価対象項目数が記載あり・その他・なしの合計と一致している
-51. 取得状況が「取得失敗」のソースを事実・強み・競合比較・文面提案の根拠に使用していない
-52. 検索結果スニペット、モデルの一般知識、知識推論を根拠に使用していない
-53. 外部調査由来の先方共有主張に取得成功ソースIDが対応している
-54. No.50、No.51、No.52をそれぞれ固有条件で独立判定している
-55. 同じ大項目・中項目という理由で複数行へ同じ判定を一括適用していない
-56. 文面提案選定記録の内部制御4項目が元シートの値と完全一致している
-57. 元シートに分析表表示順があるのに `-` または空欄になっている選定行がない
-58. ご確認要否が「必要」の行で、未確認事項を「貴社優位」「貴社独自」「公式情報で確認済み」と表現していない
-59. 評価基準の原本URLがGoogleスプレッドシートURLのまま記録されている
-60. 原本URL、一時ファイル名、Python処理用形式が別項目で記録されている
-61. 指定した列幅・結合セル・表示倍率が各シートへ適用されている
-62. 評価サマリーの文章セクションが読みやすい結合セルと行高で表示されている
-63. 社内用シートの長文列が1文字ずつ縦に近い状態で折り返されていない
+46. Google Sheets内に数式エラーや欠損した必須セルがない
+47. Google Drive上に案件専用の新規Google Sheetsファイルが実在する
+48. 作成したGoogle Sheetsの実在URLを開ける
+49. 評価基準の原本および既存案件ファイルを変更していない
+50. 貴社原稿分析の3行目がヘッダー、4行目以降がデータ行として作成されている
+51. 評価サマリーの5指標が「貴社原稿分析」のA4:AおよびH4:Hを参照するGoogle Sheets数式で作成されている
+52. 評価対象項目数が記載あり・その他・なしの合計と一致している
+53. 取得状況が「取得失敗」のソースを事実・強み・競合比較・文面提案の根拠に使用していない
+54. 検索結果スニペット、モデルの一般知識、知識推論を根拠に使用していない
+55. 外部調査由来の先方共有主張に取得成功ソースIDが対応している
+56. No.50、No.51、No.52をそれぞれ固有条件で独立判定している
+57. 同じ大項目・中項目という理由で複数行へ同じ判定を一括適用していない
+58. 文面提案選定記録の内部制御4項目が元シートの値と完全一致している
+59. 元シートに分析表表示順があるのに `-` または空欄になっている選定行がない
+60. ご確認要否が「必要」の行で、未確認事項を「貴社優位」「貴社独自」「公式情報で確認済み」と表現していない
+61. 評価基準の原本URLがGoogleスプレッドシートURLのまま記録されている
+62. 原本URL、一時ファイル名、Python処理用形式が別項目で記録されている
+63. 指定した列幅・結合セル・表示倍率が各シートへ適用されている
+64. 評価サマリーの文章セクションが読みやすい結合セルと行高で表示されている
+65. 社内用シートの長文列が1文字ずつ縦に近い状態で折り返されていない
 ```
 
-いずれかが満たされていない場合は、Excelを完成扱いにせず、問題を修正してから出力してください。
+いずれかが満たされていない場合は、Google Sheetsを完成扱いにせず、問題を修正してから出力してください。
 
 特に、必須行数、No.集合、並び順のいずれかが一致しない場合は、そのまま出力しないでください。
 
 ---
 
-# 29. 最終回答
+# 29. 最終回答・Google Sheetsの受け渡し
 
 処理完了後は、チャット本文に長い分析を繰り返さず、次の内容だけを簡潔に伝えてください。
 
@@ -1707,12 +1732,33 @@ VALIDATION_ASSERTIONS
 - 確認できた主な貴社の強み
 - 貴社での確認が必要な重要事項
 - 取得できなかった重要情報がある場合の注意
-- Excelファイルのダウンロードリンク
+- 作成したGoogle Sheetsのファイル名
+- 作成したGoogle Sheetsの実在URL
 
-必ずExcelファイル（.xlsx）を生成してください。</script>
+## GOOGLE_SHEETS_DELIVERY_ASSERTIONS
+
+次をすべて満たした場合だけ、処理完了と回答してください。
+
+1. Google Drive上に案件専用の新しいGoogle Sheetsファイルを作成した
+2. 評価基準の原本を変更していない
+3. 指定した5シートが同一ファイル内に存在する
+4. 指定した数式、書式、列幅、並び順を適用した
+5. URLを開くと作成したGoogle Sheetsが表示される
+6. URLが `docs.google.com/spreadsheets/d/` を含む
+7. 検索ページURL、架空URL、ファイル名だけ、疑似リンクを提示していない
+8. ファイルの共有範囲を勝手に一般公開していない
+
+Google Sheetsファイルを実際に作成できない場合は、成功したと報告してはいけません。ファイル名や架空のリンクを作らず、次のように明記してください。
+
+「分析処理は完了しましたが、Google Drive上にGoogle Sheetsファイルを作成できませんでした。ファイル生成機能を再実行してください。」
+
+その場合も分析結果を変更・破棄せず、同じチャット内でファイル作成だけを再実行できる状態を維持してください。
+
+Microsoft Excel（.xlsx）は標準出力として作成しないでください。利用者が必要な場合は、完成したGoogle Sheetsから手動でExcel形式へダウンロードします。
+</script>
 <script>
 "use strict";
-const KEY="job_appeal_prompt_maker_v1_4_2",OLD_KEYS=["job_appeal_prompt_maker_v1_4_1","job_appeal_prompt_maker_v1_4","job_appeal_prompt_maker_v1_3","job_appeal_prompt_maker_v1_2","job_appeal_prompt_maker_v1_1"],GEMINI="https://gemini.google.com/app";
+const KEY="job_appeal_prompt_maker_v1_4_3",OLD_KEYS=["job_appeal_prompt_maker_v1_4_2","job_appeal_prompt_maker_v1_4_1","job_appeal_prompt_maker_v1_4","job_appeal_prompt_maker_v1_3","job_appeal_prompt_maker_v1_2","job_appeal_prompt_maker_v1_1"],GEMINI="https://gemini.google.com/app";
 const DEFAULTS={proposalCount:"3",textLength:"100",webMode:"balanced"};
 const WEB_LABELS={specified:"指定URLのみ",balanced:"指定URL優先＋一般Web補完",broad:"一般Webを広く調査"};
 const $=id=>document.getElementById(id);

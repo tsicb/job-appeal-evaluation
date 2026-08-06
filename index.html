@@ -6,7 +6,7 @@
 <meta content="noindex,nofollow" name="robots"/>
 <meta content="noindex,nofollow" name="googlebot"/>
 <meta content="Deep Researchと専用Gemを使い、企業の採用訴求材料と求人原稿の魅力を発見・強化し、厳格なJSON契約でGoogle Sheetsへ出力するブラウザツールです。" name="description"/>
-<title>求人原稿 魅力度評価プロンプトメーカー v4.5</title>
+<title>求人原稿 魅力度評価プロンプトメーカー v4.6</title>
 <style>
 :root{--bg:#f4f6f8;--card:#fff;--line:#d8e0e7;--text:#20303d;--muted:#687887;--blue:#315f7d;--blue2:#244a63;--purple:#695b8d;--soft:#eaf1f5;--shadow:0 12px 34px rgba(34,52,67,.08)}
 *{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 10% 0,rgba(49,95,125,.1),transparent 30rem),radial-gradient(circle at 92% 3%,rgba(105,91,141,.08),transparent 28rem),var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;line-height:1.7}button,input,textarea,select{font:inherit}a{color:var(--blue)}.wrap{width:min(1180px,calc(100% - 32px));margin:auto;padding:28px 0 56px}.hero{display:flex;justify-content:space-between;gap:22px;padding:26px 28px;margin-bottom:20px;color:#fff;background:linear-gradient(125deg,#294f68,#48738c 56%,#685a88);border-radius:22px;box-shadow:var(--shadow)}.brand{display:flex;gap:16px}.mark{display:grid;place-items:center;width:54px;height:54px;flex:none;border:1px solid rgba(255,255,255,.3);border-radius:16px;background:rgba(255,255,255,.13);font-weight:900;font-size:23px}.eyebrow{margin:0 0 2px;color:rgba(255,255,255,.75);font-size:12px;font-weight:800;letter-spacing:.09em}h1{margin:0;font-size:clamp(24px,4vw,36px);line-height:1.25}h2{margin:0;font-size:19px}.desc{margin:8px 0 0;max-width:760px;color:rgba(255,255,255,.88);font-size:14px}.heroBtns{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}.pill{padding:8px 13px;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:800;text-decoration:none;cursor:pointer}.pill:hover{background:rgba(255,255,255,.2)}.notice{display:flex;gap:10px;padding:13px 16px;margin-bottom:18px;border:1px solid #d5e0e8;border-radius:14px;background:rgba(255,255,255,.84);font-size:13px}.grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px;align-items:start}.main,.side{display:grid;gap:18px}.side{position:sticky;top:16px}.card{padding:22px;border:1px solid var(--line);border-radius:21px;background:var(--card);box-shadow:var(--shadow)}.head{margin-bottom:16px}.sub{margin:5px 0 0;color:var(--muted);font-size:13px}.num{display:inline-grid;place-items:center;width:28px;height:28px;margin-right:9px;color:var(--blue);border-radius:9px;background:var(--soft);font-size:13px;font-weight:900;vertical-align:2px}.fields{display:grid;gap:16px}.field{display:grid;gap:7px}.labelrow{display:flex;justify-content:space-between;gap:12px}label{font-size:14px;font-weight:800}.hint,.count{color:var(--muted);font-size:11px}.note{margin:0;color:var(--muted);font-size:12px}input,textarea,select{width:100%;border:1px solid #b9c6d2;border-radius:10px;background:#fff;color:var(--text);outline:none}input,select{min-height:46px;padding:10px 12px}textarea{min-height:128px;padding:12px 13px;resize:vertical;line-height:1.65}#jobText{min-height:290px}#promptPreview{min-height:440px;background:#fbfcfd;font:12.5px/1.62 "Cascadia Code",Consolas,"Yu Gothic UI",monospace}input:focus,textarea:focus,select:focus{border-color:#688aa0;box-shadow:0 0 0 4px rgba(49,95,125,.1)}.set{display:grid;grid-template-columns:100px 1fr;gap:9px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.set:last-child{border-bottom:0}.set span:first-child{color:var(--muted);font-weight:700}.set span:last-child{font-weight:800}.criteria{display:inline-block;margin-top:12px;padding:9px 11px;border:1px solid #cfdae3;border-radius:10px;background:#f8fafc;font-size:12px;font-weight:800;text-decoration:none}.settingsDetails{margin-top:14px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;overflow:hidden}.settingsDetails>summary{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;color:#334a5b;background:#f8fafc;font-size:13px;font-weight:850}.settingsDetails>summary:after{content:"＋";display:grid;place-items:center;width:24px;height:24px;border-radius:7px;background:var(--soft);color:var(--blue);font-size:16px}.settingsDetails[open]>summary:after{content:"－"}.settingsBody{display:grid;gap:13px;padding:14px;border-top:1px solid var(--line);background:#fff}.settingsField{display:grid;gap:6px}.settingsField label{font-size:12px}.settingsHelp{margin:0;color:var(--muted);font-size:11px;line-height:1.55}.settingsReset{min-height:39px;padding:8px 12px;border:1px solid #c7d2dc;border-radius:9px;background:#fff;color:#3f5667;font-size:12px;font-weight:800;cursor:pointer}.settingsReset:hover{background:var(--soft)}.summary{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.summary:last-child{border-bottom:0}.summary span{color:var(--muted)}details.card{padding:0;overflow:hidden}summary{display:flex;justify-content:space-between;padding:20px 22px;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary:after{content:"＋";display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:var(--soft);color:var(--blue);font-size:19px}details[open] summary:after{content:"－"}.promptbody{padding:0 22px 22px;border-top:1px solid var(--line)}.promptnote{margin:13px 0;color:var(--muted);font-size:12px}.actions{display:flex;gap:9px;flex-wrap:wrap;padding:14px;margin:0;border:1px solid rgba(188,202,213,.9);border-radius:17px;background:rgba(255,255,255,.96);box-shadow:var(--shadow)}.btn{min-height:45px;padding:10px 16px;border:1px solid transparent;border-radius:11px;font-weight:850;cursor:pointer}.primary{color:#fff;background:var(--blue)}.primary:hover{background:var(--blue2)}.accent{color:#fff;background:var(--purple)}.secondary{border-color:#b9c6d2;background:#fff;color:#334a5b}.danger{margin-left:auto;border-color:#e5c6c6;background:#fff;color:#a34444}.status{display:none;padding:12px 14px;margin-bottom:17px;border-radius:12px;font-size:13px;font-weight:750}.status.show{display:block}.status.success{color:#285d48;border:1px solid #bcdac9;background:#e7f3ec}.status.warning{color:#76531b;border:1px solid #ead6a7;background:#fff4da}.status.error{color:#883737;border:1px solid #e4bcbc;background:#faeaea}.modalbg{display:none;position:fixed;inset:0;z-index:100;padding:22px;background:rgba(20,32,43,.56);backdrop-filter:blur(4px)}.modalbg.open{display:grid;place-items:center}.modal{width:min(760px,100%);max-height:calc(100vh - 44px);overflow:auto;border-radius:22px;background:#fff;box-shadow:0 24px 70px rgba(9,21,31,.3)}.modalhead{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.96)}.close{width:38px;height:38px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:21px;cursor:pointer}.modalbody{padding:21px 23px}.help+ .help{padding-top:18px;margin-top:18px;border-top:1px solid var(--line)}.help h3{margin:0 0 7px;font-size:16px}.help p,.help li{color:#4c5f6d;font-size:13px}.helpnote{padding:13px 15px;border-left:4px solid var(--purple);border-radius:8px;background:#f0edf7;font-size:13px}.footer{padding-top:25px;color:var(--muted);font-size:11px;text-align:center}.jsonCard textarea{min-height:360px;background:#fbfcfd;font:12.5px/1.62 "Cascadia Code",Consolas,"Yu Gothic UI",monospace}.jsonActions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.jsonActions .btn:disabled{cursor:not-allowed;opacity:.45}.validationSummary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin-top:15px}.metric{padding:11px 10px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;text-align:center}.metric b{display:block;font-size:19px;line-height:1.2}.metric span{display:block;margin-top:3px;color:var(--muted);font-size:11px}.validationState{display:none;margin-top:14px}.validationState.show{display:block}.validationLead{padding:13px 15px;border-radius:12px;font-size:13px;font-weight:800}.validationLead.ok{color:#285d48;border:1px solid #bcdac9;background:#e7f3ec}.validationLead.warn{color:#76531b;border:1px solid #ead6a7;background:#fff4da}.validationLead.ng{color:#883737;border:1px solid #e4bcbc;background:#faeaea}.issueGroup{margin-top:14px}.issueGroup h3{margin:0 0 8px;font-size:14px}.issueList{display:grid;gap:8px}.issue{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:12px}.issue.error{border-left:4px solid #bf5555}.issue.warning{border-left:4px solid #ca9634}.issue.info{border-left:4px solid #4b7894}.issueCode{font:700 11px/1.5 "Cascadia Code",Consolas,monospace;color:var(--muted)}.issueText{white-space:pre-wrap}.jsonMeta{display:flex;justify-content:space-between;gap:12px;margin-top:7px;color:var(--muted);font-size:11px}.qualityNote{margin-top:13px;padding:11px 13px;border-left:4px solid var(--blue);border-radius:8px;background:#eef4f7;color:#465c6b;font-size:12px}.passwordRow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px}.miniSettingBtn{min-width:58px;border:1px solid #c7d2dc;border-radius:9px;background:#fff;color:#3f5667;font-size:12px;font-weight:800;cursor:pointer}.connectionActions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.gasResultPanel{display:none;margin-top:15px;padding:15px;border:1px solid var(--line);border-radius:14px;background:#f8fafc}.gasResultPanel.show{display:block}.gasResultBody{margin-top:10px;color:#4c5f6d;font-size:12px;white-space:pre-wrap;word-break:break-word}.gasResultLinks{display:none;gap:9px;flex-wrap:wrap;margin-top:13px}.gasResultLinks.show{display:flex}.gasResultLinks .btn{text-decoration:none}.gasSending{position:relative;overflow:hidden}.gasSending:after{content:"";position:absolute;inset:auto 0 0;height:3px;background:linear-gradient(90deg,transparent,var(--purple),transparent);animation:gasload 1.2s linear infinite}@keyframes gasload{from{transform:translateX(-100%)}to{transform:translateX(100%)}}@media(max-width:680px){.validationSummary{grid-template-columns:repeat(2,minmax(0,1fr))}.jsonActions .btn{flex:1 1 100%}}@media(max-width:900px){.grid{grid-template-columns:1fr}.side{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.wrap{width:calc(100% - 20px);padding-top:10px}.hero{display:grid;padding:20px 18px;border-radius:18px}.heroBtns{justify-content:flex-start}.card{padding:18px;border-radius:17px}.side{grid-template-columns:1fr}summary{padding:18px}.promptbody{padding:0 18px 18px}.btn{flex:1 1 calc(50% - 8px)}.danger{margin-left:0}.modalbg{padding:10px}}
@@ -14,7 +14,7 @@
 .stagebar{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:18px}.stage{padding:10px 8px;border:1px solid var(--line);border-radius:12px;background:#fff;text-align:center;font-size:11px;font-weight:850;color:var(--muted)}.stage b{display:block;color:var(--blue);font-size:13px}.stage.active{border-color:#91acbc;background:#eef5f8}.stage.done{border-color:#b9d8c7;background:#eef8f2;color:#37624c}.pairGrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.tripleGrid{display:grid;grid-template-columns:1.3fr 1fr .85fr;gap:12px}.entityBox{display:grid;gap:12px;padding:15px;border:1px solid var(--line);border-radius:14px;background:#f9fbfc}.entityTitle{font-size:13px;font-weight:900;color:#365466}.stageCard{border-left:5px solid var(--blue)}.researchCard{border-left-color:#50788f}.evidenceCard{border-left-color:#6a7f99}.proCard{border-left-color:var(--purple)}.finalCard{border-left-color:#4d8066}.miniActions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.stepNote{padding:11px 13px;border:1px solid #d5e1e8;border-radius:11px;background:#f6fafc;color:#4a6374;font-size:12px}.stepNote strong{color:#2e4e63}.readonlyPrompt{min-height:360px;background:#f8fafc!important;font:12px/1.6 "Cascadia Code",Consolas,"Yu Gothic UI",monospace}.conversionPrompt{min-height:260px}.researchJson{min-height:300px;font:12px/1.55 "Cascadia Code",Consolas,"Yu Gothic UI",monospace}.proPrompt{min-height:400px}.disabledPanel{opacity:.56}.badge{display:inline-flex;align-items:center;padding:3px 8px;border-radius:999px;background:var(--soft);color:var(--blue);font-size:11px;font-weight:850}.required{color:#a44646;font-size:11px}.optional{color:var(--muted);font-size:11px}.flowList{margin:0;padding-left:20px;font-size:12px;color:#536675}.flowList li{margin:5px 0}.sourceHint{margin-top:8px;color:#637786;font-size:11px}.metricSix{grid-template-columns:repeat(6,minmax(0,1fr))}.metricFour{grid-template-columns:repeat(4,minmax(0,1fr))}@media(max-width:760px){.stagebar{grid-template-columns:1fr}.pairGrid,.tripleGrid{grid-template-columns:1fr}.metricSix,.metricFour{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 
-/* v4.5 workflow navigation and operation-area clarity */
+/* v4.6 all-strength proposal output and workflow clarity */
 :root{--dr:#2f6f9e;--dr-dark:#245777;--dr-soft:#eaf4fb;--dr-line:#a9c9df;--pro:#73549d;--pro-dark:#5a417c;--pro-soft:#f3eef9;--pro-line:#c9b9df;--green:#2f7a57;--green-dark:#246044;--green-soft:#eaf5ef}
 .stagebar{position:sticky;top:0;z-index:40;padding:8px;margin:0 0 18px;border:1px solid rgba(201,213,222,.9);border-radius:16px;background:rgba(244,246,248,.94);box-shadow:0 10px 28px rgba(34,52,67,.09);backdrop-filter:blur(12px)}
 .stage{position:relative;appearance:none;width:100%;min-width:0;padding:9px 7px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--muted);text-align:center;font-size:10.5px;font-weight:800;line-height:1.35;cursor:pointer;transition:.18s ease}
@@ -79,7 +79,7 @@ https://www.example.co.jp/interview/"></textarea></div></div>
 <article class="card jsonCard stageCard finalCard workflowCard receiveCard proWorkflowCard" data-workflow-step="5" id="workflowStep5"><div class="workflowLabel"><span class="stepToken">STEP 5</span><span class="systemToken">PRO GEM</span><span class="directionToken">↙ アプリへ戻す</span></div><div class="head"><h2>Pro分析の回答を貼り付ける</h2><p class="sub">専用Gemの回答を貼り付け、厳格確認後にGoogle Sheetsを作成します。</p></div><div class="operationHero"><span class="operationIcon">↙</span><div><b>ここへPro分析の回答を貼り付け</b><p>JSONの見た目を理解する必要はありません。専用Gemの回答全体をそのまま貼り付けます。</p></div></div><div class="field"><div class="labelrow"><label class="pasteLabel" for="jsonInput">Pro分析回答の貼付け欄</label><span class="count" id="jsonCount">0文字</span></div><textarea class="researchJson" id="jsonInput" placeholder="Geminiの「回答をコピー」で取得した内容を、そのまま貼り付けてください。作業コードや実行結果は自動で除外します。" spellcheck="false"></textarea><p class="qualityNote" hidden="" id="finalExtractionNotice"></p><p class="completionNote">エラー0件になったら、緑の「Google Sheetsを作成」ボタンが最終操作です。</p><div class="jsonMeta"><span>入力内容はブラウザ内だけで処理します。</span><span id="jsonSavedState">未確認</span></div></div><div class="jsonActions"><button class="btn primary" id="validateJsonBtn" type="button">求人分析結果を確認</button><button class="btn accent" disabled="" id="createSheetsBtn" type="button">Google Sheetsを作成</button><button class="btn secondary" disabled="" id="copyGasJsonBtn" type="button">作成データをコピー（予備）</button><button class="btn secondary" disabled="" id="copyRepairBtn" title="検出したエラー・警告を修正する指示をコピーし、同じProチャットへ戻します" type="button">修正指示をコピー（Geminiへ戻す）</button><button class="btn secondary" id="clearJsonBtn" type="button">求人分析結果をクリア</button></div><div class="validationSummary"><div class="metric"><b id="metricRows">－</b><span>分析行</span></div><div class="metric"><b id="metricProposals">－</b><span>提案数</span></div><div class="metric"><b id="metricSources">－</b><span>ソース数</span></div><div class="metric"><b id="metricErrors">－</b><span>エラー</span></div><div class="metric"><b id="metricWarnings">－</b><span>警告</span></div></div><div class="validationState" id="validationState"><div class="validationLead" id="validationLead"></div><div class="issueGroup" id="errorGroup"><h3>修正が必要なエラー</h3><div class="issueList" id="errorList"></div></div><div class="issueGroup" id="warningGroup"><h3>確認を推奨する警告</h3><div class="issueList" id="warningList"></div></div></div><p class="qualityNote">警告は処理を止めませんが、企業情報の適用範囲、提案の根拠、比較条件を確認してください。直接送信できない場合は「作成データをコピー（予備）」を使用できます。</p><div class="gasResultPanel" id="gasResultPanel"><div class="validationLead" id="gasResultLead"></div><div class="gasResultBody" id="gasResultBody"></div><div class="gasResultLinks"><a class="btn primary" id="openSpreadsheetBtn" rel="noopener" target="_blank">Google Sheetsを開く</a><a class="btn secondary" id="openFolderBtn" rel="noopener" target="_blank">保存先フォルダを開く</a></div></div></article>
 </section>
 <aside class="side">
-<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">Deep Researchの調査範囲と専用Gemの提案条件です。</p></div><div class="set"><span>調査</span><span>Deep Research</span></div><div class="set"><span>最終分析</span><span>Pro／思考モード</span></div><div class="set"><span>評価基準</span><span>専用GemのKnowledge</span></div><div class="set"><span>提案数</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>調査範囲</span><span id="webSettingSummary">指定URL優先＋一般Web</span></div><div class="set"><span>Sheets連携</span><span id="gasConnectionSummary">未設定</span></div><div class="set"><span>評価基準版</span><span>2026-08-04-v1</span></div><div class="set"><span>分析方針版</span><span>2026-08-05-v1</span></div><div class="set"><span>分析JSON</span><span>v2.0</span></div><div class="set"><span>Workflow</span><span>v4.5</span></div><div class="set"><span>案件ID</span><span id="caseIdSummary">生成中</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">文面提案数</label><select id="proposalCount"><option value="1">1項目</option><option selected="" value="3">3項目（標準）</option><option value="5">5項目</option></select></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option selected="" value="100">100文字程度（標準）</option><option value="150">150文字程度</option></select></div><div class="settingsField"><label for="webMode">Deep Researchの調査範囲</label><select id="webMode"><option value="specified">指定URL・公式ドメイン中心</option><option selected="" value="balanced">公式情報優先＋信頼できる補足（標準）</option><option value="broad">一般Webを広く調査</option></select></div><button class="settingsReset" id="resetSettingsBtn" type="button">標準設定に戻す</button></div></details><details class="settingsDetails"><summary>Google Sheets連携設定</summary><div class="settingsBody"><div class="settingsField"><label for="gasWebAppUrl">GAS WebアプリURL</label><input aria-readonly="true" autocomplete="off" id="gasWebAppUrl" readonly="" type="url" value="https://script.google.com/macros/s/AKfycbyz5OPM-HD9u9hhxCeNyvCP82pgcbngZp8csWWYqdQzpNtk-4lQuxQdU1Si3LRmCh_E/exec"/><p class="settingsHelp">接続先URLはアプリに設定済みです。公開されても認証情報にはならず、接続キーは別に管理されます。</p></div><div class="settingsField"><label for="gasAccessKey">接続キー</label><div class="passwordRow"><input autocomplete="off" id="gasAccessKey" placeholder="configureWebApp()で発行" type="password"/><button class="miniSettingBtn" id="toggleGasKeyBtn" type="button">表示</button></div><p class="settingsHelp">GitHubリポジトリには保存されず、このブラウザのローカルストレージだけに保存されます。</p><a class="internalKeyLink" href="https://docs.google.com/document/d/1-imR39CztYw-vIajSVUjnAYy_GDtaRDi7ND5XJQt6VI/" rel="noopener" target="_blank">↗ 社内接続キーを確認 <small>（組織内限定）</small></a></div><div class="connectionActions"><button class="settingsReset" id="openGasStatusBtn" type="button">接続状態ページを開く</button><button class="settingsReset" id="clearGasSettingsBtn" type="button">接続キーをクリア</button></div></div></details><a class="criteria" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/" rel="noopener" target="_blank">↗ 評価基準を開く</a></article>
+<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">Deep Researchの調査範囲と専用Gemの提案条件です。</p></div><div class="set"><span>調査</span><span>Deep Research</span></div><div class="set"><span>最終分析</span><span>Pro／思考モード</span></div><div class="set"><span>評価基準</span><span>専用GemのKnowledge</span></div><div class="set"><span>重点提案</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>調査範囲</span><span id="webSettingSummary">指定URL優先＋一般Web</span></div><div class="set"><span>Sheets連携</span><span id="gasConnectionSummary">未設定</span></div><div class="set"><span>評価基準版</span><span>2026-08-04-v1</span></div><div class="set"><span>分析方針版</span><span>2026-08-07-v1</span></div><div class="set"><span>分析JSON</span><span>v2.1</span></div><div class="set"><span>Workflow</span><span>v4.6</span></div><div class="set"><span>案件ID</span><span id="caseIdSummary">生成中</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">重点提案数</label><select id="proposalCount"><option value="1">1項目</option><option selected="" value="3">3項目（標準）</option><option value="5">5項目</option></select><p class="settingsHelp">貴社原稿分析では「現在伝わっている魅力」がある全行に提案を出力します。この件数は評価サマリーと商談準備メモで重点表示する件数です。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option selected="" value="100">100文字程度（標準）</option><option value="150">150文字程度</option></select></div><div class="settingsField"><label for="webMode">Deep Researchの調査範囲</label><select id="webMode"><option value="specified">指定URL・公式ドメイン中心</option><option selected="" value="balanced">公式情報優先＋信頼できる補足（標準）</option><option value="broad">一般Webを広く調査</option></select></div><button class="settingsReset" id="resetSettingsBtn" type="button">標準設定に戻す</button></div></details><details class="settingsDetails"><summary>Google Sheets連携設定</summary><div class="settingsBody"><div class="settingsField"><label for="gasWebAppUrl">GAS WebアプリURL</label><input aria-readonly="true" autocomplete="off" id="gasWebAppUrl" readonly="" type="url" value="https://script.google.com/macros/s/AKfycbyz5OPM-HD9u9hhxCeNyvCP82pgcbngZp8csWWYqdQzpNtk-4lQuxQdU1Si3LRmCh_E/exec"/><p class="settingsHelp">接続先URLはアプリに設定済みです。公開されても認証情報にはならず、接続キーは別に管理されます。</p></div><div class="settingsField"><label for="gasAccessKey">接続キー</label><div class="passwordRow"><input autocomplete="off" id="gasAccessKey" placeholder="configureWebApp()で発行" type="password"/><button class="miniSettingBtn" id="toggleGasKeyBtn" type="button">表示</button></div><p class="settingsHelp">GitHubリポジトリには保存されず、このブラウザのローカルストレージだけに保存されます。</p><a class="internalKeyLink" href="https://docs.google.com/document/d/1-imR39CztYw-vIajSVUjnAYy_GDtaRDi7ND5XJQt6VI/" rel="noopener" target="_blank">↗ 社内接続キーを確認 <small>（組織内限定）</small></a></div><div class="connectionActions"><button class="settingsReset" id="openGasStatusBtn" type="button">接続状態ページを開く</button><button class="settingsReset" id="clearGasSettingsBtn" type="button">接続キーをクリア</button></div></div></details><a class="criteria" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/" rel="noopener" target="_blank">↗ 評価基準を開く</a></article>
 <article class="card"><div class="head"><h2>入力・進行状況</h2></div><div class="summary"><span>対象企業</span><strong id="targetCompanySummary">未入力</strong></div><div class="summary"><span>求人情報</span><strong id="jobSummary">未入力</strong></div><div class="summary"><span>競合設定</span><strong id="competitorCount">0/2社</strong></div><div class="summary"><span>企業調査結果</span><strong id="researchSummary">未確認</strong></div><div class="summary"><span>Gem用プロンプト</span><strong id="proSummary">未生成</strong></div><div class="summary"><span>求人分析結果</span><strong id="finalSummary">未確認</strong></div></article>
 <article class="card"><div class="head"><h2>運用手順</h2></div><ol class="flowList"><li>STEP 1　案件・企業情報を入力</li><li>STEP 2　Deep Researchへ送る</li><li>STEP 3　Deep Researchから戻す</li><li>STEP 4　専用Gemへ送る</li><li>STEP 5　専用Gemから戻し、Sheetsを作成</li></ol></article>
 </aside>
@@ -281,9 +281,9 @@ FINAL RESPONSE CONTRACT:
 
 最終回答はJSONオブジェクト本体1件だけを出力する。これは通常のDeep Researchレポートより優先される出力契約である。</script>
 <script id="conversionPromptTemplate" type="text/plain">この工程はv3.1では使用しません。</script>
-<script id="proPromptTemplate" type="text/plain"># 求人原稿魅力度評価・Pro分析JSON出力プロンプト v4.5
+<script id="proPromptTemplate" type="text/plain"># 求人原稿魅力度評価・Pro分析JSON出力プロンプト v4.6
 
-最重要：最終回答は、Knowledgeに登録された `gemini_output_schema_v2.0_strict.txt` に完全適合するJSONオブジェクト1件だけにしてください。文章レポート、Markdown、コードフェンス、作業ログ、中間JSONは出力しません。
+最重要：最終回答は、Knowledgeに登録された `gemini_output_schema_v2.1_strict.txt` に完全適合するJSONオブジェクト1件だけにしてください。文章レポート、Markdown、コードフェンス、作業ログ、中間JSONは出力しません。
 
 応答契約：最初の非空白文字は `{`、最後の非空白文字は `}` とします。内部でPython・Pandas・ファイル生成・Schema検証を使用しても、コード、ログ、途中表示、空テンプレートJSON、先頭だけのJSONプレビューは回答へ一切出しません。完成JSONを1回だけ返してください。
 
@@ -304,7 +304,7 @@ FINAL RESPONSE CONTRACT:
   "employment_type_hint": {{EMPLOYMENT_TYPE_HINT_JSON}},
   "job_url": {{JOB_URL_JSON}},
   "target_persona": {{TARGET_PERSONA_JSON}},
-  "proposal_count": {{PROPOSAL_COUNT}},
+  "priority_proposal_count": {{PROPOSAL_COUNT}},
   "proposal_text_target": {{TEXT_LENGTH}},
   "current_date": "{{CURRENT_DATE}}"
 }
@@ -356,7 +356,20 @@ FINAL RESPONSE CONTRACT:
     "evidence_refs": ["JOB_TEXT"],
     "confidence": "high"
   },
-  "proposal": null
+  "proposal": {
+    "rank": null,
+    "origin": "job_text_strengthening",
+    "current_strength": "現在確認できる具体的な魅力",
+    "enhancement_point": "数字・事例・対象範囲を加えて具体化する",
+    "text": "現在の魅力を、求職者が働く姿を想像できる文面へ強化する。",
+    "selection_reason": "現在伝わっている魅力をさらに具体化できるため",
+    "confirmation_required": false,
+    "confirmation_question": null,
+    "expected_effects": ["仕事内容の理解促進"],
+    "statement_status": "verified",
+    "evidence_refs": ["JOB_TEXT"],
+    "confidence": "high"
+  }
 }
 ```
 
@@ -373,7 +386,20 @@ FINAL RESPONSE CONTRACT:
     "evidence_refs": ["S003"],
     "confidence": "medium"
   },
-  "proposal": null
+  "proposal": {
+    "rank": 1,
+    "origin": "research_discovery",
+    "current_strength": "企業調査で確認できた有給休暇取得率",
+    "enhancement_point": "今回の職種・勤務地での適用範囲と取得例を確認する",
+    "text": "有給休暇取得率は［今回の職種・勤務地での実績］。［取得例］のように休みを取りやすい環境です。",
+    "selection_reason": "応募前の休暇取得不安を軽減できるため",
+    "confirmation_required": true,
+    "confirmation_question": "この取得率は今回の職種・勤務地にも適用されますか。実際の取得例も教えてください。",
+    "expected_effects": ["応募前の不安軽減", "長期就業イメージの形成"],
+    "statement_status": "template_with_placeholders",
+    "evidence_refs": ["S003"],
+    "confidence": "medium"
+  }
 }
 ```
 
@@ -404,19 +430,21 @@ FINAL RESPONSE CONTRACT:
 - `status`: `verified | hypothesis | needs_confirmation`
 - `confidence`: `high | medium | low`
 
-## 3. 提案選定
+## 3. 全魅力行への訴求強化提案と重点提案選定
 
 文面提案は不足へのダメ出しではなく、採用訴求を強くする提案として作る。
+
+`strength` がオブジェクトであるすべての行に、必ず `proposal` を作成する。`strength: null` の行だけ `proposal: null` とする。つまり、「現在伝わっている魅力」がある行では、`さらに引き出せるポイント`、`訴求強化文面例`、`追加確認したい情報`、`期待できる採用効果`をすべて出力する。
 
 候補は次の3種類。
 
 1. `job_text_strengthening`：求人原稿で記載ありの魅力を、数字・事例・仕組み・対象範囲で具体化する。
 2. `research_discovery`：求人原稿にはないが、企業調査で確認できた魅力を求人へ活用する。
-3. `gap_fill`：上記で指定数に満たない場合、または特に採用効果が高い場合に、不足項目を前向きに補う。
+3. `gap_fill`：JOB_TEXTや企業調査から関連する魅力・仮説をstrengthとして置けるが、追加確認によって初めて強い訴求へ育つ場合に使う。件数合わせだけを理由に作らない。
 
 文面作成優先順位列は使わない。No.4を強制的に1位にしない。
 
-選定された `proposal` は、次の12キーを必ずすべて持つ。
+すべての `proposal` は、次の12キーを必ずすべて持つ。
 
 ```json
 {
@@ -434,6 +462,8 @@ FINAL RESPONSE CONTRACT:
   "confidence": "medium"
 }
 ```
+
+`rank` は重点提案だけに付ける。アプリ設定の `priority_proposal_count` 件を、採用効果・具体性・根拠・商談での有用性から総合判断して1位から連番にする。重点外のproposalは `rank: null` とする。strength件数が設定件数より少ない場合は、存在するstrength件数までを重点提案とする。
 
 `expected_effects` は文字列ではなく配列。1～2件を次から選ぶ。
 
@@ -545,7 +575,7 @@ FINAL RESPONSE CONTRACT:
 
 ## 6. sales_meeting
 
-`proposal_notes` は、選定proposalとNo.・rank・originを完全一致させる。各要素は次の10キーを持つ。
+`proposal_notes` は、`rank` が1以上の重点proposalだけを対象にし、No.・rank・originを完全一致させる。`rank: null` のproposalは貴社原稿分析には出力するが、商談準備メモのproposal_notesには含めない。各要素は次の10キーを持つ。
 
 ```json
 {
@@ -660,20 +690,20 @@ status: `used | searched_no_adoptable_info | not_searched | not_applicable`
 
 ## 10. 出力直前の機械検査
 
-最終出力前に、内部で必ず `gemini_output_schema_v2.0_strict.txt` へ照合し、エラー0件になるまで修正する。検査コードや結果は出力しない。
+最終出力前に、内部で必ず `gemini_output_schema_v2.1_strict.txt` へ照合し、エラー0件になるまで修正する。検査コードや結果は出力しない。
 
 特に次を確認する。
 
 - 4つのバージョンとcase_idが入力値と一致
 - case_summaryは4キーだけ
-- 全analysis_rowsに`strength`と`proposal`があり、未使用時はnull
+- 全analysis_rowsに`strength`と`proposal`があり、strengthがある行はproposalもオブジェクト、strengthがnullの行はproposalもnull
 - `result`と`job_excerpt`はJOB_TEXTだけで整合
 - strengthは`text/status/evidence_refs/confidence`
-- proposalの12キーが揃い、expected_effectsは配列
+- proposalの12キーが揃い、expected_effectsは配列。重点提案だけrankが1以上、重点外はrank:null
 - statement_statusにdraft・readyを使っていない
 - competitor_idとcompetitor_valuesの構造が正しい
 - summary配列はオブジェクト配列
-- proposal_notesの10キーが揃う
+- proposal_notesの10キーが揃い、rankが1以上の重点proposalだけと一致する
 - story_stepsは6つのオブジェクト
 - sourcesがFINAL_SOURCES_JSON_DO_NOT_EDITと全項目で一致
 - すべてのevidence_refsがALLOWED_EVIDENCE_REFS内にある
@@ -682,13 +712,13 @@ status: `used | searched_no_adoptable_info | not_searched | not_applicable`
 - additionalPropertiesに相当する独自キーを追加していない
 - JSON.parse可能
 
-送信直前に、回答が完成JSONだけであること、analysis_rowsが必須件数、proposalが設定件数、story_stepsが6件であることを確認する。空の初期テンプレート、Pythonコード、実行ログ、JSONの先頭プレビューを回答へ含めない。
+送信直前に、回答が完成JSONだけであること、analysis_rowsが必須件数、strengthがある全行にproposalがあること、重点proposalが設定件数（strength件数が少ない場合はその件数）、story_stepsが6件であることを確認する。空の初期テンプレート、Pythonコード、実行ログ、JSONの先頭プレビューを回答へ含めない。
 
 最終回答はRFC 8259準拠のJSONオブジェクト本体1件だけを出力する。</script>
 <script>"use strict";
-const KEY="job_appeal_prompt_maker_v4_5",OLD_KEYS=["job_appeal_prompt_maker_v4_4","job_appeal_prompt_maker_v4_3","job_appeal_prompt_maker_v4_2","job_appeal_prompt_maker_v4_1","job_appeal_prompt_maker_v4_0","job_appeal_prompt_maker_v3_6","job_appeal_prompt_maker_v3_5","job_appeal_prompt_maker_v3_4","job_appeal_prompt_maker_v3_3","job_appeal_prompt_maker_v3_2","job_appeal_prompt_maker_v3_1","job_appeal_prompt_maker_v3_0","job_appeal_prompt_maker_v2_4","job_appeal_prompt_maker_v2_3","job_appeal_prompt_maker_v2_2"],GEMINI_RESEARCH="https://gemini.google.com/app",GEMINI_PRO="https://gemini.google.com/gem/d3becb7771cb";
+const KEY="job_appeal_prompt_maker_v4_6",OLD_KEYS=["job_appeal_prompt_maker_v4_5","job_appeal_prompt_maker_v4_4","job_appeal_prompt_maker_v4_3","job_appeal_prompt_maker_v4_2","job_appeal_prompt_maker_v4_1","job_appeal_prompt_maker_v4_0","job_appeal_prompt_maker_v3_6","job_appeal_prompt_maker_v3_5","job_appeal_prompt_maker_v3_4","job_appeal_prompt_maker_v3_3","job_appeal_prompt_maker_v3_2","job_appeal_prompt_maker_v3_1","job_appeal_prompt_maker_v3_0","job_appeal_prompt_maker_v2_4","job_appeal_prompt_maker_v2_3","job_appeal_prompt_maker_v2_2"],GEMINI_RESEARCH="https://gemini.google.com/app",GEMINI_PRO="https://gemini.google.com/gem/d3becb7771cb";
 const GAS_WEB_APP_URL="https://script.google.com/macros/s/AKfycbyz5OPM-HD9u9hhxCeNyvCP82pgcbngZp8csWWYqdQzpNtk-4lQuxQdU1Si3LRmCh_E/exec";
-const RULESET_VERSION="2026-08-04-v1",EVALUATION_TABLE_SCHEMA_VERSION="1.0",ANALYSIS_POLICY_VERSION="2026-08-05-v1",FINAL_JSON_SCHEMA_VERSION="2.0";
+const RULESET_VERSION="2026-08-04-v1",EVALUATION_TABLE_SCHEMA_VERSION="1.0",ANALYSIS_POLICY_VERSION="2026-08-07-v1",FINAL_JSON_SCHEMA_VERSION="2.1";
 const DEFAULTS={proposalCount:"3",textLength:"100",webMode:"balanced",gasWebAppUrl:GAS_WEB_APP_URL,gasAccessKey:""};
 const WEB_LABELS={specified:"指定URL・公式ドメイン中心",balanced:"公式情報優先＋信頼できる補足",broad:"一般Webを広く調査"};
 const $=id=>document.getElementById(id);
@@ -927,7 +957,7 @@ function validateGeminiResult(data,meta={extra:false}){
     addIf(errors,unexpected.length>0,"error","UNEXPECTED_NOS",`対象外No.が含まれています: ${unexpected.join(", ")}`,"analysis_rows");
   }
 
-  const proposalOrigins=new Set(["job_text_strengthening","research_discovery","gap_fill"]),proposals=[];
+  const proposalOrigins=new Set(["job_text_strengthening","research_discovery","gap_fill"]),proposals=[],strengthRows=[];
   rows.forEach((row,i)=>{
     const path=`analysis_rows[${i}]`;
     if(!isObject(row)){errors.push(issue("error","ROW_TYPE","分析行はオブジェクトである必要があります。",path));return}
@@ -944,6 +974,7 @@ function validateGeminiResult(data,meta={extra:false}){
     if(row.strength!==null&&row.strength!==undefined){
       if(!isObject(row.strength))errors.push(issue("error","STRENGTH_TYPE","strengthはオブジェクトまたはnullです。",path+".strength"));
       else{
+        strengthRows.push({no:row.no,strength:row.strength});
         validateExactKeys(errors,row.strength,["text","status","evidence_refs","confidence"],path+".strength");
         addIf(errors,typeof row.strength.text!=="string"||!row.strength.text.trim(),"error","STRENGTH_TEXT_REQUIRED","strength.textがありません。",path+".strength.text");
         addIf(errors,!new Set(["verified","hypothesis","needs_confirmation"]).has(row.strength.status),"error","STRENGTH_STATUS","strength.statusが不正です。",path+".strength.status");
@@ -953,12 +984,15 @@ function validateGeminiResult(data,meta={extra:false}){
         if(["hypothesis","needs_confirmation"].includes(row.strength.status)&&row.strength.confidence==="high")warnings.push(issue("warning","HYPOTHESIS_HIGH",`No.${row.no}は仮説ですがconfidenceがhighです。`,path+".strength.confidence"));
       }
     }
+    const hasStrength=isObject(row.strength),hasProposal=isObject(row.proposal);
+    addIf(errors,hasStrength&&!hasProposal,"error","MISSING_PROPOSAL_FOR_STRENGTH",`No.${row.no}は現在伝わっている魅力があるため、4つの提案列を出力するproposalが必要です。`,path+".proposal");
+    addIf(errors,!hasStrength&&hasProposal,"error","PROPOSAL_WITHOUT_STRENGTH",`No.${row.no}はstrengthがないためproposalもnullにしてください。`,path+".proposal");
     if(row.proposal!==null&&row.proposal!==undefined){
       if(!isObject(row.proposal))errors.push(issue("error","PROPOSAL_TYPE","proposalはオブジェクトまたはnullです。",path+".proposal"));
       else{
         const p=row.proposal;proposals.push({no:row.no,...p});
         validateExactKeys(errors,p,["rank","origin","current_strength","enhancement_point","text","selection_reason","confirmation_required","confirmation_question","expected_effects","statement_status","evidence_refs","confidence"],path+".proposal");
-        addIf(errors,!Number.isInteger(p.rank),"error","PROPOSAL_RANK","提案順位は整数である必要があります。",path+".proposal.rank");
+        addIf(errors,p.rank!==null&&(!Number.isInteger(p.rank)||p.rank<1||p.rank>5),"error","PROPOSAL_RANK","重点提案のrankは1～5の整数、重点外はnullにしてください。",path+".proposal.rank");
         addIf(errors,!proposalOrigins.has(p.origin),"error","PROPOSAL_ORIGIN","originはjob_text_strengthening・research_discovery・gap_fillのいずれかです。",path+".proposal.origin");
         addIf(errors,typeof p.current_strength!=="string"||!p.current_strength.trim(),"error","CURRENT_STRENGTH_REQUIRED","current_strengthがありません。",path+".proposal.current_strength");
         addIf(errors,typeof p.enhancement_point!=="string"||!p.enhancement_point.trim(),"error","ENHANCEMENT_POINT_REQUIRED","enhancement_pointがありません。",path+".proposal.enhancement_point");
@@ -982,15 +1016,16 @@ function validateGeminiResult(data,meta={extra:false}){
     }
   });
 
-  const proposalCount=Number(el.proposalCount.value),ranks=proposals.map(p=>p.rank).sort((a,b)=>a-b);
-  addIf(errors,proposals.length!==proposalCount,"error","PROPOSAL_COUNT",`提案数が設定値と一致しません。設定: ${proposalCount} / JSON: ${proposals.length}`,"analysis_rows[].proposal");
-  addIf(errors,ranks.some((r,i)=>r!==i+1),"error","PROPOSAL_RANK_SEQUENCE",`提案順位は1から${proposalCount}の連番にしてください。現在: ${ranks.join(", ")}`,"analysis_rows[].proposal.rank");
+  const priorityLimit=Number(el.proposalCount.value),expectedPriorityCount=Math.min(priorityLimit,strengthRows.length),priorityProposals=proposals.filter(p=>Number.isInteger(p.rank)),ranks=priorityProposals.map(p=>p.rank).sort((a,b)=>a-b);
+  addIf(errors,proposals.length!==strengthRows.length,"error","ALL_STRENGTH_PROPOSALS_REQUIRED",`現在伝わっている魅力がある全行に提案が必要です。魅力: ${strengthRows.length} / 提案: ${proposals.length}`,"analysis_rows[].proposal");
+  addIf(errors,priorityProposals.length!==expectedPriorityCount,"error","PRIORITY_PROPOSAL_COUNT",`重点提案数が設定と一致しません。設定上限: ${priorityLimit} / 魅力件数: ${strengthRows.length} / 期待: ${expectedPriorityCount} / JSON: ${priorityProposals.length}`,"analysis_rows[].proposal.rank");
+  addIf(errors,ranks.some((r,i)=>r!==i+1),"error","PROPOSAL_RANK_SEQUENCE",`重点提案の順位は1から${expectedPriorityCount}の連番にしてください。現在: ${ranks.join(", ")}`,"analysis_rows[].proposal.rank");
   if(proposals.length&&proposals.every(p=>p.origin==="gap_fill"))warnings.push(issue("warning","ONLY_GAP_FILL_PROPOSALS","すべての提案が不足補完です。原稿内の既存魅力や企業調査で見つかった魅力を深掘りできないか確認してください。","analysis_rows[].proposal.origin"));
 
   const notes=data.sales_meeting&&Array.isArray(data.sales_meeting.proposal_notes)?data.sales_meeting.proposal_notes:[];
-  const noteKeys=notes.map(n=>`${n.rank}:${n.no}`).sort(),proposalKeys=proposals.map(p=>`${p.rank}:${p.no}`).sort();
-  addIf(errors,JSON.stringify(noteKeys)!==JSON.stringify(proposalKeys),"error","PROPOSAL_NOTES_MISMATCH","商談準備メモのNo.・順位が選定提案と一致しません。","sales_meeting.proposal_notes");
-  notes.forEach((n,i)=>{const path=`sales_meeting.proposal_notes[${i}]`;if(!isObject(n)){errors.push(issue("error","PROPOSAL_NOTE_TYPE","proposal_notesの要素はオブジェクトです。",path));return}validateExactKeys(errors,n,["rank","no","proposal_origin","sales_talk","confirmation_question","praise_point","proposal_bridge","cautions","evidence_refs","confidence"],path);const p=proposals.find(x=>x.no===n.no&&x.rank===n.rank);addIf(errors,!proposalOrigins.has(n.proposal_origin),"error","PROPOSAL_NOTE_ORIGIN",`proposal_notes[${i}].proposal_originが不正です。`,path+".proposal_origin");if(p)addIf(errors,n.proposal_origin!==p.origin,"error","PROPOSAL_NOTE_ORIGIN_MISMATCH",`No.${n.no}のproposal_originがanalysis_rowsと一致しません。`,path+".proposal_origin");["sales_talk","confirmation_question","praise_point","proposal_bridge"].forEach(k=>addIf(errors,typeof n[k]!=="string"||!n[k].trim(),"error","PROPOSAL_NOTE_VALUE",`${k}がありません。`,path+"."+k));addIf(errors,!Array.isArray(n.cautions),"error","PROPOSAL_NOTE_CAUTIONS","cautionsは配列です。",path+".cautions");addIf(errors,!Array.isArray(n.evidence_refs),"error","PROPOSAL_NOTE_REFS","evidence_refsは配列です。",path+".evidence_refs");addIf(errors,!CONFIDENCE_VALUES.has(n.confidence),"error","PROPOSAL_NOTE_CONFIDENCE","confidenceが不正です。",path+".confidence")});
+  const noteKeys=notes.map(n=>`${n.rank}:${n.no}`).sort(),proposalKeys=priorityProposals.map(p=>`${p.rank}:${p.no}`).sort();
+  addIf(errors,JSON.stringify(noteKeys)!==JSON.stringify(proposalKeys),"error","PROPOSAL_NOTES_MISMATCH","商談準備メモはrankが1以上の重点提案だけとNo.・順位を一致させてください。","sales_meeting.proposal_notes");
+  notes.forEach((n,i)=>{const path=`sales_meeting.proposal_notes[${i}]`;if(!isObject(n)){errors.push(issue("error","PROPOSAL_NOTE_TYPE","proposal_notesの要素はオブジェクトです。",path));return}validateExactKeys(errors,n,["rank","no","proposal_origin","sales_talk","confirmation_question","praise_point","proposal_bridge","cautions","evidence_refs","confidence"],path);const p=priorityProposals.find(x=>x.no===n.no&&x.rank===n.rank);addIf(errors,!proposalOrigins.has(n.proposal_origin),"error","PROPOSAL_NOTE_ORIGIN",`proposal_notes[${i}].proposal_originが不正です。`,path+".proposal_origin");if(p)addIf(errors,n.proposal_origin!==p.origin,"error","PROPOSAL_NOTE_ORIGIN_MISMATCH",`No.${n.no}のproposal_originがanalysis_rowsと一致しません。`,path+".proposal_origin");["sales_talk","confirmation_question","praise_point","proposal_bridge"].forEach(k=>addIf(errors,typeof n[k]!=="string"||!n[k].trim(),"error","PROPOSAL_NOTE_VALUE",`${k}がありません。`,path+"."+k));addIf(errors,!Array.isArray(n.cautions),"error","PROPOSAL_NOTE_CAUTIONS","cautionsは配列です。",path+".cautions");addIf(errors,!Array.isArray(n.evidence_refs),"error","PROPOSAL_NOTE_REFS","evidence_refsは配列です。",path+".evidence_refs");addIf(errors,!CONFIDENCE_VALUES.has(n.confidence),"error","PROPOSAL_NOTE_CONFIDENCE","confidenceが不正です。",path+".confidence")});
   const steps=data.sales_meeting&&Array.isArray(data.sales_meeting.story_steps)?data.sales_meeting.story_steps:[];
   addIf(errors,steps.length!==6,"error","STORY_COUNT","商談ストーリーは6件必要です。","sales_meeting.story_steps");
   steps.forEach((s,i)=>{const path=`sales_meeting.story_steps[${i}]`;addIf(errors,!isObject(s)||s.step!==i+1,"error","STORY_SEQUENCE",`商談ストーリー${i+1}番目のstepが不正です。`,path);if(isObject(s)){validateExactKeys(errors,s,["step","title","talk"],path);addIf(errors,s.title!==STORY_TITLES[i],"error","STORY_TITLE",`タイトルは「${STORY_TITLES[i]}」にしてください。`,path+".title");addIf(errors,typeof s.talk!=="string"||!s.talk.trim(),"error","STORY_TALK_REQUIRED","talkがありません。",path+".talk")}});
@@ -1088,7 +1123,7 @@ window[GAS_POLL_CALLBACK]=payload=>{const script=document.getElementById("gasRes
 function handleGasCallbackTimeout(){if(!pendingGasRequestId)return;clearTimeout(gasSubmitTimer);stopGasPolling();const result={success:false,indeterminate:true,request_id:pendingGasRequestId,error_code:"RESULT_CALLBACK_TIMEOUT",message:"Google Sheetsの作成結果をこの画面で自動確認できませんでした。別タブで作成結果を確認してください。同じボタンを再度押すと、同じリクエストIDの結果を再取得できます。"};pendingGasRequestId="";gasCallbackToken="";lastReportResult=result;$("createSheetsBtn").textContent="Google Sheetsを作成";$("createSheetsBtn").disabled=!(lastValidation&&!lastValidation.errors.length);renderGasResult(result);save();updateProgress();indicators();status("自動確認を終了しました。別タブの結果を確認してください。","warning")}
 function submitGasRequest(r){const url=el.gasWebAppUrl.value.trim(),key=el.gasAccessKey.value.trim();if(!validGasWebAppUrl(url)){status("GAS WebアプリURL（/exec）を詳細設定へ入力してください。","error");el.gasWebAppUrl.focus();return}if(key.length<24){status("GASの接続キーを詳細設定へ入力してください。","error");el.gasAccessKey.focus();return}const request=gasRequestObject(r);pendingGasRequestId=request.request_id;gasCallbackToken=makeCallbackToken();gasPollStartedAt=Date.now();gasPollAttempt=0;lastReportResult=null;const popupName="gas_report_"+request.request_id.replace(/[^A-Za-z0-9_]/g,"_");const popup=window.open("about:blank",popupName,"width=760,height=820");if(!popup){pendingGasRequestId="";gasCallbackToken="";status("ポップアップがブロックされました。このサイトのポップアップを許可してください。","error");return}try{popup.document.write('<!doctype html><meta charset="utf-8"><title>Google Sheets作成中</title><body style="font-family:sans-serif;padding:32px"><h2>Google Sheetsを作成しています…</h2><p>処理が完了するまでこの画面を閉じないでください。</p></body>');popup.document.close()}catch{}const form=document.createElement("form");form.method="POST";form.action=url;form.target=popupName;form.acceptCharset="UTF-8";gasHidden(form,"access_key",key);gasHidden(form,"callback_token",gasCallbackToken);gasHidden(form,"response_mode","html");gasHidden(form,"callback_origin",location.origin&&location.origin!=="null"?location.origin:"*");gasHidden(form,"payload",JSON.stringify(request));document.body.appendChild(form);renderGasResult({pending:true});$("createSheetsBtn").disabled=true;$("createSheetsBtn").textContent="作成中…";status("GASへ送信しました。作成状況を自動確認しています。","success");form.submit();form.remove();clearTimeout(gasSubmitTimer);gasSubmitTimer=setTimeout(handleGasCallbackTimeout,GAS_RESULT_TIMEOUT_MS);scheduleGasPoll(1800);save()}
 function handleGasResult(result){if(!result||typeof result!=="object")return;const expected=pendingGasRequestId||gasRequestId;if(expected&&result.request_id&&result.request_id!==expected)return;clearTimeout(gasSubmitTimer);stopGasPolling();pendingGasRequestId="";gasCallbackToken="";gasPollStartedAt=0;lastReportResult=result;$("createSheetsBtn").textContent="Google Sheetsを作成";$("createSheetsBtn").disabled=!(lastValidation&&!lastValidation.errors.length);renderGasResult(result);save();updateProgress();indicators();status(result.success?"Google Sheetsを作成しました。":result.message||"Google Sheetsを作成できませんでした。",result.success?"success":"error")}
-function finalRepairPrompt(r){const list=[...r.errors,...r.warnings].map((x,i)=>`${i+1}. [${x.level.toUpperCase()} / ${x.code}] ${x.path?x.path+"：":""}${x.message}`).join("\n"),research=lastResearchValidation&&lastResearchValidation.data?lastResearchValidation.data:null,finalSources=canonicalFinalSources(research),allowedRefs=allowedEvidenceRefs(research);return`直前の求人分析JSONを部分修正ではなく、Knowledgeの gemini_output_schema_v2.0_strict.txt に従って全体再構築してください。意味内容と根拠は可能な限り維持し、新しいWeb調査は行いません。
+function finalRepairPrompt(r){const list=[...r.errors,...r.warnings].map((x,i)=>`${i+1}. [${x.level.toUpperCase()} / ${x.code}] ${x.path?x.path+"：":""}${x.message}`).join("\n"),research=lastResearchValidation&&lastResearchValidation.data?lastResearchValidation.data:null,finalSources=canonicalFinalSources(research),allowedRefs=allowedEvidenceRefs(research);return`直前の求人分析JSONを部分修正ではなく、Knowledgeの gemini_output_schema_v2.1_strict.txt に従って全体再構築してください。意味内容と根拠は可能な限り維持し、新しいWeb調査は行いません。
 
 <VALIDATION_ISSUES>
 ${list}
@@ -1105,12 +1140,12 @@ ${json(allowedRefs)}
 必須修正契約：
 - resultとjob_excerptはJOB_TEXTだけで判定する。調査発見でresultを変更しない
 - case_summaryはcompany_name/job_title/employment_type/employment_basis_quoteの4キーだけ
-- 全analysis_rowsにno/result/job_excerpt/strength/proposalを置き、未使用時はnull
+- 全analysis_rowsにno/result/job_excerpt/strength/proposalを置く。strengthがある行はproposalも必須、strengthがnullの行はproposalもnull
 - strengthはtext/status/evidence_refs/confidenceの4キー
-- proposalはSchema所定の12キー。expected_effectsは許可値の配列。statement_statusはverified/template_with_placeholders/hypothesis
+- proposalはSchema所定の12キー。strengthがある全行に作成する。重点提案だけrankを1から連番、重点外はrank:null。expected_effectsは許可値の配列。statement_statusはverified/template_with_placeholders/hypothesis
 - competitorsではcompetitor_idを使う。competitor_valuesは競合ごとのcompetitor_id/valueオブジェクト
 - summaryの3配列はtext/status/evidence_refs/confidenceのオブジェクト配列
-- proposal_notesはSchema所定の10キーを省略しない
+- proposal_notesはSchema所定の10キーを省略せず、rankが1以上の重点proposalだけを対象にする
 - story_stepsはstep/title/talkの6オブジェクト。指定タイトルに完全一致
 - sourcesはFINAL_SOURCES_JSON_DO_NOT_EDITをそのままコピーし、再構成・省略・言い換え・追加・削除しない
 - evidence_refsはALLOWED_EVIDENCE_REFSにあるIDだけを使う

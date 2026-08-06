@@ -5,8 +5,8 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="noindex,nofollow" name="robots"/>
 <meta content="noindex,nofollow" name="googlebot"/>
-<meta content="Deep Researchと専用Gemを使い、企業の採用訴求材料と求人原稿の魅力を発見・強化し、厳格なJSON契約でGoogle Sheetsへ出力するブラウザツールです。" name="description"/>
-<title>求人原稿 魅力度評価プロンプトメーカー v4.6</title>
+<meta content="Deep Researchと専用Gemを使い、対象企業全体の採用競争力・強みと求人原稿の魅力を発見・強化し、Google Sheetsへ出力するブラウザツールです。" name="description"/>
+<title>求人原稿 魅力度評価・採用競争力分析 v5.0</title>
 <style>
 :root{--bg:#f4f6f8;--card:#fff;--line:#d8e0e7;--text:#20303d;--muted:#687887;--blue:#315f7d;--blue2:#244a63;--purple:#695b8d;--soft:#eaf1f5;--shadow:0 12px 34px rgba(34,52,67,.08)}
 *{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 10% 0,rgba(49,95,125,.1),transparent 30rem),radial-gradient(circle at 92% 3%,rgba(105,91,141,.08),transparent 28rem),var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;line-height:1.7}button,input,textarea,select{font:inherit}a{color:var(--blue)}.wrap{width:min(1180px,calc(100% - 32px));margin:auto;padding:28px 0 56px}.hero{display:flex;justify-content:space-between;gap:22px;padding:26px 28px;margin-bottom:20px;color:#fff;background:linear-gradient(125deg,#294f68,#48738c 56%,#685a88);border-radius:22px;box-shadow:var(--shadow)}.brand{display:flex;gap:16px}.mark{display:grid;place-items:center;width:54px;height:54px;flex:none;border:1px solid rgba(255,255,255,.3);border-radius:16px;background:rgba(255,255,255,.13);font-weight:900;font-size:23px}.eyebrow{margin:0 0 2px;color:rgba(255,255,255,.75);font-size:12px;font-weight:800;letter-spacing:.09em}h1{margin:0;font-size:clamp(24px,4vw,36px);line-height:1.25}h2{margin:0;font-size:19px}.desc{margin:8px 0 0;max-width:760px;color:rgba(255,255,255,.88);font-size:14px}.heroBtns{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}.pill{padding:8px 13px;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:800;text-decoration:none;cursor:pointer}.pill:hover{background:rgba(255,255,255,.2)}.notice{display:flex;gap:10px;padding:13px 16px;margin-bottom:18px;border:1px solid #d5e0e8;border-radius:14px;background:rgba(255,255,255,.84);font-size:13px}.grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px;align-items:start}.main,.side{display:grid;gap:18px}.side{position:sticky;top:16px}.card{padding:22px;border:1px solid var(--line);border-radius:21px;background:var(--card);box-shadow:var(--shadow)}.head{margin-bottom:16px}.sub{margin:5px 0 0;color:var(--muted);font-size:13px}.num{display:inline-grid;place-items:center;width:28px;height:28px;margin-right:9px;color:var(--blue);border-radius:9px;background:var(--soft);font-size:13px;font-weight:900;vertical-align:2px}.fields{display:grid;gap:16px}.field{display:grid;gap:7px}.labelrow{display:flex;justify-content:space-between;gap:12px}label{font-size:14px;font-weight:800}.hint,.count{color:var(--muted);font-size:11px}.note{margin:0;color:var(--muted);font-size:12px}input,textarea,select{width:100%;border:1px solid #b9c6d2;border-radius:10px;background:#fff;color:var(--text);outline:none}input,select{min-height:46px;padding:10px 12px}textarea{min-height:128px;padding:12px 13px;resize:vertical;line-height:1.65}#jobText{min-height:290px}#promptPreview{min-height:440px;background:#fbfcfd;font:12.5px/1.62 "Cascadia Code",Consolas,"Yu Gothic UI",monospace}input:focus,textarea:focus,select:focus{border-color:#688aa0;box-shadow:0 0 0 4px rgba(49,95,125,.1)}.set{display:grid;grid-template-columns:100px 1fr;gap:9px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.set:last-child{border-bottom:0}.set span:first-child{color:var(--muted);font-weight:700}.set span:last-child{font-weight:800}.criteria{display:inline-block;margin-top:12px;padding:9px 11px;border:1px solid #cfdae3;border-radius:10px;background:#f8fafc;font-size:12px;font-weight:800;text-decoration:none}.settingsDetails{margin-top:14px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;overflow:hidden}.settingsDetails>summary{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;color:#334a5b;background:#f8fafc;font-size:13px;font-weight:850}.settingsDetails>summary:after{content:"＋";display:grid;place-items:center;width:24px;height:24px;border-radius:7px;background:var(--soft);color:var(--blue);font-size:16px}.settingsDetails[open]>summary:after{content:"－"}.settingsBody{display:grid;gap:13px;padding:14px;border-top:1px solid var(--line);background:#fff}.settingsField{display:grid;gap:6px}.settingsField label{font-size:12px}.settingsHelp{margin:0;color:var(--muted);font-size:11px;line-height:1.55}.settingsReset{min-height:39px;padding:8px 12px;border:1px solid #c7d2dc;border-radius:9px;background:#fff;color:#3f5667;font-size:12px;font-weight:800;cursor:pointer}.settingsReset:hover{background:var(--soft)}.summary{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.summary:last-child{border-bottom:0}.summary span{color:var(--muted)}details.card{padding:0;overflow:hidden}summary{display:flex;justify-content:space-between;padding:20px 22px;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary:after{content:"＋";display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:var(--soft);color:var(--blue);font-size:19px}details[open] summary:after{content:"－"}.promptbody{padding:0 22px 22px;border-top:1px solid var(--line)}.promptnote{margin:13px 0;color:var(--muted);font-size:12px}.actions{display:flex;gap:9px;flex-wrap:wrap;padding:14px;margin:0;border:1px solid rgba(188,202,213,.9);border-radius:17px;background:rgba(255,255,255,.96);box-shadow:var(--shadow)}.btn{min-height:45px;padding:10px 16px;border:1px solid transparent;border-radius:11px;font-weight:850;cursor:pointer}.primary{color:#fff;background:var(--blue)}.primary:hover{background:var(--blue2)}.accent{color:#fff;background:var(--purple)}.secondary{border-color:#b9c6d2;background:#fff;color:#334a5b}.danger{margin-left:auto;border-color:#e5c6c6;background:#fff;color:#a34444}.status{display:none;padding:12px 14px;margin-bottom:17px;border-radius:12px;font-size:13px;font-weight:750}.status.show{display:block}.status.success{color:#285d48;border:1px solid #bcdac9;background:#e7f3ec}.status.warning{color:#76531b;border:1px solid #ead6a7;background:#fff4da}.status.error{color:#883737;border:1px solid #e4bcbc;background:#faeaea}.modalbg{display:none;position:fixed;inset:0;z-index:100;padding:22px;background:rgba(20,32,43,.56);backdrop-filter:blur(4px)}.modalbg.open{display:grid;place-items:center}.modal{width:min(760px,100%);max-height:calc(100vh - 44px);overflow:auto;border-radius:22px;background:#fff;box-shadow:0 24px 70px rgba(9,21,31,.3)}.modalhead{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.96)}.close{width:38px;height:38px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:21px;cursor:pointer}.modalbody{padding:21px 23px}.help+ .help{padding-top:18px;margin-top:18px;border-top:1px solid var(--line)}.help h3{margin:0 0 7px;font-size:16px}.help p,.help li{color:#4c5f6d;font-size:13px}.helpnote{padding:13px 15px;border-left:4px solid var(--purple);border-radius:8px;background:#f0edf7;font-size:13px}.footer{padding-top:25px;color:var(--muted);font-size:11px;text-align:center}.jsonCard textarea{min-height:360px;background:#fbfcfd;font:12.5px/1.62 "Cascadia Code",Consolas,"Yu Gothic UI",monospace}.jsonActions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.jsonActions .btn:disabled{cursor:not-allowed;opacity:.45}.validationSummary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin-top:15px}.metric{padding:11px 10px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;text-align:center}.metric b{display:block;font-size:19px;line-height:1.2}.metric span{display:block;margin-top:3px;color:var(--muted);font-size:11px}.validationState{display:none;margin-top:14px}.validationState.show{display:block}.validationLead{padding:13px 15px;border-radius:12px;font-size:13px;font-weight:800}.validationLead.ok{color:#285d48;border:1px solid #bcdac9;background:#e7f3ec}.validationLead.warn{color:#76531b;border:1px solid #ead6a7;background:#fff4da}.validationLead.ng{color:#883737;border:1px solid #e4bcbc;background:#faeaea}.issueGroup{margin-top:14px}.issueGroup h3{margin:0 0 8px;font-size:14px}.issueList{display:grid;gap:8px}.issue{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:12px}.issue.error{border-left:4px solid #bf5555}.issue.warning{border-left:4px solid #ca9634}.issue.info{border-left:4px solid #4b7894}.issueCode{font:700 11px/1.5 "Cascadia Code",Consolas,monospace;color:var(--muted)}.issueText{white-space:pre-wrap}.jsonMeta{display:flex;justify-content:space-between;gap:12px;margin-top:7px;color:var(--muted);font-size:11px}.qualityNote{margin-top:13px;padding:11px 13px;border-left:4px solid var(--blue);border-radius:8px;background:#eef4f7;color:#465c6b;font-size:12px}.passwordRow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px}.miniSettingBtn{min-width:58px;border:1px solid #c7d2dc;border-radius:9px;background:#fff;color:#3f5667;font-size:12px;font-weight:800;cursor:pointer}.connectionActions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.gasResultPanel{display:none;margin-top:15px;padding:15px;border:1px solid var(--line);border-radius:14px;background:#f8fafc}.gasResultPanel.show{display:block}.gasResultBody{margin-top:10px;color:#4c5f6d;font-size:12px;white-space:pre-wrap;word-break:break-word}.gasResultLinks{display:none;gap:9px;flex-wrap:wrap;margin-top:13px}.gasResultLinks.show{display:flex}.gasResultLinks .btn{text-decoration:none}.gasSending{position:relative;overflow:hidden}.gasSending:after{content:"";position:absolute;inset:auto 0 0;height:3px;background:linear-gradient(90deg,transparent,var(--purple),transparent);animation:gasload 1.2s linear infinite}@keyframes gasload{from{transform:translateX(-100%)}to{transform:translateX(100%)}}@media(max-width:680px){.validationSummary{grid-template-columns:repeat(2,minmax(0,1fr))}.jsonActions .btn{flex:1 1 100%}}@media(max-width:900px){.grid{grid-template-columns:1fr}.side{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.wrap{width:calc(100% - 20px);padding-top:10px}.hero{display:grid;padding:20px 18px;border-radius:18px}.heroBtns{justify-content:flex-start}.card{padding:18px;border-radius:17px}.side{grid-template-columns:1fr}summary{padding:18px}.promptbody{padding:0 18px 18px}.btn{flex:1 1 calc(50% - 8px)}.danger{margin-left:0}.modalbg{padding:10px}}
@@ -32,7 +32,7 @@
 <body>
 <main class="wrap">
 <header class="hero">
-<div class="brand"><div class="mark">原+</div><div><p class="eyebrow">TWO-STAGE JOB APPEAL EVALUATION</p><h1>求人原稿 魅力度評価<br/>プロンプトメーカー</h1><p class="desc">Deep Researchで企業・競合を調査し、回答をそのままアプリで確認した後、Proモードで求人原稿と評価基準を照合する二段階方式です。最後にアプリからGoogle Sheetsレポートを直接作成します。</p></div></div>
+<div class="brand"><div class="mark">原+</div><div><p class="eyebrow">TWO-STAGE JOB APPEAL EVALUATION</p><h1>求人原稿 魅力度評価<br/>プロンプトメーカー</h1><p class="desc">Deep Researchで対象企業を企業全体まで広げて調査し、市場参照情報も自動収集します。Proモードで求人原稿と評価基準を照合し、原稿分析と採用競争力・強み分析をGoogle Sheetsへ出力します。</p></div></div>
 <div class="heroBtns"><button class="pill" id="helpBtn" type="button">？ 使い方</button><a class="pill" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/" rel="noopener" target="_blank">評価基準を確認</a></div>
 </header>
 <div class="notice"><span>ℹ</span><div><strong>入力内容は、利用者が「Google Sheetsを作成」を押したときだけ設定済みのGASへ送信されます。</strong> Geminiへの送信は利用者がGemini画面で実行します。評価基準は専用GemのKnowledgeに登録するため、毎回のCSV添付は不要です。GASのURLと接続キーはこのブラウザ内に保存されます。</div></div>
@@ -46,26 +46,26 @@
 <div aria-live="polite" class="status" id="status" role="status"></div>
 <div class="grid">
 <section class="main">
-<article class="card workflowCard inputCard" data-workflow-step="1" id="workflowInputA"><div class="workflowLabel"><span class="stepToken">STEP 1</span><span>案件情報を入力</span></div><div class="head"><h2><span class="sectionBadge">A</span> 求人案件情報</h2><p class="sub">求人原稿本文を正本として使用します。求人名・勤務地は競合求人の探索条件にも使います。</p></div><div class="fields">
+<article class="card workflowCard inputCard" data-workflow-step="1" id="workflowInputA"><div class="workflowLabel"><span class="stepToken">STEP 1</span><span>案件情報を入力</span></div><div class="head"><h2><span class="sectionBadge">A</span> 求人案件情報</h2><p class="sub">求人原稿本文を正本として使用します。求人名・勤務地は対象求人に近い市場参照情報を探す条件にも使います。</p></div><div class="fields">
 <div class="tripleGrid"><div class="field"><div class="labelrow"><label for="jobTitle">求人名・職種</label><span class="optional">推奨</span></div><input id="jobTitle" placeholder="例：川崎営業所／中型ドライバー"/></div><div class="field"><div class="labelrow"><label for="workLocation">勤務地</label><span class="optional">推奨</span></div><input id="workLocation" placeholder="例：神奈川県川崎市"/></div><div class="field"><label for="employmentTypeHint">雇用形態</label><select id="employmentTypeHint"><option value="">原稿から判定</option><option value="正社員">正社員</option><option value="非正規（アルバイト・パート・派遣）">非正規</option></select></div></div>
 <div class="field"><div class="labelrow"><label for="jobUrl">求人原稿URL</label><span class="optional">任意</span></div><input id="jobUrl" placeholder="https://example.com/job/..." type="url"/><p class="note">CAPTCHAやログイン制限がある場合、URLは参考情報とし、下の原稿全文を必ず貼り付けてください。</p></div>
 <div class="field"><div class="labelrow"><label for="jobText">求人原稿全文</label><span class="count" id="jobCount">0文字</span></div><textarea id="jobText" placeholder="求人原稿のタイトル、会社名、給与、勤務時間、仕事内容、待遇、応募資格などを全文貼り付けてください。"></textarea></div>
 </div></article>
-<article class="card workflowCard inputCard" data-workflow-step="1" id="workflowInputB"><div class="workflowLabel"><span class="stepToken">STEP 1</span><span>案件情報を入力</span></div><div class="head"><h2><span class="sectionBadge">B</span> 対象企業・競合企業</h2><p class="sub">企業名と公式URLをセットで入力します。企業名は、URL取得失敗時の検索やグループ会社との混同防止に使用します。</p></div><div class="fields">
-<div class="entityBox"><div class="entityTitle">TARGET　対象企業</div><div class="pairGrid"><div class="field"><div class="labelrow"><label for="targetCompanyName">正式企業名</label><span class="required">必須</span></div><input id="targetCompanyName" placeholder="例：株式会社ホームカーゴ"/></div><div class="field"><div class="labelrow"><label for="targetCompanyUrl">公式URL</label><span class="required">必須</span></div><input id="targetCompanyUrl" placeholder="https://www.example.co.jp/" type="url"/></div></div><div class="field"><div class="labelrow"><label for="companyUrls">対象企業の追加参考ページ</label><span class="optional">任意・1行1URL</span></div><textarea id="companyUrls" placeholder="https://www.example.co.jp/recruit/
-https://www.example.co.jp/interview/"></textarea></div></div>
-<div class="entityBox"><div class="entityTitle">C1　競合企業1（任意）</div><div class="pairGrid"><div class="field"><label for="competitor1Name">正式企業名</label><input id="competitor1Name" placeholder="例：SGムービング株式会社"/></div><div class="field"><label for="competitor1Url">公式URL</label><input id="competitor1Url" placeholder="https://www.competitor-one.co.jp/" type="url"/></div></div></div>
-<div class="entityBox"><div class="entityTitle">C2　競合企業2（任意）</div><div class="pairGrid"><div class="field"><label for="competitor2Name">正式企業名</label><input id="competitor2Name" placeholder="例：株式会社アサヒロジスティクス"/></div><div class="field"><label for="competitor2Url">公式URL</label><input id="competitor2Url" placeholder="https://www.competitor-two.co.jp/" type="url"/></div></div></div>
-<div class="modeNotice"><strong>競合企業を入力しない場合：</strong>対象企業だけを調査し、競合比較は行いません。Deep Researchが競合企業を自動選定する仕様ではありません。</div><div class="field"><div class="labelrow"><label for="entityNotes">企業関係の補足・混同防止メモ</label><span class="optional">任意</span></div><textarea id="entityNotes" placeholder="例：ホームロジスティクスとは別法人。ニトリグループ全体の情報を対象企業自身の制度として扱わない。"></textarea></div>
+<article class="card workflowCard inputCard" data-workflow-step="1" id="workflowInputB"><div class="workflowLabel"><span class="stepToken">STEP 1</span><span>案件情報を入力</span></div><div class="head"><h2><span class="sectionBadge">B</span> 対象企業・企業全体の調査情報</h2><p class="sub">対象企業の公式採用サイトや企業サイトを、対象求人だけに限定せず広く調査します。</p></div><div class="fields">
+<div class="entityBox"><div class="entityTitle">TARGET　対象企業</div><div class="pairGrid"><div class="field"><div class="labelrow"><label for="targetCompanyName">正式企業名</label><span class="required">必須</span></div><input id="targetCompanyName" placeholder="例：株式会社ヨコタエンタープライズ"/></div><div class="field"><div class="labelrow"><label for="targetCompanyUrl">公式URL</label><span class="required">必須</span></div><input id="targetCompanyUrl" placeholder="https://www.example.co.jp/" type="url"/></div></div><div class="field"><div class="labelrow"><label for="companyUrls">対象企業の追加参考ページ</label><span class="optional">任意・1行1URL</span></div><textarea id="companyUrls" placeholder="https://www.example.co.jp/recruit/
+https://www.example.co.jp/benefits/
+https://www.example.co.jp/training/"></textarea></div></div>
+<div class="modeNotice"><strong>v5.0の調査方針：</strong>指定競合の入力は行いません。Deep Researchが、同業・同雇用形態・類似職種の企業や求人をテーマごとの市場参照先として選びます。比較情報が不足しても、対象企業だけで確認できた強みは削除しません。</div>
+<div class="field"><div class="labelrow"><label for="entityNotes">企業関係の補足・混同防止メモ</label><span class="optional">任意</span></div><textarea id="entityNotes" placeholder="例：グループ会社とは別法人。全社制度と今回の求人への適用範囲を区別して調査する。"></textarea></div>
 </div></article>
 <article class="card workflowCard inputCard" data-workflow-step="1" id="workflowInputC"><div class="workflowLabel"><span class="stepToken">STEP 1</span><span>案件情報を入力</span></div><div class="head"><h2><span class="sectionBadge">C</span> ターゲット・文面の方向性</h2><p class="sub">最終の文面提案へ反映する求職者像や訴求方針です。</p></div><div class="field"><div class="labelrow"><label for="target">想定ターゲット・文面の方向性</label><span class="count" id="targetCount">0文字</span></div><textarea id="target" placeholder="例：ドライバー未経験者。研修の安心感、日帰り勤務、収入の分かりやすさを重視する。"></textarea></div></article>
-<article class="card stageCard researchCard workflowCard sendCard drCard" data-workflow-step="2" id="workflowStep2"><div class="workflowLabel"><span class="stepToken">STEP 2</span><span class="systemToken">DEEP RESEARCH</span><span class="directionToken">↗ Geminiへ送る</span></div><div class="head"><h2>調査プロンプトをコピー</h2><p class="sub">対象企業と、入力した場合のみ競合企業を調査するための指示を作成します。</p></div><div class="operationHero"><span class="operationIcon">↗</span><div><b>コピーしてGeminiへ送る</b><p>プロンプト本文は折りたたまれています。通常はコピー操作だけで進められます。</p></div></div>
+<article class="card stageCard researchCard workflowCard sendCard drCard" data-workflow-step="2" id="workflowStep2"><div class="workflowLabel"><span class="stepToken">STEP 2</span><span class="systemToken">DEEP RESEARCH</span><span class="directionToken">↗ Geminiへ送る</span></div><div class="head"><h2>調査プロンプトをコピー</h2><p class="sub">対象企業を企業全体まで広げ、テーマごとの市場参照先も調査する指示を作成します。</p></div><div class="operationHero"><span class="operationIcon">↗</span><div><b>コピーしてGeminiへ送る</b><p>プロンプト本文は折りたたまれています。通常はコピー操作だけで進められます。</p></div></div>
 
 <div class="miniActions"><button class="btn primary" id="copyResearchBtn" type="button">調査プロンプトをコピー</button><button class="btn accent" id="openResearchBtn" type="button">コピーしてGeminiを開く</button><button class="btn secondary" id="refreshBtn" type="button">プロンプトを再生成</button><button class="btn danger" id="clearBtn" type="button">案件をクリア</button></div>
 <details class="promptDetails"><summary><div><h3>Deep Research用プロンプトの内容を確認</h3><p class="sub">必要なときだけ開いて確認できます。</p></div></summary><div class="promptbody"><textarea class="readonlyPrompt" id="researchPromptPreview" readonly="" spellcheck="false"></textarea></div></details>
 <div aria-hidden="true" hidden=""><button id="copyConversionBtn" tabindex="-1" type="button">旧JSON化指示</button><textarea id="conversionPromptPreview" tabindex="-1"></textarea></div>
 </article>
-<article class="card jsonCard stageCard evidenceCard workflowCard receiveCard drCard" data-workflow-step="3" id="workflowStep3"><div class="workflowLabel"><span class="stepToken">STEP 3</span><span class="systemToken">DEEP RESEARCH</span><span class="directionToken">↙ アプリへ戻す</span></div><div class="head"><h2>企業調査の回答を貼り付ける</h2><p class="sub">Deep Researchの最終回答をそのまま貼り付け、企業・ソース・確認事実を検証します。</p></div><div class="operationHero"><span class="operationIcon">↙</span><div><b>ここへDeep Researchの回答を貼り付け</b><p>Gemini側の「回答をコピー」で取得した内容を、そのまま下の欄へ貼り付けます。</p></div></div>
+<article class="card jsonCard stageCard evidenceCard workflowCard receiveCard drCard" data-workflow-step="3" id="workflowStep3"><div class="workflowLabel"><span class="stepToken">STEP 3</span><span class="systemToken">DEEP RESEARCH</span><span class="directionToken">↙ アプリへ戻す</span></div><div class="head"><h2>企業調査の回答を貼り付ける</h2><p class="sub">Deep Researchの最終回答をそのまま貼り付け、対象企業・市場参照先・ソース・確認事実を検証します。</p></div><div class="operationHero"><span class="operationIcon">↙</span><div><b>ここへDeep Researchの回答を貼り付け</b><p>Gemini側の「回答をコピー」で取得した内容を、そのまま下の欄へ貼り付けます。</p></div></div>
 <div class="field"><div class="labelrow"><label class="pasteLabel" for="researchJsonInput">Deep Research回答の貼付け欄</label><span class="count" id="researchJsonCount">0文字</span></div><textarea class="researchJson" id="researchJsonInput" placeholder="Deep Researchの最終回答全体を貼り付けてください。途中経過が含まれていても、企業調査結果を自動抽出します。" spellcheck="false"></textarea><p class="qualityNote" hidden="" id="researchExtractionNotice"></p><div class="jsonMeta"><span>評価基準CSVはこの段階では使いません。</span><span id="researchSavedState">未確認</span></div></div>
 <div class="jsonActions"><button class="btn primary" id="validateResearchBtn" type="button">企業調査結果を確認</button><button class="btn secondary" disabled="" id="copyResearchRepairBtn" title="検出したエラー・警告を修正する指示をコピーし、同じDeep Researchチャットへ戻します" type="button">修正指示をコピー（Geminiへ戻す）</button><button class="btn secondary" id="clearResearchBtn" type="button">企業調査結果をクリア</button></div>
 <div class="validationSummary metricSix"><div class="metric"><b id="rMetricEntities">－</b><span>企業</span></div><div class="metric"><b id="rMetricSources">－</b><span>ソース</span></div><div class="metric"><b id="rMetricFacts">－</b><span>確認事実</span></div><div class="metric"><b id="rMetricIndividual">－</b><span>個別ページ</span></div><div class="metric"><b id="rMetricErrors">－</b><span>エラー</span></div><div class="metric"><b id="rMetricWarnings">－</b><span>警告</span></div></div>
@@ -76,18 +76,18 @@ https://www.example.co.jp/interview/"></textarea></div></div>
 <div class="miniActions"><button class="btn primary" disabled="" id="copyProBtn" type="button">専用Gem用プロンプトをコピー</button><button class="btn accent" disabled="" id="openProBtn" type="button">コピーして専用Gemを開く</button><a class="btn secondary" href="https://gemini.google.com/gem/d3becb7771cb" rel="noopener" target="_blank">専用Gemを直接開く</a></div>
 <details class="promptDetails"><summary><div><h3>Pro Gem用プロンプトの内容を確認</h3><p class="sub">必要なときだけ開いて確認できます。</p></div></summary><div class="promptbody"><textarea class="readonlyPrompt proPrompt" id="proPromptPreview" placeholder="企業調査結果の確認に合格すると生成されます。" readonly="" spellcheck="false"></textarea></div></details>
 </article>
-<article class="card jsonCard stageCard finalCard workflowCard receiveCard proWorkflowCard" data-workflow-step="5" id="workflowStep5"><div class="workflowLabel"><span class="stepToken">STEP 5</span><span class="systemToken">PRO GEM</span><span class="directionToken">↙ アプリへ戻す</span></div><div class="head"><h2>Pro分析の回答を貼り付ける</h2><p class="sub">専用Gemの回答を貼り付け、厳格確認後にGoogle Sheetsを作成します。</p></div><div class="operationHero"><span class="operationIcon">↙</span><div><b>ここへPro分析の回答を貼り付け</b><p>JSONの見た目を理解する必要はありません。専用Gemの回答全体をそのまま貼り付けます。</p></div></div><div class="field"><div class="labelrow"><label class="pasteLabel" for="jsonInput">Pro分析回答の貼付け欄</label><span class="count" id="jsonCount">0文字</span></div><textarea class="researchJson" id="jsonInput" placeholder="Geminiの「回答をコピー」で取得した内容を、そのまま貼り付けてください。作業コードや実行結果は自動で除外します。" spellcheck="false"></textarea><p class="qualityNote" hidden="" id="finalExtractionNotice"></p><p class="completionNote">エラー0件になったら、緑の「Google Sheetsを作成」ボタンが最終操作です。</p><div class="jsonMeta"><span>入力内容はブラウザ内だけで処理します。</span><span id="jsonSavedState">未確認</span></div></div><div class="jsonActions"><button class="btn primary" id="validateJsonBtn" type="button">求人分析結果を確認</button><button class="btn accent" disabled="" id="createSheetsBtn" type="button">Google Sheetsを作成</button><button class="btn secondary" disabled="" id="copyGasJsonBtn" type="button">作成データをコピー（予備）</button><button class="btn secondary" disabled="" id="copyRepairBtn" title="検出したエラー・警告を修正する指示をコピーし、同じProチャットへ戻します" type="button">修正指示をコピー（Geminiへ戻す）</button><button class="btn secondary" id="clearJsonBtn" type="button">求人分析結果をクリア</button></div><div class="validationSummary"><div class="metric"><b id="metricRows">－</b><span>分析行</span></div><div class="metric"><b id="metricProposals">－</b><span>提案数</span></div><div class="metric"><b id="metricSources">－</b><span>ソース数</span></div><div class="metric"><b id="metricErrors">－</b><span>エラー</span></div><div class="metric"><b id="metricWarnings">－</b><span>警告</span></div></div><div class="validationState" id="validationState"><div class="validationLead" id="validationLead"></div><div class="issueGroup" id="errorGroup"><h3>修正が必要なエラー</h3><div class="issueList" id="errorList"></div></div><div class="issueGroup" id="warningGroup"><h3>確認を推奨する警告</h3><div class="issueList" id="warningList"></div></div></div><p class="qualityNote">警告は処理を止めませんが、企業情報の適用範囲、提案の根拠、比較条件を確認してください。直接送信できない場合は「作成データをコピー（予備）」を使用できます。</p><div class="gasResultPanel" id="gasResultPanel"><div class="validationLead" id="gasResultLead"></div><div class="gasResultBody" id="gasResultBody"></div><div class="gasResultLinks"><a class="btn primary" id="openSpreadsheetBtn" rel="noopener" target="_blank">Google Sheetsを開く</a><a class="btn secondary" id="openFolderBtn" rel="noopener" target="_blank">保存先フォルダを開く</a></div></div></article>
+<article class="card jsonCard stageCard finalCard workflowCard receiveCard proWorkflowCard" data-workflow-step="5" id="workflowStep5"><div class="workflowLabel"><span class="stepToken">STEP 5</span><span class="systemToken">PRO GEM</span><span class="directionToken">↙ アプリへ戻す</span></div><div class="head"><h2>Pro分析の回答を貼り付ける</h2><p class="sub">専用Gemの回答を貼り付け、厳格確認後にGoogle Sheetsを作成します。</p></div><div class="operationHero"><span class="operationIcon">↙</span><div><b>ここへPro分析の回答を貼り付け</b><p>JSONの見た目を理解する必要はありません。専用Gemの回答全体をそのまま貼り付けます。</p></div></div><div class="field"><div class="labelrow"><label class="pasteLabel" for="jsonInput">Pro分析回答の貼付け欄</label><span class="count" id="jsonCount">0文字</span></div><textarea class="researchJson" id="jsonInput" placeholder="Geminiの「回答をコピー」で取得した内容を、そのまま貼り付けてください。作業コードや実行結果は自動で除外します。" spellcheck="false"></textarea><p class="qualityNote" hidden="" id="finalExtractionNotice"></p><p class="completionNote">エラー0件になったら、緑の「Google Sheetsを作成」ボタンが最終操作です。</p><div class="jsonMeta"><span>入力内容はブラウザ内だけで処理します。</span><span id="jsonSavedState">未確認</span></div></div><div class="jsonActions"><button class="btn primary" id="validateJsonBtn" type="button">求人分析結果を確認</button><button class="btn accent" disabled="" id="createSheetsBtn" type="button">Google Sheetsを作成</button><button class="btn secondary" disabled="" id="copyGasJsonBtn" type="button">作成データをコピー（予備）</button><button class="btn secondary" disabled="" id="copyRepairBtn" title="検出したエラー・警告を修正する指示をコピーし、同じProチャットへ戻します" type="button">修正指示をコピー（Geminiへ戻す）</button><button class="btn secondary" id="clearJsonBtn" type="button">求人分析結果をクリア</button></div><div class="validationSummary"><div class="metric"><b id="metricRows">－</b><span>分析行</span></div><div class="metric"><b id="metricProposals">－</b><span>提案数</span></div><div class="metric"><b id="metricSources">－</b><span>ソース数</span></div><div class="metric"><b id="metricErrors">－</b><span>エラー</span></div><div class="metric"><b id="metricWarnings">－</b><span>警告</span></div></div><div class="validationState" id="validationState"><div class="validationLead" id="validationLead"></div><div class="issueGroup" id="errorGroup"><h3>修正が必要なエラー</h3><div class="issueList" id="errorList"></div></div><div class="issueGroup" id="warningGroup"><h3>確認を推奨する警告</h3><div class="issueList" id="warningList"></div></div></div><p class="qualityNote">警告は処理を止めませんが、企業情報の適用範囲、提案の根拠、市場内での位置づけを確認してください。直接送信できない場合は「作成データをコピー（予備）」を使用できます。</p><div class="gasResultPanel" id="gasResultPanel"><div class="validationLead" id="gasResultLead"></div><div class="gasResultBody" id="gasResultBody"></div><div class="gasResultLinks"><a class="btn primary" id="openSpreadsheetBtn" rel="noopener" target="_blank">Google Sheetsを開く</a><a class="btn secondary" id="openFolderBtn" rel="noopener" target="_blank">保存先フォルダを開く</a></div></div></article>
 </section>
 <aside class="side">
-<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">Deep Researchの調査範囲と専用Gemの提案条件です。</p></div><div class="set"><span>調査</span><span>Deep Research</span></div><div class="set"><span>最終分析</span><span>Pro／思考モード</span></div><div class="set"><span>評価基準</span><span>専用GemのKnowledge</span></div><div class="set"><span>重点提案</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>調査範囲</span><span id="webSettingSummary">指定URL優先＋一般Web</span></div><div class="set"><span>Sheets連携</span><span id="gasConnectionSummary">未設定</span></div><div class="set"><span>評価基準版</span><span>2026-08-04-v1</span></div><div class="set"><span>分析方針版</span><span>2026-08-07-v1</span></div><div class="set"><span>分析JSON</span><span>v2.1</span></div><div class="set"><span>Workflow</span><span>v4.6</span></div><div class="set"><span>案件ID</span><span id="caseIdSummary">生成中</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">重点提案数</label><select id="proposalCount"><option value="1">1項目</option><option selected="" value="3">3項目（標準）</option><option value="5">5項目</option></select><p class="settingsHelp">貴社原稿分析では「現在伝わっている魅力」がある全行に提案を出力します。この件数は評価サマリーと商談準備メモで重点表示する件数です。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option selected="" value="100">100文字程度（標準）</option><option value="150">150文字程度</option></select></div><div class="settingsField"><label for="webMode">Deep Researchの調査範囲</label><select id="webMode"><option value="specified">指定URL・公式ドメイン中心</option><option selected="" value="balanced">公式情報優先＋信頼できる補足（標準）</option><option value="broad">一般Webを広く調査</option></select></div><button class="settingsReset" id="resetSettingsBtn" type="button">標準設定に戻す</button></div></details><details class="settingsDetails"><summary>Google Sheets連携設定</summary><div class="settingsBody"><div class="settingsField"><label for="gasWebAppUrl">GAS WebアプリURL</label><input aria-readonly="true" autocomplete="off" id="gasWebAppUrl" readonly="" type="url" value="https://script.google.com/macros/s/AKfycbyz5OPM-HD9u9hhxCeNyvCP82pgcbngZp8csWWYqdQzpNtk-4lQuxQdU1Si3LRmCh_E/exec"/><p class="settingsHelp">接続先URLはアプリに設定済みです。公開されても認証情報にはならず、接続キーは別に管理されます。</p></div><div class="settingsField"><label for="gasAccessKey">接続キー</label><div class="passwordRow"><input autocomplete="off" id="gasAccessKey" placeholder="configureWebApp()で発行" type="password"/><button class="miniSettingBtn" id="toggleGasKeyBtn" type="button">表示</button></div><p class="settingsHelp">GitHubリポジトリには保存されず、このブラウザのローカルストレージだけに保存されます。</p><a class="internalKeyLink" href="https://docs.google.com/document/d/1-imR39CztYw-vIajSVUjnAYy_GDtaRDi7ND5XJQt6VI/" rel="noopener" target="_blank">↗ 社内接続キーを確認 <small>（組織内限定）</small></a></div><div class="connectionActions"><button class="settingsReset" id="openGasStatusBtn" type="button">接続状態ページを開く</button><button class="settingsReset" id="clearGasSettingsBtn" type="button">接続キーをクリア</button></div></div></details><a class="criteria" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/" rel="noopener" target="_blank">↗ 評価基準を開く</a></article>
-<article class="card"><div class="head"><h2>入力・進行状況</h2></div><div class="summary"><span>対象企業</span><strong id="targetCompanySummary">未入力</strong></div><div class="summary"><span>求人情報</span><strong id="jobSummary">未入力</strong></div><div class="summary"><span>競合設定</span><strong id="competitorCount">0/2社</strong></div><div class="summary"><span>企業調査結果</span><strong id="researchSummary">未確認</strong></div><div class="summary"><span>Gem用プロンプト</span><strong id="proSummary">未生成</strong></div><div class="summary"><span>求人分析結果</span><strong id="finalSummary">未確認</strong></div></article>
+<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">Deep Researchの調査範囲と専用Gemの提案条件です。</p></div><div class="set"><span>調査</span><span>Deep Research</span></div><div class="set"><span>最終分析</span><span>Pro／思考モード</span></div><div class="set"><span>評価基準</span><span>専用GemのKnowledge</span></div><div class="set"><span>重点提案</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>調査範囲</span><span id="webSettingSummary">指定URL優先＋一般Web</span></div><div class="set"><span>強み分析</span><span>原則8～15項目</span></div><div class="set"><span>Sheets連携</span><span id="gasConnectionSummary">未設定</span></div><div class="set"><span>評価基準版</span><span>2026-08-04-v1</span></div><div class="set"><span>分析方針版</span><span>2026-08-07-v2</span></div><div class="set"><span>分析JSON</span><span>v3.0</span></div><div class="set"><span>Workflow</span><span>v5.0</span></div><div class="set"><span>案件ID</span><span id="caseIdSummary">生成中</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">重点提案数</label><select id="proposalCount"><option value="1">1項目</option><option selected="" value="3">3項目（標準）</option><option value="5">5項目</option></select><p class="settingsHelp">貴社原稿分析では「現在伝わっている魅力」がある全行に提案を出力します。この件数は評価サマリーと商談準備メモで重点表示する件数です。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option selected="" value="100">100文字程度（標準）</option><option value="150">150文字程度</option></select></div><div class="settingsField"><label for="webMode">Deep Researchの調査範囲</label><select id="webMode"><option value="specified">指定URL・公式ドメイン中心</option><option selected="" value="balanced">公式情報優先＋信頼できる補足（標準）</option><option value="broad">一般Webを広く調査</option></select></div><button class="settingsReset" id="resetSettingsBtn" type="button">標準設定に戻す</button></div></details><details class="settingsDetails"><summary>Google Sheets連携設定</summary><div class="settingsBody"><div class="settingsField"><label for="gasWebAppUrl">GAS WebアプリURL</label><input aria-readonly="true" autocomplete="off" id="gasWebAppUrl" readonly="" type="url" value="https://script.google.com/macros/s/AKfycbyz5OPM-HD9u9hhxCeNyvCP82pgcbngZp8csWWYqdQzpNtk-4lQuxQdU1Si3LRmCh_E/exec"/><p class="settingsHelp">接続先URLはアプリに設定済みです。公開されても認証情報にはならず、接続キーは別に管理されます。</p></div><div class="settingsField"><label for="gasAccessKey">接続キー</label><div class="passwordRow"><input autocomplete="off" id="gasAccessKey" placeholder="configureWebApp()で発行" type="password"/><button class="miniSettingBtn" id="toggleGasKeyBtn" type="button">表示</button></div><p class="settingsHelp">GitHubリポジトリには保存されず、このブラウザのローカルストレージだけに保存されます。</p><a class="internalKeyLink" href="https://docs.google.com/document/d/1-imR39CztYw-vIajSVUjnAYy_GDtaRDi7ND5XJQt6VI/" rel="noopener" target="_blank">↗ 社内接続キーを確認 <small>（組織内限定）</small></a></div><div class="connectionActions"><button class="settingsReset" id="openGasStatusBtn" type="button">接続状態ページを開く</button><button class="settingsReset" id="clearGasSettingsBtn" type="button">接続キーをクリア</button></div></div></details><a class="criteria" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/" rel="noopener" target="_blank">↗ 評価基準を開く</a></article>
+<article class="card"><div class="head"><h2>入力・進行状況</h2></div><div class="summary"><span>対象企業</span><strong id="targetCompanySummary">未入力</strong></div><div class="summary"><span>求人情報</span><strong id="jobSummary">未入力</strong></div><div class="summary"><span>市場参照</span><strong id="marketReferenceSummary">DRで自動選定</strong></div><div class="summary"><span>企業調査結果</span><strong id="researchSummary">未確認</strong></div><div class="summary"><span>Gem用プロンプト</span><strong id="proSummary">未生成</strong></div><div class="summary"><span>求人分析結果</span><strong id="finalSummary">未確認</strong></div></article>
 <article class="card"><div class="head"><h2>運用手順</h2></div><ol class="flowList"><li>STEP 1　案件・企業情報を入力</li><li>STEP 2　Deep Researchへ送る</li><li>STEP 3　Deep Researchから戻す</li><li>STEP 4　専用Gemへ送る</li><li>STEP 5　専用Gemから戻し、Sheetsを作成</li></ol></article>
 </aside>
 </div>
-<p class="footer">GitHub Pages上で動作する静的ツールです。Google Sheets作成時のみ、設定済みのGASへデータを送信します。AIが取得した事実・比較条件・提案内容は利用者自身でも確認してください。</p>
+<p class="footer">GitHub Pages上で動作する静的ツールです。Google Sheets作成時のみ、設定済みのGASへデータを送信します。AIが取得した事実・適用範囲・市場内での位置づけ・提案内容は利用者自身でも確認してください。</p>
 </main>
-<div class="modalbg" id="modalBg"><div class="modal"><div class="modalhead"><h2>使い方</h2><button aria-label="閉じる" class="close" id="closeBtn" type="button">×</button></div><div class="modalbody"><section class="help"><h3>二段階方式</h3><p>Deep Researchは企業・競合の公開情報収集を担当し、専用Gemは求人原稿と登録済み評価基準の分析を担当します。内部では構造化データを利用しますが、利用者の操作はGeminiの回答をコピーして貼り付けるだけです。</p></section><section class="help"><h3>STEP 2～3：Deep Research</h3><p>青いカードがDeep Research工程です。STEP 2でプロンプトをコピーしてGeminiへ送り、STEP 3で回答をアプリへ貼り付けます。競合企業が未入力の場合は対象企業だけを調査し、競合を自動選定しません。</p></section><section class="help"><h3>STEP 4～5：Pro分析</h3><p>紫のカードがPro工程です。STEP 4で専用Gem用プロンプトをコピーし、STEP 5で回答を貼り付けます。「コピーして専用Gemを開く」は登録済みGemへ直接移動します。プロンプト本文は通常は閉じたままで構いません。</p></section><section class="help"><h3>企業名が必要な理由</h3><p>対象企業名はURL取得失敗時の検索やグループ会社との混同防止に使用します。競合は任意です。入力する場合だけ、正式企業名と公式URLをセットで入力してください。</p></section><section class="help"><h3>修正指示をコピー</h3><p>企業調査結果または求人分析結果の確認でエラー・警告が見つかった場合に使います。ボタンを押すと、検出内容をまとめた修正依頼がコピーされます。結果を作成した同じGeminiチャットへ貼り付け、修正済みの回答全体を再度アプリへ貼り付けて確認してください。このボタンが回答を自動修正したり、GASへ送信したりすることはありません。</p></section><section class="help"><h3>Google Sheets作成</h3><p>GAS WebアプリURLは設定済みです。初回だけ接続キーを登録します。接続キー欄の「社内接続キーを確認」から、組織内限定のGoogleドキュメントを開けます。STEP 5の確認後、緑の「Google Sheetsを作成」を押してください。</p></section><section class="help"><h3>入力データ</h3><div class="helpnote">入力内容はブラウザのローカルストレージに自動保存されます。共用PCでは作業後に「案件をクリア」を押してください。</div></section></div></div></div>
-<script id="researchPromptTemplate" type="text/plain"># 求人企業・競合企業 Deep Research 調査プロンプト v2.3
+<div class="modalbg" id="modalBg"><div class="modal"><div class="modalhead"><h2>使い方</h2><button aria-label="閉じる" class="close" id="closeBtn" type="button">×</button></div><div class="modalbody"><section class="help"><h3>二段階方式</h3><p>Deep Researchは対象企業全体と市場参照情報の収集を担当し、専用Gemは求人原稿と登録済み評価基準の分析を担当します。内部では構造化データを利用しますが、利用者の操作はGeminiの回答をコピーして貼り付けるだけです。</p></section><section class="help"><h3>STEP 2～3：Deep Research</h3><p>青いカードがDeep Research工程です。STEP 2でプロンプトをコピーしてGeminiへ送り、STEP 3で回答をアプリへ貼り付けます。指定競合の入力はありません。Deep Researchがテーマごとの市場参照先を自動選定し、対象企業だけで確認できた強みも保持します。</p></section><section class="help"><h3>STEP 4～5：Pro分析</h3><p>紫のカードがPro工程です。STEP 4で専用Gem用プロンプトをコピーし、STEP 5で回答を貼り付けます。「コピーして専用Gemを開く」は登録済みGemへ直接移動します。プロンプト本文は通常は閉じたままで構いません。</p></section><section class="help"><h3>企業名が必要な理由</h3><p>対象企業名はURL取得失敗時の検索やグループ会社との混同防止に使用します。追加参考ページには、福利厚生、研修、キャリア、社員紹介など強みが分かる公式ページを入力できます。</p></section><section class="help"><h3>修正指示をコピー</h3><p>企業調査結果または求人分析結果の確認でエラー・警告が見つかった場合に使います。ボタンを押すと、検出内容をまとめた修正依頼がコピーされます。結果を作成した同じGeminiチャットへ貼り付け、修正済みの回答全体を再度アプリへ貼り付けて確認してください。このボタンが回答を自動修正したり、GASへ送信したりすることはありません。</p></section><section class="help"><h3>Google Sheets作成</h3><p>GAS WebアプリURLは設定済みです。初回だけ接続キーを登録します。接続キー欄の「社内接続キーを確認」から、組織内限定のGoogleドキュメントを開けます。STEP 5の確認後、緑の「Google Sheetsを作成」を押してください。</p></section><section class="help"><h3>入力データ</h3><div class="helpnote">入力内容はブラウザのローカルストレージに自動保存されます。共用PCでは作業後に「案件をクリア」を押してください。</div></section></div></div></div>
+<script id="researchPromptTemplate" type="text/plain"># 対象企業の採用競争力・強み発見 Deep Research 調査プロンプト v3.0
 
 # JSON OUTPUT MODE — 最優先・変更不可
 
@@ -97,15 +97,16 @@ FINAL RESPONSE CONTRACT:
 - Output exactly one RFC 8259 JSON object.
 - The first non-whitespace character must be `{`.
 - The last non-whitespace character must be `}`.
-- The root object must begin with `"research_schema_version": "1.0"` and contain the case_id below.
+- The root object must begin with `"research_schema_version": "2.0"` and contain the case_id below.
 - Do not output prose, headings, bullets, Markdown, code fences, citations outside JSON, Python, tool logs, research notes, or a second JSON object.
 - You may research and reason internally, but expose only the completed JSON object.
 - If the research cannot be completed, still return one JSON object with an `error` object. Never return a prose report.
 
-最重要：最終回答は `research_schema_version: "1.0"` のJSONオブジェクト1件だけにしてください。文章レポート、見出し、Markdown、コードフェンス、作業説明は最終回答へ含めません。
+最重要：最終回答は `research_schema_version: "2.0"` のJSONオブジェクト1件だけにしてください。文章レポート、見出し、Markdown、コードフェンス、作業説明は最終回答へ含めません。
 
-あなたは、求人広告を起点に企業の採用訴求材料を発見する企業調査担当です。
-最優先の目的は、TARGETについて、求職者に魅力として伝えられそうな事実を幅広く収集することです。競合比較が成立する情報だけに調査対象を絞ってはいけません。
+あなたは、求人広告を起点に、対象企業の採用競争力と求人訴求に使える強みを発見する企業調査担当です。
+
+この調査では、ユーザーが比較対象企業を指定しません。特定2社との横並び比較を目的にせず、TARGETの公式情報を企業全体まで広げて調べ、必要に応じて同業・同雇用形態・類似職種の企業や求人を市場参照情報として選定してください。
 
 ## 案件情報
 
@@ -113,7 +114,6 @@ FINAL RESPONSE CONTRACT:
 {
   "case_id": "{{CASE_ID}}",
   "target": {{TARGET_ENTITY_JSON}},
-  "competitors": {{COMPETITOR_ENTITIES_JSON}},
   "job_title": {{JOB_TITLE_JSON}},
   "work_location": {{WORK_LOCATION_JSON}},
   "employment_type_hint": {{EMPLOYMENT_TYPE_HINT_JSON}},
@@ -124,86 +124,100 @@ FINAL RESPONSE CONTRACT:
 }
 </EXPECTED_RESEARCH_INPUT>
 
-## 競合企業入力の扱い — 必須
+## 調査目的
 
-- `competitors` が空配列の場合、TARGETだけを調査する。
-- 競合企業を自己判断で追加、推測、自動選定してはいけない。
-- `competitors` が空配列なら、entities・sources・coverageへC1/C2を出力せず、comparabilityは空配列にする。
-- 競合が1社だけ入力されている場合は、その1社だけを調査し、存在しないC2を補完しない。
-- 競合が2社入力されている場合だけ、C1とC2の両方を調査する。
+1. TARGETの対象求人に直接関係する魅力を収集する。
+2. 対象求人だけに限定せず、TARGETの採用サイト、企業サイト、福利厚生、研修、キャリア、社員紹介、ニュース、会社概要などから、求職者へ訴求できる企業全体の強みを幅広く収集する。
+3. 全社制度が今回の職種・勤務地へ適用されるか不明でも削除せず、適用範囲をlimitationsに記録する。
+4. 市場内での特徴を判断するため、同業・同雇用形態・類似職種の企業や求人を原則3～6社程度、テーマごとに有用な市場参照先として選ぶ。
+5. 市場参照先は固定の比較企業ではない。テーマによって参照先が異なってよい。
+6. TARGETだけで確認できた強みも、比較情報がないことを理由に捨てない。
 
+## TARGETで必ず探索する領域
 
-## 調査の優先順位
+次の領域を一度すべて確認し、採用訴求へ使える具体的事実を収集する。
 
-1. TARGETの企業・事業・採用・職場・設備・制度・実績から、採用訴求に使えそうな具体的事実を幅広く探す。
-2. 今回の職種、勤務地、雇用形態に直接関係する事実を優先する。
-3. TARGETで見つかった魅力は、競合に同じ情報がなくても必ず記録する。
-4. `competitors` に含まれる競合企業について、各社で強い採用訴求材料を独立して探す。TARGETに同じ情報がなくても記録する。競合未入力時はこの工程を行わない。
-5. 3社の情報が同じ軸で揃う場合だけ比較可能性を整理する。3社の情報が揃うことを採用・出力条件にしない。
+1. 企業基盤・歴史・規模・成長性・知名度
+2. 事業の社会性・顧客価値・安定性
+3. 仕事内容・配属先・扱う製品やサービス
+4. 雇用の安定性・無期雇用・正社員性・配属継続
+5. 給与・賞与・手当・評価制度
+6. 勤務時間・休日・有休・残業管理
+7. 福利厚生・独自手当・家族支援
+8. 社宅・引越し・新生活・生活トラブル支援
+9. 研修・教育・未経験者支援
+10. 資格取得・学習費用・リスキリング
+11. キャリアアップ・社内転職・職種転換
+12. 面談・フォロー体制・相談窓口
+13. 安全・設備・身体負担軽減
+14. 職場風土・表彰・イベント・定着支援
+15. 選考・入社時期・応募者支援
+16. 採用に使える受賞、認証、公式発表、社員実例
 
-## 探索する情報
+## 市場参照先の選定ルール
 
-- 会社の歴史、事業基盤、成長、規模、知名度
-- 事業や仕事の社会的意義、顧客への価値
-- 今回の職種の仕事内容、1日の流れ、扱うもの、設備、負担軽減策
-- 給与、賞与、手当、評価、キャリア、資格支援
-- 勤務時間、休日、有給、柔軟な働き方
-- 研修、教育施設、指導体制、安全への取り組み
-- 福利厚生、社宅、休憩環境、働きやすさ
-- 拠点、職場環境、地域性、独自の設備や取り組み
-- 採用に活用できそうな公式ニュース、受賞、認証、実績
+- TARGETの業種、雇用形態、職種、勤務地の近さを考慮する。
+- すべての条件が一致しなくても、特定テーマの比較に有用なら選定できる。
+- 企業名、公式URL、選定理由、比較上の制約をentitiesへ記録する。
+- entity_idはTARGET以外を `M01`、`M02` のように連番で付ける。
+- 同一企業を重複登録しない。
+- 求人まとめ記事や検索結果だけを参照先にせず、原則として公式採用ページ、公式求人、公式制度ページを確認する。
+- 一般的な傾向を示す公的機関・業界団体などはentity_id=`GENERAL`として扱える。
+- 市場全体を網羅したと断定しない。「確認した市場参照先の範囲で」と位置づける。
 
 ## 情報源と事実認定
 
-- 公式サイト、公式採用ページ、公式求人、公式ニュースを優先する。
-- 指定URLを取得できない場合は、会社名・正式ドメイン・site:検索で公式個別ページを探す。
+- TARGETは公式サイト、公式採用ページ、公式求人、公式ニュースを最優先する。
+- 指定URLから採用トップだけでなく、制度・研修・福利厚生・社員紹介などの個別ページを探索する。
+- 指定URLを取得できない場合は、正式企業名・正式ドメイン・site:検索で公式個別ページを探す。
+- 市場参照先も公式情報を優先し、不足時のみ公的機関、業界団体、信頼できる媒体、求人媒体を補足利用する。
 - 検索結果のタイトルやスニペットだけを事実として採用しない。
 - 本文を実際に確認できたページだけをaccess_status="success"かつadopted=trueにできる。
 - 親会社、グループ会社、別法人、別職種、別勤務地の情報を混同しない。
 - 会社全体の制度が今回の職種・勤務地へ適用されるか不明な場合はlimitationsへ明記する。
-- 評価、効果推論、優位性の断定をverified_factsへ入れない。
+- 「優れている」「魅力的」「他社にはない」などの評価をverified_factsへ入れない。verified_factsは確認できた事実だけにする。
 - ユーザーの現在地、居住地、検索履歴、アカウント情報を調査条件に使わない。
 
-## リサーチプラン
+## 調査量の目安
 
-開始時の計画には次を具体的に含める。
+- TARGETの採用可能な個別ページ：原則4ページ以上を目指す。
+- TARGETの確認事実：原則10件以上を目指す。
+- 市場参照組織：原則3～6件。情報不足時は少なくてもよいがwarningsへ理由を書く。
+- 市場参照の確認事実：複数テーマを支えられる量を収集する。
+- 件数合わせの低品質ソース、重複ページ、本文未確認ページは採用しない。
 
-- TARGETと、`competitors` に実際に含まれる競合企業の正式企業名と公式URL。競合未入力時はTARGETのみ
-- TARGETについて広く探索する公式個別ページ
-- 今回の職種・勤務地に近い求人情報を優先する方針
-- TARGET単独の強みも捨てない方針
-- 競合単独の強みも捨てない方針
-- 比較条件が異なる場合の記録方法
-- ユーザーの現在地を使用しないこと
-
-追加質問は行わない。ユーザーが画面上でリサーチを開始した後は、途中確認を求めず最終JSONまで作成する。
+追加質問は行わない。途中確認を求めず、調査完了後に最終JSONだけを返す。
 
 ## 最終JSON契約
 
 {
-  "research_schema_version": "1.0",
+  "research_schema_version": "2.0",
   "case_id": "{{CASE_ID}}",
   "checked_at": "YYYY-MM-DD",
   "research_scope": {
     "job_title": "",
     "work_location": "",
     "employment_type_hint": "",
+    "company_wide_scope": true,
+    "market_reference_strategy": "同業・同雇用形態・類似職種からテーマごとに選定",
     "location_personalization_used": false
   },
   "entities": [
     {
-      "entity_id": "TARGET|C1|C2",
-      "company_name": "正式企業名",
+      "entity_id": "TARGET|M01|M02|GENERAL",
+      "entity_role": "target|market_reference|general_reference",
+      "company_name": "正式企業名または情報源名",
       "official_url": "https://... または null",
       "identity_status": "verified|partially_verified|unverified",
-      "identity_notes": "企業同定上の注意点"
+      "selection_reason": "市場参照先の場合の選定理由。TARGETは空文字",
+      "comparability_notes": "職種・勤務地・雇用形態などの相違。なければ空文字"
     }
   ],
   "sources": [
     {
       "research_source_id": "R001",
-      "entity_id": "TARGET|C1|C2",
-      "source_type": "official_site|official_recruit|official_job|public_authority|reputable_media|job_board|other",
+      "entity_id": "TARGET|M01|M02|GENERAL",
+      "source_type": "official_site|official_recruit|official_job|official_sns|public_authority|industry_association|reputable_media|job_board|other",
       "page_title": "実際のページタイトル",
       "url": "https://個別ページURL",
       "access_status": "success|failure",
@@ -213,7 +227,7 @@ FINAL RESPONSE CONTRACT:
       "verified_facts": [
         {
           "fact_id": "F001",
-          "category": "company_profile|business|job_content|work_style|pay|holiday|benefit|training|qualification_support|safety|location|other",
+          "category": "company_profile|business|job_content|employment_stability|work_style|pay|holiday|benefit|life_support|training|qualification_support|career|follow_up|safety|culture|selection|location|other",
           "fact": "ページ本文から直接確認した事実",
           "applies_to": "company_wide|specific_job|specific_location|group_wide|unknown",
           "evidence_strength": "direct|contextual",
@@ -225,28 +239,25 @@ FINAL RESPONSE CONTRACT:
   ],
   "coverage": [
     {
-      "entity_id": "TARGET|C1|C2",
-      "category": "company_profile|business|official_job|pay|work_style|benefit|training|qualification_support|safety|other",
+      "entity_id": "TARGET|M01|M02|GENERAL",
+      "category": "company_profile|business|official_job|employment_stability|pay|work_style|benefit|life_support|training|qualification_support|career|follow_up|safety|culture|selection|other",
       "status": "used|searched_no_adoptable_info|not_searched",
       "research_source_ids": ["R001"],
       "note": ""
     }
   ],
-  "comparability": [
+  "market_contexts": [
     {
-      "axis": "比較軸",
+      "theme": "研修・キャリア支援",
+      "target_scope": "TARGETで確認した制度の適用範囲",
+      "reference_entity_ids": ["M01", "M02"],
       "comparability": "comparable|partially_comparable|not_comparable",
-      "target_scope": "対象企業側の職種・勤務地・雇用形態・時期",
-      "competitor_scopes": [
-        {"entity_id": "C1", "scope": "比較情報の範囲"},
-        {"entity_id": "C2", "scope": "比較情報の範囲"}
-      ],
-      "note": "比較上の制約"
+      "note": "市場内での位置づけに使う際の制約"
     }
   ],
   "unresolved_items": [
     {
-      "entity_id": "TARGET|C1|C2",
+      "entity_id": "TARGET|M01|M02|GENERAL",
       "priority": "high|medium|low",
       "question": "未確認事項",
       "reason": "確認が必要な理由"
@@ -257,16 +268,18 @@ FINAL RESPONSE CONTRACT:
 
 ## 出力前検査
 
-- 入力された全entity_idがentitiesに1件ずつ存在し、入力されていないC1/C2を追加していない。
+- entitiesにTARGETが1件だけ存在する。
+- TARGET以外の企業参照はM01形式で連番になっている。
+- entity_role、selection_reason、comparability_notesを省略していない。
 - case_idが一致する。
-- location_personalization_usedがfalseである。
+- company_wide_scopeがtrue、location_personalization_usedがfalseである。
 - adopted=trueのソースは取得成功で、verified_factsが1件以上ある。
 - adopted=falseのソースをcoverage.status="used"から参照しない。
 - URLは本文を確認した実際の個別ページである。
 - fact_idとresearch_source_idに重複がない。
 - グループ会社の事実をTARGET自身の事実にしていない。
-- TARGETで確認した採用訴求材料を、競合に同軸情報がないことを理由に削除していない。
-- 競合で確認した強い特徴を、TARGETに同軸情報がないことを理由に削除していない。
+- TARGETの企業全体の強みを、対象求人に直接記載がないことを理由に削除していない。
+- 市場参照先が少ない場合は理由をwarningsに記録している。
 - 具体的な公式個別ページを不必要にトップページへ集約していない。
 - 最終回答全体がJSON.parse可能で、JSON以外の文章を含まない。
 
@@ -275,20 +288,20 @@ FINAL RESPONSE CONTRACT:
 1. 通常文章の調査レポートを作成していた場合は、その内容を内部で上記Schemaへ変換し、文章レポートを破棄する。
 2. 最初の非空白文字が `{` であることを確認する。
 3. 最後の非空白文字が `}` であることを確認する。
-4. `research_schema_version`、`case_id`、`entities`、`sources`、`coverage` が存在することを確認する。
+4. `research_schema_version`、`case_id`、`entities`、`sources`、`coverage`、`market_contexts` が存在することを確認する。
 5. JSON以外の前置き、後書き、出典一覧、脚注、Markdownリンク、コードフェンスがないことを確認する。
 6. 条件を満たさない場合は送信せず、内部で修正してからJSONを1回だけ送信する。
 
 最終回答はJSONオブジェクト本体1件だけを出力する。これは通常のDeep Researchレポートより優先される出力契約である。</script>
 <script id="conversionPromptTemplate" type="text/plain">この工程はv3.1では使用しません。</script>
-<script id="proPromptTemplate" type="text/plain"># 求人原稿魅力度評価・Pro分析JSON出力プロンプト v4.6
+<script id="proPromptTemplate" type="text/plain"># 求人原稿魅力度評価・採用競争力分析 Pro JSON出力プロンプト v5.0
 
-最重要：最終回答は、Knowledgeに登録された `gemini_output_schema_v2.1_strict.txt` に完全適合するJSONオブジェクト1件だけにしてください。文章レポート、Markdown、コードフェンス、作業ログ、中間JSONは出力しません。
+最重要：最終回答は、Knowledgeに登録された `gemini_output_schema_v3.0_strict.txt` に完全適合するJSONオブジェクト1件だけにしてください。文章レポート、Markdown、コードフェンス、作業ログ、中間JSONは出力しません。
 
 応答契約：最初の非空白文字は `{`、最後の非空白文字は `}` とします。内部でPython・Pandas・ファイル生成・Schema検証を使用しても、コード、ログ、途中表示、空テンプレートJSON、先頭だけのJSONプレビューは回答へ一切出しません。完成JSONを1回だけ返してください。
 
 登録済みの評価基準を用い、求人原稿と企業調査結果を分析してください。
-この分析の目的は、求人原稿の欠点を列挙することではありません。求人広告を起点に、採用効果の向上を期待させる強い・面白い訴求材料を発見し、既存の魅力をさらに具体化することです。
+この分析の目的は、求人原稿の欠点を列挙することではありません。求人広告を起点に、対象企業の公式採用情報・企業情報を企業全体まで広げて捉え、採用効果の向上を期待させる強い・面白い訴求材料を発見し、既存の魅力をさらに具体化することです。
 
 ## 実行契約
 
@@ -489,76 +502,88 @@ FINAL RESPONSE CONTRACT:
 - `confirmation_required: true` の場合、`confirmation_question` は文字列で、未確認箇所を文面内の［　］で示す。
 - `confirmation_required: false` の場合、`confirmation_question` は必ず `null`。
 
-## 4. competitor_analysis
+## 4. recruitment_strength_analysis
 
-競合比較は、3社の同一軸情報が揃うことを条件にしない。TARGET単独の強み、競合単独の強みも出力する。
+`recruitment_strength_analysis` は、特定の比較企業2社との横並び表ではありません。対象企業の採用競争力と求人訴求に使える強みを、対象求人だけに限定せず企業全体から幅広く整理する。
 
-入力された競合企業数は **{{COMPETITOR_COUNT}}社**。0社の場合は競合を自己判断で追加・選定せず、`competitors: []`、`items: []` とし、`overall_note`へ「競合企業未指定のため対象企業のみ分析」と記載する。1社の場合はその1社だけ、2社の場合は2社を扱う。
+出力件数は **原則8～15件、最大20件** とする。TARGETの採用済み成功ソースに複数の制度・事実がある場合、代表2～3件だけへ過度に要約しない。
 
-出力件数は、競合企業が1社以上入力されている場合、**原則6～10件**とする。最大20件。採用済みソースから6件以上の独立した分析テーマを作れる場合は、6件未満に絞らない。根拠が本当に少ない場合は4～5件でもよいが、4件未満にするのは、採用訴求として有用な別テーマを作れない場合だけとし、その理由を`overall_note`へ明記する。件数合わせの水増し、同義の言い換え、根拠のない推測は禁止する。
+市場参照情報が不足していても、TARGETで確認できた強みは次のいずれかとして出力する。
 
-`competitors` は入力された競合だけを、次のキーで出力する。`entity_id` へ変更しない。
+- `company_specific_strength`：TARGETで確認できた企業固有の採用訴求材料
+- `market_compared_strength`：複数の市場参照先との比較により特徴を位置づけられる材料
+- `appeal_opportunity`：魅力になり得るが、対象職種への適用範囲や追加確認が必要な材料
 
-```json
-{
-  "competitor_id": "C1",
-  "company_name": "正式企業名"
-}
-```
-
-各 `items` は次の構造を厳守する。
+各 `items` は次の11キーを必ずすべて持つ。
 
 ```json
 {
-  "analysis_theme": "車両の安全性・運転しやすさ",
-  "target_company_value": "全車AT車、バックカメラ・ドライブレコーダー完備",
-  "competitor_values": [
-    {"competitor_id": "C1", "value": null},
-    {"competitor_id": "C2", "value": "全車AT車、研修施設あり"}
+  "analysis_theme": "独自の生活支援制度",
+  "analysis_type": "company_specific_strength",
+  "company_strength": "社宅・引越し費用だけでなく、生活上の困りごとまで支援する制度が確認できる",
+  "verified_facts": [
+    "社宅の入居費用を会社が負担する",
+    "引越し費用の補助制度がある"
   ],
-  "spotlight_entity_id": "TARGET",
-  "insight_type": "target_strength",
-  "recruitment_insight": "採用訴求として注目する理由",
-  "target_action": "貴社求人での活用方法または確認案",
-  "comparability_note": "比較条件上の注意。なければ空文字",
-  "evidence_refs": ["S003", "S008"],
+  "jobseeker_value": "新しい勤務地で生活を始める際の金銭面・生活面の不安を減らせる",
+  "market_position": "distinctive",
+  "market_context": "確認した市場参照先では、寮・社宅制度は見られたが生活トラブル支援まで明示した例は限定的",
+  "recruitment_use": "『仕事だけでなく新生活まで支える』という見出しで、制度の具体例をまとめて訴求する",
+  "application_scope_note": "全社制度。今回の職種・勤務地への適用条件は確認が必要",
+  "evidence_refs": ["S002", "S006", "S009"],
   "confidence": "medium"
 }
 ```
 
-- `competitor_values` は、入力された競合ごとに `{ "competitor_id", "value" }` を1件ずつ入れる。
-- 情報がなければ `value: null`。配列へ文字列やnullを直接入れない。
-- `spotlight_entity_id`: `TARGET | C1 | C2 | MULTIPLE`
-- `insight_type`: `target_strength | competitor_strength | shared_point | target_opportunity | not_directly_comparable`
+許可値：
+
+- `analysis_type`: `company_specific_strength | market_compared_strength | appeal_opportunity`
+- `market_position`: `distinctive | strong | competitive | common_but_effective | comparison_unverified`
+- `confidence`: `high | medium | low`
+
+### 市場内での位置づけ
+
+- `distinctive`：確認した複数の市場参照先では同種の制度・特徴が限定的で、特徴性を説明できる。
+- `strong`：比較対象にも類似制度はあるが、対象範囲、費用負担、選択肢、支援の深さなどで強い。
+- `competitive`：市場参照先と同等以上で、応募条件として十分に競争力がある。
+- `common_but_effective`：独自性は高くないが、求職者の応募判断には有効であり、具体化する価値がある。
+- `comparison_unverified`：TARGETの魅力は確認できるが、市場比較が十分でない。独自性を断定しない。
+
+`market_context` は、比較に使用した範囲と観察事実を簡潔に書く。市場参照情報がない場合も空欄にせず、「市場参照情報が不足しており独自性は未確認」と書く。
 
 ### 分析テーマを広く拾うための内部手順
 
-最終出力前に、次の候補群を一度すべて点検し、根拠があるテーマを候補化する。候補が存在するのに、代表2～3件だけへ過度に要約しない。
+最終出力前に、次の16領域を一度すべて点検する。根拠がある領域を候補化し、意味が異なるテーマを安易に統合しない。
 
-1. 仕事内容・配送内容・身体的負担・荷役方法
-2. 車両・設備・安全対策・業務効率化
-3. 給与・月収例・年収例・賞与
-4. 残業時間・残業代・手当・勤怠管理
-5. 年間休日・有休・休暇制度・休みやすさ
-6. 勤務時間・日勤夜勤・距離・宿泊・毎日帰れるか
-7. 研修・入社後支援・未経験者フォロー
-8. 資格取得・スキル・キャリア・昇格
-9. 福利厚生・割引・住宅・保険・独自制度
-10. 子育て・家族支援・女性活躍支援
-11. 転勤・勤務地限定・地域定着性
-12. 職場風土・定着支援・表彰・相談体制
-13. 選考方法・面接負担・入社スピード
-14. 企業基盤・ブランド・成長性・社会的役割
+1. 企業基盤・歴史・規模・成長性・知名度
+2. 事業の社会性・安定性・顧客価値
+3. 仕事内容・配属先・製品・プロジェクトの幅
+4. 雇用の安定性・無期雇用・正社員性
+5. 給与・賞与・手当・評価制度
+6. 勤務時間・休日・有休・残業管理
+7. 福利厚生・独自手当・家族支援
+8. 社宅・引越し・新生活・生活支援
+9. 研修・教育・未経験者支援
+10. 資格取得・学習費用・リスキリング
+11. キャリアアップ・社内転職・職種転換
+12. 面談・フォロー・相談体制
+13. 安全・設備・身体負担軽減
+14. 職場風土・表彰・イベント・定着支援
+15. 選考・入社支援
+16. 受賞・認証・公式実績・社員事例
 
 選定ルール：
 
-- 異なる意味を持つテーマは別行にする。たとえば「車両設備」と「手積み手降ろしなし」、「年間休日」と「有休取得率」、「給与水準」と「残業代の支給方法」、「研修」と「資格取得支援」を安易に1行へ統合しない。
-- 一社にしか情報がないテーマも、採用訴求上有用なら出力する。他社欄は`null`でよい。
-- 競合側だけに強い材料がある場合も、貴社の確認・改善機会として`competitor_strength`または`target_opportunity`で出力する。
-- 十分な材料がある場合、全項目の半数以上は`TARGET`を注目企業とするか、貴社の活用・確認につながるテーマにする。
-- 職種、勤務地、雇用形態、採用区分が異なる情報は削除せず、比較価値があれば`comparability_note`へ相違点を書く。
-- 同一事実を見出しだけ変えて重複させない。各行は固有の採用判断・営業示唆を持たせる。
-- 各行には、その行の記述を直接支える`evidence_refs`を必ず付ける。
+- 対象求人に直接記載されていなくても、TARGETの採用訴求に利用できる企業全体の事実は出力する。
+- 全社制度が今回の職種・勤務地へ適用されるか不明な場合は削除せず、`application_scope_note`へ確認事項を書く。
+- 「研修」と「資格取得支援」、「社宅」と「引越し補助」、「キャリアアップ」と「社内転職」など、求職者価値が異なるものは別行にできる。
+- 同じ事実を言い換えただけの重複行は作らない。
+- `verified_facts` は根拠ソースで直接確認できる事実だけを入れる。評価や推論は `jobseeker_value`、`market_context`、`recruitment_use`へ分離する。
+- 「他社にはない」「業界唯一」「圧倒的」などの断定は、調査範囲で立証できない限り使用しない。
+- 市場参照先の職種・勤務地・雇用形態が異なる場合は `application_scope_note` に明記する。
+- 各行には、その行の事実と市場位置づけを直接支える `evidence_refs` を付ける。
+- TARGETの成功ソースが3件以上、確認事実が8件以上あるのにitemsが8件未満の場合は、独立テーマへ展開できない理由を`overall_note`へ明記する。
+- TARGETの採用可能な事実があるのに `items: []` としてはいけない。
 
 ## 5. summary
 
@@ -680,7 +705,7 @@ status: `used | searched_no_adoptable_info | not_searched | not_applicable`
 - case_id
 - case_summary
 - analysis_rows
-- competitor_analysis
+- recruitment_strength_analysis
 - summary
 - sales_meeting
 - sources
@@ -690,7 +715,7 @@ status: `used | searched_no_adoptable_info | not_searched | not_applicable`
 
 ## 10. 出力直前の機械検査
 
-最終出力前に、内部で必ず `gemini_output_schema_v2.1_strict.txt` へ照合し、エラー0件になるまで修正する。検査コードや結果は出力しない。
+最終出力前に、内部で必ず `gemini_output_schema_v3.0_strict.txt` へ照合し、エラー0件になるまで修正する。検査コードや結果は出力しない。
 
 特に次を確認する。
 
@@ -701,7 +726,7 @@ status: `used | searched_no_adoptable_info | not_searched | not_applicable`
 - strengthは`text/status/evidence_refs/confidence`
 - proposalの12キーが揃い、expected_effectsは配列。重点提案だけrankが1以上、重点外はrank:null
 - statement_statusにdraft・readyを使っていない
-- competitor_idとcompetitor_valuesの構造が正しい
+- recruitment_strength_analysisが原則8～15件で、各行の11キーと許可値が正しい
 - summary配列はオブジェクト配列
 - proposal_notesの10キーが揃い、rankが1以上の重点proposalだけと一致する
 - story_stepsは6つのオブジェクト
@@ -712,30 +737,28 @@ status: `used | searched_no_adoptable_info | not_searched | not_applicable`
 - additionalPropertiesに相当する独自キーを追加していない
 - JSON.parse可能
 
-送信直前に、回答が完成JSONだけであること、analysis_rowsが必須件数、strengthがある全行にproposalがあること、重点proposalが設定件数（strength件数が少ない場合はその件数）、story_stepsが6件であることを確認する。空の初期テンプレート、Pythonコード、実行ログ、JSONの先頭プレビューを回答へ含めない。
+送信直前に、回答が完成JSONだけであること、analysis_rowsが必須件数、strengthがある全行にproposalがあること、重点proposalが設定件数（strength件数が少ない場合はその件数）、recruitment_strength_analysisが対象企業の事実を幅広く含むこと、story_stepsが6件であることを確認する。空の初期テンプレート、Pythonコード、実行ログ、JSONの先頭プレビューを回答へ含めない。
 
 最終回答はRFC 8259準拠のJSONオブジェクト本体1件だけを出力する。</script>
 <script>"use strict";
-const KEY="job_appeal_prompt_maker_v4_6",OLD_KEYS=["job_appeal_prompt_maker_v4_5","job_appeal_prompt_maker_v4_4","job_appeal_prompt_maker_v4_3","job_appeal_prompt_maker_v4_2","job_appeal_prompt_maker_v4_1","job_appeal_prompt_maker_v4_0","job_appeal_prompt_maker_v3_6","job_appeal_prompt_maker_v3_5","job_appeal_prompt_maker_v3_4","job_appeal_prompt_maker_v3_3","job_appeal_prompt_maker_v3_2","job_appeal_prompt_maker_v3_1","job_appeal_prompt_maker_v3_0","job_appeal_prompt_maker_v2_4","job_appeal_prompt_maker_v2_3","job_appeal_prompt_maker_v2_2"],GEMINI_RESEARCH="https://gemini.google.com/app",GEMINI_PRO="https://gemini.google.com/gem/d3becb7771cb";
+const KEY="job_appeal_prompt_maker_v5_0",OLD_KEYS=["job_appeal_prompt_maker_v4_6","job_appeal_prompt_maker_v4_5","job_appeal_prompt_maker_v4_4","job_appeal_prompt_maker_v4_3","job_appeal_prompt_maker_v4_2","job_appeal_prompt_maker_v4_1","job_appeal_prompt_maker_v4_0","job_appeal_prompt_maker_v3_6","job_appeal_prompt_maker_v3_5","job_appeal_prompt_maker_v3_4","job_appeal_prompt_maker_v3_3","job_appeal_prompt_maker_v3_2","job_appeal_prompt_maker_v3_1","job_appeal_prompt_maker_v3_0","job_appeal_prompt_maker_v2_4","job_appeal_prompt_maker_v2_3","job_appeal_prompt_maker_v2_2"],GEMINI_RESEARCH="https://gemini.google.com/app",GEMINI_PRO="https://gemini.google.com/gem/d3becb7771cb";
 const GAS_WEB_APP_URL="https://script.google.com/macros/s/AKfycbyz5OPM-HD9u9hhxCeNyvCP82pgcbngZp8csWWYqdQzpNtk-4lQuxQdU1Si3LRmCh_E/exec";
-const RULESET_VERSION="2026-08-04-v1",EVALUATION_TABLE_SCHEMA_VERSION="1.0",ANALYSIS_POLICY_VERSION="2026-08-07-v1",FINAL_JSON_SCHEMA_VERSION="2.1";
+const RULESET_VERSION="2026-08-04-v1",EVALUATION_TABLE_SCHEMA_VERSION="1.0",ANALYSIS_POLICY_VERSION="2026-08-07-v2",FINAL_JSON_SCHEMA_VERSION="3.0";
 const DEFAULTS={proposalCount:"3",textLength:"100",webMode:"balanced",gasWebAppUrl:GAS_WEB_APP_URL,gasAccessKey:""};
 const WEB_LABELS={specified:"指定URL・公式ドメイン中心",balanced:"公式情報優先＋信頼できる補足",broad:"一般Webを広く調査"};
 const $=id=>document.getElementById(id);
-const el={jobTitle:$("jobTitle"),workLocation:$("workLocation"),employmentTypeHint:$("employmentTypeHint"),jobUrl:$("jobUrl"),jobText:$("jobText"),targetCompanyName:$("targetCompanyName"),targetCompanyUrl:$("targetCompanyUrl"),companyUrls:$("companyUrls"),competitor1Name:$("competitor1Name"),competitor1Url:$("competitor1Url"),competitor2Name:$("competitor2Name"),competitor2Url:$("competitor2Url"),entityNotes:$("entityNotes"),target:$("target"),proposalCount:$("proposalCount"),textLength:$("textLength"),webMode:$("webMode"),gasWebAppUrl:$("gasWebAppUrl"),gasAccessKey:$("gasAccessKey"),researchPreview:$("researchPromptPreview"),conversionPreview:$("conversionPromptPreview"),researchJsonInput:$("researchJsonInput"),proPreview:$("proPromptPreview"),jsonInput:$("jsonInput"),status:$("status")};
+const el={jobTitle:$("jobTitle"),workLocation:$("workLocation"),employmentTypeHint:$("employmentTypeHint"),jobUrl:$("jobUrl"),jobText:$("jobText"),targetCompanyName:$("targetCompanyName"),targetCompanyUrl:$("targetCompanyUrl"),companyUrls:$("companyUrls"),entityNotes:$("entityNotes"),target:$("target"),proposalCount:$("proposalCount"),textLength:$("textLength"),webMode:$("webMode"),gasWebAppUrl:$("gasWebAppUrl"),gasAccessKey:$("gasAccessKey"),researchPreview:$("researchPromptPreview"),conversionPreview:$("conversionPromptPreview"),researchJsonInput:$("researchJsonInput"),proPreview:$("proPromptPreview"),jsonInput:$("jsonInput"),status:$("status")};
 const researchTemplate=$("researchPromptTemplate").textContent.trim(),conversionTemplate=$("conversionPromptTemplate").textContent.trim(),proTemplate=$("proPromptTemplate").textContent.trim();
 const json=v=>JSON.stringify(v,null,2),urlLines=v=>String(v||"").split(/\r?\n/).map(x=>x.trim()).filter(Boolean),JOB_TEXT_FALLBACK="［求人原稿全文の貼り付けなし：job_urlから本文を取得してください］";
 const REQUIRED_NOS={"正社員":[12,13,16,21,22,23,24,25,26,27,28,29,30,31,44,46,47,48,49,50,51,52,53,55,56,57,58,59,60,65,66,1,2,3,4,5,6,7,8,9,10,11,14,18,19,20,32,33,35,36,37,38,39,40,43,45,54,61,62,63,17,34,41,42],"非正規（アルバイト・パート・派遣）":[12,13,15,16,21,22,23,24,44,46,47,48,49,50,51,52,53,55,56,57,58,59,60,64,65,66,4,7,14,20,32,33,35,36,37,38,39,40,43,54,61,62,63,17,41,42]};
-const RESULT_VALUES=new Set(["記載あり","その他","なし"]),CONFIDENCE_VALUES=new Set(["high","medium","low"]),STORY_TITLES=["現在の求人原稿の良い点を伝える","御社の強みを伝える","原稿で十分に伝わっていない点を示す","文面案を提示する","期待効果を説明する","追加ヒアリングへつなぐ"],EVALUATIVE_WORDS=["充実","魅力的","魅力がある","安心感","安心でき","安定した","安定性","働きやす","素晴らしい","抜群","強力","確かな強み","大きな魅力","プライベートと両立"],COMPETITOR_ASSERTIONS=["競合他社にはない","他社にはない","他社より","競合より","他社との差別化","競合他社と比較して","同業他社と比較して"];
+const RESULT_VALUES=new Set(["記載あり","その他","なし"]),CONFIDENCE_VALUES=new Set(["high","medium","low"]),STORY_TITLES=["現在の求人原稿の良い点を伝える","御社の強みを伝える","原稿で十分に伝わっていない点を示す","文面案を提示する","期待効果を説明する","追加ヒアリングへつなぐ"],EVALUATIVE_WORDS=["充実","魅力的","魅力がある","安心感","安心でき","安定した","安定性","働きやす","素晴らしい","抜群","強力","確かな強み","大きな魅力","プライベートと両立"],MARKET_ASSERTIONS=["業界唯一","他社にはない","市場で唯一","圧倒的に優れて","一般的な企業にはない"];
 let caseId="",lastResearchValidation=null,lastValidation=null,timer,gasRequestId="",gasRequestCreatedAt="",lastReportResult=null,pendingGasRequestId="",gasCallbackToken="",gasSubmitTimer=null,gasPollTimer=null,gasPollStartedAt=0,gasPollAttempt=0;
 const GAS_RESULT_TIMEOUT_MS=240000,GAS_POLL_INTERVAL_MS=2500,GAS_POLL_CALLBACK="__jobAppealGasPollCallback";
 function makeCaseId(){const now=new Date(),stamp=new Intl.DateTimeFormat("sv-SE",{timeZone:"Asia/Tokyo",year:"numeric",month:"2-digit",day:"2-digit",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:false}).format(now).replace(/[-: ]/g,"");let token="";if(window.crypto&&window.crypto.getRandomValues){const a=new Uint32Array(2);window.crypto.getRandomValues(a);token=Array.from(a,x=>x.toString(36)).join("").slice(0,10)}else token=Math.random().toString(36).slice(2,12);return"case-"+stamp+"-"+token}
 function currentDateJst(){return new Intl.DateTimeFormat("sv-SE",{timeZone:"Asia/Tokyo",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}
 function lengthRange(v){return({"50":"40～70文字程度","100":"80～130文字程度","150":"120～180文字程度"})[v]||"80～130文字程度"}
 function targetEntity(){return{entity_id:"TARGET",company_name:el.targetCompanyName.value.trim(),official_url:el.targetCompanyUrl.value.trim()||null,additional_urls:urlLines(el.companyUrls.value)}}
-function competitorEntities(){const a=[];if(el.competitor1Name.value.trim()||el.competitor1Url.value.trim())a.push({entity_id:"C1",company_name:el.competitor1Name.value.trim(),official_url:el.competitor1Url.value.trim()||null});if(el.competitor2Name.value.trim()||el.competitor2Url.value.trim())a.push({entity_id:"C2",company_name:el.competitor2Name.value.trim(),official_url:el.competitor2Url.value.trim()||null});return a}
-function competitorPayload(){return competitorEntities().filter(x=>x.official_url).map(x=>({competitor_id:x.entity_id,url:x.official_url}))}
-function replacementsBase(){return{"{{CASE_ID}}":caseId,"{{JOB_TITLE_JSON}}":json(el.jobTitle.value.trim()),"{{WORK_LOCATION_JSON}}":json(el.workLocation.value.trim()),"{{EMPLOYMENT_TYPE_HINT_JSON}}":json(el.employmentTypeHint.value),"{{TARGET_PERSONA_JSON}}":json(el.target.value.trim()),"{{CURRENT_DATE}}":currentDateJst(),"{{TARGET_ENTITY_JSON}}":json(targetEntity()),"{{COMPETITOR_ENTITIES_JSON}}":json(competitorEntities()),"{{COMPETITOR_COUNT}}":competitorEntities().length,"{{ENTITY_NOTES_JSON}}":json(el.entityNotes.value.trim()),"{{WEB_RESEARCH_MODE}}":WEB_LABELS[el.webMode.value]||WEB_LABELS.balanced,"{{JOB_URL_JSON}}":json(el.jobUrl.value.trim()||null),"{{JOB_TEXT}}":el.jobText.value.trim()||JOB_TEXT_FALLBACK,"{{PROPOSAL_COUNT}}":el.proposalCount.value,"{{TEXT_LENGTH}}":el.textLength.value,"{{TEXT_LENGTH_RANGE}}":lengthRange(el.textLength.value),"{{RULESET_VERSION}}":RULESET_VERSION,"{{EVALUATION_TABLE_SCHEMA_VERSION}}":EVALUATION_TABLE_SCHEMA_VERSION,"{{ANALYSIS_POLICY_VERSION}}":ANALYSIS_POLICY_VERSION,"{{FINAL_JSON_SCHEMA_VERSION}}":FINAL_JSON_SCHEMA_VERSION}}
+function replacementsBase(){return{"{{CASE_ID}}":caseId,"{{JOB_TITLE_JSON}}":json(el.jobTitle.value.trim()),"{{WORK_LOCATION_JSON}}":json(el.workLocation.value.trim()),"{{EMPLOYMENT_TYPE_HINT_JSON}}":json(el.employmentTypeHint.value),"{{TARGET_PERSONA_JSON}}":json(el.target.value.trim()),"{{CURRENT_DATE}}":currentDateJst(),"{{TARGET_ENTITY_JSON}}":json(targetEntity()),"{{ENTITY_NOTES_JSON}}":json(el.entityNotes.value.trim()),"{{WEB_RESEARCH_MODE}}":WEB_LABELS[el.webMode.value]||WEB_LABELS.balanced,"{{JOB_URL_JSON}}":json(el.jobUrl.value.trim()||null),"{{JOB_TEXT}}":el.jobText.value.trim()||JOB_TEXT_FALLBACK,"{{PROPOSAL_COUNT}}":el.proposalCount.value,"{{TEXT_LENGTH}}":el.textLength.value,"{{TEXT_LENGTH_RANGE}}":lengthRange(el.textLength.value),"{{RULESET_VERSION}}":RULESET_VERSION,"{{EVALUATION_TABLE_SCHEMA_VERSION}}":EVALUATION_TABLE_SCHEMA_VERSION,"{{ANALYSIS_POLICY_VERSION}}":ANALYSIS_POLICY_VERSION,"{{FINAL_JSON_SCHEMA_VERSION}}":FINAL_JSON_SCHEMA_VERSION}}
 function fill(template,extra={}){let out=template;Object.entries({...replacementsBase(),...extra}).forEach(([k,v])=>out=out.replaceAll(k,String(v)));return out}
 function buildResearchPrompt(){return fill(researchTemplate)}
 function buildConversionPrompt(){return fill(conversionTemplate)}
@@ -747,15 +770,14 @@ function validInputs(stage="research"){
  if(!el.targetCompanyUrl.value.trim()){status("対象企業の公式URLを入力してください。公式サイトがない場合は補足メモへ記載してください。","error");el.targetCompanyUrl.focus();return false}
  if(!validUrl(el.targetCompanyUrl.value.trim())){status("対象企業の公式URLを確認してください。","error");return false}
  if(!el.jobUrl.value.trim()&&!el.jobText.value.trim()){status("求人原稿URLまたは求人原稿全文を入力してください。","error");el.jobText.focus();return false}
- const pairs=[[el.competitor1Name,el.competitor1Url,"競合企業1"],[el.competitor2Name,el.competitor2Url,"競合企業2"]];for(const[n,u,label]of pairs){if(n.value.trim()&&!u.value.trim()){status(label+"の公式URLを入力してください。","error");u.focus();return false}if(u.value.trim()&&!n.value.trim()){status(label+"の正式企業名を入力してください。","error");n.focus();return false}if(u.value.trim()&&!validUrl(u.value.trim())){status(label+"のURLを確認してください。","error");u.focus();return false}}
- if((el.competitor2Name.value.trim()||el.competitor2Url.value.trim())&&!(el.competitor1Name.value.trim()&&el.competitor1Url.value.trim())){status("競合企業2を使う場合は、競合企業1から入力してください。","error");return false}
+ const extraUrls=urlLines(el.companyUrls.value);for(const u of extraUrls){if(!validUrl(u)){status("対象企業の追加参考ページURLを確認してください: "+u,"error");el.companyUrls.focus();return false}}
  if(stage==="pro"&&(!lastResearchValidation||lastResearchValidation.errors.length)){status("先に企業調査結果を確認し、エラー0件にしてください。","error");return false}
  return true
 }
 function normalizeCompany(v){return String(v||"").replace(/[\s　]/g,"").replace(/^株式会社|株式会社$/g,"").replace(/^有限会社|有限会社$/g,"").toLowerCase()}
 function rootUrl(v){try{const u=new URL(v);return u.pathname==="/"&&!u.search&&!u.hash}catch{return false}}
 function urlKey(v){try{const u=new URL(v);return(u.origin+u.pathname.replace(/\/$/,"")+u.search).toLowerCase()}catch{return String(v||"").trim().toLowerCase()}}
-function finalSourceType(v){return({official_site:"official_site",official_recruit:"recruitment_site",official_job:"official_job",public_authority:"public_institution",reputable_media:"media_article",job_board:"job_board",other:"other"})[v]||"other"}
+function finalSourceType(v){return({official_site:"official_site",official_recruit:"recruitment_site",official_job:"official_job",official_sns:"official_sns",public_authority:"public_institution",industry_association:"industry_association",reputable_media:"media_article",job_board:"job_board",other:"other"})[v]||"other"}
 function finalSourceConfidence(source){const facts=Array.isArray(source&&source.verified_facts)?source.verified_facts:[],hasLimits=Boolean(String(source&&source.limitations||"").trim())||facts.some(f=>isObject(f)&&String(f.limitations||"").trim()),hasContext=facts.some(f=>isObject(f)&&(f.evidence_strength==="contextual"||["group_wide","unknown"].includes(f.applies_to))),weaker=["reputable_media","job_board","other"].includes(source&&source.source_type);if(hasContext&&weaker)return"low";if(hasLimits||hasContext||weaker)return"medium";return"high"}
 function finalSourceLimitations(source){const parts=[source&&source.limitations,...(Array.isArray(source&&source.verified_facts)?source.verified_facts.map(f=>isObject(f)?f.limitations:""):[])].map(v=>String(v||"").trim()).filter(Boolean);const unique=[...new Set(parts)];return unique.length?unique.join(" / "):null}
 function canonicalFinalSources(researchData){if(!isObject(researchData))return[];const entityMap=new Map((Array.isArray(researchData.entities)?researchData.entities:[]).filter(isObject).map(e=>[e.entity_id,String(e.company_name||e.entity_id||"不明")]));const fallbackDate=/^\d{4}-\d{2}-\d{2}$/.test(String(researchData.checked_at||""))?researchData.checked_at:currentDateJst();return(Array.isArray(researchData.sources)?researchData.sources:[]).filter(s=>isObject(s)&&s.adopted===true&&s.access_status==="success").map((s,i)=>{const match=String(s.research_source_id||"").match(/^R(\d{3})$/),sourceId=match?`S${match[1]}`:`S${String(i+1).padStart(3,"0")}`,facts=(Array.isArray(s.verified_facts)?s.verified_facts:[]).map(f=>isObject(f)?String(f.fact||"").trim():"").filter(Boolean),checked=/^\d{4}-\d{2}-\d{2}$/.test(String(s.checked_at||""))?s.checked_at:fallbackDate;return{source_id:sourceId,entity_id:s.entity_id,entity_name:entityMap.get(s.entity_id)||(s.entity_id==="GENERAL"?"一般情報":String(s.entity_id||"不明")),source_type:finalSourceType(s.source_type),title:String(s.page_title||s.url||"参照ページ").trim(),url:String(s.url||"").trim(),access_status:"success",adopted:true,verified_facts:facts,limitations:finalSourceLimitations(s),confidence:finalSourceConfidence(s),checked_at:checked}})}
@@ -841,20 +863,20 @@ function normalizeStructuredUrls(value,stats={markdownUrls:0},key=""){
 }
 function structuredScore(data,mode){
   if(!isObject(data))return-1e9;
-  const keys=mode==="research"?["research_schema_version","case_id","research_scope","entities","sources","coverage"]:["schema_version","ruleset_version","evaluation_table_schema_version","analysis_policy_version","case_id","case_summary","analysis_rows","competitor_analysis","summary","sales_meeting","sources"];
+  const keys=mode==="research"?["research_schema_version","case_id","research_scope","entities","sources","coverage","market_contexts"]:["schema_version","ruleset_version","evaluation_table_schema_version","analysis_policy_version","case_id","case_summary","analysis_rows","recruitment_strength_analysis","summary","sales_meeting","sources"];
   let score=keys.reduce((n,k)=>n+(k in data?12:0),0);
   if(data.case_id===caseId)score+=40;
-  if(mode==="research"&&data.research_schema_version==="1.0")score+=40;
+  if(mode==="research"&&data.research_schema_version==="2.0")score+=40;
   if(mode==="final"&&data.schema_version===FINAL_JSON_SCHEMA_VERSION)score+=40;
   if(mode==="research"){
-    const entities=Array.isArray(data.entities)?data.entities:[],sources=Array.isArray(data.sources)?data.sources:[],coverage=Array.isArray(data.coverage)?data.coverage:[];
-    const adopted=sources.filter(s=>isObject(s)&&s.adopted===true&&s.access_status==="success"),facts=adopted.reduce((n,s)=>n+(Array.isArray(s.verified_facts)?s.verified_facts.length:0),0);
-    score+=Math.min(entities.length,3)*15+Math.min(sources.length,30)*4+Math.min(adopted.length,30)*6+Math.min(facts,100)*2+Math.min(coverage.length,30)*2;
-    if(!entities.length)score-=100;if(!sources.length)score-=180;if(!facts)score-=100
+    const entities=Array.isArray(data.entities)?data.entities:[],sources=Array.isArray(data.sources)?data.sources:[],coverage=Array.isArray(data.coverage)?data.coverage:[],contexts=Array.isArray(data.market_contexts)?data.market_contexts:[];
+    const adopted=sources.filter(s=>isObject(s)&&s.adopted===true&&s.access_status==="success"),facts=adopted.reduce((n,s)=>n+(Array.isArray(s.verified_facts)?s.verified_facts.length:0),0),targetFacts=adopted.filter(s=>s.entity_id==="TARGET").reduce((n,s)=>n+(Array.isArray(s.verified_facts)?s.verified_facts.length:0),0);
+    score+=Math.min(entities.length,8)*12+Math.min(sources.length,40)*4+Math.min(adopted.length,40)*6+Math.min(facts,140)*2+Math.min(targetFacts,80)*3+Math.min(coverage.length,40)*2+Math.min(contexts.length,20)*3;
+    if(!entities.length)score-=100;if(!sources.length)score-=180;if(!targetFacts)score-=180
   }else{
-    const rows=Array.isArray(data.analysis_rows)?data.analysis_rows:[],proposals=rows.filter(r=>isObject(r)&&isObject(r.proposal)),sources=Array.isArray(data.sources)?data.sources:[],story=isObject(data.sales_meeting)&&Array.isArray(data.sales_meeting.story_steps)?data.sales_meeting.story_steps:[];
-    score+=Math.min(rows.length,80)*5+Math.min(proposals.length,10)*35+Math.min(story.length,6)*25+Math.min(sources.length,30)*5;
-    if(!rows.length)score-=350;if(!proposals.length)score-=120;if(!story.length)score-=150
+    const rows=Array.isArray(data.analysis_rows)?data.analysis_rows:[],proposals=rows.filter(r=>isObject(r)&&isObject(r.proposal)),sources=Array.isArray(data.sources)?data.sources:[],story=isObject(data.sales_meeting)&&Array.isArray(data.sales_meeting.story_steps)?data.sales_meeting.story_steps:[],strengthItems=isObject(data.recruitment_strength_analysis)&&Array.isArray(data.recruitment_strength_analysis.items)?data.recruitment_strength_analysis.items:[];
+    score+=Math.min(rows.length,80)*5+Math.min(proposals.length,70)*12+Math.min(story.length,6)*25+Math.min(sources.length,40)*5+Math.min(strengthItems.length,20)*20;
+    if(!rows.length)score-=350;if(!proposals.length)score-=120;if(!story.length)score-=150;if(!strengthItems.length)score-=180
   }
   score-=markdownUrlCount(data)*2;
   return score
@@ -908,30 +930,131 @@ function validateExactKeys(errors,obj,keys,path){
 
 function validateResearchResult(data,meta={extra:false}){
  const errors=[],warnings=[];
- if(!isObject(data)){errors.push(issue("error","ROOT_TYPE","最上位はJSONオブジェクトである必要があります。"));return{data,errors,warnings,metrics:{entities:0,sources:0,facts:0,individual:0}}}
- if(isObject(data.error)){errors.push(issue("error",data.error.code||"RESEARCH_ERROR",data.error.message||"Deep Researchがエラー結果を返しました。"));return{data,errors,warnings,metrics:{entities:0,sources:0,facts:0,individual:0}}}
- ["research_schema_version","case_id","checked_at","research_scope","entities","sources","coverage","comparability","unresolved_items","warnings"].forEach(k=>addIf(errors,!(k in data),"error","MISSING_TOP_LEVEL",`必須項目 ${k} がありません。`,k));
- addIf(errors,data.research_schema_version!=="1.0","error","RESEARCH_SCHEMA_VERSION","research_schema_versionは1.0である必要があります。","research_schema_version");addIf(errors,data.case_id!==caseId,"error","CASE_ID_MISMATCH",`案件IDが一致しません。画面: ${caseId} / JSON: ${data.case_id||"未設定"}`,"case_id");
- const scope=isObject(data.research_scope)?data.research_scope:{};addIf(errors,scope.location_personalization_used!==false,"error","LOCATION_PERSONALIZATION","ユーザーの現在地・居住地を調査へ使用しています。falseである必要があります。","research_scope.location_personalization_used");
- const entities=Array.isArray(data.entities)?data.entities:[];addIf(errors,!Array.isArray(data.entities),"error","ENTITIES_TYPE","entitiesは配列である必要があります。","entities");const expected=[targetEntity(),...competitorEntities()].map(x=>({id:x.entity_id,name:x.company_name,url:x.official_url}));const actualIds=entities.map(x=>x&&x.entity_id).filter(Boolean);const dupIds=actualIds.filter((x,i)=>actualIds.indexOf(x)!==i);addIf(errors,dupIds.length>0,"error","DUPLICATE_ENTITY_ID",`entity_idが重複しています: ${[...new Set(dupIds)].join(", ")}`,"entities");expected.forEach(exp=>{const got=entities.find(x=>x&&x.entity_id===exp.id);addIf(errors,!got,"error","MISSING_ENTITY",`${exp.id}がentitiesにありません。`,`entities.${exp.id}`);if(got){if(normalizeCompany(got.company_name)!==normalizeCompany(exp.name))warnings.push(issue("warning","ENTITY_NAME_MISMATCH",`${exp.id}の企業名が入力値と異なります。入力: ${exp.name} / JSON: ${got.company_name}`,`entities.${exp.id}.company_name`));if(exp.url&&got.official_url&&urlKey(exp.url)!==urlKey(got.official_url))warnings.push(issue("warning","ENTITY_URL_MISMATCH",`${exp.id}の公式URLが入力値と異なります。`,`entities.${exp.id}.official_url`));}});actualIds.filter(id=>!expected.some(x=>x.id===id)).forEach(id=>errors.push(issue("error","UNEXPECTED_ENTITY",`入力されていないentity_id ${id} があります。`,"entities")));
- const sources=Array.isArray(data.sources)?data.sources:[];addIf(errors,!Array.isArray(data.sources),"error","SOURCES_TYPE","sourcesは配列である必要があります。","sources");const sourceIds=[],factIds=[];let facts=0,individual=0;sources.forEach((s,i)=>{const p=`sources[${i}]`;if(!isObject(s)){errors.push(issue("error","SOURCE_TYPE","sourceはオブジェクトである必要があります。",p));return}if(!/^R\d{3}$/.test(String(s.research_source_id||"")))errors.push(issue("error","SOURCE_ID_FORMAT","research_source_idはR001形式です。",p+".research_source_id"));sourceIds.push(s.research_source_id);if(!expected.some(x=>x.id===s.entity_id))errors.push(issue("error","SOURCE_ENTITY",`未入力のentity_idです: ${s.entity_id}`,p+".entity_id"));if(!validUrl(s.url))errors.push(issue("error","SOURCE_URL","有効なHTTP(S) URLではありません。",p+".url"));if(s.adopted===true&&(s.access_status!=="success"))errors.push(issue("error","ADOPTED_FAILURE","adopted=trueのソースはaccess_status=successである必要があります。",p));const fs=Array.isArray(s.verified_facts)?s.verified_facts:[];if(s.adopted===true&&!fs.length)errors.push(issue("error","ADOPTED_NO_FACTS","採用ソースにはverified_factsが1件以上必要です。",p));if(s.adopted&&s.access_status==="success"&&!rootUrl(s.url))individual++;if(s.adopted&&rootUrl(s.url)&&/(研修|採用|求人|教育|福利厚生|会社概要|事業内容)/.test(String(s.page_title||"")))warnings.push(issue("warning","DETAIL_TITLE_ROOT_URL",`「${s.page_title}」ですがURLがトップページです。実際に確認した個別ページURLか確認してください。`,p+".url"));fs.forEach((f,j)=>{facts++;if(!isObject(f)){errors.push(issue("error","FACT_TYPE","verified_factsの要素はオブジェクトです。",`${p}.verified_facts[${j}]`));return}if(!/^F\d{3}$/.test(String(f.fact_id||"")))errors.push(issue("error","FACT_ID_FORMAT","fact_idはF001形式です。",`${p}.verified_facts[${j}].fact_id`));factIds.push(f.fact_id);if(!String(f.fact||"").trim())errors.push(issue("error","FACT_EMPTY","factが空です。",`${p}.verified_facts[${j}].fact`));if(f.applies_to==="group_wide"&&s.entity_id==="TARGET")warnings.push(issue("warning","GROUP_FACT_SCOPE","TARGETの事実がgroup_wideです。対象企業自身の制度として使わないでください。",`${p}.verified_facts[${j}]`));});});
- const dupS=sourceIds.filter((x,i)=>sourceIds.indexOf(x)!==i),dupF=factIds.filter((x,i)=>factIds.indexOf(x)!==i);addIf(errors,dupS.length>0,"error","DUPLICATE_SOURCE_ID",`research_source_idが重複しています: ${[...new Set(dupS)].join(", ")}`,"sources");addIf(errors,dupF.length>0,"error","DUPLICATE_FACT_ID",`fact_idが重複しています: ${[...new Set(dupF)].join(", ")}`,"sources.verified_facts");
- const coverage=Array.isArray(data.coverage)?data.coverage:[];coverage.forEach((c,i)=>(Array.isArray(c&&c.research_source_ids)?c.research_source_ids:[]).forEach(id=>{if(!sourceIds.includes(id))errors.push(issue("error","COVERAGE_SOURCE_MISSING",`coverageが存在しないsource IDを参照しています: ${id}`,`coverage[${i}]`))}));
- expected.forEach(exp=>{const adopted=sources.filter(s=>s&&s.entity_id===exp.id&&s.adopted===true&&s.access_status==="success");if(!adopted.length)warnings.push(issue("warning","ENTITY_NO_ADOPTED_SOURCE",`${exp.id}（${exp.name}）に採用可能な成功ソースがありません。`,`sources`));else if(adopted.every(s=>rootUrl(s.url)))warnings.push(issue("warning","ENTITY_ONLY_ROOT_PAGES",`${exp.id}はトップページしか採用されていません。採用・研修・求人などの個別ページを確認してください。`,`sources`));});
- if(sources.filter(s=>s&&s.adopted).length<=expected.length&&individual===0)warnings.push(issue("warning","RESEARCH_TOO_SHALLOW","調査結果が各社トップページ程度に集約されています。Deep Researchで確認した個別ページが失われていないか確認してください。","sources"));
- const compCount=competitorEntities().length;if(compCount&&!(Array.isArray(data.comparability)&&data.comparability.length))warnings.push(issue("warning","COMPARABILITY_EMPTY","競合企業がありますがcomparabilityが空です。比較条件の違いを記録してください。","comparability"));
+ const emptyMetrics={entities:0,sources:0,facts:0,individual:0};
+ if(!isObject(data)){errors.push(issue("error","ROOT_TYPE","最上位はJSONオブジェクトである必要があります。"));return{data,errors,warnings,metrics:emptyMetrics}}
+ if(isObject(data.error)){errors.push(issue("error",data.error.code||"RESEARCH_ERROR",data.error.message||"Deep Researchがエラー結果を返しました。"));return{data,errors,warnings,metrics:emptyMetrics}}
+ const topKeys=["research_schema_version","case_id","checked_at","research_scope","entities","sources","coverage","market_contexts","unresolved_items","warnings"];
+ topKeys.forEach(k=>addIf(errors,!(k in data),"error","MISSING_TOP_LEVEL",`必須項目 ${k} がありません。`,k));
+ validateExactKeys(errors,data,topKeys,"");
+ addIf(errors,data.research_schema_version!=="2.0","error","RESEARCH_SCHEMA_VERSION","research_schema_versionは2.0である必要があります。","research_schema_version");
+ addIf(errors,data.case_id!==caseId,"error","CASE_ID_MISMATCH",`案件IDが一致しません。画面: ${caseId} / JSON: ${data.case_id||"未設定"}`,"case_id");
+ addIf(errors,!/^\d{4}-\d{2}-\d{2}$/.test(String(data.checked_at||"")),"error","CHECKED_AT","checked_atはYYYY-MM-DDです。","checked_at");
+
+ const scope=isObject(data.research_scope)?data.research_scope:{};
+ addIf(errors,!isObject(data.research_scope),"error","RESEARCH_SCOPE_TYPE","research_scopeはオブジェクトです。","research_scope");
+ validateExactKeys(errors,scope,["job_title","work_location","employment_type_hint","company_wide_scope","market_reference_strategy","location_personalization_used"],"research_scope");
+ ["job_title","work_location","employment_type_hint","market_reference_strategy"].forEach(k=>addIf(errors,typeof scope[k]!=="string","error","RESEARCH_SCOPE_VALUE",`research_scope.${k}は文字列です。`,`research_scope.${k}`));
+ addIf(errors,scope.company_wide_scope!==true,"error","COMPANY_WIDE_SCOPE","company_wide_scopeはtrueである必要があります。","research_scope.company_wide_scope");
+ addIf(errors,scope.location_personalization_used!==false,"error","LOCATION_PERSONALIZATION","ユーザーの現在地・居住地を調査へ使用しています。falseである必要があります。","research_scope.location_personalization_used");
+ addIf(errors,typeof scope.market_reference_strategy!=="string"||!scope.market_reference_strategy.trim(),"error","MARKET_STRATEGY","market_reference_strategyがありません。","research_scope.market_reference_strategy");
+
+ const entities=Array.isArray(data.entities)?data.entities:[];
+ addIf(errors,!Array.isArray(data.entities),"error","ENTITIES_TYPE","entitiesは配列である必要があります。","entities");
+ const actualIds=entities.map(x=>x&&x.entity_id).filter(Boolean),dupIds=actualIds.filter((x,i)=>actualIds.indexOf(x)!==i);
+ addIf(errors,dupIds.length>0,"error","DUPLICATE_ENTITY_ID",`entity_idが重複しています: ${[...new Set(dupIds)].join(", ")}`,"entities");
+ const targetRows=entities.filter(x=>x&&x.entity_id==="TARGET");
+ addIf(errors,targetRows.length!==1,"error","TARGET_ENTITY_COUNT",`TARGETは1件必要です。受信: ${targetRows.length}`,"entities");
+ const marketIds=[];
+ entities.forEach((e,i)=>{
+   const path=`entities[${i}]`;
+   if(!isObject(e)){errors.push(issue("error","ENTITY_TYPE","entityはオブジェクトである必要があります。",path));return}
+   validateExactKeys(errors,e,["entity_id","entity_role","company_name","official_url","identity_status","selection_reason","comparability_notes"],path);
+   addIf(errors,!/^(TARGET|M\d{2}|GENERAL)$/.test(String(e.entity_id||"")),"error","ENTITY_ID_FORMAT","entity_idはTARGET、M01形式、GENERALです。",path+".entity_id");
+   addIf(errors,!new Set(["target","market_reference","general_reference"]).has(e.entity_role),"error","ENTITY_ROLE","entity_roleが不正です。",path+".entity_role");
+   if(e.entity_id==="TARGET")addIf(errors,e.entity_role!=="target","error","TARGET_ROLE","TARGETのentity_roleはtargetです。",path+".entity_role");
+   if(/^M\d{2}$/.test(String(e.entity_id||""))){marketIds.push(e.entity_id);addIf(errors,e.entity_role!=="market_reference","error","MARKET_ROLE","M01形式のentity_roleはmarket_referenceです。",path+".entity_role")}
+   if(e.entity_id==="GENERAL")addIf(errors,e.entity_role!=="general_reference","error","GENERAL_ROLE","GENERALのentity_roleはgeneral_referenceです。",path+".entity_role");
+   addIf(errors,typeof e.company_name!=="string"||!e.company_name.trim(),"error","ENTITY_NAME","company_nameがありません。",path+".company_name");
+   addIf(errors,e.official_url!==null&&e.official_url!==undefined&&!validUrl(e.official_url),"error","ENTITY_URL","official_urlが不正です。",path+".official_url");
+   addIf(errors,!new Set(["verified","partially_verified","unverified"]).has(e.identity_status),"error","IDENTITY_STATUS","identity_statusが不正です。",path+".identity_status");
+   addIf(errors,typeof e.selection_reason!=="string","error","SELECTION_REASON_TYPE","selection_reasonは文字列です。",path+".selection_reason");
+   addIf(errors,typeof e.comparability_notes!=="string","error","COMPARABILITY_NOTES_TYPE","comparability_notesは文字列です。",path+".comparability_notes");
+   if(/^M\d{2}$/.test(String(e.entity_id||"")))addIf(errors,!String(e.selection_reason||"").trim(),"error","MARKET_SELECTION_REASON","市場参照先にはselection_reasonが必要です。",path+".selection_reason");
+ });
+ const sortedMarket=[...marketIds].sort(),expectedMarket=sortedMarket.map((_,i)=>`M${String(i+1).padStart(2,"0")}`);
+ addIf(errors,JSON.stringify(sortedMarket)!==JSON.stringify(expectedMarket),"error","MARKET_ENTITY_SEQUENCE",`市場参照entity_idはM01から連番にしてください。受信: ${sortedMarket.join(", ")}`,"entities");
+ const target=targetRows[0];
+ if(target){
+   if(el.targetCompanyName.value.trim()&&normalizeCompany(target.company_name)!==normalizeCompany(el.targetCompanyName.value.trim()))warnings.push(issue("warning","TARGET_NAME_MISMATCH",`TARGET企業名が入力値と異なります。入力: ${el.targetCompanyName.value} / JSON: ${target.company_name}`,"entities.TARGET.company_name"));
+   if(el.targetCompanyUrl.value.trim()&&target.official_url&&urlKey(target.official_url)!==urlKey(el.targetCompanyUrl.value.trim()))warnings.push(issue("warning","TARGET_URL_MISMATCH","TARGETの公式URLが入力値と異なります。","entities.TARGET.official_url"));
+ }
+
+ const sourceTypes=new Set(["official_site","official_recruit","official_job","official_sns","public_authority","industry_association","reputable_media","job_board","other"]),factCategories=new Set(["company_profile","business","job_content","employment_stability","work_style","pay","holiday","benefit","life_support","training","qualification_support","career","follow_up","safety","culture","selection","location","other"]),appliesValues=new Set(["company_wide","specific_job","specific_location","group_wide","unknown"]),evidenceStrengths=new Set(["direct","contextual"]);
+ const sources=Array.isArray(data.sources)?data.sources:[];
+ addIf(errors,!Array.isArray(data.sources),"error","SOURCES_TYPE","sourcesは配列である必要があります。","sources");
+ const sourceIds=[],factIds=[];let facts=0,individual=0,targetFacts=0,targetAdopted=0;
+ sources.forEach((src,i)=>{
+   const path=`sources[${i}]`;
+   if(!isObject(src)){errors.push(issue("error","SOURCE_TYPE","sourceはオブジェクトである必要があります。",path));return}
+   validateExactKeys(errors,src,["research_source_id","entity_id","source_type","page_title","url","access_status","adopted","published_or_updated_at","checked_at","verified_facts","limitations"],path);
+   addIf(errors,!/^R\d{3}$/.test(String(src.research_source_id||"")),"error","SOURCE_ID_FORMAT","research_source_idはR001形式です。",path+".research_source_id");
+   sourceIds.push(src.research_source_id);
+   addIf(errors,!actualIds.includes(src.entity_id),"error","SOURCE_ENTITY",`entitiesにないentity_idです: ${src.entity_id}`,path+".entity_id");
+   addIf(errors,!sourceTypes.has(src.source_type),"error","SOURCE_TYPE_VALUE","source_typeが不正です。",path+".source_type");
+   addIf(errors,typeof src.page_title!=="string"||!src.page_title.trim(),"error","PAGE_TITLE","page_titleがありません。",path+".page_title");
+   addIf(errors,!validUrl(src.url)||!src.url,"error","SOURCE_URL","有効なHTTP(S) URLではありません。",path+".url");
+   addIf(errors,!new Set(["success","failure"]).has(src.access_status),"error","ACCESS_STATUS","access_statusが不正です。",path+".access_status");
+   addIf(errors,typeof src.adopted!=="boolean","error","ADOPTED_TYPE","adoptedは真偽値です。",path+".adopted");
+   addIf(errors,src.published_or_updated_at!==null&&!/^\d{4}-\d{2}-\d{2}$/.test(String(src.published_or_updated_at||"")),"error","PUBLISHED_DATE","published_or_updated_atはYYYY-MM-DDまたはnullです。",path+".published_or_updated_at");
+   addIf(errors,!/^\d{4}-\d{2}-\d{2}$/.test(String(src.checked_at||"")),"error","SOURCE_CHECKED_AT","checked_atはYYYY-MM-DDです。",path+".checked_at");
+   addIf(errors,typeof src.limitations!=="string","error","SOURCE_LIMITATIONS","limitationsは文字列です。",path+".limitations");
+   if(src.adopted===true&&src.access_status!=="success")errors.push(issue("error","ADOPTED_FAILURE","adopted=trueのソースはaccess_status=successである必要があります。",path));
+   const fs=Array.isArray(src.verified_facts)?src.verified_facts:[];
+   addIf(errors,!Array.isArray(src.verified_facts),"error","FACTS_TYPE","verified_factsは配列です。",path+".verified_facts");
+   if(src.adopted===true&&!fs.length)errors.push(issue("error","ADOPTED_NO_FACTS","採用ソースにはverified_factsが1件以上必要です。",path));
+   if(src.adopted&&src.access_status==="success"&&!rootUrl(src.url))individual++;
+   if(src.entity_id==="TARGET"&&src.adopted&&src.access_status==="success")targetAdopted++;
+   fs.forEach((fact,j)=>{
+     const fp=`${path}.verified_facts[${j}]`;facts++;if(src.entity_id==="TARGET"&&src.adopted===true&&src.access_status==="success")targetFacts++;
+     if(!isObject(fact)){errors.push(issue("error","FACT_TYPE","verified_factsの要素はオブジェクトです。",fp));return}
+     validateExactKeys(errors,fact,["fact_id","category","fact","applies_to","evidence_strength","limitations"],fp);
+     addIf(errors,!/^F\d{3}$/.test(String(fact.fact_id||"")),"error","FACT_ID_FORMAT","fact_idはF001形式です。",fp+".fact_id");factIds.push(fact.fact_id);
+     addIf(errors,!factCategories.has(fact.category),"error","FACT_CATEGORY","categoryが不正です。",fp+".category");
+     addIf(errors,typeof fact.fact!=="string"||!fact.fact.trim(),"error","FACT_EMPTY","factが空です。",fp+".fact");
+     addIf(errors,!appliesValues.has(fact.applies_to),"error","APPLIES_TO","applies_toが不正です。",fp+".applies_to");
+     addIf(errors,!evidenceStrengths.has(fact.evidence_strength),"error","EVIDENCE_STRENGTH","evidence_strengthが不正です。",fp+".evidence_strength");
+     addIf(errors,typeof fact.limitations!=="string","error","FACT_LIMITATIONS","limitationsは文字列です。",fp+".limitations");
+     if(fact.applies_to==="group_wide"&&src.entity_id==="TARGET")warnings.push(issue("warning","GROUP_FACT_SCOPE","TARGETの事実がgroup_wideです。対象企業自身の制度として断定しないでください。",fp));
+   });
+ });
+ const dupS=sourceIds.filter((x,i)=>sourceIds.indexOf(x)!==i),dupF=factIds.filter((x,i)=>factIds.indexOf(x)!==i);
+ addIf(errors,dupS.length>0,"error","DUPLICATE_SOURCE_ID",`research_source_idが重複しています: ${[...new Set(dupS)].join(", ")}`,"sources");
+ addIf(errors,dupF.length>0,"error","DUPLICATE_FACT_ID",`fact_idが重複しています: ${[...new Set(dupF)].join(", ")}`,"sources.verified_facts");
+
+ const coverageCategories=new Set(["company_profile","business","official_job","employment_stability","pay","work_style","benefit","life_support","training","qualification_support","career","follow_up","safety","culture","selection","other"]),coverageStatuses=new Set(["used","searched_no_adoptable_info","not_searched"]);
+ const coverage=Array.isArray(data.coverage)?data.coverage:[];addIf(errors,!Array.isArray(data.coverage),"error","COVERAGE_TYPE","coverageは配列です。","coverage");
+ coverage.forEach((c,i)=>{const path=`coverage[${i}]`;if(!isObject(c)){errors.push(issue("error","COVERAGE_ITEM_TYPE","coverageの要素はオブジェクトです。",path));return}validateExactKeys(errors,c,["entity_id","category","status","research_source_ids","note"],path);addIf(errors,!actualIds.includes(c.entity_id),"error","COVERAGE_ENTITY",`entitiesにないentity_idです: ${c.entity_id}`,path+".entity_id");addIf(errors,!coverageCategories.has(c.category),"error","COVERAGE_CATEGORY","coverage.categoryが不正です。",path+".category");addIf(errors,!coverageStatuses.has(c.status),"error","COVERAGE_STATUS","coverage.statusが不正です。",path+".status");addIf(errors,!Array.isArray(c.research_source_ids),"error","COVERAGE_SOURCE_IDS","research_source_idsは配列です。",path+".research_source_ids");if(Array.isArray(c.research_source_ids))c.research_source_ids.forEach(id=>addIf(errors,!sourceIds.includes(id),"error","COVERAGE_SOURCE_MISSING",`coverageが存在しないsource IDを参照しています: ${id}`,path+".research_source_ids"));addIf(errors,c.status==="used"&&(!Array.isArray(c.research_source_ids)||!c.research_source_ids.length),"error","USED_COVERAGE_EMPTY","status=usedではresearch_source_idsが必要です。",path+".research_source_ids");addIf(errors,typeof c.note!=="string","error","COVERAGE_NOTE","noteは文字列です。",path+".note")});
+
+ const contexts=Array.isArray(data.market_contexts)?data.market_contexts:[];addIf(errors,!Array.isArray(data.market_contexts),"error","MARKET_CONTEXTS_TYPE","market_contextsは配列です。","market_contexts");
+ contexts.forEach((c,i)=>{const path=`market_contexts[${i}]`;if(!isObject(c)){errors.push(issue("error","MARKET_CONTEXT_TYPE","market_contextsの要素はオブジェクトです。",path));return}validateExactKeys(errors,c,["theme","target_scope","reference_entity_ids","comparability","note"],path);addIf(errors,typeof c.theme!=="string"||!c.theme.trim(),"error","MARKET_THEME","themeがありません。",path+".theme");addIf(errors,typeof c.target_scope!=="string","error","TARGET_SCOPE","target_scopeは文字列です。",path+".target_scope");addIf(errors,!Array.isArray(c.reference_entity_ids),"error","REFERENCE_ENTITY_IDS","reference_entity_idsは配列です。",path+".reference_entity_ids");if(Array.isArray(c.reference_entity_ids))c.reference_entity_ids.forEach(id=>addIf(errors,!/^M\d{2}$/.test(String(id||""))&&!actualIds.includes(id),"error","MARKET_CONTEXT_ENTITY",`無効な市場参照IDです: ${id}`,path+".reference_entity_ids"));addIf(errors,!new Set(["comparable","partially_comparable","not_comparable"]).has(c.comparability),"error","MARKET_COMPARABILITY","comparabilityが不正です。",path+".comparability");addIf(errors,typeof c.note!=="string","error","MARKET_CONTEXT_NOTE","noteは文字列です。",path+".note")});
+
+ const unresolved=Array.isArray(data.unresolved_items)?data.unresolved_items:[];addIf(errors,!Array.isArray(data.unresolved_items),"error","UNRESOLVED_TYPE","unresolved_itemsは配列です。","unresolved_items");
+ unresolved.forEach((u,i)=>{const path=`unresolved_items[${i}]`;if(!isObject(u)){errors.push(issue("error","UNRESOLVED_ITEM_TYPE","unresolved_itemsの要素はオブジェクトです。",path));return}validateExactKeys(errors,u,["entity_id","priority","question","reason"],path);addIf(errors,!actualIds.includes(u.entity_id),"error","UNRESOLVED_ENTITY",`entitiesにないentity_idです: ${u.entity_id}`,path+".entity_id");addIf(errors,!new Set(["high","medium","low"]).has(u.priority),"error","UNRESOLVED_PRIORITY","priorityが不正です。",path+".priority");addIf(errors,typeof u.question!=="string"||!u.question.trim(),"error","UNRESOLVED_QUESTION","questionがありません。",path+".question");addIf(errors,typeof u.reason!=="string"||!u.reason.trim(),"error","UNRESOLVED_REASON","reasonがありません。",path+".reason")});
+ addIf(errors,!Array.isArray(data.warnings),"error","WARNINGS_TYPE","warningsは文字列配列です。","warnings");if(Array.isArray(data.warnings))data.warnings.forEach((w,i)=>addIf(errors,typeof w!=="string"||!w.trim(),"error","WARNING_VALUE","warningsの要素は文字列です。",`warnings[${i}]`));
+
+ const targetSources=sources.filter(s=>s&&s.entity_id==="TARGET"&&s.adopted===true&&s.access_status==="success");
+ if(!targetSources.length)errors.push(issue("error","TARGET_NO_ADOPTED_SOURCE","TARGETに採用可能な成功ソースがありません。","sources"));
+ else if(targetSources.every(s=>rootUrl(s.url)))warnings.push(issue("warning","TARGET_ONLY_ROOT_PAGES","TARGETはトップページしか採用されていません。採用・福利厚生・研修・キャリア等の個別ページを確認してください。","sources"));
+ if(targetAdopted<4)warnings.push(issue("warning","TARGET_SOURCE_COUNT_LOW",`TARGETの採用済み成功ソースが${targetAdopted}件です。企業全体の強み発見には原則4ページ以上を推奨します。`,"sources"));
+ if(targetFacts<10)warnings.push(issue("warning","TARGET_FACT_COUNT_LOW",`TARGETの確認事実が${targetFacts}件です。企業全体の強み発見には原則10件以上を推奨します。`,"sources"));
+ if(marketIds.length<3)warnings.push(issue("warning","MARKET_REFERENCE_COUNT_LOW",`市場参照組織が${marketIds.length}件です。原則3～6件を目安とし、少ない場合はwarningsへ理由を記録してください。`,"entities"));
+ if(individual<3)warnings.push(issue("warning","INDIVIDUAL_PAGE_COUNT_LOW","個別ページの採用数が少なめです。トップページだけでなく制度・研修・福利厚生・求人等の個別ページを確認してください。","sources"));
  return{data,errors,warnings,metrics:{entities:entities.length,sources:sources.length,facts,individual}}
 }
+
 function renderIssues(container,items){container.replaceChildren();items.forEach(x=>{const row=document.createElement("div");row.className="issue "+x.level;const code=document.createElement("div");code.className="issueCode";code.textContent=x.code;const body=document.createElement("div");body.className="issueText";body.textContent=(x.path?x.path+"\n":"")+x.message;row.append(code,body);container.append(row)})}
 function updateResearchView(r){$("rMetricEntities").textContent=r.metrics.entities;$("rMetricSources").textContent=r.metrics.sources;$("rMetricFacts").textContent=r.metrics.facts;$("rMetricIndividual").textContent=r.metrics.individual;$("rMetricErrors").textContent=r.errors.length;$("rMetricWarnings").textContent=r.warnings.length;const box=$("researchValidationState"),lead=$("researchValidationLead");box.classList.add("show");if(r.errors.length){lead.className="validationLead ng";lead.textContent=`エラー${r.errors.length}件があります。Pro分析へ進めません。`}else if(r.warnings.length){lead.className="validationLead warn";lead.textContent=`構造エラーはありません。警告${r.warnings.length}件を確認し、Pro分析へ進めます。`}else{lead.className="validationLead ok";lead.textContent="企業調査結果の確認に合格しました。Pro分析プロンプトを生成しました。"}$("researchErrorGroup").style.display=r.errors.length?"block":"none";$("researchWarningGroup").style.display=r.warnings.length?"block":"none";renderIssues($("researchErrorList"),r.errors);renderIssues($("researchWarningList"),r.warnings);$("copyResearchRepairBtn").disabled=!r.errors.length&&!r.warnings.length;$("researchSavedState").textContent=`確認済み ${new Date().toLocaleTimeString("ja-JP",{hour:"2-digit",minute:"2-digit"})}`;build()}
 function validateResearchInput(){const raw=el.researchJsonInput.value.trim();if(!raw){status("企業調査結果を貼り付けてください。","error");return null}const clean=parseStructuredResponse(raw,"research");if(!clean.ok){const r={data:null,errors:[issue("error","JSON_PARSE",`企業調査結果を解析できませんでした: ${clean.error.message}`)],warnings:[],metrics:{entities:0,sources:0,facts:0,individual:0}};lastResearchValidation=r;showExtractionNotice("research",null);updateResearchView(r);status("企業調査結果を解析できませんでした。","error");return r}if(clean.extracted||clean.normalizedMarkdownUrls)el.researchJsonInput.value=clean.text;showExtractionNotice("research",clean);const r=validateResearchResult(clean.data,clean);lastResearchValidation=r;updateResearchView(r);save();status(r.errors.length?"企業調査結果に修正が必要です。":clean.extracted?"Geminiの回答から企業調査結果を自動抽出しました。":r.warnings.length?"企業調査結果の形式は正常です。警告を確認してください。":"企業調査結果の確認に合格しました。",r.errors.length?"error":r.warnings.length?"warning":"success");return r}
-function researchRepairPrompt(r){const list=[...r.errors,...r.warnings].map((x,i)=>`${i+1}. [${x.level.toUpperCase()} / ${x.code}] ${x.path?x.path+"：":""}${x.message}`).join("\n"),parseFailure=(r.errors||[]).some(x=>x.code==="JSON_PARSE");return`${parseFailure?"直前のDeep Research回答は通常文章または解析不能な形式でした。新しい調査をやり直さず、直前回答で確認済みの事実を、最初に受け取ったresearch_schema_version 1.0のJSON契約へ変換してください。":"直前に作成した企業調査結果を、追加調査を必要最小限に抑えながら修正してください。"}\n\n<VALIDATION_ISSUES>\n${list}\n</VALIDATION_ISSUES>\n\n最優先の出力契約：\n- 最初の非空白文字は {、最後は }\n- RFC 8259準拠のJSONオブジェクトを1件だけ出力\n- 通常文章、見出し、Markdown、コードフェンス、出典一覧、作業説明を出力しない\n- Pythonやツールログを出力しない\n- research_schema_version、case_id、entities、sources、coverageを省略しない\n\n内容ルール：\n- 実際に本文を確認した個別ページを保持する\n- 検索結果スニペットを事実にしない\n- 対象企業とグループ別法人を混同しない\n- fact_idとresearch_source_idを重複させない\n- 回答送信前にJSON.parse可能であることを内部確認する`}
+function researchRepairPrompt(r){
+ const list=[...r.errors,...r.warnings].map((x,i)=>`${i+1}. [${x.level.toUpperCase()} / ${x.code}] ${x.path?x.path+"：":""}${x.message}`).join("\n"),parseFailure=(r.errors||[]).some(x=>x.code==="JSON_PARSE");
+ return`${parseFailure?"直前のDeep Research回答は通常文章または解析不能な形式でした。新しい調査をやり直さず、直前回答で確認済みの事実を、最初に受け取ったresearch_schema_version 2.0のJSON契約へ変換してください。":"直前に作成した企業調査結果を、追加調査を必要最小限に抑えながら修正してください。"}\n\n<VALIDATION_ISSUES>\n${list}\n</VALIDATION_ISSUES>\n\n最優先の出力契約：\n- 最初の非空白文字は {、最後は }\n- RFC 8259準拠のJSONオブジェクトを1件だけ出力\n- 通常文章、見出し、Markdown、コードフェンス、出典一覧、作業説明を出力しない\n- Pythonやツールログを出力しない\n- research_schema_version、case_id、entities、sources、coverage、market_contextsを省略しない\n\n内容ルール：\n- TARGETの採用・福利厚生・研修・キャリア・会社情報を企業全体まで広げて保持する\n- 市場参照先はM01形式で連番にする\n- 実際に本文を確認した個別ページを保持する\n- 検索結果スニペットを事実にしない\n- 対象企業とグループ別法人を混同しない\n- fact_idとresearch_source_idを重複させない\n- 回答送信前にJSON.parse可能であることを内部確認する`;
+}
 
 function validateGeminiResult(data,meta={extra:false}){
   const errors=[],warnings=[];
   if(!isObject(data)){errors.push(issue("error","ROOT_TYPE","最上位はJSONオブジェクトである必要があります。"));return{data,errors,warnings,metrics:{rows:0,proposals:0,sources:0}}}
   if(isObject(data.error)){errors.push(issue("error",data.error.code||"GEMINI_ERROR",data.error.message||"GeminiがエラーJSONを返しました。"));return{data,errors,warnings,metrics:{rows:0,proposals:0,sources:0}}}
-  const requiredTop=["schema_version","ruleset_version","evaluation_table_schema_version","analysis_policy_version","case_id","case_summary","analysis_rows","competitor_analysis","summary","sales_meeting","sources","research_coverage","unresolved_items","warnings"];
+  const requiredTop=["schema_version","ruleset_version","evaluation_table_schema_version","analysis_policy_version","case_id","case_summary","analysis_rows","recruitment_strength_analysis","summary","sales_meeting","sources","research_coverage","unresolved_items","warnings"];
   requiredTop.forEach(k=>addIf(errors,!(k in data),"error","MISSING_TOP_LEVEL",`必須項目 ${k} がありません。`,k));
   validateExactKeys(errors,data,requiredTop,"");
   addIf(errors,data.schema_version!==FINAL_JSON_SCHEMA_VERSION,"error","SCHEMA_VERSION",`schema_versionは${FINAL_JSON_SCHEMA_VERSION}である必要があります。`,"schema_version");
@@ -1038,6 +1161,7 @@ function validateGeminiResult(data,meta={extra:false}){
     if(!isObject(s)){errors.push(issue("error","SOURCE_TYPE","ソース行はオブジェクトである必要があります。",path));return}
     validateExactKeys(errors,s,["source_id","entity_id","entity_name","source_type","title","url","access_status","adopted","verified_facts","limitations","confidence","checked_at"],path);
     addIf(errors,!/^S\d{3}$/.test(String(s.source_id||"")),"error","SOURCE_ID",`source_idはS001形式にしてください: ${s.source_id||"未設定"}`,path+".source_id");
+    addIf(errors,!/^(TARGET|M\d{2}|GENERAL)$/.test(String(s.entity_id||"")),"error","SOURCE_ENTITY_ID","entity_idはTARGET、M01形式、GENERALです。",path+".entity_id");
     addIf(errors,sourceMap.has(s.source_id),"error","DUPLICATE_SOURCE_ID",`source_idが重複しています: ${s.source_id}`,path+".source_id");sourceMap.set(s.source_id,s);
     addIf(errors,typeof s.entity_name!=="string"||!s.entity_name.trim(),"error","SOURCE_ENTITY_NAME","entity_nameがありません。",path+".entity_name");
     addIf(errors,typeof s.title!=="string"||!s.title.trim(),"error","SOURCE_TITLE","titleがありません。nameではなくtitleを使用してください。",path+".title");
@@ -1051,37 +1175,45 @@ function validateGeminiResult(data,meta={extra:false}){
   const refs=collectEvidenceRefs(data);
   [...new Set(refs)].filter(r=>r!=="JOB_TEXT").forEach(r=>{addIf(errors,!sourceMap.has(r),"error","UNKNOWN_SOURCE_REF",`参照している${r}がsourcesに存在しません。`,"evidence_refs");const s=sourceMap.get(r);if(s)addIf(errors,s.access_status!=="success"||s.adopted!==true,"error","UNADOPTED_SOURCE_REF",`${r}は取得成功・採用済みではないため根拠に使えません。`,"evidence_refs")});
 
-  const competitorInputs=competitorPayload();
-  const comp=data.competitor_analysis&&Array.isArray(data.competitor_analysis.competitors)?data.competitor_analysis.competitors:[];
-  comp.forEach((c,i)=>{const path=`competitor_analysis.competitors[${i}]`;if(!isObject(c)){errors.push(issue("error","COMPETITOR_TYPE","competitorsの要素はオブジェクトです。",path));return}validateExactKeys(errors,c,["competitor_id","company_name"],path);addIf(errors,!new Set(["C1","C2"]).has(c.competitor_id),"error","COMPETITOR_ID_VALUE","competitor_idはC1またはC2です。",path+".competitor_id");addIf(errors,typeof c.company_name!=="string"||!c.company_name.trim(),"error","COMPETITOR_NAME_REQUIRED","company_nameがありません。",path+".company_name")});
-  const expectedComp=competitorInputs.map(x=>x.competitor_id).sort(),actualComp=comp.map(x=>x.competitor_id).sort();
-  addIf(errors,JSON.stringify(expectedComp)!==JSON.stringify(actualComp),"error","COMPETITOR_IDS",`競合IDがフォーム入力と一致しません。入力: ${expectedComp.join(",")||"なし"} / JSON: ${actualComp.join(",")||"なし"}`,"competitor_analysis.competitors");
-  const items=data.competitor_analysis&&Array.isArray(data.competitor_analysis.items)?data.competitor_analysis.items:[];
-  addIf(errors,!data.competitor_analysis||!Array.isArray(data.competitor_analysis.items),"error","COMPETITOR_ITEMS_TYPE","competitor_analysis.itemsは配列である必要があります。","competitor_analysis.items");
-  addIf(errors,items.length>20,"error","COMPETITOR_ITEMS_MAX","企業・競合分析は20件以内にしてください。","competitor_analysis.items");
-  const spotlightValues=new Set(["TARGET","C1","C2","MULTIPLE"]),insightValues=new Set(["target_strength","competitor_strength","shared_point","target_opportunity","not_directly_comparable"]);
+  const strengthAnalysis=isObject(data.recruitment_strength_analysis)?data.recruitment_strength_analysis:{};
+  validateExactKeys(errors,strengthAnalysis,["items","overall_note"],"recruitment_strength_analysis");
+  const items=Array.isArray(strengthAnalysis.items)?strengthAnalysis.items:[];
+  addIf(errors,!isObject(data.recruitment_strength_analysis),"error","STRENGTH_ANALYSIS_TYPE","recruitment_strength_analysisはオブジェクトです。","recruitment_strength_analysis");
+  addIf(errors,!Array.isArray(strengthAnalysis.items),"error","STRENGTH_ITEMS_TYPE","recruitment_strength_analysis.itemsは配列です。","recruitment_strength_analysis.items");
+  addIf(errors,items.length>20,"error","STRENGTH_ITEMS_MAX","採用競争力・強み分析は20件以内にしてください。","recruitment_strength_analysis.items");
+  addIf(errors,typeof strengthAnalysis.overall_note!=="string","error","STRENGTH_OVERALL_NOTE","overall_noteは文字列です。","recruitment_strength_analysis.overall_note");
+  const analysisTypes=new Set(["company_specific_strength","market_compared_strength","appeal_opportunity"]),marketPositions=new Set(["distinctive","strong","competitive","common_but_effective","comparison_unverified"]);
+  const themes=[];
   items.forEach((item,i)=>{
-    const path=`competitor_analysis.items[${i}]`;
-    if(!isObject(item)){errors.push(issue("error","COMPETITOR_ITEM_TYPE","分析項目はオブジェクトである必要があります。",path));return}
-    validateExactKeys(errors,item,["analysis_theme","target_company_value","competitor_values","spotlight_entity_id","insight_type","recruitment_insight","target_action","comparability_note","evidence_refs","confidence"],path);
+    const path=`recruitment_strength_analysis.items[${i}]`;
+    if(!isObject(item)){errors.push(issue("error","STRENGTH_ITEM_TYPE","強み分析項目はオブジェクトである必要があります。",path));return}
+    validateExactKeys(errors,item,["analysis_theme","analysis_type","company_strength","verified_facts","jobseeker_value","market_position","market_context","recruitment_use","application_scope_note","evidence_refs","confidence"],path);
     addIf(errors,typeof item.analysis_theme!=="string"||!item.analysis_theme.trim(),"error","ANALYSIS_THEME_REQUIRED","analysis_themeがありません。",path+".analysis_theme");
-    addIf(errors,item.target_company_value!==null&&typeof item.target_company_value!=="string","error","TARGET_VALUE_TYPE","target_company_valueは文字列またはnullです。",path+".target_company_value");
-    addIf(errors,!Array.isArray(item.competitor_values),"error","COMPETITOR_VALUES_TYPE","competitor_valuesは配列です。",path+".competitor_values");
-    if(Array.isArray(item.competitor_values)){const ids=[];item.competitor_values.forEach((v,j)=>{const vp=`${path}.competitor_values[${j}]`;if(!isObject(v)){errors.push(issue("error","COMPETITOR_VALUE_OBJECT","competitor_valuesはcompetitor_id/valueオブジェクトの配列です。",vp));return}validateExactKeys(errors,v,["competitor_id","value"],vp);ids.push(v.competitor_id);addIf(errors,!expectedComp.includes(v.competitor_id),"error","COMPETITOR_VALUE_ID",`入力されていない競合IDです: ${v.competitor_id}`,vp+".competitor_id");addIf(errors,v.value!==null&&typeof v.value!=="string","error","COMPETITOR_VALUE_TYPE","valueは文字列またはnullです。",vp+".value")});addIf(errors,JSON.stringify([...ids].sort())!==JSON.stringify(expectedComp),"error","COMPETITOR_VALUE_IDS","competitor_valuesは入力された競合を1件ずつ含めてください。",path+".competitor_values")}
-    addIf(errors,!spotlightValues.has(item.spotlight_entity_id),"error","SPOTLIGHT_ENTITY","spotlight_entity_idが不正です。",path+".spotlight_entity_id");
-    addIf(errors,!insightValues.has(item.insight_type),"error","INSIGHT_TYPE","insight_typeが不正です。",path+".insight_type");
-    addIf(errors,typeof item.recruitment_insight!=="string"||!item.recruitment_insight.trim(),"error","RECRUITMENT_INSIGHT_REQUIRED","recruitment_insightがありません。",path+".recruitment_insight");
-    addIf(errors,typeof item.target_action!=="string"||!item.target_action.trim(),"error","TARGET_ACTION_REQUIRED","target_actionがありません。",path+".target_action");
-    addIf(errors,typeof item.comparability_note!=="string","error","COMPARABILITY_NOTE_TYPE","comparability_noteは文字列です。",path+".comparability_note");
-    addIf(errors,!Array.isArray(item.evidence_refs)||!item.evidence_refs.length,"error","COMPETITOR_EVIDENCE_REQUIRED","分析項目には根拠が1件以上必要です。",path+".evidence_refs");
-    addIf(errors,!CONFIDENCE_VALUES.has(item.confidence),"error","COMPETITOR_CONFIDENCE","confidenceが不正です。",path+".confidence");
-    if(item.spotlight_entity_id==="TARGET"&&item.insight_type==="target_strength")addIf(errors,!String(item.target_company_value||"").trim(),"error","TARGET_STRENGTH_VALUE","貴社の強み行にはtarget_company_valueが必要です。",path+".target_company_value");
+    themes.push(String(item.analysis_theme||"").trim());
+    addIf(errors,!analysisTypes.has(item.analysis_type),"error","ANALYSIS_TYPE","analysis_typeが不正です。",path+".analysis_type");
+    addIf(errors,typeof item.company_strength!=="string"||!item.company_strength.trim(),"error","COMPANY_STRENGTH_REQUIRED","company_strengthがありません。",path+".company_strength");
+    addIf(errors,!Array.isArray(item.verified_facts)||item.verified_facts.length<1||item.verified_facts.length>6,"error","VERIFIED_FACTS","verified_factsは1～6件の文字列配列です。",path+".verified_facts");
+    if(Array.isArray(item.verified_facts))item.verified_facts.forEach((v,j)=>addIf(errors,typeof v!=="string"||!v.trim(),"error","VERIFIED_FACT_VALUE","verified_factsに空の要素があります。",`${path}.verified_facts[${j}]`));
+    addIf(errors,typeof item.jobseeker_value!=="string"||!item.jobseeker_value.trim(),"error","JOBSEEKER_VALUE_REQUIRED","jobseeker_valueがありません。",path+".jobseeker_value");
+    addIf(errors,!marketPositions.has(item.market_position),"error","MARKET_POSITION","market_positionが不正です。",path+".market_position");
+    addIf(errors,typeof item.market_context!=="string"||!item.market_context.trim(),"error","MARKET_CONTEXT_REQUIRED","market_contextがありません。比較未確認の場合も理由を書いてください。",path+".market_context");
+    addIf(errors,typeof item.recruitment_use!=="string"||!item.recruitment_use.trim(),"error","RECRUITMENT_USE_REQUIRED","recruitment_useがありません。",path+".recruitment_use");
+    addIf(errors,typeof item.application_scope_note!=="string","error","APPLICATION_SCOPE_TYPE","application_scope_noteは文字列です。",path+".application_scope_note");
+    addIf(errors,!Array.isArray(item.evidence_refs)||!item.evidence_refs.length,"error","STRENGTH_EVIDENCE_REQUIRED","強み分析項目には根拠が1件以上必要です。",path+".evidence_refs");
+    addIf(errors,!CONFIDENCE_VALUES.has(item.confidence),"error","STRENGTH_CONFIDENCE","confidenceが不正です。",path+".confidence");
+    if(item.analysis_type==="market_compared_strength"&&item.market_position==="comparison_unverified")warnings.push(issue("warning","MARKET_TYPE_POSITION_MISMATCH","market_compared_strengthですがmarket_positionがcomparison_unverifiedです。",path));
+    const marketRefs=(Array.isArray(item.evidence_refs)?item.evidence_refs:[]).map(id=>sourceMap.get(id)).filter(s=>s&&/^M\d{2}$/.test(s.entity_id));
+    if(["distinctive","strong"].includes(item.market_position)&&marketRefs.length<2)warnings.push(issue("warning","MARKET_EVIDENCE_FEW",`${item.market_position}の位置づけですが、市場参照ソースが2件未満です。断定の強さを確認してください。`,path+".evidence_refs"));
+    const factText=(Array.isArray(item.verified_facts)?item.verified_facts:[]).join(" ");
+    if(EVALUATIVE_WORDS.some(w=>factText.includes(w)))warnings.push(issue("warning","FACTS_INCLUDE_EVALUATION",`verified_factsに評価語が含まれています: ${factText}`,path+".verified_facts"));
   });
-  const targetFocused=items.filter(x=>x&&(x.spotlight_entity_id==="TARGET"||x.insight_type==="target_strength"||x.insight_type==="target_opportunity")).length;
-  if(items.length>=6&&targetFocused<Math.ceil(items.length/2))warnings.push(issue("warning","TARGET_FOCUS_LOW","貴社を主眼にした分析行が少なめです。貴社の採用訴求材料を幅広く拾えているか確認してください。","competitor_analysis.items"));
-  if(competitorInputs.length&&items.length<6)warnings.push(issue("warning","COMPETITOR_ITEMS_FEW","企業・競合分析が6件未満です。取得済み根拠から、仕事内容、設備、給与、労務、休日、研修、福利厚生、地域定着などの独立テーマをさらに展開できないか確認してください。","competitor_analysis.items"));
-  const compSuccess=sources.some(s=>["C1","C2"].includes(s.entity_id)&&s.access_status==="success"&&s.adopted===true);
-  if(competitorInputs.length&&!compSuccess){const claimText=textOf({competitor_analysis:data.competitor_analysis,summary:data.summary,sales_meeting:data.sales_meeting});COMPETITOR_ASSERTIONS.filter(w=>claimText.includes(w)).forEach(w=>warnings.push(issue("warning","COMPETITOR_ASSERTION",`競合の採用済み成功ソースが0件ですが、「${w}」という比較表現があります。`)))}
+  const duplicateThemes=[...new Set(themes.filter((x,i)=>x&&themes.indexOf(x)!==i))];
+  if(duplicateThemes.length)warnings.push(issue("warning","DUPLICATE_STRENGTH_THEMES",`同じ分析テーマが重複しています: ${duplicateThemes.join(", ")}`,"recruitment_strength_analysis.items"));
+  const targetFacts=sources.filter(s=>s&&s.entity_id==="TARGET"&&s.adopted===true&&s.access_status==="success").reduce((n,s)=>n+(Array.isArray(s.verified_facts)?s.verified_facts.length:0),0);
+  if(targetFacts>0&&items.length===0)errors.push(issue("error","STRENGTH_ITEMS_EMPTY","TARGETの確認事実があるため、採用競争力・強み分析を空にできません。","recruitment_strength_analysis.items"));
+  if(targetFacts>=8&&items.length<8)warnings.push(issue("warning","STRENGTH_ITEMS_FEW",`TARGETの確認事実が${targetFacts}件ありますが、強み分析が${items.length}件です。企業基盤、福利厚生、生活支援、研修、資格、キャリア、フォロー体制などを独立テーマへ展開できないか確認してください。`,"recruitment_strength_analysis.items"));
+  const claimText=textOf({recruitment_strength_analysis:data.recruitment_strength_analysis,summary:data.summary,sales_meeting:data.sales_meeting});
+  MARKET_ASSERTIONS.filter(w=>claimText.includes(w)).forEach(w=>warnings.push(issue("warning","STRONG_MARKET_ASSERTION",`「${w}」という強い市場比較表現があります。調査範囲で立証できるか確認してください。`)));
 
   const summaryObj=isObject(data.summary)?data.summary:{};validateExactKeys(errors,summaryObj,["current_job_strengths","company_strengths","market_insights","overall_review"],"summary");
   ["current_job_strengths","company_strengths","market_insights"].forEach(k=>addIf(errors,!Array.isArray(summaryObj[k]),"error","SUMMARY_ARRAY",`summary.${k}はsummaryPointオブジェクトの配列です。`,`summary.${k}`));
@@ -1089,7 +1221,7 @@ function validateGeminiResult(data,meta={extra:false}){
   const summaryPoints=[...(Array.isArray(summaryObj.current_job_strengths)?summaryObj.current_job_strengths:[]),...(Array.isArray(summaryObj.company_strengths)?summaryObj.company_strengths:[]),...(Array.isArray(summaryObj.market_insights)?summaryObj.market_insights:[])];
   summaryPoints.forEach((p,i)=>{const path=`summary points[${i}]`;if(!isObject(p)){errors.push(issue("error","SUMMARY_POINT_TYPE","サマリー配列の要素は文字列ではなくオブジェクトです。",path));return}validateExactKeys(errors,p,["text","status","evidence_refs","confidence"],path);addIf(errors,typeof p.text!=="string"||!p.text.trim(),"error","SUMMARY_TEXT","textがありません。",path+".text");addIf(errors,!new Set(["verified","hypothesis","needs_confirmation"]).has(p.status),"error","SUMMARY_STATUS","statusが不正です。",path+".status");addIf(errors,!Array.isArray(p.evidence_refs),"error","SUMMARY_REFS","evidence_refsは配列です。",path+".evidence_refs");addIf(errors,!CONFIDENCE_VALUES.has(p.confidence),"error","SUMMARY_CONFIDENCE","confidenceが不正です。",path+".confidence");if(p.status==="verified"&&EVALUATIVE_WORDS.some(w=>String(p.text||"").includes(w)))warnings.push(issue("warning","VERIFIED_SUMMARY_EVALUATION",`サマリーのverified文に評価語が含まれています: ${p.text}`,path));if(["hypothesis","needs_confirmation"].includes(p.status)&&p.confidence==="high")warnings.push(issue("warning","SUMMARY_HYPOTHESIS_HIGH",`サマリーの仮説がconfidence=highです: ${p.text}`,path))});
 
-  const coverageFinal=Array.isArray(data.research_coverage)?data.research_coverage:[];addIf(errors,!Array.isArray(data.research_coverage),"error","RESEARCH_COVERAGE_TYPE","research_coverageは配列です。","research_coverage");const coverageCategories=new Set(["official_site","recruitment_site","official_job","official_sns","external_article","review","other"]),coverageStatuses=new Set(["used","searched_no_adoptable_info","not_searched","not_applicable"]);coverageFinal.forEach((c,i)=>{const path=`research_coverage[${i}]`;if(!isObject(c)){errors.push(issue("error","RESEARCH_COVERAGE_ITEM","research_coverageの要素はオブジェクトです。",path));return}validateExactKeys(errors,c,["entity_id","category","status","source_ids","note"],path);addIf(errors,!coverageCategories.has(c.category),"error","RESEARCH_COVERAGE_CATEGORY","categoryは情報テーマではなく許可された情報源区分を使います。",path+".category");addIf(errors,!coverageStatuses.has(c.status),"error","RESEARCH_COVERAGE_STATUS","statusが不正です。",path+".status");addIf(errors,!Array.isArray(c.source_ids),"error","RESEARCH_COVERAGE_SOURCE_IDS","source_idsは配列です。",path+".source_ids");addIf(errors,typeof c.note!=="string","error","RESEARCH_COVERAGE_NOTE","noteは文字列です。",path+".note")});
+  const coverageFinal=Array.isArray(data.research_coverage)?data.research_coverage:[];addIf(errors,!Array.isArray(data.research_coverage),"error","RESEARCH_COVERAGE_TYPE","research_coverageは配列です。","research_coverage");const coverageCategories=new Set(["official_site","recruitment_site","official_job","official_sns","external_article","review","other"]),coverageStatuses=new Set(["used","searched_no_adoptable_info","not_searched","not_applicable"]);coverageFinal.forEach((c,i)=>{const path=`research_coverage[${i}]`;if(!isObject(c)){errors.push(issue("error","RESEARCH_COVERAGE_ITEM","research_coverageの要素はオブジェクトです。",path));return}validateExactKeys(errors,c,["entity_id","category","status","source_ids","note"],path);addIf(errors,!/^(TARGET|M\d{2}|GENERAL)$/.test(String(c.entity_id||"")),"error","RESEARCH_COVERAGE_ENTITY","entity_idはTARGET、M01形式、GENERALです。",path+".entity_id");addIf(errors,!coverageCategories.has(c.category),"error","RESEARCH_COVERAGE_CATEGORY","categoryは情報テーマではなく許可された情報源区分を使います。",path+".category");addIf(errors,!coverageStatuses.has(c.status),"error","RESEARCH_COVERAGE_STATUS","statusが不正です。",path+".status");addIf(errors,!Array.isArray(c.source_ids),"error","RESEARCH_COVERAGE_SOURCE_IDS","source_idsは配列です。",path+".source_ids");addIf(errors,typeof c.note!=="string","error","RESEARCH_COVERAGE_NOTE","noteは文字列です。",path+".note")});
   const unresolved=Array.isArray(data.unresolved_items)?data.unresolved_items:[];addIf(errors,!Array.isArray(data.unresolved_items),"error","UNRESOLVED_TYPE","unresolved_itemsは配列です。","unresolved_items");unresolved.forEach((u,i)=>{const path=`unresolved_items[${i}]`;if(!isObject(u)){errors.push(issue("error","UNRESOLVED_ITEM_TYPE","unresolved_itemsの要素はオブジェクトです。",path));return}validateExactKeys(errors,u,["priority","related_nos","question","reason"],path);addIf(errors,!new Set(["high","medium","low"]).has(u.priority),"error","UNRESOLVED_PRIORITY","priorityが不正です。",path+".priority");addIf(errors,!Array.isArray(u.related_nos),"error","UNRESOLVED_RELATED_NOS","related_nosはNo.の配列です。",path+".related_nos");addIf(errors,typeof u.question!=="string"||!u.question.trim(),"error","UNRESOLVED_QUESTION","questionがありません。",path+".question");addIf(errors,typeof u.reason!=="string"||!u.reason.trim(),"error","UNRESOLVED_REASON","reasonがありません。",path+".reason")});
   addIf(errors,!Array.isArray(data.warnings),"error","WARNINGS_TYPE","warningsは文字列配列です。","warnings");if(Array.isArray(data.warnings))data.warnings.forEach((w,i)=>addIf(errors,typeof w!=="string"||!w.trim(),"error","WARNING_VALUE","warningsの要素は文字列です。",`warnings[${i}]`));
 
@@ -1102,8 +1234,8 @@ function validateGeminiResult(data,meta={extra:false}){
   return{data,errors,warnings,metrics:{rows:rows.length,proposals:proposals.length,sources:sources.length}}
 }
 
-function augmentFinalValidation(r){if(!r||!r.data||r.errors.length)return r;const data=r.data,errors=r.errors,warnings=r.warnings;const cs=data.case_summary||{};if(el.targetCompanyName.value.trim()&&normalizeCompany(cs.company_name)!==normalizeCompany(el.targetCompanyName.value))warnings.push(issue("warning","TARGET_NAME_MISMATCH",`case_summary.company_nameが入力した対象企業名と異なります。入力: ${el.targetCompanyName.value} / JSON: ${cs.company_name||"未設定"}`,"case_summary.company_name"));const expected=competitorEntities(),actual=(data.competitor_analysis&&Array.isArray(data.competitor_analysis.competitors)?data.competitor_analysis.competitors:[]);expected.forEach(exp=>{const got=actual.find(x=>x&&x.competitor_id===exp.entity_id);if(got&&normalizeCompany(got.company_name)!==normalizeCompany(exp.company_name))warnings.push(issue("warning","COMPETITOR_NAME_MISMATCH",`${exp.entity_id}の企業名が入力と異なります。`,"competitor_analysis.competitors"))});
- if(lastResearchValidation&&!lastResearchValidation.errors.length){const research=lastResearchValidation.data,researchSources=(research.sources||[]).filter(s=>s&&s.adopted===true&&s.access_status==="success"),allowed=new Set(researchSources.map(s=>urlKey(s.url))),finalSources=Array.isArray(data.sources)?data.sources:[],canonical=canonicalFinalSources(research),canonicalMap=new Map(canonical.map(s=>[s.source_id,s])),finalMap=new Map(finalSources.filter(isObject).map(s=>[s.source_id,s]));finalSources.filter(s=>s&&s.adopted===true&&s.access_status==="success").forEach((s,i)=>{if(!allowed.has(urlKey(s.url)))errors.push(issue("error","FINAL_SOURCE_NOT_IN_RESEARCH",`最終JSONのソースURLが調査証拠JSONにありません: ${s.url}`,`sources[${i}].url`))});if(finalSources.length!==canonical.length)errors.push(issue("error","FINAL_SOURCES_COUNT_MISMATCH",`sourcesの件数がアプリ生成済み配列と一致しません。期待: ${canonical.length} / JSON: ${finalSources.length}`,"sources"));canonical.forEach(expectedSource=>{const actualSource=finalMap.get(expectedSource.source_id);if(!actualSource)errors.push(issue("error","FINAL_SOURCE_MISSING",`${expectedSource.source_id}がsourcesにありません。`,"sources"));else if(!jsonValueEqual(actualSource,expectedSource))errors.push(issue("error","FINAL_SOURCE_IMMUTABLE_MISMATCH",`${expectedSource.source_id}がアプリ生成済みの完成sourcesと一致しません。FINAL_SOURCES_JSON_DO_NOT_EDITを変更せずコピーしてください。`,"sources"))});finalSources.forEach(s=>{if(isObject(s)&&!canonicalMap.has(s.source_id))errors.push(issue("error","FINAL_SOURCE_EXTRA",`アプリ生成済み配列にないsource_idです: ${s.source_id||"未設定"}`,"sources"))});const specific=researchSources.filter(s=>!rootUrl(s.url));if(specific.length>=2&&finalSources.length&&finalSources.every(s=>rootUrl(s.url)))warnings.push(issue("warning","RESEARCH_SOURCE_COLLAPSE","調査証拠JSONには個別ページがありますが、最終JSONがトップページへ集約されています。","sources"));const incomparable=(research.comparability||[]).some(x=>x&&x.comparability!=="comparable");if(incomparable&&Array.isArray(data.warnings)&&data.warnings.length===0)warnings.push(issue("warning","COMPARISON_WARNING_MISSING","調査証拠JSONに比較条件の制約がありますが、最終warningsが空です。","warnings"));}
+function augmentFinalValidation(r){if(!r||!r.data||r.errors.length)return r;const data=r.data,errors=r.errors,warnings=r.warnings;const cs=data.case_summary||{};if(el.targetCompanyName.value.trim()&&normalizeCompany(cs.company_name)!==normalizeCompany(el.targetCompanyName.value))warnings.push(issue("warning","TARGET_NAME_MISMATCH",`case_summary.company_nameが入力した対象企業名と異なります。入力: ${el.targetCompanyName.value} / JSON: ${cs.company_name||"未設定"}`,"case_summary.company_name"));
+ if(lastResearchValidation&&!lastResearchValidation.errors.length){const research=lastResearchValidation.data,researchSources=(research.sources||[]).filter(s=>s&&s.adopted===true&&s.access_status==="success"),allowed=new Set(researchSources.map(s=>urlKey(s.url))),finalSources=Array.isArray(data.sources)?data.sources:[],canonical=canonicalFinalSources(research),canonicalMap=new Map(canonical.map(s=>[s.source_id,s])),finalMap=new Map(finalSources.filter(isObject).map(s=>[s.source_id,s]));finalSources.filter(s=>s&&s.adopted===true&&s.access_status==="success").forEach((s,i)=>{if(!allowed.has(urlKey(s.url)))errors.push(issue("error","FINAL_SOURCE_NOT_IN_RESEARCH",`最終JSONのソースURLが調査証拠JSONにありません: ${s.url}`,`sources[${i}].url`))});if(finalSources.length!==canonical.length)errors.push(issue("error","FINAL_SOURCES_COUNT_MISMATCH",`sourcesの件数がアプリ生成済み配列と一致しません。期待: ${canonical.length} / JSON: ${finalSources.length}`,"sources"));canonical.forEach(expectedSource=>{const actualSource=finalMap.get(expectedSource.source_id);if(!actualSource)errors.push(issue("error","FINAL_SOURCE_MISSING",`${expectedSource.source_id}がsourcesにありません。`,"sources"));else if(!jsonValueEqual(actualSource,expectedSource))errors.push(issue("error","FINAL_SOURCE_IMMUTABLE_MISMATCH",`${expectedSource.source_id}がアプリ生成済みの完成sourcesと一致しません。FINAL_SOURCES_JSON_DO_NOT_EDITを変更せずコピーしてください。`,"sources"))});finalSources.forEach(s=>{if(isObject(s)&&!canonicalMap.has(s.source_id))errors.push(issue("error","FINAL_SOURCE_EXTRA",`アプリ生成済み配列にないsource_idです: ${s.source_id||"未設定"}`,"sources"))});const specific=researchSources.filter(s=>!rootUrl(s.url));if(specific.length>=2&&finalSources.length&&finalSources.every(s=>rootUrl(s.url)))warnings.push(issue("warning","RESEARCH_SOURCE_COLLAPSE","調査証拠JSONには個別ページがありますが、最終JSONがトップページへ集約されています。","sources"));const constrained=(research.market_contexts||[]).some(x=>x&&x.comparability!=="comparable");if(constrained&&Array.isArray(data.warnings)&&data.warnings.length===0)warnings.push(issue("warning","MARKET_WARNING_MISSING","調査証拠JSONに市場比較条件の制約がありますが、最終warningsが空です。","warnings"));}
  const rows=Array.isArray(data.analysis_rows)?data.analysis_rows:[],byNo=n=>rows.find(x=>x&&x.no===n),job=el.jobText.value;if(/業界最大手.{0,20}グループ/.test(job)&&byNo(9)&&byNo(9).result==="なし")warnings.push(issue("warning","NO9_RELATED_TEXT_MISSED","No.9の基準そのものではありませんが、グループの業界最大手という関連記載があります。「その他」の可能性を確認してください。","analysis_rows[No.9]"));if(/手積み手降ろし/.test(job)&&/カゴ台車/.test(job)&&byNo(53)&&byNo(53).result==="記載あり")warnings.push(issue("warning","NO53_LOAD_REDUCTION_UNCLEAR","手積み手降ろしもあるため、カゴ台車だけで負担軽減設備を「記載あり」と断定していないか確認してください。","analysis_rows[No.53]"));return r}
 function updateFinalView(r){$("metricRows").textContent=r.metrics.rows;$("metricProposals").textContent=r.metrics.proposals;$("metricSources").textContent=r.metrics.sources;$("metricErrors").textContent=r.errors.length;$("metricWarnings").textContent=r.warnings.length;const box=$("validationState"),lead=$("validationLead");box.classList.add("show");if(r.errors.length){lead.className="validationLead ng";lead.textContent=`エラー${r.errors.length}件があります。Google Sheetsは作成できません。`}else if(r.warnings.length){lead.className="validationLead warn";lead.textContent=`構造エラーはありません。警告${r.warnings.length}件を確認後、Google Sheetsを作成できます。`}else{lead.className="validationLead ok";lead.textContent="求人分析結果の確認に合格しました。"}$("errorGroup").style.display=r.errors.length?"block":"none";$("warningGroup").style.display=r.warnings.length?"block":"none";renderIssues($("errorList"),r.errors);renderIssues($("warningList"),r.warnings);$("createSheetsBtn").disabled=r.errors.length>0;$("copyGasJsonBtn").disabled=r.errors.length>0;$("copyRepairBtn").disabled=!r.errors.length&&!r.warnings.length;$("jsonSavedState").textContent=`確認済み ${new Date().toLocaleTimeString("ja-JP",{hour:"2-digit",minute:"2-digit"})}`;updateProgress();indicators()}
 function validateFinalInput(){const raw=el.jsonInput.value.trim();if(!raw){status("求人分析結果を貼り付けてください。","error");return null}const clean=parseStructuredResponse(raw,"final");if(!clean.ok){const r={data:null,errors:[issue("error","JSON_PARSE",`求人分析結果を解析できませんでした: ${clean.error.message}`)],warnings:[],metrics:{rows:0,proposals:0,sources:0}};lastValidation=r;showExtractionNotice("final",null);updateFinalView(r);status("求人分析結果を解析できませんでした。","error");return r}if(clean.extracted||clean.normalizedMarkdownUrls)el.jsonInput.value=clean.text;showExtractionNotice("final",clean);let r=validateGeminiResult(clean.data,clean);r=augmentFinalValidation(r);lastValidation=r;updateFinalView(r);save();status(r.errors.length?"求人分析結果に修正が必要です。":clean.extracted?"Geminiの回答から完成した求人分析結果を自動抽出しました。":r.warnings.length?"求人分析結果の形式は正常です。警告を確認してください。":"求人分析結果の確認に合格しました。",r.errors.length?"error":r.warnings.length?"warning":"success");return r}
@@ -1111,7 +1243,7 @@ function requestId(){return"req-"+caseId.replace(/^case-/,"")+"-"+Math.random().
 function ensureGasRequestIdentity(){if(!gasRequestId)gasRequestId=requestId();if(!gasRequestCreatedAt)gasRequestCreatedAt=new Date().toISOString()}
 function stopGasPolling(){clearTimeout(gasPollTimer);gasPollTimer=null;const old=document.getElementById("gasResultPollScript");if(old)old.remove()}
 function invalidateGasRequest(clearResult=true){gasRequestId="";gasRequestCreatedAt="";pendingGasRequestId="";gasCallbackToken="";gasPollStartedAt=0;gasPollAttempt=0;clearTimeout(gasSubmitTimer);stopGasPolling();if(clearResult){lastReportResult=null;renderGasResult(null)}save()}
-function gasRequestObject(r){ensureGasRequestIdentity();const companyUrls=[el.targetCompanyUrl.value.trim(),...urlLines(el.companyUrls.value)].filter(Boolean);return{schema_version:"2.0",request_id:gasRequestId,case_id:caseId,created_at:gasRequestCreatedAt,test_mode:false,input:{job_url:el.jobUrl.value.trim()||null,job_text:el.jobText.value.trim()||JOB_TEXT_FALLBACK,company_urls:companyUrls,competitors:competitorPayload(),target_persona:el.target.value.trim(),proposal_count:Number(el.proposalCount.value),proposal_text_target:Number(el.textLength.value),web_research_mode:WEB_LABELS[el.webMode.value]||WEB_LABELS.balanced,evaluation_source:{source_type:"gem_knowledge",file_name:"求人原稿改善リスト【評価基準シート】",source_url:"https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/",criteria_version:RULESET_VERSION,evaluation_table_schema_version:EVALUATION_TABLE_SCHEMA_VERSION,analysis_policy_version:ANALYSIS_POLICY_VERSION,final_json_schema_version:FINAL_JSON_SCHEMA_VERSION}},llm_result:r.data}}
+function gasRequestObject(r){ensureGasRequestIdentity();const companyUrls=[el.targetCompanyUrl.value.trim(),...urlLines(el.companyUrls.value)].filter(Boolean);return{schema_version:"2.0",request_id:gasRequestId,case_id:caseId,created_at:gasRequestCreatedAt,test_mode:false,input:{job_url:el.jobUrl.value.trim()||null,job_text:el.jobText.value.trim()||JOB_TEXT_FALLBACK,company_urls:companyUrls,analysis_mode:"strength_discovery",market_reference_mode:"automatic",target_persona:el.target.value.trim(),proposal_count:Number(el.proposalCount.value),proposal_text_target:Number(el.textLength.value),web_research_mode:WEB_LABELS[el.webMode.value]||WEB_LABELS.balanced,evaluation_source:{source_type:"gem_knowledge",file_name:"求人原稿改善リスト【評価基準シート】",source_url:"https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/",criteria_version:RULESET_VERSION,evaluation_table_schema_version:EVALUATION_TABLE_SCHEMA_VERSION,analysis_policy_version:ANALYSIS_POLICY_VERSION,final_json_schema_version:FINAL_JSON_SCHEMA_VERSION}},llm_result:r.data}}
 function validGasWebAppUrl(value){return /^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/(?:exec|dev)(?:\?.*)?$/.test(String(value||"").trim())}
 function renderGasResult(result){const panel=$("gasResultPanel"),lead=$("gasResultLead"),body=$("gasResultBody"),links=panel.querySelector(".gasResultLinks");if(!result){panel.classList.remove("show","gasSending");links.classList.remove("show");body.textContent="";return}panel.classList.add("show");panel.classList.toggle("gasSending",!!result.pending);if(result.pending){lead.className="validationLead warn";lead.textContent="Google Sheetsを作成しています。";body.textContent="別タブでGASの処理を開始しました。作成状況はこの画面から自動確認しています。";links.classList.remove("show");return}if(result.success){lead.className="validationLead ok";lead.textContent="Google Sheetsを作成しました。";body.textContent=(result.spreadsheet_name||"レポート")+"\nリクエストID: "+(result.request_id||"");$("openSpreadsheetBtn").href=result.spreadsheet_url||"#";$("openFolderBtn").href=result.folder_url||"#";links.classList.add("show")}else if(result.indeterminate){lead.className="validationLead warn";lead.textContent="作成結果を自動確認できませんでした。";body.textContent=(result.message||"別タブの結果を確認してください。")+"\nリクエストID: "+(result.request_id||"");links.classList.remove("show")}else{lead.className="validationLead ng";lead.textContent="Google Sheetsを作成できませんでした。";body.textContent=(result.error_code?"["+result.error_code+"] ":"")+(result.message||"不明なエラーです。")+(result.details?"\n\n"+JSON.stringify(result.details,null,2):"");links.classList.remove("show")}}
 function gasHidden(form,name,value){const input=document.createElement("input");input.type="hidden";input.name=name;input.value=value;form.appendChild(input)}
@@ -1123,7 +1255,9 @@ window[GAS_POLL_CALLBACK]=payload=>{const script=document.getElementById("gasRes
 function handleGasCallbackTimeout(){if(!pendingGasRequestId)return;clearTimeout(gasSubmitTimer);stopGasPolling();const result={success:false,indeterminate:true,request_id:pendingGasRequestId,error_code:"RESULT_CALLBACK_TIMEOUT",message:"Google Sheetsの作成結果をこの画面で自動確認できませんでした。別タブで作成結果を確認してください。同じボタンを再度押すと、同じリクエストIDの結果を再取得できます。"};pendingGasRequestId="";gasCallbackToken="";lastReportResult=result;$("createSheetsBtn").textContent="Google Sheetsを作成";$("createSheetsBtn").disabled=!(lastValidation&&!lastValidation.errors.length);renderGasResult(result);save();updateProgress();indicators();status("自動確認を終了しました。別タブの結果を確認してください。","warning")}
 function submitGasRequest(r){const url=el.gasWebAppUrl.value.trim(),key=el.gasAccessKey.value.trim();if(!validGasWebAppUrl(url)){status("GAS WebアプリURL（/exec）を詳細設定へ入力してください。","error");el.gasWebAppUrl.focus();return}if(key.length<24){status("GASの接続キーを詳細設定へ入力してください。","error");el.gasAccessKey.focus();return}const request=gasRequestObject(r);pendingGasRequestId=request.request_id;gasCallbackToken=makeCallbackToken();gasPollStartedAt=Date.now();gasPollAttempt=0;lastReportResult=null;const popupName="gas_report_"+request.request_id.replace(/[^A-Za-z0-9_]/g,"_");const popup=window.open("about:blank",popupName,"width=760,height=820");if(!popup){pendingGasRequestId="";gasCallbackToken="";status("ポップアップがブロックされました。このサイトのポップアップを許可してください。","error");return}try{popup.document.write('<!doctype html><meta charset="utf-8"><title>Google Sheets作成中</title><body style="font-family:sans-serif;padding:32px"><h2>Google Sheetsを作成しています…</h2><p>処理が完了するまでこの画面を閉じないでください。</p></body>');popup.document.close()}catch{}const form=document.createElement("form");form.method="POST";form.action=url;form.target=popupName;form.acceptCharset="UTF-8";gasHidden(form,"access_key",key);gasHidden(form,"callback_token",gasCallbackToken);gasHidden(form,"response_mode","html");gasHidden(form,"callback_origin",location.origin&&location.origin!=="null"?location.origin:"*");gasHidden(form,"payload",JSON.stringify(request));document.body.appendChild(form);renderGasResult({pending:true});$("createSheetsBtn").disabled=true;$("createSheetsBtn").textContent="作成中…";status("GASへ送信しました。作成状況を自動確認しています。","success");form.submit();form.remove();clearTimeout(gasSubmitTimer);gasSubmitTimer=setTimeout(handleGasCallbackTimeout,GAS_RESULT_TIMEOUT_MS);scheduleGasPoll(1800);save()}
 function handleGasResult(result){if(!result||typeof result!=="object")return;const expected=pendingGasRequestId||gasRequestId;if(expected&&result.request_id&&result.request_id!==expected)return;clearTimeout(gasSubmitTimer);stopGasPolling();pendingGasRequestId="";gasCallbackToken="";gasPollStartedAt=0;lastReportResult=result;$("createSheetsBtn").textContent="Google Sheetsを作成";$("createSheetsBtn").disabled=!(lastValidation&&!lastValidation.errors.length);renderGasResult(result);save();updateProgress();indicators();status(result.success?"Google Sheetsを作成しました。":result.message||"Google Sheetsを作成できませんでした。",result.success?"success":"error")}
-function finalRepairPrompt(r){const list=[...r.errors,...r.warnings].map((x,i)=>`${i+1}. [${x.level.toUpperCase()} / ${x.code}] ${x.path?x.path+"：":""}${x.message}`).join("\n"),research=lastResearchValidation&&lastResearchValidation.data?lastResearchValidation.data:null,finalSources=canonicalFinalSources(research),allowedRefs=allowedEvidenceRefs(research);return`直前の求人分析JSONを部分修正ではなく、Knowledgeの gemini_output_schema_v2.1_strict.txt に従って全体再構築してください。意味内容と根拠は可能な限り維持し、新しいWeb調査は行いません。
+function finalRepairPrompt(r){
+ const list=[...r.errors,...r.warnings].map((x,i)=>`${i+1}. [${x.level.toUpperCase()} / ${x.code}] ${x.path?x.path+"：":""}${x.message}`).join("\n"),research=lastResearchValidation&&lastResearchValidation.data?lastResearchValidation.data:null,finalSources=canonicalFinalSources(research),allowedRefs=allowedEvidenceRefs(research);
+ return`直前の求人分析JSONを部分修正ではなく、Knowledgeの gemini_output_schema_v3.0_strict.txt に従って全体再構築してください。意味内容と根拠は可能な限り維持し、新しいWeb調査は行いません。
 
 <VALIDATION_ISSUES>
 ${list}
@@ -1142,18 +1276,21 @@ ${json(allowedRefs)}
 - case_summaryはcompany_name/job_title/employment_type/employment_basis_quoteの4キーだけ
 - 全analysis_rowsにno/result/job_excerpt/strength/proposalを置く。strengthがある行はproposalも必須、strengthがnullの行はproposalもnull
 - strengthはtext/status/evidence_refs/confidenceの4キー
-- proposalはSchema所定の12キー。strengthがある全行に作成する。重点提案だけrankを1から連番、重点外はrank:null。expected_effectsは許可値の配列。statement_statusはverified/template_with_placeholders/hypothesis
-- competitorsではcompetitor_idを使う。competitor_valuesは競合ごとのcompetitor_id/valueオブジェクト
+- proposalはSchema所定の12キー。strengthがある全行に作成する。重点提案だけrankを1から連番、重点外はrank:null
+- recruitment_strength_analysisは対象企業の企業全体の強みを原則8～15件で整理する。市場参照情報が不足していてもTARGETの強みを捨てない
+- recruitment_strength_analysis.itemsは11キーを省略せず、analysis_typeとmarket_positionはSchemaの許可値を使う
 - summaryの3配列はtext/status/evidence_refs/confidenceのオブジェクト配列
 - proposal_notesはSchema所定の10キーを省略せず、rankが1以上の重点proposalだけを対象にする
 - story_stepsはstep/title/talkの6オブジェクト。指定タイトルに完全一致
 - sourcesはFINAL_SOURCES_JSON_DO_NOT_EDITをそのままコピーし、再構成・省略・言い換え・追加・削除しない
 - evidence_refsはALLOWED_EVIDENCE_REFSにあるIDだけを使う
-- research_coverage.categoryにpay/holiday/trainingを使わず、Schemaの許可値を使う
+- research_coverage.categoryはSchemaの許可値を使う
 - Schema外の独自キーを削除する
 - schema_versionは${FINAL_JSON_SCHEMA_VERSION}、ruleset_versionは${RULESET_VERSION}、evaluation_table_schema_versionは${EVALUATION_TABLE_SCHEMA_VERSION}、analysis_policy_versionは${ANALYSIS_POLICY_VERSION}を維持する
 - 最終出力前にSchema検証を行い、エラー0件のJSONだけを出力する
-- 最終回答はJSONオブジェクト本体1件だけ。説明、コードフェンス、検証ログを付けない`}
+- 最終回答はJSONオブジェクト本体1件だけ。説明、コードフェンス、検証ログを付けない`;
+}
+
 function copyTextSync(text){const a=document.createElement("textarea");a.value=text;a.setAttribute("readonly","");a.style.position="fixed";a.style.left="-9999px";document.body.appendChild(a);a.select();let ok=false;try{ok=document.execCommand("copy")}catch{}a.remove();return ok}
 async function copyText(text){if(navigator.clipboard&&window.isSecureContext){try{await navigator.clipboard.writeText(text);return}catch{}}if(!copyTextSync(text))throw new Error("copy failed")}
 async function copyAndMaybeOpen(text,openUrl,label){const unresolved=[...new Set(String(text||"").match(/\{\{[A-Z0-9_]+\}\}/g)||[])];if(!String(text||"").trim()){status(label+"がまだ生成されていません。","error");return}if(unresolved.length){status(label+"に未置換変数が残っています: "+unresolved.join(", "),"error");return}try{if(openUrl){if(!copyTextSync(text))throw new Error("copy failed");const w=window.open(openUrl,"_blank","noopener,noreferrer");status(w?`${label}をコピーし、Geminiを開きました。`:`${label}はコピーしましたが、Geminiを開けませんでした。`,w?"success":"warning")}else{await copyText(text);status(label+"をコピーしました。")} }catch(e){console.error(e);status(label+"をコピーできませんでした。","error")}}
@@ -1162,7 +1299,7 @@ function save(){try{localStorage.setItem(KEY,JSON.stringify(state()))}catch(e){c
 function readStored(){for(const k of[KEY,...OLD_KEYS]){const r=localStorage.getItem(k);if(r)try{return{key:k,data:JSON.parse(r)}}catch{}}return null}
 function load(){const stored=readStored();const d=stored?stored.data:null;caseId=d&&d.caseId?d.caseId:makeCaseId();if(d){if(stored.key!==KEY){const oldUrls=urlLines(d.companyUrls||"");el.targetCompanyUrl.value=d.targetCompanyUrl||oldUrls[0]||"";el.companyUrls.value=d.targetCompanyUrl?d.companyUrls||"":oldUrls.slice(1).join("\n")}Object.entries(el).forEach(([k,v])=>{if(!v||!("value"in v)||["researchPreview","conversionPreview","proPreview","targetCompanyUrl","companyUrls"].includes(k))return;if(d[k]!=null)v.value=d[k]});if(stored.key===KEY){el.targetCompanyUrl.value=d.targetCompanyUrl||"";el.companyUrls.value=d.companyUrls||""}el.proposalCount.value=d.proposalCount||DEFAULTS.proposalCount;el.textLength.value=d.textLength||DEFAULTS.textLength;el.webMode.value=d.webMode||DEFAULTS.webMode;gasRequestId=d.gasRequestId||"";gasRequestCreatedAt=d.gasRequestCreatedAt||"";lastReportResult=d.lastReportResult||null;pendingGasRequestId=d.pendingGasRequestId||"";gasCallbackToken=d.gasCallbackToken||"";gasPollStartedAt=Number(d.gasPollStartedAt||0)}el.gasWebAppUrl.value=GAS_WEB_APP_URL;build();if(pendingGasRequestId&&gasCallbackToken){if(!gasPollStartedAt)gasPollStartedAt=Date.now();renderGasResult({pending:true});$("createSheetsBtn").disabled=true;$("createSheetsBtn").textContent="作成中…";gasSubmitTimer=setTimeout(handleGasCallbackTimeout,Math.max(1000,GAS_RESULT_TIMEOUT_MS-(Date.now()-gasPollStartedAt)));scheduleGasPoll(500)}else renderGasResult(lastReportResult);save()}
 function status(msg,type="success"){el.status.className="status show "+type;el.status.textContent=msg;clearTimeout(status.timer);status.timer=setTimeout(()=>{el.status.className="status";el.status.textContent=""},7000)}
-function indicators(){$("caseIdSummary").textContent=caseId;$("jobCount").textContent=el.jobText.value.length.toLocaleString("ja-JP")+"文字";$("targetCount").textContent=el.target.value.length.toLocaleString("ja-JP")+"文字";$("researchJsonCount").textContent=el.researchJsonInput.value.length.toLocaleString("ja-JP")+"文字";$("jsonCount").textContent=el.jsonInput.value.length.toLocaleString("ja-JP")+"文字";$("targetCompanySummary").textContent=el.targetCompanyName.value.trim()||"未入力";$("jobSummary").textContent=el.jobText.value.trim()?"全文あり":el.jobUrl.value.trim()?"URLのみ":"未入力";const compN=competitorEntities().length;$("competitorCount").textContent=compN?`${compN}/2社を指定`:"競合なし・対象企業のみ";$("researchSummary").textContent=lastResearchValidation?(lastResearchValidation.errors.length?`エラー${lastResearchValidation.errors.length}件`:`確認済み・警告${lastResearchValidation.warnings.length}件`):"未確認";$("proSummary").textContent=el.proPreview.value?"生成済み":"未生成";$("finalSummary").textContent=lastValidation?(lastValidation.errors.length?`エラー${lastValidation.errors.length}件`:`確認済み・警告${lastValidation.warnings.length}件`):"未確認";$("proposalSettingSummary").textContent=el.proposalCount.value+"項目";$("lengthSettingSummary").textContent=el.textLength.value+"文字程度";$("webSettingSummary").textContent=WEB_LABELS[el.webMode.value]||WEB_LABELS.balanced;$("gasConnectionSummary").textContent=validGasWebAppUrl(el.gasWebAppUrl.value.trim())&&el.gasAccessKey.value.trim().length>=24?"設定済み":"未設定";const proOk=!!el.proPreview.value;$("copyProBtn").disabled=!proOk;$("openProBtn").disabled=!proOk;$("proPanel").classList.toggle("disabledPanel",!proOk)}
+function indicators(){$("caseIdSummary").textContent=caseId;$("jobCount").textContent=el.jobText.value.length.toLocaleString("ja-JP")+"文字";$("targetCount").textContent=el.target.value.length.toLocaleString("ja-JP")+"文字";$("researchJsonCount").textContent=el.researchJsonInput.value.length.toLocaleString("ja-JP")+"文字";$("jsonCount").textContent=el.jsonInput.value.length.toLocaleString("ja-JP")+"文字";$("targetCompanySummary").textContent=el.targetCompanyName.value.trim()||"未入力";$("jobSummary").textContent=el.jobText.value.trim()?"全文あり":el.jobUrl.value.trim()?"URLのみ":"未入力";$("marketReferenceSummary").textContent=lastResearchValidation&&!lastResearchValidation.errors.length?`${Math.max(0,(lastResearchValidation.data.entities||[]).filter(x=>x&&/^M\d{2}$/.test(x.entity_id)).length)}組織を参照`:"DRで自動選定";$("researchSummary").textContent=lastResearchValidation?(lastResearchValidation.errors.length?`エラー${lastResearchValidation.errors.length}件`:`確認済み・警告${lastResearchValidation.warnings.length}件`):"未確認";$("proSummary").textContent=el.proPreview.value?"生成済み":"未生成";$("finalSummary").textContent=lastValidation?(lastValidation.errors.length?`エラー${lastValidation.errors.length}件`:`確認済み・警告${lastValidation.warnings.length}件`):"未確認";$("proposalSettingSummary").textContent=el.proposalCount.value+"項目";$("lengthSettingSummary").textContent=el.textLength.value+"文字程度";$("webSettingSummary").textContent=WEB_LABELS[el.webMode.value]||WEB_LABELS.balanced;$("gasConnectionSummary").textContent=validGasWebAppUrl(el.gasWebAppUrl.value.trim())&&el.gasAccessKey.value.trim().length>=24?"設定済み":"未設定";const proOk=!!el.proPreview.value;$("copyProBtn").disabled=!proOk;$("openProBtn").disabled=!proOk;$("workflowStep4").classList.toggle("disabledPanel",!proOk)}
 function initWorkflowNavigation(){
  const stages=[...document.querySelectorAll('.stagebar .stage')],cards=[...document.querySelectorAll('[data-workflow-step]')];
  stages.forEach(stage=>stage.addEventListener('click',()=>{const target=$(stage.dataset.scrollTarget);if(target)target.scrollIntoView({behavior:'smooth',block:'start'})}));
@@ -1174,7 +1311,7 @@ function initWorkflowNavigation(){
 function updateProgress(){const hasInput=!!(el.targetCompanyName.value.trim()&&(el.jobText.value.trim()||el.jobUrl.value.trim())),researchOk=lastResearchValidation&&!lastResearchValidation.errors.length,finalOk=lastValidation&&!lastValidation.errors.length;[$("stage1"),$("stage2"),$("stage3"),$("stage4"),$("stage5")].forEach(x=>x.classList.remove("done","active"));if(hasInput){$("stage1").classList.add("done");$("stage2").classList.add("active")}else $("stage1").classList.add("active");if(el.researchJsonInput.value.trim()){$("stage2").classList.add("done");$("stage2").classList.remove("active");$("stage3").classList.add(researchOk?"done":"active")}if(researchOk){$("stage3").classList.add("done");$("stage3").classList.remove("active");$("stage4").classList.add("active")}if(el.jsonInput.value.trim()){$("stage4").classList.add(finalOk?"done":"active");$("stage4").classList.remove(finalOk?"active":"done");$("stage5").classList.add(lastReportResult&&lastReportResult.success?"done":"active")}}
 function resetResearch(clear=true){if(clear)el.researchJsonInput.value="";showExtractionNotice("research",null);lastResearchValidation=null;$("researchValidationState").classList.remove("show");["rMetricEntities","rMetricSources","rMetricFacts","rMetricIndividual","rMetricErrors","rMetricWarnings"].forEach(id=>$(id).textContent="－");$("copyResearchRepairBtn").disabled=true;$("researchSavedState").textContent="未確認";el.proPreview.value="";lastValidation=null;resetFinal(false);build()}
 function resetFinal(clear=true){if(clear)el.jsonInput.value="";showExtractionNotice("final",null);lastValidation=null;invalidateGasRequest(true);$("validationState").classList.remove("show");["metricRows","metricProposals","metricSources","metricErrors","metricWarnings"].forEach(id=>$(id).textContent="－");$("createSheetsBtn").disabled=true;$("copyGasJsonBtn").disabled=true;$("copyRepairBtn").disabled=true;$("jsonSavedState").textContent="未確認";updateProgress();indicators()}
-const formInputs=[el.jobTitle,el.workLocation,el.employmentTypeHint,el.jobUrl,el.jobText,el.targetCompanyName,el.targetCompanyUrl,el.companyUrls,el.competitor1Name,el.competitor1Url,el.competitor2Name,el.competitor2Url,el.entityNotes,el.target];formInputs.forEach(x=>x.addEventListener(x.tagName==="SELECT"?"change":"input",()=>{lastResearchValidation=null;lastValidation=null;invalidateGasRequest(true);clearTimeout(timer);timer=setTimeout(()=>{build();save();$("researchSavedState").textContent="入力変更・再確認必要";$("jsonSavedState").textContent="入力変更・再確認必要"},120)}));[el.proposalCount,el.textLength,el.webMode].forEach(x=>x.addEventListener("change",()=>{lastValidation=null;invalidateGasRequest(true);build();save();status("設定を反映しました。")}));el.researchJsonInput.addEventListener("input",()=>{showExtractionNotice("research",null);lastResearchValidation=null;lastValidation=null;$("researchSavedState").textContent="未確認";el.proPreview.value="";resetFinal(false);clearTimeout(timer);timer=setTimeout(()=>{save();indicators();updateProgress()},200)});el.jsonInput.addEventListener("input",()=>{showExtractionNotice("final",null);lastValidation=null;invalidateGasRequest(true);$("jsonSavedState").textContent="未確認";$("createSheetsBtn").disabled=true;$("copyGasJsonBtn").disabled=true;clearTimeout(timer);timer=setTimeout(()=>{save();indicators();updateProgress()},200)});
+const formInputs=[el.jobTitle,el.workLocation,el.employmentTypeHint,el.jobUrl,el.jobText,el.targetCompanyName,el.targetCompanyUrl,el.companyUrls,el.entityNotes,el.target];formInputs.forEach(x=>x.addEventListener(x.tagName==="SELECT"?"change":"input",()=>{lastResearchValidation=null;lastValidation=null;invalidateGasRequest(true);clearTimeout(timer);timer=setTimeout(()=>{build();save();$("researchSavedState").textContent="入力変更・再確認必要";$("jsonSavedState").textContent="入力変更・再確認必要"},120)}));[el.proposalCount,el.textLength,el.webMode].forEach(x=>x.addEventListener("change",()=>{lastValidation=null;invalidateGasRequest(true);build();save();status("設定を反映しました。")}));el.researchJsonInput.addEventListener("input",()=>{showExtractionNotice("research",null);lastResearchValidation=null;lastValidation=null;$("researchSavedState").textContent="未確認";el.proPreview.value="";resetFinal(false);clearTimeout(timer);timer=setTimeout(()=>{save();indicators();updateProgress()},200)});el.jsonInput.addEventListener("input",()=>{showExtractionNotice("final",null);lastValidation=null;invalidateGasRequest(true);$("jsonSavedState").textContent="未確認";$("createSheetsBtn").disabled=true;$("copyGasJsonBtn").disabled=true;clearTimeout(timer);timer=setTimeout(()=>{save();indicators();updateProgress()},200)});
 $("copyResearchBtn").onclick=()=>{if(validInputs("research"))copyAndMaybeOpen(buildResearchPrompt(),false,"Deep Research用プロンプト")};$("openResearchBtn").onclick=()=>{if(validInputs("research"))copyAndMaybeOpen(buildResearchPrompt(),GEMINI_RESEARCH,"Deep Research用プロンプト")};$("copyConversionBtn").onclick=()=>{};$("refreshBtn").onclick=()=>{build();save();status("プロンプトを再生成しました。")} ;
 $("validateResearchBtn").onclick=()=>{if(validInputs("research"))validateResearchInput()};$("copyResearchRepairBtn").onclick=()=>{const r=lastResearchValidation||validateResearchInput();if(r)copyAndMaybeOpen(researchRepairPrompt(r),false,"企業調査結果の修正指示")};$("clearResearchBtn").onclick=()=>{if(el.researchJsonInput.value.trim()&&!confirm("企業調査結果を削除しますか？"))return;resetResearch(true);save();status("企業調査結果をクリアしました。")} ;
 $("copyProBtn").onclick=()=>{if(validInputs("pro"))copyAndMaybeOpen(buildProPrompt(),false,"Pro分析プロンプト")};$("openProBtn").onclick=()=>{if(validInputs("pro"))copyAndMaybeOpen(buildProPrompt(),GEMINI_PRO,"Pro分析プロンプト")};

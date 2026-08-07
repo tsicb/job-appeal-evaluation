@@ -6,7 +6,7 @@
 <meta content="noindex,nofollow" name="robots"/>
 <meta content="noindex,nofollow" name="googlebot"/>
 <meta content="Deep Researchと専用Gemを使い、対象企業全体の採用競争力・強みと求人原稿の魅力を発見・強化し、Google Sheetsへ出力するブラウザツールです。" name="description"/>
-<title>求人原稿 魅力度評価・採用競争力分析 v5.0</title>
+<title>求人原稿 魅力度評価・採用競争力分析 v5.1</title>
 <style>
 :root{--bg:#f4f6f8;--card:#fff;--line:#d8e0e7;--text:#20303d;--muted:#687887;--blue:#315f7d;--blue2:#244a63;--purple:#695b8d;--soft:#eaf1f5;--shadow:0 12px 34px rgba(34,52,67,.08)}
 *{box-sizing:border-box}body{margin:0;color:var(--text);background:radial-gradient(circle at 10% 0,rgba(49,95,125,.1),transparent 30rem),radial-gradient(circle at 92% 3%,rgba(105,91,141,.08),transparent 28rem),var(--bg);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;line-height:1.7}button,input,textarea,select{font:inherit}a{color:var(--blue)}.wrap{width:min(1180px,calc(100% - 32px));margin:auto;padding:28px 0 56px}.hero{display:flex;justify-content:space-between;gap:22px;padding:26px 28px;margin-bottom:20px;color:#fff;background:linear-gradient(125deg,#294f68,#48738c 56%,#685a88);border-radius:22px;box-shadow:var(--shadow)}.brand{display:flex;gap:16px}.mark{display:grid;place-items:center;width:54px;height:54px;flex:none;border:1px solid rgba(255,255,255,.3);border-radius:16px;background:rgba(255,255,255,.13);font-weight:900;font-size:23px}.eyebrow{margin:0 0 2px;color:rgba(255,255,255,.75);font-size:12px;font-weight:800;letter-spacing:.09em}h1{margin:0;font-size:clamp(24px,4vw,36px);line-height:1.25}h2{margin:0;font-size:19px}.desc{margin:8px 0 0;max-width:760px;color:rgba(255,255,255,.88);font-size:14px}.heroBtns{display:flex;align-items:flex-start;gap:8px;flex-wrap:wrap}.pill{padding:8px 13px;color:#fff;border:1px solid rgba(255,255,255,.3);border-radius:999px;background:rgba(255,255,255,.12);font-size:13px;font-weight:800;text-decoration:none;cursor:pointer}.pill:hover{background:rgba(255,255,255,.2)}.notice{display:flex;gap:10px;padding:13px 16px;margin-bottom:18px;border:1px solid #d5e0e8;border-radius:14px;background:rgba(255,255,255,.84);font-size:13px}.grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:20px;align-items:start}.main,.side{display:grid;gap:18px}.side{position:sticky;top:16px}.card{padding:22px;border:1px solid var(--line);border-radius:21px;background:var(--card);box-shadow:var(--shadow)}.head{margin-bottom:16px}.sub{margin:5px 0 0;color:var(--muted);font-size:13px}.num{display:inline-grid;place-items:center;width:28px;height:28px;margin-right:9px;color:var(--blue);border-radius:9px;background:var(--soft);font-size:13px;font-weight:900;vertical-align:2px}.fields{display:grid;gap:16px}.field{display:grid;gap:7px}.labelrow{display:flex;justify-content:space-between;gap:12px}label{font-size:14px;font-weight:800}.hint,.count{color:var(--muted);font-size:11px}.note{margin:0;color:var(--muted);font-size:12px}input,textarea,select{width:100%;border:1px solid #b9c6d2;border-radius:10px;background:#fff;color:var(--text);outline:none}input,select{min-height:46px;padding:10px 12px}textarea{min-height:128px;padding:12px 13px;resize:vertical;line-height:1.65}#jobText{min-height:290px}#promptPreview{min-height:440px;background:#fbfcfd;font:12.5px/1.62 "Cascadia Code",Consolas,"Yu Gothic UI",monospace}input:focus,textarea:focus,select:focus{border-color:#688aa0;box-shadow:0 0 0 4px rgba(49,95,125,.1)}.set{display:grid;grid-template-columns:100px 1fr;gap:9px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.set:last-child{border-bottom:0}.set span:first-child{color:var(--muted);font-weight:700}.set span:last-child{font-weight:800}.criteria{display:inline-block;margin-top:12px;padding:9px 11px;border:1px solid #cfdae3;border-radius:10px;background:#f8fafc;font-size:12px;font-weight:800;text-decoration:none}.settingsDetails{margin-top:14px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;overflow:hidden}.settingsDetails>summary{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;color:#334a5b;background:#f8fafc;font-size:13px;font-weight:850}.settingsDetails>summary:after{content:"＋";display:grid;place-items:center;width:24px;height:24px;border-radius:7px;background:var(--soft);color:var(--blue);font-size:16px}.settingsDetails[open]>summary:after{content:"－"}.settingsBody{display:grid;gap:13px;padding:14px;border-top:1px solid var(--line);background:#fff}.settingsField{display:grid;gap:6px}.settingsField label{font-size:12px}.settingsHelp{margin:0;color:var(--muted);font-size:11px;line-height:1.55}.settingsReset{min-height:39px;padding:8px 12px;border:1px solid #c7d2dc;border-radius:9px;background:#fff;color:#3f5667;font-size:12px;font-weight:800;cursor:pointer}.settingsReset:hover{background:var(--soft)}.summary{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.summary:last-child{border-bottom:0}.summary span{color:var(--muted)}details.card{padding:0;overflow:hidden}summary{display:flex;justify-content:space-between;padding:20px 22px;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}summary:after{content:"＋";display:grid;place-items:center;width:29px;height:29px;border-radius:9px;background:var(--soft);color:var(--blue);font-size:19px}details[open] summary:after{content:"－"}.promptbody{padding:0 22px 22px;border-top:1px solid var(--line)}.promptnote{margin:13px 0;color:var(--muted);font-size:12px}.actions{display:flex;gap:9px;flex-wrap:wrap;padding:14px;margin:0;border:1px solid rgba(188,202,213,.9);border-radius:17px;background:rgba(255,255,255,.96);box-shadow:var(--shadow)}.btn{min-height:45px;padding:10px 16px;border:1px solid transparent;border-radius:11px;font-weight:850;cursor:pointer}.primary{color:#fff;background:var(--blue)}.primary:hover{background:var(--blue2)}.accent{color:#fff;background:var(--purple)}.secondary{border-color:#b9c6d2;background:#fff;color:#334a5b}.danger{margin-left:auto;border-color:#e5c6c6;background:#fff;color:#a34444}.status{display:none;padding:12px 14px;margin-bottom:17px;border-radius:12px;font-size:13px;font-weight:750}.status.show{display:block}.status.success{color:#285d48;border:1px solid #bcdac9;background:#e7f3ec}.status.warning{color:#76531b;border:1px solid #ead6a7;background:#fff4da}.status.error{color:#883737;border:1px solid #e4bcbc;background:#faeaea}.modalbg{display:none;position:fixed;inset:0;z-index:100;padding:22px;background:rgba(20,32,43,.56);backdrop-filter:blur(4px)}.modalbg.open{display:grid;place-items:center}.modal{width:min(760px,100%);max-height:calc(100vh - 44px);overflow:auto;border-radius:22px;background:#fff;box-shadow:0 24px 70px rgba(9,21,31,.3)}.modalhead{position:sticky;top:0;display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.96)}.close{width:38px;height:38px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:21px;cursor:pointer}.modalbody{padding:21px 23px}.help+ .help{padding-top:18px;margin-top:18px;border-top:1px solid var(--line)}.help h3{margin:0 0 7px;font-size:16px}.help p,.help li{color:#4c5f6d;font-size:13px}.helpnote{padding:13px 15px;border-left:4px solid var(--purple);border-radius:8px;background:#f0edf7;font-size:13px}.footer{padding-top:25px;color:var(--muted);font-size:11px;text-align:center}.jsonCard textarea{min-height:360px;background:#fbfcfd;font:12.5px/1.62 "Cascadia Code",Consolas,"Yu Gothic UI",monospace}.jsonActions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.jsonActions .btn:disabled{cursor:not-allowed;opacity:.45}.validationSummary{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;margin-top:15px}.metric{padding:11px 10px;border:1px solid var(--line);border-radius:12px;background:#f8fafc;text-align:center}.metric b{display:block;font-size:19px;line-height:1.2}.metric span{display:block;margin-top:3px;color:var(--muted);font-size:11px}.validationState{display:none;margin-top:14px}.validationState.show{display:block}.validationLead{padding:13px 15px;border-radius:12px;font-size:13px;font-weight:800}.validationLead.ok{color:#285d48;border:1px solid #bcdac9;background:#e7f3ec}.validationLead.warn{color:#76531b;border:1px solid #ead6a7;background:#fff4da}.validationLead.ng{color:#883737;border:1px solid #e4bcbc;background:#faeaea}.issueGroup{margin-top:14px}.issueGroup h3{margin:0 0 8px;font-size:14px}.issueList{display:grid;gap:8px}.issue{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:11px;background:#fff;font-size:12px}.issue.error{border-left:4px solid #bf5555}.issue.warning{border-left:4px solid #ca9634}.issue.info{border-left:4px solid #4b7894}.issueCode{font:700 11px/1.5 "Cascadia Code",Consolas,monospace;color:var(--muted)}.issueText{white-space:pre-wrap}.jsonMeta{display:flex;justify-content:space-between;gap:12px;margin-top:7px;color:var(--muted);font-size:11px}.qualityNote{margin-top:13px;padding:11px 13px;border-left:4px solid var(--blue);border-radius:8px;background:#eef4f7;color:#465c6b;font-size:12px}.passwordRow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px}.miniSettingBtn{min-width:58px;border:1px solid #c7d2dc;border-radius:9px;background:#fff;color:#3f5667;font-size:12px;font-weight:800;cursor:pointer}.connectionActions{display:grid;grid-template-columns:1fr 1fr;gap:7px}.gasResultPanel{display:none;margin-top:15px;padding:15px;border:1px solid var(--line);border-radius:14px;background:#f8fafc}.gasResultPanel.show{display:block}.gasResultBody{margin-top:10px;color:#4c5f6d;font-size:12px;white-space:pre-wrap;word-break:break-word}.gasResultLinks{display:none;gap:9px;flex-wrap:wrap;margin-top:13px}.gasResultLinks.show{display:flex}.gasResultLinks .btn{text-decoration:none}.gasSending{position:relative;overflow:hidden}.gasSending:after{content:"";position:absolute;inset:auto 0 0;height:3px;background:linear-gradient(90deg,transparent,var(--purple),transparent);animation:gasload 1.2s linear infinite}@keyframes gasload{from{transform:translateX(-100%)}to{transform:translateX(100%)}}@media(max-width:680px){.validationSummary{grid-template-columns:repeat(2,minmax(0,1fr))}.jsonActions .btn{flex:1 1 100%}}@media(max-width:900px){.grid{grid-template-columns:1fr}.side{position:static;grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:680px){.wrap{width:calc(100% - 20px);padding-top:10px}.hero{display:grid;padding:20px 18px;border-radius:18px}.heroBtns{justify-content:flex-start}.card{padding:18px;border-radius:17px}.side{grid-template-columns:1fr}summary{padding:18px}.promptbody{padding:0 18px 18px}.btn{flex:1 1 calc(50% - 8px)}.danger{margin-left:0}.modalbg{padding:10px}}
@@ -55,7 +55,7 @@
 <div class="entityBox"><div class="entityTitle">TARGET　対象企業</div><div class="pairGrid"><div class="field"><div class="labelrow"><label for="targetCompanyName">正式企業名</label><span class="required">必須</span></div><input id="targetCompanyName" placeholder="例：株式会社ヨコタエンタープライズ"/></div><div class="field"><div class="labelrow"><label for="targetCompanyUrl">公式URL</label><span class="required">必須</span></div><input id="targetCompanyUrl" placeholder="https://www.example.co.jp/" type="url"/></div></div><div class="field"><div class="labelrow"><label for="companyUrls">対象企業の追加参考ページ</label><span class="optional">任意・1行1URL</span></div><textarea id="companyUrls" placeholder="https://www.example.co.jp/recruit/
 https://www.example.co.jp/benefits/
 https://www.example.co.jp/training/"></textarea></div></div>
-<div class="modeNotice"><strong>v5.0の調査方針：</strong>指定競合の入力は行いません。Deep Researchが、同業・同雇用形態・類似職種の企業や求人をテーマごとの市場参照先として選びます。比較情報が不足しても、対象企業だけで確認できた強みは削除しません。</div>
+<div class="modeNotice"><strong>v5.1の調査方針：</strong>指定競合の入力は行いません。Deep Researchが、同業・同雇用形態・類似職種の企業や求人をテーマごとの市場参照先として選びます。比較情報が不足しても、対象企業だけで確認できた強みは削除しません。</div>
 <div class="field"><div class="labelrow"><label for="entityNotes">企業関係の補足・混同防止メモ</label><span class="optional">任意</span></div><textarea id="entityNotes" placeholder="例：グループ会社とは別法人。全社制度と今回の求人への適用範囲を区別して調査する。"></textarea></div>
 </div></article>
 <article class="card workflowCard inputCard" data-workflow-step="1" id="workflowInputC"><div class="workflowLabel"><span class="stepToken">STEP 1</span><span>案件情報を入力</span></div><div class="head"><h2><span class="sectionBadge">C</span> ターゲット・文面の方向性</h2><p class="sub">最終の文面提案へ反映する求職者像や訴求方針です。</p></div><div class="field"><div class="labelrow"><label for="target">想定ターゲット・文面の方向性</label><span class="count" id="targetCount">0文字</span></div><textarea id="target" placeholder="例：ドライバー未経験者。研修の安心感、日帰り勤務、収入の分かりやすさを重視する。"></textarea></div></article>
@@ -79,7 +79,7 @@ https://www.example.co.jp/training/"></textarea></div></div>
 <article class="card jsonCard stageCard finalCard workflowCard receiveCard proWorkflowCard" data-workflow-step="5" id="workflowStep5"><div class="workflowLabel"><span class="stepToken">STEP 5</span><span class="systemToken">PRO GEM</span><span class="directionToken">↙ アプリへ戻す</span></div><div class="head"><h2>Pro分析の回答を貼り付ける</h2><p class="sub">専用Gemの回答を貼り付け、厳格確認後にGoogle Sheetsを作成します。</p></div><div class="operationHero"><span class="operationIcon">↙</span><div><b>ここへPro分析の回答を貼り付け</b><p>JSONの見た目を理解する必要はありません。専用Gemの回答全体をそのまま貼り付けます。</p></div></div><div class="field"><div class="labelrow"><label class="pasteLabel" for="jsonInput">Pro分析回答の貼付け欄</label><span class="count" id="jsonCount">0文字</span></div><textarea class="researchJson" id="jsonInput" placeholder="Geminiの「回答をコピー」で取得した内容を、そのまま貼り付けてください。作業コードや実行結果は自動で除外します。" spellcheck="false"></textarea><p class="qualityNote" hidden="" id="finalExtractionNotice"></p><p class="completionNote">エラー0件になったら、緑の「Google Sheetsを作成」ボタンが最終操作です。</p><div class="jsonMeta"><span>入力内容はブラウザ内だけで処理します。</span><span id="jsonSavedState">未確認</span></div></div><div class="jsonActions"><button class="btn primary" id="validateJsonBtn" type="button">求人分析結果を確認</button><button class="btn accent" disabled="" id="createSheetsBtn" type="button">Google Sheetsを作成</button><button class="btn secondary" disabled="" id="copyGasJsonBtn" type="button">作成データをコピー（予備）</button><button class="btn secondary" disabled="" id="copyRepairBtn" title="検出したエラー・警告を修正する指示をコピーし、同じProチャットへ戻します" type="button">修正指示をコピー（Geminiへ戻す）</button><button class="btn secondary" id="clearJsonBtn" type="button">求人分析結果をクリア</button></div><div class="validationSummary"><div class="metric"><b id="metricRows">－</b><span>分析行</span></div><div class="metric"><b id="metricProposals">－</b><span>提案数</span></div><div class="metric"><b id="metricSources">－</b><span>ソース数</span></div><div class="metric"><b id="metricErrors">－</b><span>エラー</span></div><div class="metric"><b id="metricWarnings">－</b><span>警告</span></div></div><div class="validationState" id="validationState"><div class="validationLead" id="validationLead"></div><div class="issueGroup" id="errorGroup"><h3>修正が必要なエラー</h3><div class="issueList" id="errorList"></div></div><div class="issueGroup" id="warningGroup"><h3>確認を推奨する警告</h3><div class="issueList" id="warningList"></div></div></div><p class="qualityNote">警告は処理を止めませんが、企業情報の適用範囲、提案の根拠、市場内での位置づけを確認してください。直接送信できない場合は「作成データをコピー（予備）」を使用できます。</p><div class="gasResultPanel" id="gasResultPanel"><div class="validationLead" id="gasResultLead"></div><div class="gasResultBody" id="gasResultBody"></div><div class="gasResultLinks"><a class="btn primary" id="openSpreadsheetBtn" rel="noopener" target="_blank">Google Sheetsを開く</a><a class="btn secondary" id="openFolderBtn" rel="noopener" target="_blank">保存先フォルダを開く</a></div></div></article>
 </section>
 <aside class="side">
-<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">Deep Researchの調査範囲と専用Gemの提案条件です。</p></div><div class="set"><span>調査</span><span>Deep Research</span></div><div class="set"><span>最終分析</span><span>Pro／思考モード</span></div><div class="set"><span>評価基準</span><span>専用GemのKnowledge</span></div><div class="set"><span>重点提案</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>調査範囲</span><span id="webSettingSummary">指定URL優先＋一般Web</span></div><div class="set"><span>強み分析</span><span>原則8～15項目</span></div><div class="set"><span>Sheets連携</span><span id="gasConnectionSummary">未設定</span></div><div class="set"><span>評価基準版</span><span>2026-08-04-v1</span></div><div class="set"><span>分析方針版</span><span>2026-08-07-v2</span></div><div class="set"><span>分析JSON</span><span>v3.0</span></div><div class="set"><span>Workflow</span><span>v5.0</span></div><div class="set"><span>案件ID</span><span id="caseIdSummary">生成中</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">重点提案数</label><select id="proposalCount"><option value="1">1項目</option><option selected="" value="3">3項目（標準）</option><option value="5">5項目</option></select><p class="settingsHelp">貴社原稿分析では「現在伝わっている魅力」がある全行に提案を出力します。この件数は評価サマリーと商談準備メモで重点表示する件数です。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option selected="" value="100">100文字程度（標準）</option><option value="150">150文字程度</option></select></div><div class="settingsField"><label for="webMode">Deep Researchの調査範囲</label><select id="webMode"><option value="specified">指定URL・公式ドメイン中心</option><option selected="" value="balanced">公式情報優先＋信頼できる補足（標準）</option><option value="broad">一般Webを広く調査</option></select></div><button class="settingsReset" id="resetSettingsBtn" type="button">標準設定に戻す</button></div></details><details class="settingsDetails"><summary>Google Sheets連携設定</summary><div class="settingsBody"><div class="settingsField"><label for="gasWebAppUrl">GAS WebアプリURL</label><input aria-readonly="true" autocomplete="off" id="gasWebAppUrl" readonly="" type="url" value="https://script.google.com/macros/s/AKfycbyz5OPM-HD9u9hhxCeNyvCP82pgcbngZp8csWWYqdQzpNtk-4lQuxQdU1Si3LRmCh_E/exec"/><p class="settingsHelp">接続先URLはアプリに設定済みです。公開されても認証情報にはならず、接続キーは別に管理されます。</p></div><div class="settingsField"><label for="gasAccessKey">接続キー</label><div class="passwordRow"><input autocomplete="off" id="gasAccessKey" placeholder="configureWebApp()で発行" type="password"/><button class="miniSettingBtn" id="toggleGasKeyBtn" type="button">表示</button></div><p class="settingsHelp">GitHubリポジトリには保存されず、このブラウザのローカルストレージだけに保存されます。</p><a class="internalKeyLink" href="https://docs.google.com/document/d/1-imR39CztYw-vIajSVUjnAYy_GDtaRDi7ND5XJQt6VI/" rel="noopener" target="_blank">↗ 社内接続キーを確認 <small>（組織内限定）</small></a></div><div class="connectionActions"><button class="settingsReset" id="openGasStatusBtn" type="button">接続状態ページを開く</button><button class="settingsReset" id="clearGasSettingsBtn" type="button">接続キーをクリア</button></div></div></details><a class="criteria" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/" rel="noopener" target="_blank">↗ 評価基準を開く</a></article>
+<article class="card"><div class="head"><h2>実行設定</h2><p class="sub">Deep Researchの調査範囲と専用Gemの提案条件です。</p></div><div class="set"><span>調査</span><span>Deep Research</span></div><div class="set"><span>最終分析</span><span>Pro／思考モード</span></div><div class="set"><span>評価基準</span><span>専用GemのKnowledge</span></div><div class="set"><span>重点提案</span><span id="proposalSettingSummary">3項目</span></div><div class="set"><span>文面長</span><span id="lengthSettingSummary">100文字程度</span></div><div class="set"><span>調査範囲</span><span id="webSettingSummary">指定URL優先＋一般Web</span></div><div class="set"><span>強み分析</span><span>原則8～15項目</span></div><div class="set"><span>Sheets連携</span><span id="gasConnectionSummary">未設定</span></div><div class="set"><span>評価基準版</span><span>2026-08-04-v1</span></div><div class="set"><span>分析方針版</span><span>2026-08-07-v3</span></div><div class="set"><span>分析JSON</span><span>v3.1</span></div><div class="set"><span>Workflow</span><span>v5.1</span></div><div class="set"><span>案件ID</span><span id="caseIdSummary">生成中</span></div><details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">重点提案数</label><select id="proposalCount"><option value="1">1項目</option><option selected="" value="3">3項目（標準）</option><option value="5">5項目</option></select><p class="settingsHelp">貴社原稿分析では「現在伝わっている魅力」がある全行に提案を出力します。この件数は評価サマリーと商談準備メモで重点表示する件数です。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option selected="" value="100">100文字程度（標準）</option><option value="150">150文字程度</option></select></div><div class="settingsField"><label for="webMode">Deep Researchの調査範囲</label><select id="webMode"><option value="specified">指定URL・公式ドメイン中心</option><option selected="" value="balanced">公式情報優先＋信頼できる補足（標準）</option><option value="broad">一般Webを広く調査</option></select></div><button class="settingsReset" id="resetSettingsBtn" type="button">標準設定に戻す</button></div></details><details class="settingsDetails"><summary>Google Sheets連携設定</summary><div class="settingsBody"><div class="settingsField"><label for="gasWebAppUrl">GAS WebアプリURL</label><input aria-readonly="true" autocomplete="off" id="gasWebAppUrl" readonly="" type="url" value="https://script.google.com/macros/s/AKfycbyz5OPM-HD9u9hhxCeNyvCP82pgcbngZp8csWWYqdQzpNtk-4lQuxQdU1Si3LRmCh_E/exec"/><p class="settingsHelp">接続先URLはアプリに設定済みです。公開されても認証情報にはならず、接続キーは別に管理されます。</p></div><div class="settingsField"><label for="gasAccessKey">接続キー</label><div class="passwordRow"><input autocomplete="off" id="gasAccessKey" placeholder="configureWebApp()で発行" type="password"/><button class="miniSettingBtn" id="toggleGasKeyBtn" type="button">表示</button></div><p class="settingsHelp">GitHubリポジトリには保存されず、このブラウザのローカルストレージだけに保存されます。</p><a class="internalKeyLink" href="https://docs.google.com/document/d/1-imR39CztYw-vIajSVUjnAYy_GDtaRDi7ND5XJQt6VI/" rel="noopener" target="_blank">↗ 社内接続キーを確認 <small>（組織内限定）</small></a></div><div class="connectionActions"><button class="settingsReset" id="openGasStatusBtn" type="button">接続状態ページを開く</button><button class="settingsReset" id="clearGasSettingsBtn" type="button">接続キーをクリア</button></div></div></details><a class="criteria" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/" rel="noopener" target="_blank">↗ 評価基準を開く</a></article>
 <article class="card"><div class="head"><h2>入力・進行状況</h2></div><div class="summary"><span>対象企業</span><strong id="targetCompanySummary">未入力</strong></div><div class="summary"><span>求人情報</span><strong id="jobSummary">未入力</strong></div><div class="summary"><span>市場参照</span><strong id="marketReferenceSummary">DRで自動選定</strong></div><div class="summary"><span>企業調査結果</span><strong id="researchSummary">未確認</strong></div><div class="summary"><span>Gem用プロンプト</span><strong id="proSummary">未生成</strong></div><div class="summary"><span>求人分析結果</span><strong id="finalSummary">未確認</strong></div></article>
 <article class="card"><div class="head"><h2>運用手順</h2></div><ol class="flowList"><li>STEP 1　案件・企業情報を入力</li><li>STEP 2　Deep Researchへ送る</li><li>STEP 3　Deep Researchから戻す</li><li>STEP 4　専用Gemへ送る</li><li>STEP 5　専用Gemから戻し、Sheetsを作成</li></ol></article>
 </aside>
@@ -294,9 +294,9 @@ FINAL RESPONSE CONTRACT:
 
 最終回答はJSONオブジェクト本体1件だけを出力する。これは通常のDeep Researchレポートより優先される出力契約である。</script>
 <script id="conversionPromptTemplate" type="text/plain">この工程はv3.1では使用しません。</script>
-<script id="proPromptTemplate" type="text/plain"># 求人原稿魅力度評価・採用競争力分析 Pro JSON出力プロンプト v5.0
+<script id="proPromptTemplate" type="text/plain"># 求人原稿魅力度評価・採用競争力分析 Pro JSON出力プロンプト v5.1
 
-最重要：最終回答は、Knowledgeに登録された `gemini_output_schema_v3.0_strict.txt` に完全適合するJSONオブジェクト1件だけにしてください。文章レポート、Markdown、コードフェンス、作業ログ、中間JSONは出力しません。
+最重要：最終回答は、Knowledgeに登録された `gemini_output_schema_v3.1_strict.txt` に完全適合するJSONオブジェクト1件だけにしてください。文章レポート、Markdown、コードフェンス、作業ログ、中間JSONは出力しません。
 
 応答契約：最初の非空白文字は `{`、最後の非空白文字は `}` とします。内部でPython・Pandas・ファイル生成・Schema検証を使用しても、コード、ログ、途中表示、空テンプレートJSON、先頭だけのJSONプレビューは回答へ一切出しません。完成JSONを1回だけ返してください。
 
@@ -339,9 +339,15 @@ FINAL RESPONSE CONTRACT:
 {{ALLOWED_EVIDENCE_REFS_JSON}}
 </ALLOWED_EVIDENCE_REFS>
 
+<ANALYSIS_ROWS_SKELETONS_DO_NOT_EDIT>
+{{ANALYSIS_ROWS_SKELETONS_JSON}}
+</ANALYSIS_ROWS_SKELETONS_DO_NOT_EDIT>
+
 `FINAL_SOURCES_JSON_DO_NOT_EDIT` はアプリが検証済み企業調査結果から生成した、最終JSON用の完成済みsources配列です。内容を再構成せず、そのまま最終JSONの `sources` にコピーしてください。
 
 `ALLOWED_EVIDENCE_REFS` は最終JSONで使用できる根拠IDの完全な一覧です。すべての `evidence_refs` はこの一覧の値だけを使用してください。
+
+`ANALYSIS_ROWS_SKELETONS_DO_NOT_EDIT` は、評価基準正本からアプリが生成した雇用形態別の固定行です。最終JSONでは、確定した `case_summary.employment_type` に対応する配列を選び、`no`、`criterion`、行順を変更せず `analysis_rows` の骨格として使用してください。発見した魅力を空いているNo.へ順番に割り当ててはいけません。
 
 ## 1. 根拠の分離ルール
 
@@ -352,19 +358,32 @@ FINAL RESPONSE CONTRACT:
 - 企業調査で見つかった魅力は `strength` または `proposal.origin: "research_discovery"` に入れる。
 - 新しいWeb調査は行わない。JOB_TEXTとRESEARCH_EVIDENCE_JSONだけを外部事実の根拠にする。
 
-## 2. 必須評価行
+## 2. 必須評価行と評価項目固定契約
 
-評価基準シートの雇用形態別必須No.を、1件につき1回だけ `analysis_rows` に出力する。No.の追加・削除・重複・統合・並べ替え変更をしない。
+`analysis_rows` は、発見した魅力を自由に並べる一覧ではありません。評価基準の各行へ、該当する内容だけを格納する固定評価表です。
 
-各行は、次の5キーを必ずすべて持つ。使わないキーも省略せず `null` を入れる。
+### 2-1. 骨格の選択とコピー
+
+1. JOB_TEXTから雇用形態を確定し、`case_summary.employment_type`へ設定する。
+2. `ANALYSIS_ROWS_SKELETONS_DO_NOT_EDIT.rows_by_employment`から、その雇用形態に対応する配列だけを選ぶ。
+3. 配列の行数、順序、`no`、`criterion`を一切変更せず、各行へ`result`、`job_excerpt`、`strength`、`proposal`を追加する。
+4. No.の追加・削除・重複・統合・並べ替えは禁止する。
+
+各行は次の6キーを必ず持つ。
 
 ```json
 {
-  "no": 12,
+  "no": 57,
+  "criterion": {
+    "category": "ジョブディスクリプション（職務記述書）",
+    "major_item": "休日休暇",
+    "middle_item": "年間休日120日以上",
+    "criterion_definition": "年間休日120日は平均以上"
+  },
   "result": "記載あり",
-  "job_excerpt": "求人原稿からの実在する抜粋",
+  "job_excerpt": "年間休日120日",
   "strength": {
-    "text": "現在確認できる具体的な魅力",
+    "text": "年間休日120日と具体的に記載されている",
     "status": "verified",
     "evidence_refs": ["JOB_TEXT"],
     "confidence": "high"
@@ -372,55 +391,57 @@ FINAL RESPONSE CONTRACT:
   "proposal": {
     "rank": null,
     "origin": "job_text_strengthening",
-    "current_strength": "現在確認できる具体的な魅力",
-    "enhancement_point": "数字・事例・対象範囲を加えて具体化する",
-    "text": "現在の魅力を、求職者が働く姿を想像できる文面へ強化する。",
-    "selection_reason": "現在伝わっている魅力をさらに具体化できるため",
-    "confirmation_required": false,
-    "confirmation_question": null,
-    "expected_effects": ["仕事内容の理解促進"],
-    "statement_status": "verified",
-    "evidence_refs": ["JOB_TEXT"],
-    "confidence": "high"
-  }
-}
-```
-
-原稿に記載がなく、企業調査で魅力を発見した場合の例：
-
-```json
-{
-  "no": 30,
-  "result": "なし",
-  "job_excerpt": "記載なし",
-  "strength": {
-    "text": "企業調査で確認できた有給休暇取得率の事実",
-    "status": "needs_confirmation",
-    "evidence_refs": ["S003"],
-    "confidence": "medium"
-  },
-  "proposal": {
-    "rank": 1,
-    "origin": "research_discovery",
-    "current_strength": "企業調査で確認できた有給休暇取得率",
-    "enhancement_point": "今回の職種・勤務地での適用範囲と取得例を確認する",
-    "text": "有給休暇取得率は［今回の職種・勤務地での実績］。［取得例］のように休みを取りやすい環境です。",
-    "selection_reason": "応募前の休暇取得不安を軽減できるため",
+    "current_strength": "年間休日120日と具体的に記載されている",
+    "enhancement_point": "長期休暇の時期や有給取得実績を加えて休日の過ごし方を具体化する",
+    "text": "年間休日120日。GW・夏季・年末年始には［連休日数］の長期休暇があり、［有給取得例］のように予定に合わせて休めます。",
+    "selection_reason": "休日数だけでなく実際の休み方まで示すと応募前の不安を減らせるため",
     "confirmation_required": true,
-    "confirmation_question": "この取得率は今回の職種・勤務地にも適用されますか。実際の取得例も教えてください。",
+    "confirmation_question": "長期休暇の日数と、今回の職場での有給取得例を教えてください。",
     "expected_effects": ["応募前の不安軽減", "長期就業イメージの形成"],
     "statement_status": "template_with_placeholders",
-    "evidence_refs": ["S003"],
+    "evidence_refs": ["JOB_TEXT"],
     "confidence": "medium"
   }
 }
 ```
 
-情報がない場合の例：
+### 2-2. 直接一致ルール
+
+`result`、`job_excerpt`、`strength`、`proposal`は、その行の`criterion.middle_item`と`criterion.criterion_definition`へ**直接回答する内容だけ**を入れる。
+
+- No.1「設立30年以上」へ仕事内容を入れない。
+- No.2「上場企業・上場企業のグループ会社」へ給与を入れない。
+- No.3「外資系企業」へ休日制度を入れない。
+- No.9「業界順位・国内シェア」へ独自手当を入れない。
+- No.10「従業員数300名以上」へオンライン面接を入れない。
+- No.50「仕事詳細（作業工程）」、No.51「仕事詳細（重さ・大きさ）」、No.52「仕事詳細（やりがい）」は同じ中項目名でも`criterion_definition`が異なるため、定義に沿って別々に判定する。
+
+企業調査で有用な魅力を発見しても、対応する評価項目へ直接一致しなければ、その魅力を`analysis_rows`へ入れない。`recruitment_strength_analysis`へ出力する。
+
+評価行へ格納できるか迷う場合は、次の質問で判定する。
+
+> この`strength.text`は、行の`criterion.middle_item`と`criterion.criterion_definition`への回答として、そのまま読んで不自然ではないか。
+
+不自然、または関連が間接的な場合は、その行の`strength`と`proposal`を`null`にする。
+
+### 2-3. 根拠別の判定
+
+- `result` と `job_excerpt` は、必ずJOB_TEXTだけで判定する。
+- 原稿に記載がない場合は `result: "なし"`、`job_excerpt: "記載なし"`。
+- 企業調査で同じ評価項目に直接一致する事実を確認した場合は、`result`を変えず、`strength`と`proposal.origin: "research_discovery"`へ入れられる。
+- 同じ評価項目へ直接一致する情報がJOB_TEXTにも企業調査にもない場合は、`strength: null`、`proposal: null`。
+
+情報がない行の例：
 
 ```json
 {
   "no": 16,
+  "criterion": {
+    "category": "カルチャー（企業文化）",
+    "major_item": "人事考課制度",
+    "middle_item": "インセンティブ制度あり",
+    "criterion_definition": "固定給にプラスして、頑張りて当て（インセンティブ）が支給される"
+  },
   "result": "なし",
   "job_excerpt": "記載なし",
   "strength": null,
@@ -428,7 +449,7 @@ FINAL RESPONSE CONTRACT:
 }
 ```
 
-`strength` は次の4キーだけを持つ。`evidence` や `source` という独自キーに置き換えない。
+`strength`は次の4キーだけを持つ。
 
 ```json
 {
@@ -446,6 +467,8 @@ FINAL RESPONSE CONTRACT:
 ## 3. 全魅力行への訴求強化提案と重点提案選定
 
 文面提案は不足へのダメ出しではなく、採用訴求を強くする提案として作る。
+
+前提として、`strength`は評価項目へ直接一致する行だけに置く。企業全体の強みを件数確保のために別のNo.へ割り当てない。
 
 `strength` がオブジェクトであるすべての行に、必ず `proposal` を作成する。`strength: null` の行だけ `proposal: null` とする。つまり、「現在伝わっている魅力」がある行では、`さらに引き出せるポイント`、`訴求強化文面例`、`追加確認したい情報`、`期待できる採用効果`をすべて出力する。
 
@@ -705,6 +728,7 @@ status: `used | searched_no_adoptable_info | not_searched | not_applicable`
 - case_id
 - case_summary
 - analysis_rows
+- analysis_rows各行のcriterionは提示骨格から完全コピーされ、内容がcriterion_definitionへ直接一致
 - recruitment_strength_analysis
 - summary
 - sales_meeting
@@ -715,13 +739,13 @@ status: `used | searched_no_adoptable_info | not_searched | not_applicable`
 
 ## 10. 出力直前の機械検査
 
-最終出力前に、内部で必ず `gemini_output_schema_v3.0_strict.txt` へ照合し、エラー0件になるまで修正する。検査コードや結果は出力しない。
+最終出力前に、内部で必ず `gemini_output_schema_v3.1_strict.txt` へ照合し、さらに各行のno・criterion・内容対応をANALYSIS_ROWS_SKELETONS_DO_NOT_EDITと照合し、エラー0件になるまで修正する。検査コードや結果は出力しない。
 
 特に次を確認する。
 
 - 4つのバージョンとcase_idが入力値と一致
 - case_summaryは4キーだけ
-- 全analysis_rowsに`strength`と`proposal`があり、strengthがある行はproposalもオブジェクト、strengthがnullの行はproposalもnull
+- 全analysis_rowsに`no`、固定`criterion`、`result`、`job_excerpt`、`strength`、`proposal`があり、no・criterion・行順が提示された骨格と完全一致する
 - `result`と`job_excerpt`はJOB_TEXTだけで整合
 - strengthは`text/status/evidence_refs/confidence`
 - proposalの12キーが揃い、expected_effectsは配列。重点提案だけrankが1以上、重点外はrank:null
@@ -737,13 +761,14 @@ status: `used | searched_no_adoptable_info | not_searched | not_applicable`
 - additionalPropertiesに相当する独自キーを追加していない
 - JSON.parse可能
 
-送信直前に、回答が完成JSONだけであること、analysis_rowsが必須件数、strengthがある全行にproposalがあること、重点proposalが設定件数（strength件数が少ない場合はその件数）、recruitment_strength_analysisが対象企業の事実を幅広く含むこと、story_stepsが6件であることを確認する。空の初期テンプレート、Pythonコード、実行ログ、JSONの先頭プレビューを回答へ含めない。
+送信直前に、回答が完成JSONだけであること、analysis_rowsが提示骨格と同じ件数・順序・no・criterionであること、各strengthがそのcriterionへ直接一致すること、strengthがある全行にproposalがあること、重点proposalが設定件数（strength件数が少ない場合はその件数）、recruitment_strength_analysisが対象企業の事実を幅広く含むこと、story_stepsが6件であることを確認する。空の初期テンプレート、Pythonコード、実行ログ、JSONの先頭プレビューを回答へ含めない。
 
-最終回答はRFC 8259準拠のJSONオブジェクト本体1件だけを出力する。</script>
+最終回答はRFC 8259準拠のJSONオブジェクト本体1件だけを出力する。
+</script>
 <script>"use strict";
-const KEY="job_appeal_prompt_maker_v5_0",OLD_KEYS=["job_appeal_prompt_maker_v4_6","job_appeal_prompt_maker_v4_5","job_appeal_prompt_maker_v4_4","job_appeal_prompt_maker_v4_3","job_appeal_prompt_maker_v4_2","job_appeal_prompt_maker_v4_1","job_appeal_prompt_maker_v4_0","job_appeal_prompt_maker_v3_6","job_appeal_prompt_maker_v3_5","job_appeal_prompt_maker_v3_4","job_appeal_prompt_maker_v3_3","job_appeal_prompt_maker_v3_2","job_appeal_prompt_maker_v3_1","job_appeal_prompt_maker_v3_0","job_appeal_prompt_maker_v2_4","job_appeal_prompt_maker_v2_3","job_appeal_prompt_maker_v2_2"],GEMINI_RESEARCH="https://gemini.google.com/app",GEMINI_PRO="https://gemini.google.com/gem/d3becb7771cb";
+const KEY="job_appeal_prompt_maker_v5_1",OLD_KEYS=["job_appeal_prompt_maker_v5_0","job_appeal_prompt_maker_v4_6","job_appeal_prompt_maker_v4_5","job_appeal_prompt_maker_v4_4","job_appeal_prompt_maker_v4_3","job_appeal_prompt_maker_v4_2","job_appeal_prompt_maker_v4_1","job_appeal_prompt_maker_v4_0","job_appeal_prompt_maker_v3_6","job_appeal_prompt_maker_v3_5","job_appeal_prompt_maker_v3_4","job_appeal_prompt_maker_v3_3","job_appeal_prompt_maker_v3_2","job_appeal_prompt_maker_v3_1","job_appeal_prompt_maker_v3_0","job_appeal_prompt_maker_v2_4","job_appeal_prompt_maker_v2_3","job_appeal_prompt_maker_v2_2"],GEMINI_RESEARCH="https://gemini.google.com/app",GEMINI_PRO="https://gemini.google.com/gem/d3becb7771cb";
 const GAS_WEB_APP_URL="https://script.google.com/macros/s/AKfycbyz5OPM-HD9u9hhxCeNyvCP82pgcbngZp8csWWYqdQzpNtk-4lQuxQdU1Si3LRmCh_E/exec";
-const RULESET_VERSION="2026-08-04-v1",EVALUATION_TABLE_SCHEMA_VERSION="1.0",ANALYSIS_POLICY_VERSION="2026-08-07-v2",FINAL_JSON_SCHEMA_VERSION="3.0";
+const RULESET_VERSION="2026-08-04-v1",EVALUATION_TABLE_SCHEMA_VERSION="1.0",ANALYSIS_POLICY_VERSION="2026-08-07-v3",FINAL_JSON_SCHEMA_VERSION="3.1";
 const DEFAULTS={proposalCount:"3",textLength:"100",webMode:"balanced",gasWebAppUrl:GAS_WEB_APP_URL,gasAccessKey:""};
 const WEB_LABELS={specified:"指定URL・公式ドメイン中心",balanced:"公式情報優先＋信頼できる補足",broad:"一般Webを広く調査"};
 const $=id=>document.getElementById(id);
@@ -751,6 +776,8 @@ const el={jobTitle:$("jobTitle"),workLocation:$("workLocation"),employmentTypeHi
 const researchTemplate=$("researchPromptTemplate").textContent.trim(),conversionTemplate=$("conversionPromptTemplate").textContent.trim(),proTemplate=$("proPromptTemplate").textContent.trim();
 const json=v=>JSON.stringify(v,null,2),urlLines=v=>String(v||"").split(/\r?\n/).map(x=>x.trim()).filter(Boolean),JOB_TEXT_FALLBACK="［求人原稿全文の貼り付けなし：job_urlから本文を取得してください］";
 const REQUIRED_NOS={"正社員":[12,13,16,21,22,23,24,25,26,27,28,29,30,31,44,46,47,48,49,50,51,52,53,55,56,57,58,59,60,65,66,1,2,3,4,5,6,7,8,9,10,11,14,18,19,20,32,33,35,36,37,38,39,40,43,45,54,61,62,63,17,34,41,42],"非正規（アルバイト・パート・派遣）":[12,13,15,16,21,22,23,24,44,46,47,48,49,50,51,52,53,55,56,57,58,59,60,64,65,66,4,7,14,20,32,33,35,36,37,38,39,40,43,54,61,62,63,17,41,42]};
+const CRITERIA_BY_NO={"1":{"category":"パーパス（存在意義）","major_item":"設立からの歴史","middle_item":"設立30年以上","criterion_definition":"設立30年以上・安定経営できていることが記載されている"},"2":{"category":"パーパス（存在意義）","major_item":"上場・非上場","middle_item":"上場企業・上場企業のグループ会社","criterion_definition":"上場しているので資金調達力があり新事業の展開も見込める"},"3":{"category":"パーパス（存在意義）","major_item":"上場・非上場","middle_item":"外資系企業","criterion_definition":"給与水準が高く、実力が評価されやすいため、頑張った分だけ収入もキャリアアップも可能"},"4":{"category":"パーパス（存在意義）","major_item":"企業価値","middle_item":"競合他社との比較・自社の強み","criterion_definition":"競合他社と比較した自社の強みは●●ですと明確に記載されている"},"5":{"category":"パーパス（存在意義）","major_item":"企業価値","middle_item":"インフラに関わる事業","criterion_definition":"エネルギーインフラ（電力・ガス・石油）交通インフラ（公共交通機関や道路、トンネル、橋梁）空間インフラ（公共施設の管理関係）生活インフラ（ゴミ処理場や上下水道、電話・インターネットなどの通信系、テレビ・ラジオなどの放送系にかかわる事業を行っています。"},"6":{"category":"パーパス（存在意義）","major_item":"企業価値","middle_item":"社会に与える影響","criterion_definition":"人間の生活の根幹にかかわる仕事のため、社会に与える影響が大きい仕事"},"7":{"category":"パーパス（存在意義）","major_item":"企業価値","middle_item":"人を助ける・笑顔にする仕事","criterion_definition":"目の前の個人と向き合うことができ、元気を与えたり笑顔にする仕事"},"8":{"category":"パーパス（存在意義）","major_item":"企業成長","middle_item":"2年連続売上10％以上UP","criterion_definition":"業績好調で、2年連続の増収増益。経営も安定。毎年成長を続けている"},"9":{"category":"パーパス（存在意義）","major_item":"企業規模","middle_item":"業界順位・国内シェア","criterion_definition":"業界順位はトップ10圏内。国内シェア●％で業界をリードしている"},"10":{"category":"パーパス（存在意義）","major_item":"企業規模","middle_item":"従業員数300名以上（大手企業）","criterion_definition":"従業員300名以上と会社規模も大きく、社会的信用も高い"},"11":{"category":"パーパス（存在意義）","major_item":"企業規模","middle_item":"事業所数・店舗数10拠点以上","criterion_definition":"事業所数●以上で、全国●から●まで幅広く展開している"},"12":{"category":"パーパス（存在意義）","major_item":"知名度","middle_item":"企業ブランド力・認知度（有名）","criterion_definition":"CMでおなじみの●●の会社で、多くの方に知られています。有名商品を取り扱っている"},"13":{"category":"カルチャー（企業文化）","major_item":"人事考課制度","middle_item":"賞与・寸志","criterion_definition":"賞与ありで、月給●か月分以上の支給がある"},"14":{"category":"カルチャー（企業文化）","major_item":"人事考課制度","middle_item":"昇進・昇格のスピード","criterion_definition":"入社後●年で●●へステップアップでき、リーダーの推薦があれば期間も最短●間で昇格可能"},"15":{"category":"カルチャー（企業文化）","major_item":"人事考課制度","middle_item":"正社員登用制度","criterion_definition":"非正規雇用ではなく、直接雇用で働きたい方は正社員が目指せる"},"16":{"category":"カルチャー（企業文化）","major_item":"人事考課制度","middle_item":"インセンティブ制度あり","criterion_definition":"固定給にプラスして、頑張りて当て（インセンティブ）が支給される"},"17":{"category":"カルチャー（企業文化）","major_item":"人事考課制度","middle_item":"賞賛や表彰の仕組み","criterion_definition":"月に1度、社員MVPを表彰する仕組みがあり、業務への意欲が高まる"},"18":{"category":"カルチャー（企業文化）","major_item":"人事考課制度","middle_item":"管理職登用（若手・女性）","criterion_definition":"20代／女性の管理職登用を積極的に行っておりチャンスを与える風土"},"19":{"category":"カルチャー（企業文化）","major_item":"人事考課制度","middle_item":"独立支援制度あり","criterion_definition":"独立支援制度があり、独立後もパートナーとして仕事の発注やサポートを行っている"},"20":{"category":"カルチャー（企業文化）","major_item":"人事考課制度","middle_item":"キャリアップイメージ","criterion_definition":"入社1年後に●●※役職（年収●）、入社2年後に●●※役職（年収●）、入社3年後に●●※役職（年収●）"},"21":{"category":"カルチャー（企業文化）","major_item":"働き方","middle_item":"副業（ダブルワーク）OK","criterion_definition":"副業OK。自らの知見を広げるためにチャレンジできる環境がある"},"22":{"category":"カルチャー（企業文化）","major_item":"働き方","middle_item":"ノルマなし","criterion_definition":"ノルマを達成しなければ「降格」などの制度はない"},"23":{"category":"カルチャー（企業文化）","major_item":"働き方","middle_item":"直行直帰あり","criterion_definition":"自宅から現場に直行直帰できる"},"24":{"category":"カルチャー（企業文化）","major_item":"働き方","middle_item":"在宅勤務可能","criterion_definition":"在宅勤務・リモートワークが可能"},"25":{"category":"カルチャー（企業文化）","major_item":"働き方","middle_item":"時短正社員制度","criterion_definition":"時短正社員制度があるため、子供が●●になるまでは短時間勤務が可能"},"26":{"category":"カルチャー（企業文化）","major_item":"働き方","middle_item":"転勤なし","criterion_definition":"転勤がないため、地元で長く働ける"},"27":{"category":"カルチャー（企業文化）","major_item":"働き方","middle_item":"転勤は同一県内のみ","criterion_definition":"転勤は同一県内のみのため、家族が実家に帰省しやすい環境"},"28":{"category":"カルチャー（企業文化）","major_item":"働き方","middle_item":"産休・育児休暇取得事例あり","criterion_definition":"産休・育児休暇の取得実績があり29歳～49歳までの女性が仕事復帰しやすい環境がある"},"29":{"category":"カルチャー（企業文化）","major_item":"働き方","middle_item":"託児所あり","criterion_definition":"小さなお子さんがいらっしゃる方も預けられるので、お仕事に集中できる環境"},"30":{"category":"カルチャー（企業文化）","major_item":"中途・女性割合","middle_item":"有給消化率90％","criterion_definition":"有給取得がしやすい。"},"31":{"category":"カルチャー（企業文化）","major_item":"中途・女性割合","middle_item":"離職率●％以下","criterion_definition":"離職率が●％と低く、長く安心して働ける点には自信がある"},"32":{"category":"カルチャー（企業文化）","major_item":"年齢構成比","middle_item":"社員×年代別の％","criterion_definition":"10代　●％　20代　●％　30代　●％　40代　●％"},"33":{"category":"カルチャー（企業文化）","major_item":"年齢構成比","middle_item":"社員の性別割合","criterion_definition":"男性　●割　女性　●割"},"34":{"category":"カルチャー（企業文化）","major_item":"再雇用制度","middle_item":"定年後の再雇用制度あり","criterion_definition":"定年後の再雇用制度がある"},"35":{"category":"カルチャー（企業文化）","major_item":"上司・仲間・風土","middle_item":"上司との関係が良好","criterion_definition":"上司・先輩とも仲が良く仕事の話からプライベートまで様々な話ができる関係性"},"36":{"category":"カルチャー（企業文化）","major_item":"上司・仲間・風土","middle_item":"仲間との関係が良好","criterion_definition":"仲間や同僚とも仲が良く、仕事後の食事や休みの日に一緒にイベントに行ったりもしています"},"37":{"category":"カルチャー（企業文化）","major_item":"上司・仲間・風土","middle_item":"意見や改善提案を上げやすい","criterion_definition":"「こうしたい」「●●の仕組みを取り入れたい」と思った意見や改善提案を、社歴問わず積極的に提案できる"},"38":{"category":"カルチャー（企業文化）","major_item":"上司・仲間・風土","middle_item":"提案を受け入れる風土","criterion_definition":"プロジェクトチームを発足し職場にいるメンバーそれぞれが課題解決の場に携わることができる"},"39":{"category":"カルチャー（企業文化）","major_item":"上司・仲間・風土","middle_item":"相談できる先（先輩や仲間）がいる","criterion_definition":"悩んでいるとき「大丈夫？どうしたの？」と声をかけてくれる仲間がいる。表情の変化に気が付くお互いを気遣える仲間"},"40":{"category":"カルチャー（企業文化）","major_item":"上司・仲間・風土","middle_item":"目標を共有して達成に向けみんなで動く","criterion_definition":"目標をみんなで共有し「よし、今日も頑張ろう」とみんなで達成に向かって前向きに取り組めます"},"41":{"category":"カルチャー（企業文化）","major_item":"上司・仲間・風土","middle_item":"懇親会・スポーツ大会","criterion_definition":"社内サークル活動としてテニス部やサッカー部があり、部署間を超えた関係作りの場がある"},"42":{"category":"カルチャー（企業文化）","major_item":"上司・仲間・風土","middle_item":"誕生日会・入社記念日のお祝い","criterion_definition":"仲間の誕生日をお祝いする風土がある"},"43":{"category":"カルチャー（企業文化）","major_item":"教育・研修","middle_item":"eラーニング","criterion_definition":"自宅でも学習できるeラーニング制度があり、業務理解をサポートする教育システムが充実している"},"44":{"category":"カルチャー（企業文化）","major_item":"教育・研修","middle_item":"研修期間・マニュアルあり","criterion_definition":"入社後●日間、入社研修期間がありしっかり業務内容を習得できる。"},"45":{"category":"カルチャー（企業文化）","major_item":"教育・研修","middle_item":"定期的な研修セミナー参加機会","criterion_definition":"担当分野の知識を広げるための勉強会やセミナーが定期的にあり、業務の一環としてセミナーに参加できる機会がある"},"46":{"category":"カルチャー（企業文化）","major_item":"教育・研修","middle_item":"資格取得支援・会社補助あり","criterion_definition":"業務に必要な資格を会社全額負担（会社補助）で取得できる仕組みがある"},"47":{"category":"カルチャー（企業文化）","major_item":"服装・髪型","middle_item":"服装自由","criterion_definition":"「清潔感があるように見える」というルールに則っていれば服装は自由"},"48":{"category":"カルチャー（企業文化）","major_item":"服装・髪型","middle_item":"髪色・髪型自由","criterion_definition":"髪色・髪型が自由"},"49":{"category":"カルチャー（企業文化）","major_item":"服装・髪型","middle_item":"ネイル自由","criterion_definition":"清潔感があるように見えれば、ネイルのデザインやカラーは自由"},"50":{"category":"ジョブディスクリプション（職務記述書）","major_item":"仕事内容","middle_item":"仕事詳細","criterion_definition":"作業工程が細かく記載されていて映像でイメージできる"},"51":{"category":"ジョブディスクリプション（職務記述書）","major_item":"仕事内容","middle_item":"仕事詳細","criterion_definition":"扱うものの重さ・大きさが具体的に記載されている"},"52":{"category":"ジョブディスクリプション（職務記述書）","major_item":"仕事内容","middle_item":"仕事詳細","criterion_definition":"仕事のやりがい、顧客から言われてうれしかった言葉など"},"53":{"category":"ジョブディスクリプション（職務記述書）","major_item":"仕事内容","middle_item":"社員の負担を軽減する設備","criterion_definition":"職員の業務負担や精神的負担を軽減する仕組みや設備を取り入れている。"},"54":{"category":"ジョブディスクリプション（職務記述書）","major_item":"仕事内容","middle_item":"相談しやすい環境","criterion_definition":"困ったことがあったときに相談できる上司や先輩が常に近くにいます。"},"55":{"category":"ジョブディスクリプション（職務記述書）","major_item":"勤務形態","middle_item":"手に職つける・転職に有利","criterion_definition":"転職に有利なスキル・資格・経験を身に着ける事ができる"},"56":{"category":"ジョブディスクリプション（職務記述書）","major_item":"休日休暇","middle_item":"残業少なめ（20Ｈ未満）残業ほぼなし（10H未満）残業なし","criterion_definition":"通常は残業はほぼない。"},"57":{"category":"ジョブディスクリプション（職務記述書）","major_item":"休日休暇","middle_item":"年間休日120日以上","criterion_definition":"年間休日120日は平均以上"},"58":{"category":"ジョブディスクリプション（職務記述書）","major_item":"社宅・寮環境","middle_item":"貸与家電","criterion_definition":"家具家電（冷蔵庫・洗濯機・電子レンジ・テレビ・エアコン・ベット）が付いているため"},"59":{"category":"ジョブディスクリプション（職務記述書）","major_item":"社宅・寮環境","middle_item":"設備環境・建物環境","criterion_definition":"Wi-Fi環境が整っている。新築築浅で、新築の匂いが漂うキレイな住居。"},"60":{"category":"ジョブディスクリプション（職務記述書）","major_item":"社宅・寮環境","middle_item":"寮周囲にコンビニスーパーあり","criterion_definition":"社員寮の近くにはコンビニやスーパーがある。"},"61":{"category":"ジョブディスクリプション（職務記述書）","major_item":"社宅・寮環境","middle_item":"アウトドアや観光スポットが近い","criterion_definition":"近くにアウトドアが楽しめたり、レジャー施設や観光スポットがある。"},"62":{"category":"ジョブディスクリプション（職務記述書）","major_item":"食堂・休憩スペース","middle_item":"社員食堂・売店","criterion_definition":"1食●円から購入できるカレーやうどん、そば、チャーハンなどのメニューがある。"},"63":{"category":"ジョブディスクリプション（職務記述書）","major_item":"食堂・休憩スペース","middle_item":"設備環境","criterion_definition":"電子レンジや冷蔵庫・ポット・ウォーターサーバーがある"},"64":{"category":"ジョブディスクリプション（職務記述書）","major_item":"福利厚生","middle_item":"日払い・週払いあり","criterion_definition":"働いた分を給料日を待たずに前払いできる日払い・週払い制度がある。"},"65":{"category":"ジョブディスクリプション（職務記述書）","major_item":"面接・選考","middle_item":"ＷＥＢ・電話面接ＯＫ","criterion_definition":"自宅で参加できるWEB面接・また電話面接がある"},"66":{"category":"ジョブディスクリプション（職務記述書）","major_item":"面接・選考","middle_item":"入社までのスピード","criterion_definition":"面接から入社まで1週間以内"}};
+const CRITERION_MATCH_RULES={"1":{"pattern":"設立30年以上|創業30年以上|19\\d{2}年.{0,12}(設立|創業)|(設立|創業).{0,12}19\\d{2}年|3\\d周年|4\\d周年|5\\d周年|6\\d周年|7\\d周年|8\\d周年|9\\d周年|100周年","level":"error"},"2":{"pattern":"上場|東証|名証|証券取引所|上場企業.{0,12}(グループ|子会社)|グループ会社.{0,12}上場","level":"error"},"3":{"pattern":"外資|外国資本|海外資本","level":"error"},"4":{"pattern":"競合|他社|自社の強み|当社の強み|差別化|比較して","level":"warning"},"5":{"pattern":"インフラ|電力|ガス|石油|交通|道路|橋梁|トンネル|上下水道|通信|放送|公共施設|ごみ処理|ゴミ処理","level":"error"},"6":{"pattern":"社会|地域|生活|産業|ものづくり|モノづくり|支える|貢献|影響","level":"warning"},"7":{"pattern":"笑顔|感謝|ありがとう|人を助け|お客様|利用者|患者|子ども|顧客","level":"warning"},"8":{"pattern":"2年連続|２年連続|連続.{0,10}(増収|増益)|売上.{0,20}(10%|１０％).{0,10}(増|アップ|UP)","level":"error"},"9":{"pattern":"シェア|業界.{0,8}(順位|[0-9０-９]+位|トップ)|国内.{0,8}シェア|市場占有","level":"error"},"10":{"pattern":"従業員|社員数|スタッフ数|在籍.{0,8}[0-9０-９,，]+名|[3-9][0-9]{2,}名|[３-９][０-９]{2,}名","level":"error"},"11":{"pattern":"事業所|店舗|拠点|支店|営業所|工場.{0,8}[0-9０-９]+|全国.{0,8}[0-9０-９]+","level":"error"},"12":{"pattern":"知名度|有名|CM|ＣＭ|おなじみ|ブランド|広く知ら|認知","level":"warning"},"13":{"pattern":"賞与|ボーナス|寸志","level":"error"},"14":{"pattern":"昇進|昇格|ステップアップ|リーダー|役職","level":"error"},"15":{"pattern":"正社員登用|登用制度|正社員を目指|社員登用","level":"error"},"16":{"pattern":"インセンティブ|歩合|報奨金|成果給","level":"error"},"17":{"pattern":"表彰|MVP|ＭＶＰ|アワード|賞賛","level":"error"},"18":{"pattern":"若手.{0,12}管理職|女性.{0,12}管理職|管理職.{0,12}(若手|女性)|管理職登用","level":"error"},"19":{"pattern":"独立支援|起業支援|開業支援","level":"error"},"20":{"pattern":"キャリア|昇格|昇進|ステップアップ|社内転職|職種転換","level":"warning"},"21":{"pattern":"副業|Wワーク|Ｗワーク|ダブルワーク","level":"error"},"22":{"pattern":"ノルマ","level":"error"},"23":{"pattern":"直行直帰","level":"error"},"24":{"pattern":"在宅|リモート|テレワーク","level":"error"},"25":{"pattern":"時短正社員|短時間正社員|時短勤務","level":"error"},"26":{"pattern":"転勤なし|転居を伴う.{0,8}転勤.{0,8}なし|転勤はありません","level":"error"},"27":{"pattern":"同一県内|県内.{0,8}転勤|転勤.{0,8}県内","level":"error"},"28":{"pattern":"産休|育休|育児休暇|復職|育児休業","level":"error"},"29":{"pattern":"託児|保育所|保育園.{0,8}(併設|利用)","level":"error"},"30":{"pattern":"有給.{0,12}90|有休.{0,12}90|有給消化率.{0,8}90|有給取得率.{0,8}90","level":"error"},"31":{"pattern":"離職率|定着率","level":"error"},"32":{"pattern":"10代|20代|30代|40代|年代別|年齢構成","level":"error"},"33":{"pattern":"男女比|性別割合|男性.{0,15}女性|女性.{0,15}男性","level":"error"},"34":{"pattern":"再雇用|定年後","level":"error"},"35":{"pattern":"上司|直属.{0,5}先輩|上司との関係","level":"warning"},"36":{"pattern":"仲間|同僚|チームメンバー|メンバー同士","level":"warning"},"37":{"pattern":"意見|改善提案|提案しやす|アイデアを出","level":"warning"},"38":{"pattern":"提案.{0,15}受け入|アイデア.{0,15}採用|プロジェクトチーム","level":"warning"},"39":{"pattern":"相談|声をかけ|悩み.{0,10}聞|気遣","level":"warning"},"40":{"pattern":"目標.{0,12}共有|チーム.{0,15}達成|みんなで.{0,12}達成","level":"warning"},"41":{"pattern":"懇親会|スポーツ大会|サークル|社内イベント","level":"error"},"42":{"pattern":"誕生日|入社記念","level":"error"},"43":{"pattern":"eラーニング|ｅラーニング|Eラーニング|オンライン学習|動画.{0,8}学習","level":"error"},"44":{"pattern":"研修|マニュアル|OJT|ＯＪＴ|教育期間|教育制度|教育プログラム|新人教育|アカデミー","level":"error"},"45":{"pattern":"セミナー|勉強会|研修会|講習会","level":"error"},"46":{"pattern":"資格取得|受験料|講習費|免許.{0,8}支援|資格.{0,12}(全額|補助|負担)","level":"error"},"47":{"pattern":"服装自由|私服","level":"error"},"48":{"pattern":"髪色|髪型","level":"error"},"49":{"pattern":"ネイル","level":"error"},"50":{"pattern":"工程|流れ|手順|作業内容|業務内容|仕事内容|担当.{0,8}作業|加工|組立|検査|配送","level":"warning"},"51":{"pattern":"重さ|重量|kg|ＫＧ|キロ|大きさ|サイズ|寸法","level":"error"},"52":{"pattern":"やりがい|感謝|ありがとう|うれしかった|嬉しかった|達成感|誇り","level":"error"},"53":{"pattern":"負担軽減|省力|自動化|設備|機械|バックカメラ|ドラレコ|カゴ台車|安全装置","level":"warning"},"54":{"pattern":"相談|フォロー|質問|先輩|上司|担当者","level":"warning"},"55":{"pattern":"手に職|スキル|資格|専門性|市場価値|転職に有利","level":"warning"},"56":{"pattern":"残業|時間外|定時|ほぼなし","level":"error"},"57":{"pattern":"年間休日.{0,8}(12[0-9]|1[3-9][0-9]|[2-9][0-9]{2})|年休.{0,8}(12[0-9]|1[3-9][0-9]|[2-9][0-9]{2})","level":"error"},"58":{"pattern":"家電|冷蔵庫|洗濯機|電子レンジ|テレビ|エアコン|ベッド|ベット","level":"error"},"59":{"pattern":"Wi-?Fi|Ｗｉ.?Ｆｉ|築浅|新築|個室|寮.{0,8}設備|社宅.{0,8}設備","level":"error"},"60":{"pattern":"コンビニ|スーパー|ドラッグストア|周辺環境","level":"error"},"61":{"pattern":"観光|アウトドア|レジャー|温泉|海|山","level":"error"},"62":{"pattern":"社員食堂|食堂|売店|食事補助","level":"error"},"63":{"pattern":"電子レンジ|冷蔵庫|ポット|ウォーターサーバー|休憩室","level":"error"},"64":{"pattern":"日払い|週払い|前払い","level":"error"},"65":{"pattern":"WEB面接|ＷＥＢ面接|オンライン面接|電話面接","level":"error"},"66":{"pattern":"面接.{0,15}入社|入社.{0,15}(1週間|１週間|最短|即日)|スピード選考|即入社","level":"error"}};
 const RESULT_VALUES=new Set(["記載あり","その他","なし"]),CONFIDENCE_VALUES=new Set(["high","medium","low"]),STORY_TITLES=["現在の求人原稿の良い点を伝える","御社の強みを伝える","原稿で十分に伝わっていない点を示す","文面案を提示する","期待効果を説明する","追加ヒアリングへつなぐ"],EVALUATIVE_WORDS=["充実","魅力的","魅力がある","安心感","安心でき","安定した","安定性","働きやす","素晴らしい","抜群","強力","確かな強み","大きな魅力","プライベートと両立"],MARKET_ASSERTIONS=["業界唯一","他社にはない","市場で唯一","圧倒的に優れて","一般的な企業にはない"];
 let caseId="",lastResearchValidation=null,lastValidation=null,timer,gasRequestId="",gasRequestCreatedAt="",lastReportResult=null,pendingGasRequestId="",gasCallbackToken="",gasSubmitTimer=null,gasPollTimer=null,gasPollStartedAt=0,gasPollAttempt=0;
 const GAS_RESULT_TIMEOUT_MS=240000,GAS_POLL_INTERVAL_MS=2500,GAS_POLL_CALLBACK="__jobAppealGasPollCallback";
@@ -758,11 +785,16 @@ function makeCaseId(){const now=new Date(),stamp=new Intl.DateTimeFormat("sv-SE"
 function currentDateJst(){return new Intl.DateTimeFormat("sv-SE",{timeZone:"Asia/Tokyo",year:"numeric",month:"2-digit",day:"2-digit"}).format(new Date())}
 function lengthRange(v){return({"50":"40～70文字程度","100":"80～130文字程度","150":"120～180文字程度"})[v]||"80～130文字程度"}
 function targetEntity(){return{entity_id:"TARGET",company_name:el.targetCompanyName.value.trim(),official_url:el.targetCompanyUrl.value.trim()||null,additional_urls:urlLines(el.companyUrls.value)}}
+function criterionRef(no){const c=CRITERIA_BY_NO[String(no)];return c?{category:c.category,major_item:c.major_item,middle_item:c.middle_item,criterion_definition:c.criterion_definition}:null}
+function analysisRowsSkeletons(){const hint=el.employmentTypeHint.value,types=REQUIRED_NOS[hint]?[hint]:Object.keys(REQUIRED_NOS),rowsByEmployment={};types.forEach(type=>{rowsByEmployment[type]=REQUIRED_NOS[type].map(no=>({no,criterion:criterionRef(no)}))});return{selected_by_hint:REQUIRED_NOS[hint]?hint:null,rows_by_employment:rowsByEmployment}}
+function sameCriterion(a,b){return isObject(a)&&isObject(b)&&a.category===b.category&&a.major_item===b.major_item&&a.middle_item===b.middle_item&&a.criterion_definition===b.criterion_definition}
+function criterionContentText(row){return[row&&row.job_excerpt,row&&row.strength&&row.strength.text,row&&row.proposal&&row.proposal.current_strength,row&&row.proposal&&row.proposal.enhancement_point,row&&row.proposal&&row.proposal.text].map(v=>String(v||"")).join(" ").replace(/\s+/g," ")}
+function validateCriterionSemantics(errors,warnings,row,path){if(!row||(!isObject(row.strength)&&row.result==="なし"))return;const rule=CRITERION_MATCH_RULES[String(row.no)];if(!rule)return;let matched=false;try{matched=new RegExp(rule.pattern,"i").test(criterionContentText(row))}catch{}if(matched)return;const expected=CRITERIA_BY_NO[String(row.no)],message=`No.${row.no}の内容が評価項目「${expected?expected.middle_item:"不明"}」へ直接一致していません。発見した魅力を別No.へ割り当てず、対応しない場合はstrength/proposalをnullにして採用競争力・強み分析へ移してください。`;const target=rule.level==="error"?errors:warnings;target.push(issue(rule.level,"CRITERION_CONTENT_MISMATCH",message,path))}
 function replacementsBase(){return{"{{CASE_ID}}":caseId,"{{JOB_TITLE_JSON}}":json(el.jobTitle.value.trim()),"{{WORK_LOCATION_JSON}}":json(el.workLocation.value.trim()),"{{EMPLOYMENT_TYPE_HINT_JSON}}":json(el.employmentTypeHint.value),"{{TARGET_PERSONA_JSON}}":json(el.target.value.trim()),"{{CURRENT_DATE}}":currentDateJst(),"{{TARGET_ENTITY_JSON}}":json(targetEntity()),"{{ENTITY_NOTES_JSON}}":json(el.entityNotes.value.trim()),"{{WEB_RESEARCH_MODE}}":WEB_LABELS[el.webMode.value]||WEB_LABELS.balanced,"{{JOB_URL_JSON}}":json(el.jobUrl.value.trim()||null),"{{JOB_TEXT}}":el.jobText.value.trim()||JOB_TEXT_FALLBACK,"{{PROPOSAL_COUNT}}":el.proposalCount.value,"{{TEXT_LENGTH}}":el.textLength.value,"{{TEXT_LENGTH_RANGE}}":lengthRange(el.textLength.value),"{{RULESET_VERSION}}":RULESET_VERSION,"{{EVALUATION_TABLE_SCHEMA_VERSION}}":EVALUATION_TABLE_SCHEMA_VERSION,"{{ANALYSIS_POLICY_VERSION}}":ANALYSIS_POLICY_VERSION,"{{FINAL_JSON_SCHEMA_VERSION}}":FINAL_JSON_SCHEMA_VERSION}}
 function fill(template,extra={}){let out=template;Object.entries({...replacementsBase(),...extra}).forEach(([k,v])=>out=out.replaceAll(k,String(v)));return out}
 function buildResearchPrompt(){return fill(researchTemplate)}
 function buildConversionPrompt(){return fill(conversionTemplate)}
-function buildProPrompt(){if(!lastResearchValidation||lastResearchValidation.errors.length)return"";const research=lastResearchValidation.data,finalSources=canonicalFinalSources(research),allowedRefs=allowedEvidenceRefs(research);return fill(proTemplate,{"{{RESEARCH_EVIDENCE_JSON}}":json(research),"{{FINAL_SOURCES_JSON}}":json(finalSources),"{{ALLOWED_EVIDENCE_REFS_JSON}}":json(allowedRefs)})}
+function buildProPrompt(){if(!lastResearchValidation||lastResearchValidation.errors.length)return"";const research=lastResearchValidation.data,finalSources=canonicalFinalSources(research),allowedRefs=allowedEvidenceRefs(research);return fill(proTemplate,{"{{RESEARCH_EVIDENCE_JSON}}":json(research),"{{FINAL_SOURCES_JSON}}":json(finalSources),"{{ALLOWED_EVIDENCE_REFS_JSON}}":json(allowedRefs),"{{ANALYSIS_ROWS_SKELETONS_JSON}}":json(analysisRowsSkeletons())})}
 function build(){el.researchPreview.value=buildResearchPrompt();el.conversionPreview.value=buildConversionPrompt();el.proPreview.value=buildProPrompt();updateProgress();indicators()}
 function validUrl(v){if(!v)return true;try{const u=new URL(v);return u.protocol==="http:"||u.protocol==="https:"}catch{return false}}
 function validInputs(stage="research"){
@@ -1078,13 +1110,20 @@ function validateGeminiResult(data,meta={extra:false}){
     const expected=REQUIRED_NOS[employment],missing=expected.filter(n=>!nos.includes(n)),unexpected=nos.filter(n=>!expected.includes(n));
     addIf(errors,missing.length>0,"error","MISSING_NOS",`必須No.が不足しています: ${missing.join(", ")}`,"analysis_rows");
     addIf(errors,unexpected.length>0,"error","UNEXPECTED_NOS",`対象外No.が含まれています: ${unexpected.join(", ")}`,"analysis_rows");
+    addIf(errors,JSON.stringify(nos)!==JSON.stringify(expected),"error","ROW_ORDER_MISMATCH","analysis_rowsの行順が評価基準の固定順序と一致しません。提示された骨格の順序を変更しないでください。","analysis_rows");
   }
 
   const proposalOrigins=new Set(["job_text_strengthening","research_discovery","gap_fill"]),proposals=[],strengthRows=[];
   rows.forEach((row,i)=>{
     const path=`analysis_rows[${i}]`;
     if(!isObject(row)){errors.push(issue("error","ROW_TYPE","分析行はオブジェクトである必要があります。",path));return}
-    validateExactKeys(errors,row,["no","result","job_excerpt","strength","proposal"],path);
+    validateExactKeys(errors,row,["no","criterion","result","job_excerpt","strength","proposal"],path);
+    const expectedCriterion=criterionRef(row.no);
+    if(!isObject(row.criterion))errors.push(issue("error","CRITERION_REQUIRED",`No.${row.no}のcriterionがありません。`,path+".criterion"));
+    else{
+      validateExactKeys(errors,row.criterion,["category","major_item","middle_item","criterion_definition"],path+".criterion");
+      addIf(errors,!sameCriterion(row.criterion,expectedCriterion),"error","CRITERION_MISMATCH",`No.${row.no}のcriterionが評価基準正本と一致しません。期待: ${expectedCriterion?expectedCriterion.middle_item:"不明"}`,path+".criterion");
+    }
     addIf(errors,!Number.isInteger(row.no),"error","NO_TYPE","noは整数である必要があります。",path+".no");
     addIf(errors,!RESULT_VALUES.has(row.result),"error","RESULT_VALUE","resultは記載あり・その他・なしのいずれかです。",path+".result");
     addIf(errors,typeof row.job_excerpt!=="string"||!row.job_excerpt.trim(),"error","EXCERPT_REQUIRED","job_excerptがありません。",path+".job_excerpt");
@@ -1137,6 +1176,7 @@ function validateGeminiResult(data,meta={extra:false}){
         if(row.no===46&&/(取得可能です|利用できます|会社.*負担|取得できます)/.test(plain)&&!/(ある場合|制度がある場合)/.test(plain))warnings.push(issue("warning","LICENSE_SUPPORT_ASSERTION","No.46で資格取得支援制度の存在を前提にしている可能性があります。",path+".proposal.text"));
       }
     }
+    validateCriterionSemantics(errors,warnings,row,path);
   });
 
   const priorityLimit=Number(el.proposalCount.value),expectedPriorityCount=Math.min(priorityLimit,strengthRows.length),priorityProposals=proposals.filter(p=>Number.isInteger(p.rank)),ranks=priorityProposals.map(p=>p.rank).sort((a,b)=>a-b);
@@ -1257,7 +1297,7 @@ function submitGasRequest(r){const url=el.gasWebAppUrl.value.trim(),key=el.gasAc
 function handleGasResult(result){if(!result||typeof result!=="object")return;const expected=pendingGasRequestId||gasRequestId;if(expected&&result.request_id&&result.request_id!==expected)return;clearTimeout(gasSubmitTimer);stopGasPolling();pendingGasRequestId="";gasCallbackToken="";gasPollStartedAt=0;lastReportResult=result;$("createSheetsBtn").textContent="Google Sheetsを作成";$("createSheetsBtn").disabled=!(lastValidation&&!lastValidation.errors.length);renderGasResult(result);save();updateProgress();indicators();status(result.success?"Google Sheetsを作成しました。":result.message||"Google Sheetsを作成できませんでした。",result.success?"success":"error")}
 function finalRepairPrompt(r){
  const list=[...r.errors,...r.warnings].map((x,i)=>`${i+1}. [${x.level.toUpperCase()} / ${x.code}] ${x.path?x.path+"：":""}${x.message}`).join("\n"),research=lastResearchValidation&&lastResearchValidation.data?lastResearchValidation.data:null,finalSources=canonicalFinalSources(research),allowedRefs=allowedEvidenceRefs(research);
- return`直前の求人分析JSONを部分修正ではなく、Knowledgeの gemini_output_schema_v3.0_strict.txt に従って全体再構築してください。意味内容と根拠は可能な限り維持し、新しいWeb調査は行いません。
+ return`直前の求人分析JSONを部分修正ではなく、Knowledgeの gemini_output_schema_v3.1_strict.txt に従って全体再構築してください。意味内容と根拠は可能な限り維持し、新しいWeb調査は行いません。
 
 <VALIDATION_ISSUES>
 ${list}
@@ -1271,10 +1311,17 @@ ${json(finalSources)}
 ${json(allowedRefs)}
 </ALLOWED_EVIDENCE_REFS>
 
+<ANALYSIS_ROWS_SKELETONS_DO_NOT_EDIT>
+${json(analysisRowsSkeletons())}
+</ANALYSIS_ROWS_SKELETONS_DO_NOT_EDIT>
+
 必須修正契約：
+- case_summary.employment_typeに対応する固定骨格を選び、analysis_rowsの行数・順序・no・criterionを完全一致させる
+- 各行の内容はcriterion.middle_itemとcriterion.criterion_definitionへ直接一致させる
+- 直接一致しない企業全体の強みはanalysis_rowsへ入れず、recruitment_strength_analysisへ移す
 - resultとjob_excerptはJOB_TEXTだけで判定する。調査発見でresultを変更しない
 - case_summaryはcompany_name/job_title/employment_type/employment_basis_quoteの4キーだけ
-- 全analysis_rowsにno/result/job_excerpt/strength/proposalを置く。strengthがある行はproposalも必須、strengthがnullの行はproposalもnull
+- 全analysis_rowsにno/criterion/result/job_excerpt/strength/proposalを置く。strengthがある行はproposalも必須、strengthがnullの行はproposalもnull
 - strengthはtext/status/evidence_refs/confidenceの4キー
 - proposalはSchema所定の12キー。strengthがある全行に作成する。重点提案だけrankを1から連番、重点外はrank:null
 - recruitment_strength_analysisは対象企業の企業全体の強みを原則8～15件で整理する。市場参照情報が不足していてもTARGETの強みを捨てない

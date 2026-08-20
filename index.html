@@ -128,12 +128,12 @@ https://www.example.co.jp/training/"></textarea><p class="note">福利厚生、�
 <details class="settingsDetails"><summary>詳細設定を変更</summary><div class="settingsBody"><div class="settingsField"><label for="proposalCount">重点提案数（サマリー・商談用）</label><select id="proposalCount"><option selected="" value="5">5項目（標準）</option><option value="7">7項目</option><option value="10">10項目</option></select><p class="settingsHelp">「貴社原稿分析」では魅力がある全行に提案を出力します。この設定は、評価サマリーと商談準備メモで特に取り上げる件数です。</p></div><div class="settingsField"><label for="textLength">文面の長さ</label><select id="textLength"><option value="50">50文字程度</option><option selected="" value="100">100文字程度（標準）</option><option value="150">150文字程度</option></select></div><div class="settingsField"><label for="webMode">Deep Researchの調査範囲</label><select id="webMode"><option value="specified">指定URL・公式ドメイン中心</option><option selected="" value="balanced">公式情報優先＋信頼できる補足（標準）</option><option value="broad">一般Webを広く調査</option></select></div><button class="settingsReset" id="resetSettingsBtn" type="button">標準設定に戻す</button></div></details>
 <details class="settingsDetails" id="sheetsSettingsDetails"><summary>Google Sheets連携設定</summary><div class="settingsBody"><div class="settingsField"><label for="gasWebAppUrl">GAS WebアプリURL</label><input aria-readonly="true" autocomplete="off" id="gasWebAppUrl" readonly="" type="url" value="https://script.google.com/macros/s/AKfycbyz5OPM-HD9u9hhxCeNyvCP82pgcbngZp8csWWYqdQzpNtk-4lQuxQdU1Si3LRmCh_E/exec"/><p class="settingsHelp">接続先URLは設定済みです。通常は変更不要です。</p></div><div class="settingsField"><label for="gasAccessKey">接続キー</label><div class="passwordRow"><input autocomplete="off" id="gasAccessKey" placeholder="社内接続キーを入力" type="password"/><button class="miniSettingBtn" id="toggleGasKeyBtn" type="button">表示</button></div><p class="settingsHelp">このブラウザ内にだけ保存されます。GitHubリポジトリには保存されません。</p><a class="internalKeyLink" href="https://docs.google.com/document/d/1-imR39CztYw-vIajSVUjnAYy_GDtaRDi7ND5XJQt6VI/" rel="noopener" target="_blank">↗ 社内接続キーを確認 <small>（組織内限定）</small></a></div><div class="connectionActions"><button class="settingsReset" id="openGasStatusBtn" type="button">接続状態ページを開く</button><button class="settingsReset" id="clearGasSettingsBtn" type="button">接続キーをクリア</button></div></div></details>
 <a class="criteria" href="https://docs.google.com/spreadsheets/d/1NeAXznRfdjqEX8qEmFI5lAn20doxQrhg6D_4cpThMZY/" rel="noopener" target="_blank">↗ 評価基準を開く</a>
-<details class="settingsDetails"><summary>技術情報</summary><div class="settingsBody"><div class="set"><span>評価基準版</span><span>2026-08-04-v1</span></div><div class="set"><span>分析方針版</span><span>2026-08-07-v4</span></div><div class="set"><span>専用Gem応答</span><span>v3.3</span></div><div class="set"><span>分析JSON</span><span>v3.2</span></div><div class="set"><span>評価表構成</span><span>v1.1</span></div><div class="set"><span>App</span><span>v5.9</span></div><div class="set"><span>案件ID</span><span id="caseIdSummary">生成中</span></div></div></details></article>
+<details class="settingsDetails"><summary>技術情報</summary><div class="settingsBody"><div class="set"><span>評価基準版</span><span>2026-08-04-v1</span></div><div class="set"><span>分析方針版</span><span>2026-08-07-v4</span></div><div class="set"><span>専用Gem応答</span><span>v3.3</span></div><div class="set"><span>分析JSON</span><span>v3.2</span></div><div class="set"><span>評価表構成</span><span>v1.1</span></div><div class="set"><span>App</span><span>v5.10</span></div><div class="set"><span>案件ID</span><span id="caseIdSummary">生成中</span></div></div></details></article>
 <article class="card"><div class="head"><h2>入力・進行状況</h2></div><div class="summary"><span>対象企業</span><strong id="targetCompanySummary">未入力</strong></div><div class="summary"><span>求人情報</span><strong id="jobSummary">未入力</strong></div><div class="summary"><span>市場参照</span><strong id="marketReferenceSummary">DRで自動選定</strong></div><div class="summary"><span>企業調査結果</span><strong id="researchSummary">未確認</strong></div><div class="summary"><span>Gem用プロンプト</span><strong id="proSummary">未生成</strong></div><div class="summary"><span>求人分析結果</span><strong id="finalSummary">未確認</strong></div></article>
 <article class="card"><div class="head"><h2>使い方の流れ</h2></div><ol class="flowList"><li>STEP 1　案件・企業情報を入力</li><li>STEP 2　Deep Researchへ送る</li><li>STEP 3　Deep Researchの回答を貼り付ける</li><li>STEP 4　専用Gemへ送る</li><li>STEP 5　専用Gemの回答を貼り付け、Sheetsを作成</li></ol></article>
 </aside>
 </div>
-<p class="footer">入力内容はブラウザに自動保存されます。AIが取得した事実・適用範囲・市場内での位置づけ・提案内容は、最終利用前に確認してください。 <span>App v5.9</span></p>
+<p class="footer">入力内容はブラウザに自動保存されます。AIが取得した事実・適用範囲・市場内での位置づけ・提案内容は、最終利用前に確認してください。 <span>App v5.10</span></p>
 </main>
 <div class="modalbg" id="modalBg"><div class="modal"><div class="modalhead"><h2>使い方</h2><button aria-label="閉じる" class="close" id="closeBtn" type="button">×</button></div><div class="modalbody"><section class="help"><h3>このツールでできること</h3><p>対象企業を企業全体まで調査し、求人原稿で伝わっている魅力と、さらに活かせる採用訴求を整理します。利用者の基本操作は、Geminiへ送るプロンプトをコピーし、回答をアプリへ貼り付けることです。</p></section><section class="help"><h3>STEP 2～3：Deep Research</h3><p>青が企業調査の工程です。STEP 2は薄い青の大きな操作エリアを押すと、プロンプトをコピーしてGeminiを開きます。STEP 3は左側の青い太線が付いた入力カードへ回答を貼り付けます。</p></section><section class="help"><h3>STEP 4～5：専用Gem</h3><p>紫が求人原稿分析の工程です。STEP 4は薄い紫の大きな操作エリアから専用Gemを開き、STEP 5は左側の紫の太線が付いた入力カードへ回答を貼り付けます。</p></section><section class="help"><h3>対象企業のWebサイトURL</h3><p>企業全体の福利厚生・制度・特徴などを調査する入口として使います。コーポレートサイトを推奨しますが、自社採用サイトなどでも構いません。公式Webサイトがない、または分からない場合はチェック欄を選択するとURLなしで進められます。</p></section><section class="help"><h3>過去の分析結果を見る</h3><p>画面上部の「📁 出力フォルダ」から、過去に作成した分析結果や他メンバーが作成したGoogle Sheetsを確認できます。</p></section><section class="help"><h3>修正指示をコピー</h3><p>確認時にエラーや警告が見つかった場合は、修正指示をコピーして結果を作成した同じGeminiチャットへ貼り付けます。修正版の回答全体を再度アプリへ貼り付けて確認してください。</p></section><section class="help"><h3>Google Sheets作成</h3><p>初回だけ接続キーを登録します。STEP 5でエラー0件になったら「Google Sheetsを作成」を押してください。作成後は今回のシートを開くほか、共有の出力フォルダへ移動できます。</p></section><section class="help"><h3>入力データ</h3><div class="helpnote">入力内容はブラウザのローカルストレージに自動保存されます。共用PCでは作業後に「案件をクリア」を押してください。</div></section></div></div></div>
 <script id="researchPromptTemplate" type="text/plain"># 対象企業の採用競争力・強み発見 Deep Research 調査プロンプト v3.1
@@ -321,7 +321,7 @@ FINAL RESPONSE CONTRACT:
 
 最終回答はJSONオブジェクト本体1件だけを出力する。これは通常のDeep Researchレポートより優先される出力契約である。</script>
 <script id="conversionPromptTemplate" type="text/plain">この工程はv5.8.1では使用しません。</script>
-<script id="proPromptTemplate" type="text/plain"># 企業の魅力洗い出し＆原稿改善 専用Gemプロンプト v5.8.1
+<script id="proPromptTemplate" type="text/plain"># 企業の魅力洗い出し＆原稿改善 専用Gemプロンプト v5.10
 
 最重要：最終回答は、Knowledgeに登録された `gem_response_schema_v3.3_minimal.txt` に完全適合するJSONオブジェクト1件だけにしてください。文章レポート、Markdown、コードフェンス、作業ログ、中間JSONは出力しません。
 
@@ -398,6 +398,20 @@ JOB_TEXTから雇用形態を確定し、`employment_type`へ「正社員」ま�
 
 `ANALYSIS_CRITERIA_REFERENCE_DO_NOT_OUTPUT.rows_by_employment`から該当雇用形態の必要No.を、同じ順番で1件ずつ出力します。
 
+### result / job_excerpt の判定
+
+`result` は必ず次の3値だけです。`記載なし`、`未記載`、`該当なし`などの独自値は使いません。
+
+- `記載あり`：JOB_TEXTに、そのNo.の評価項目・定義を満たす内容が直接記載されている
+- `その他`：JOB_TEXTに関連記載はあるが、そのNo.の評価項目・定義を満たすとは判定できない
+- `なし`：JOB_TEXTに関連記載自体がない。この場合の `job_excerpt` は必ず `記載なし`
+
+強制ルール：
+- `job_excerpt` が `記載なし` の場合、`result` は必ず `なし`
+- `job_excerpt` に実際の原稿抜粋を入れる場合、`result` を `なし` にしない
+- 例：No.56でJOB_TEXTが「残業あり」だけなら、残業20時間未満等は確認できないため `result:"その他"` とし、`job_excerpt` にはその原稿抜粋を入れる
+- 調査情報は `result` / `job_excerpt` を変更しない。JOB_TEXTにない強みはstrength側で扱う
+
 各行は次の5キーだけです。
 
 ```json
@@ -445,6 +459,15 @@ proposalは次の7キーだけです。
 `origin`、`current_strength`、`statement_status`、`evidence_refs`、`confidence`は出力しません。アプリがstrength・result・confirmation_requiredから復元します。
 
 strengthがオブジェクトならproposalも必ずオブジェクト、strengthがnullならproposalもnullです。
+
+### proposalの事実制約
+
+proposalは、strengthとそのevidence_refsで確認できる事実の範囲内で作成します。応募訴求を強めるためでも、根拠にない新しい具体的事実を通常文として追加しません。
+
+- 固定ルート、全車両、最新設備、手積み手降ろしゼロ、完全未経験OKなど、根拠で直接確認できない具体条件を推測で追加しない
+- 追加したい具体情報が未確認なら `confirmation_required=true` とし、未確認部分を `［　］` の具体的プレースホルダーで示す
+- strength.evidence_refsがJOB_TEXTだけなら、proposal内の具体的事実も原則JOB_TEXTで確認できる範囲に留める
+- 調査ソースの事実を使う場合は、その事実がstrength.textとstrength.evidence_refsに反映されていることを確認してからproposalへ使う
 
 ### No.と内容の対応
 
@@ -582,7 +605,10 @@ rank、proposal_origin、confirmation_question、evidence_refs、confidenceは�
 - case_id="{{CASE_ID}}"
 - トップレベルは指定12キーだけ
 - analysis_rows各行はno/result/job_excerpt/strength/proposalの5キーだけ
+- resultは `記載あり` / `その他` / `なし` の3値だけ。`記載なし`等をresultへ入れない
+- job_excerpt=`記載なし` の行はresult=`なし`。関連記載があるが基準未達ならresult=`その他`
 - proposalは指定7キーだけ。statement_status・origin・current_strength・evidence_refs・confidenceを出力しない
+- proposal.textはstrength/evidenceで確認できない具体的事実を通常文として追加しない。未確認情報を使う場合はconfirmation_required=true＋プレースホルダー
 - strength_itemsは配列。recruitment_strength_analysisというキーを作らない
 - summaryの各pointはtext/evidence_refsの2キーだけ
 - sales_talksはno/sales_talk/praise_point/proposal_bridge/cautionsの5キーだけ。sales_meetingというキーを作らない
@@ -617,7 +643,7 @@ function targetEntity(){return{entity_id:"TARGET",company_name:el.targetCompanyN
 function criterionRef(no){const c=CRITERIA_BY_NO[String(no)];return c?{category:c.category,major_item:c.major_item,middle_item:c.middle_item,criterion_definition:c.criterion_definition}:null}
 function analysisRowsSkeletons(){const hint=el.employmentTypeHint.value,types=REQUIRED_NOS[hint]?[hint]:Object.keys(REQUIRED_NOS),rowsByEmployment={};types.forEach(type=>{rowsByEmployment[type]=REQUIRED_NOS[type].map(no=>({no,criterion:criterionRef(no)}))});return{selected_by_hint:REQUIRED_NOS[hint]?hint:null,rows_by_employment:rowsByEmployment}}
 function sameCriterion(a,b){return isObject(a)&&isObject(b)&&a.category===b.category&&a.major_item===b.major_item&&a.middle_item===b.middle_item&&a.criterion_definition===b.criterion_definition}
-function criterionContentText(row){return[row&&row.job_excerpt,row&&row.strength&&row.strength.text,row&&row.proposal&&row.proposal.current_strength,row&&row.proposal&&row.proposal.enhancement_point,row&&row.proposal&&row.proposal.text].map(v=>String(v||"")).join(" ").replace(/\s+/g," ")}
+function criterionContentText(row){return[row&&row.job_excerpt,row&&row.strength&&row.strength.text].map(v=>String(v||"")).join(" ").replace(/\s+/g," ")}
 function validateCriterionSemantics(errors,warnings,row,path){if(!row||(!isObject(row.strength)&&row.result==="なし"))return;const rule=CRITERION_MATCH_RULES[String(row.no)];if(!rule)return;let matched=false;try{matched=new RegExp(rule.pattern,"i").test(criterionContentText(row))}catch{}if(matched)return;const expected=CRITERIA_BY_NO[String(row.no)],message=`No.${row.no}の内容が評価項目「${expected?expected.middle_item:"不明"}」へ直接一致していません。発見した魅力を別No.へ割り当てず、対応しない場合はstrength/proposalをnullにして採用競争力・強み分析へ移してください。`;const target=rule.level==="error"?errors:warnings;target.push(issue(rule.level,"CRITERION_CONTENT_MISMATCH",message,path))}
 function replacementsBase(){return{"{{CASE_ID}}":caseId,"{{JOB_TITLE_JSON}}":json(el.jobTitle.value.trim()),"{{WORK_LOCATION_JSON}}":json(el.workLocation.value.trim()),"{{EMPLOYMENT_TYPE_HINT_JSON}}":json(el.employmentTypeHint.value),"{{TARGET_PERSONA_JSON}}":json(el.target.value.trim()),"{{CURRENT_DATE}}":currentDateJst(),"{{TARGET_ENTITY_JSON}}":json(targetEntity()),"{{ENTITY_NOTES_JSON}}":json(el.entityNotes.value.trim()),"{{WEB_RESEARCH_MODE}}":WEB_LABELS[el.webMode.value]||WEB_LABELS.balanced,"{{JOB_URL_JSON}}":json(el.jobUrl.value.trim()||null),"{{JOB_TEXT}}":el.jobText.value.trim()||JOB_TEXT_FALLBACK,"{{PROPOSAL_COUNT}}":el.proposalCount.value,"{{TEXT_LENGTH}}":el.textLength.value,"{{TEXT_LENGTH_RANGE}}":lengthRange(el.textLength.value),"{{RULESET_VERSION}}":RULESET_VERSION,"{{EVALUATION_TABLE_SCHEMA_VERSION}}":EVALUATION_TABLE_SCHEMA_VERSION,"{{ANALYSIS_POLICY_VERSION}}":ANALYSIS_POLICY_VERSION,"{{FINAL_JSON_SCHEMA_VERSION}}":FINAL_JSON_SCHEMA_VERSION}}
 function fill(template,extra={}){let out=template;Object.entries({...replacementsBase(),...extra}).forEach(([k,v])=>out=out.replaceAll(k,String(v)));return out}
@@ -656,6 +682,8 @@ function canonicalResearchCoverage(researchData){
 }
 const EXPECTED_EFFECT_ALIASES=Object.freeze({"意欲的な人材の応募増加":"想定ターゲットからの応募増加","応募数増加":"応募母集団の拡大","応募者増加":"応募母集団の拡大","応募増加":"応募母集団の拡大","応募数の増加":"応募母集団の拡大"});
 function normalizeExpectedEffectsInData(data,stats){if(!isObject(data)||!Array.isArray(data.analysis_rows))return;data.analysis_rows.forEach(row=>{const p=isObject(row)&&isObject(row.proposal)?row.proposal:null;if(!p||!Array.isArray(p.expected_effects))return;p.expected_effects=p.expected_effects.map(v=>{const k=String(v||"");if(EXPECTED_EFFECT_ALIASES[k]){stats.expectedEffects++;return EXPECTED_EFFECT_ALIASES[k]}return v})})}
+const SAFE_NONE_RESULT_ALIASES=new Set(["記載なし","未記載","該当なし","該当情報なし"]);
+function normalizeAnalysisResultValue(value,jobExcerpt,stats){const result=String(value??"").trim(),excerpt=String(jobExcerpt??"").trim();if(SAFE_NONE_RESULT_ALIASES.has(result)&&excerpt==="記載なし"){if(stats)stats.resultValuesNormalized++;return"なし"}return value}
 function validConfidence(v){return new Set(["high","medium","low"]).has(v)}
 function capConfidence(v,max="medium"){const order={low:0,medium:1,high:2},n=validConfidence(v)?v:"medium";return order[n]>order[max]?max:n}
 function validEvidenceRefs(refs){const allowed=new Set(lastResearchValidation&&lastResearchValidation.data?allowedEvidenceRefs(lastResearchValidation.data):["JOB_TEXT"]);return [...new Set((Array.isArray(refs)?refs:[]).map(String).filter(r=>allowed.has(r)))]}
@@ -722,11 +750,11 @@ function normalizeSalesMeeting(source,rows,summary,unresolved,stats){
 }
 function normalizeUnresolvedItems(source){const raw=Array.isArray(source.unresolved_items)?source.unresolved_items:[];return raw.filter(isObject).map(u=>({priority:new Set(["high","medium","low"]).has(u.priority)?u.priority:"medium",related_nos:Array.isArray(u.related_nos)?[...new Set(u.related_nos.map(Number).filter(Number.isInteger))]:[],question:String(u.question||"").trim(),reason:String(u.reason||"").trim()})).filter(u=>u.question&&u.reason)}
 function normalizeProResponse(raw){
- const source=isObject(raw)?raw:{},stats={criteriaInjected:0,sourcesInjected:0,coverageInjected:0,expectedEffects:0,proposalFieldsDerived:0,strengthItemsMapped:0,salesNotesBuilt:0,storyStepsBuilt:0,legacyResponseConverted:source.response_schema_version!==GEM_RESPONSE_SCHEMA_VERSION?1:0,legacyMarketPositions:0};
+ const source=isObject(raw)?raw:{},stats={criteriaInjected:0,sourcesInjected:0,coverageInjected:0,expectedEffects:0,resultValuesNormalized:0,proposalFieldsDerived:0,strengthItemsMapped:0,salesNotesBuilt:0,storyStepsBuilt:0,legacyResponseConverted:source.response_schema_version!==GEM_RESPONSE_SCHEMA_VERSION?1:0,legacyMarketPositions:0};
  const legacyCs=isObject(source.case_summary)?source.case_summary:{},researchScope=lastResearchValidation&&lastResearchValidation.data&&isObject(lastResearchValidation.data.research_scope)?lastResearchValidation.data.research_scope:{},employment=source.employment_type||legacyCs.employment_type||el.employmentTypeHint.value,cs={company_name:el.targetCompanyName.value.trim()||String(legacyCs.company_name||"").trim(),job_title:el.jobTitle.value.trim()||String(legacyCs.job_title||researchScope.job_title||"求人原稿").trim(),employment_type:employment,employment_basis_quote:String(source.employment_basis_quote||legacyCs.employment_basis_quote||el.employmentTypeHint.value||employment||"").trim()};
  const rawRows=Array.isArray(source.analysis_rows)?source.analysis_rows:[],rowMap=new Map();rawRows.forEach(r=>{if(isObject(r)&&Number.isInteger(Number(r.no))&&!rowMap.has(Number(r.no)))rowMap.set(Number(r.no),r)});
  const order=REQUIRED_NOS[employment]||rawRows.map(r=>Number(r&&r.no)).filter(Number.isFinite),used=new Set(),rows=[];
- const pushRow=(no,r)=>{const base={no,criterion:criterionRef(no),result:r.result,job_excerpt:r.job_excerpt},strength=normalizeStrengthObject(r.strength),proposal=normalizeProposalObject(r.proposal,{...base},strength,stats);rows.push({...base,strength,proposal});stats.criteriaInjected++};
+ const pushRow=(no,r)=>{const jobExcerpt=r.job_excerpt,result=normalizeAnalysisResultValue(r.result,jobExcerpt,stats),base={no,criterion:criterionRef(no),result,job_excerpt:jobExcerpt},strength=normalizeStrengthObject(r.strength),proposal=normalizeProposalObject(r.proposal,{...base},strength,stats);rows.push({...base,strength,proposal});stats.criteriaInjected++};
  order.forEach(no=>{const r=rowMap.get(no);if(!r)return;used.add(no);pushRow(no,r)});rawRows.forEach(r=>{const no=Number(r&&r.no);if(!Number.isFinite(no)||used.has(no))return;pushRow(no,r)});
  const research=lastResearchValidation&&lastResearchValidation.data?lastResearchValidation.data:null,finalSources=canonicalFinalSources(research),researchCoverage=canonicalResearchCoverage(research);stats.sourcesInjected=finalSources.length;stats.coverageInjected=researchCoverage.length;
  const strengthItems=normalizeStrengthItems(source,stats),overallNote=String(source.strength_overall_note||(isObject(source.recruitment_strength_analysis)?source.recruitment_strength_analysis.overall_note:"")||"").trim()||"対象企業の採用上の強みを、確認できた事実と市場参照情報をもとに整理しました。",summary=normalizeSummaryMinimal(source),unresolved=normalizeUnresolvedItems(source),salesMeeting=normalizeSalesMeeting(source,rows,summary,unresolved,stats);
@@ -885,6 +913,7 @@ function showExtractionNotice(kind,meta){
     if(s.salesNotesBuilt)parts.push(`商談提案${s.salesNotesBuilt}件`);
     if(s.storyStepsBuilt)parts.push(`商談ストーリー${s.storyStepsBuilt}件`);
     if(s.legacyResponseConverted)parts.push("旧v3.2応答を互換変換");
+    if(s.resultValuesNormalized)parts.push(`result表記補正${s.resultValuesNormalized}件`);
     if(s.expectedEffects)parts.push(`期待効果語彙補正${s.expectedEffects}件`);
     if(s.legacyMarketPositions)parts.push(`旧市場比較語彙補正${s.legacyMarketPositions}件`);
     notes.push(`アプリ側で最終JSONを自動組み立てしました（${parts.join("・")}）。`)
@@ -1084,11 +1113,14 @@ function validateGeminiResult(data,meta={extra:false}){
       addIf(errors,!sameCriterion(row.criterion,expectedCriterion),"error","CRITERION_MISMATCH",`No.${row.no}のcriterionが評価基準正本と一致しません。期待: ${expectedCriterion?expectedCriterion.middle_item:"不明"}`,path+".criterion");
     }
     addIf(errors,!Number.isInteger(row.no),"error","NO_TYPE","noは整数である必要があります。",path+".no");
-    addIf(errors,!RESULT_VALUES.has(row.result),"error","RESULT_VALUE","resultは記載あり・その他・なしのいずれかです。",path+".result");
+    const resultValid=RESULT_VALUES.has(row.result);
+    addIf(errors,!resultValid,"error","RESULT_VALUE","resultは記載あり・その他・なしのいずれかです。",path+".result");
     addIf(errors,typeof row.job_excerpt!=="string"||!row.job_excerpt.trim(),"error","EXCERPT_REQUIRED","job_excerptがありません。",path+".job_excerpt");
-    addIf(errors,row.result==="なし"&&row.job_excerpt!=="記載なし","error","NONE_EXCERPT","result=なしの場合、job_excerptは記載なしにしてください。",path+".job_excerpt");
-    addIf(errors,row.result!=="なし"&&row.job_excerpt==="記載なし","error","EXCERPT_CONTRADICTION","記載あり・その他なのにjob_excerptが記載なしです。",path+".job_excerpt");
-    if(row.result!=="なし"&&el.jobText.value.trim()){
+    if(resultValid){
+      addIf(errors,row.result==="なし"&&row.job_excerpt!=="記載なし","error","NONE_EXCERPT","result=なしの場合、job_excerptは記載なしにしてください。",path+".job_excerpt");
+      addIf(errors,row.result!=="なし"&&row.job_excerpt==="記載なし","error","EXCERPT_CONTRADICTION","記載あり・その他なのにjob_excerptが記載なしです。",path+".job_excerpt");
+    }
+    if(resultValid&&row.result!=="なし"&&el.jobText.value.trim()){
       const source=normalizeText(el.jobText.value),excerpt=normalizeText(row.job_excerpt);
       const normExcerpt=String(excerpt).normalize("NFKC").replace(/[\s　]+/g,"").replace(/[「」『』【】［］]/g,""),normSource=String(source).normalize("NFKC").replace(/[\s　]+/g,"").replace(/[「」『』【】［］]/g,"");if(normExcerpt.length>=8&&!normSource.includes(normExcerpt))warnings.push(issue("warning","EXCERPT_NOT_FOUND",`No.${row.no}の抜粋が、空白・改行等を正規化しても求人原稿全文から確認できません。`,path+".job_excerpt"));
     }
@@ -1297,7 +1329,10 @@ ${json(analysisRowsSkeletons())}
 - response_schema_versionは${GEM_RESPONSE_SCHEMA_VERSION}、case_idは${caseId}
 - トップレベルは response_schema_version/case_id/employment_type/employment_basis_quote/analysis_rows/strength_items/strength_overall_note/summary/sales_talks/story_talks/unresolved_items/warnings の12キーだけ
 - analysis_rows各行はno/result/job_excerpt/strength/proposalの5キーだけ
+- resultは「記載あり」「その他」「なし」の3値だけ。「記載なし」「未記載」「該当なし」等をresultへ入れない
+- job_excerptが「記載なし」ならresultは必ず「なし」。関連記載はあるが評価基準を満たさない場合はresultを「その他」とし、実際の原稿抜粋をjob_excerptへ入れる
 - proposalはrank/enhancement_point/text/selection_reason/confirmation_required/confirmation_question/expected_effectsの7キーだけ。origin/current_strength/statement_status/evidence_refs/confidenceを出力しない
+- proposal.textはstrengthとそのevidence_refsで確認できない具体的事実を推測で追加しない。未確認情報を使う場合はconfirmation_required=trueとし、未確認部分を［　］で示す
 - strength_itemsは配列。recruitment_strength_analysisというキーを作らない
 - summaryの各pointはtext/evidence_refsの2キーだけ
 - sales_talksはno/sales_talk/praise_point/proposal_bridge/cautionsの5キーだけ。sales_meetingを出力しない
